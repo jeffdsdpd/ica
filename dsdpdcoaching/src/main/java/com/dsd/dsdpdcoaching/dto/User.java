@@ -1,5 +1,6 @@
 package com.dsd.dsdpdcoaching.dto;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,9 +13,15 @@ public class User {
 	 @GeneratedValue(strategy = GenerationType.AUTO)
 	 private Integer id;
 	 
+	 @Column(name = "username")
 	 private String username;
+	 
+	 @Column(name = "password")
 	 private String password;
+	 
+	 @Column(name = "role")
 	 private String role;
+	 
 	public Integer getId() {
 		return id;
 	}
