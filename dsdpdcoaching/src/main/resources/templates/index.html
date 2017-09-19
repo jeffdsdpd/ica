@@ -1,11 +1,38 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
-    <title>Spring Framework Guru</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />	
+	<title>DSD Professional Development - Instructional Coaching Application</title>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	<meta name="viewport" content="width=device-width" />
+	
+	<!-- Bootstrap core CSS     -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/css/login.css" rel="stylesheet" />
+	
 </head>
 <body>
-<h1>Hello</h1>
-
+    <div class="main-panel">
+    		<div class="container">
+			<div align="center">
+				<p th:if="${param.error}">
+            			Bad Credentials  
+        			</p>
+		        <form th:action="@{/appLogin}" method="POST">
+			        <img src="/img/DSDPDICA.png" />
+			        <br />
+			        	<i>"If you can't measure it, you can't improve it." &nbsp;</i> - Peter Drucker
+			        	<hr />
+		            User Name : <input type="text" name="app_username"/> <br/><br/>
+		            Password: <input type="password" name="app_password"/> <br/><br/>
+		            <input type="submit" value="Login"/>
+		        </form>
+				<hr />
+					<p>&copy; 2017 <a href="http://dsdprofessionaldevelopment.com">DSDProfessionalDevelopment</a></p>
+			</div>
+		</div>
+	</div>
+	<br />
+    <br />
 </body>
 </html>

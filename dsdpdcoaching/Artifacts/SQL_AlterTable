@@ -1,0 +1,5 @@
+ALTER TABLE dsdpd_admin.users
+CHANGE COLUMN id username VARCHAR(255) NOT NULL;
+
+ALTER TABLE dsdpd_admin.users
+ADD id INT PRIMARY KEY AUTO_INCREMENT FIRST;
