@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+		<title>DSD Professional Development - Coaching Application</title>
+		<meta charset="utf-8" />	
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+		<meta name="google-site-verification" content="LDl41i-yzgl7BoyhVlS47B_tvMXIrLY1bpSUGUzRCN8" />
+		
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/login.css" th:href="@{/css/login.css}" rel="stylesheet" />
+    </head>
+    <body>
+	    <div class="main-panel">
+		    	<div class="container text-center">
+		        	<img src="images/DSDPDICA.png" th:src="@{/images/DSDPDICA.png}" class="center-block"/>
+		        	<i>"If you can't measure it, you can't improve it." &nbsp;</i> - Peter Drucker
+		        	<hr/>
+		        	<div class="login">
+					<form th:action="@{/login.html}" method="post">
+			    			<input type="text" class="form-control" id="userid" name="username" placeholder="ID"/>
+			    			<input type="password" class="form-control password" id="password" name="password" placeholder="Password"/>
+	    			        <div th:if="${param.error}">
+						    Invalid username and password.
+						</div>
+						<div th:if="${param.logout}">
+						    You have been logged out.
+						</div>
+			    			
+						<input class="btn btn-block btn-lg btn-success submit" type="submit" value="Login"/>
+					</form>
+				</div>
+				<hr/>
+				<div>&copy; 2017 <a href="http://dsdprofessionaldevelopment.com">DSDProfessionalDevelopment</a></div>
+			</div>
+	    </div>
+	    	<br/>
+    		<br/>
+    </body>
+</html>
