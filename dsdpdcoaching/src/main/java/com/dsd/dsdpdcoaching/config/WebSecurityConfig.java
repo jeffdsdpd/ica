@@ -16,7 +16,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
     @Autowired
-    LoginService service;
+    LoginService loginService;
 	
     @Override
     public void configure(WebSecurity web) throws Exception {
@@ -40,8 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-            .inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER");
+//        auth.userDetailsService(loginService).passwordEncoder(bCryptPasswordEncoder());
+    		auth.userDetailsService(loginService);
     }
 }
