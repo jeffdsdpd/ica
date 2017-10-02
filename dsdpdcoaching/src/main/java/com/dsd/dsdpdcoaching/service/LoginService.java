@@ -1,6 +1,6 @@
 package com.dsd.dsdpdcoaching.service;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.dsd.dsdpdcoaching.dao.UserDao;
 import com.dsd.dsdpdcoaching.dto.User;
+import com.dsd.dsdpdcoaching.dto.UserRole;
 
 @Configuration
 public class LoginService implements UserDetailsService {
@@ -21,12 +22,15 @@ public class LoginService implements UserDetailsService {
 	private UserDao userDao;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String username) {
 		User user = userDao.getUserByUsername(username);
 		if(user == null) {
 			throw new UsernameNotFoundException("User not found!");
 		} else {
-			List<GrantedAuthority> grantedAuthorities = Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+			List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+			for(UserRole userRole : user.getUserRoles()) {
+				grantedAuthorities.add(new SimpleGrantedAuthority(userRole.getRole()));
+			}
 			return new org.springframework.security.core.userdetails.User(username, user.getPassword(), grantedAuthorities);
 		}
 	}

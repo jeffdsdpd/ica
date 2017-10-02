@@ -1,29 +1,35 @@
 package com.dsd.dsdpdcoaching.dto;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
 public class User {
 	
-	 @Id
-	 @GeneratedValue(strategy = GenerationType.AUTO)
-	 private Integer id;
-	 
-	 @Column(name = "username")
-	 private String username;
-	 
-	 @Column(name = "password")
-	 private String password;
-	 
-	 @Column(name = "role")
-	 private String role;
-	 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="id")
+	private Integer id;
+	
+	@Column(name = "username")
+	private String username;
+	
+	@Column(name = "password")
+	private String password;
+	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+	private Set<UserRole> userRoles = new HashSet<>();
+	
 	public Integer getId() {
 		return id;
 	}
@@ -42,12 +48,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getRole() {
-		return role;
+	public Set<UserRole> getUserRoles() {
+		return userRoles;
 	}
-	public void setRole(String role) {
-		this.role = role;
+	public void setUserRoles(Set<UserRole> userRoles) {
+		this.userRoles = userRoles;
 	}
-	 
-	 
 }
