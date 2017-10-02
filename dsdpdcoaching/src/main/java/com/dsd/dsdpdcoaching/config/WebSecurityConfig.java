@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.dsd.dsdpdcoaching.service.LoginService;
 
@@ -17,6 +18,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
     @Autowired
     LoginService loginService;
+    
+//	@Autowired
+//	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
     @Override
     public void configure(WebSecurity web) throws Exception {
@@ -40,7 +44,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(loginService).passwordEncoder(bCryptPasswordEncoder());
+    		//TODO Once we have the admin page that can reset/set passwords lets start hashing all of them
+//		auth.userDetailsService(loginService).passwordEncoder(bCryptPasswordEncoder);
     		auth.userDetailsService(loginService);
     }
 }
