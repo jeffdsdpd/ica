@@ -16,7 +16,6 @@ import com.dsd.dsdpdcoaching.dto.School;
 @Controller
 @SessionAttributes("schoolList")
 public class DashboardController {
-	
 	@Autowired
 	private SchoolDao schoolDao;
 	
@@ -28,6 +27,10 @@ public class DashboardController {
 
     @ModelAttribute("schoolList")
     public List<School> getSchoolList(HttpServletRequest request) {
-        return schoolDao.getSchools();
+    		if(request.isUserInRole("admin")) {
+	        return schoolDao.getSchools();
+    		} else {
+    	        return schoolDao.getSchoolsByUser(request.getUserPrincipal().getName());
+    		}
     }
 }
