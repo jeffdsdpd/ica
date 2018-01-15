@@ -18,13 +18,12 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id")
 	private Integer id;
 	
-	@Column(name = "username")
+	@Column
 	private String username;
 	
-	@Column(name = "password")
+	@Column
 	private String password;
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")

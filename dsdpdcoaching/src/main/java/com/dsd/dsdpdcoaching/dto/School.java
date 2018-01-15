@@ -16,10 +16,10 @@ public class School implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-	@Column(name = "name")
+	@Column
 	private String name;
 
-	@Column(name = "admin")
+	@Column
 	private String admin;
 
 	@Column(name = "admin_emailaddress")

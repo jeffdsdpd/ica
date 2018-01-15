@@ -22,14 +22,13 @@ public class UserRole implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id")
 	private Integer id;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
 	
-	@Column(name="role")
+	@Column
 	private String role;
 
 	public Integer getId() {

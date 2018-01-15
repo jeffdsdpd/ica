@@ -17,3 +17,7 @@ INSERT INTO user_roles(user_id, role) SELECT id, role FROM users;
 ALTER TABLE users DROP COLUMN role;
 
 ALTER TABLE teachers CHANGE schoolId schoolid int(11);
+
+ALTER TABLE coaching_interactions CHANGE schoolId schoolid int(11);
+ALTER TABLE coaching_interactions CHANGE teacherId teacherid int(11);
+ALTER TABLE coaching_interactions CHANGE userId userid varchar(45);

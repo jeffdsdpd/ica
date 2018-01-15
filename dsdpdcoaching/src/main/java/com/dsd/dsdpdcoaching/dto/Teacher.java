@@ -14,13 +14,12 @@ public class Teacher implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id")
 	private Integer id;
 	
 	@Column(name="schoolid")
-	private Integer schoolid;
+	private Integer schoolId;
 
-	@Column(name = "name")
+	@Column
 	private String name;
 
 	@Column(name = "emailaddress")
@@ -35,11 +34,11 @@ public class Teacher implements Serializable {
 	}
 
 	public Integer getSchoolid() {
-		return schoolid;
+		return schoolId;
 	}
 
 	public void setSchoolid(Integer schoolid) {
-		this.schoolid = schoolid;
+		this.schoolId = schoolid;
 	}
 
 	public String getName() {
