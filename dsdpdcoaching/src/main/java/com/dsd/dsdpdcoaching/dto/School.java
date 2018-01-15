@@ -1,5 +1,7 @@
 package com.dsd.dsdpdcoaching.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,20 +9,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "schools")
-public class School {
-	
-	 @Id
-	 @GeneratedValue(strategy = GenerationType.AUTO)
-	 private Integer id;
+public class School implements Serializable {
+	private static final long serialVersionUID = 1646739365424179981L;
 
-	 @Column(name = "name")
-	 private String name;
-	 
-	 @Column(name = "admin")
-	 private String admin;
-	 
-	 @Column(name = "admin_emailaddress")
-	 private String adminEmailAddress;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+
+	@Column(name = "name")
+	private String name;
+
+	@Column(name = "admin")
+	private String admin;
+
+	@Column(name = "admin_emailaddress")
+	private String adminEmailAddress;
 
 	public Integer getId() {
 		return id;

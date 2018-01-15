@@ -15,3 +15,5 @@ ALTER TABLE user_roles ADD UNIQUE unique_user_role_index(user_id, role);
 INSERT INTO user_roles(user_id, role) SELECT id, role FROM users;
 
 ALTER TABLE users DROP COLUMN role;
+
+ALTER TABLE teachers CHANGE schoolId schoolid int(11);

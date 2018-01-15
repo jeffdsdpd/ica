@@ -6,7 +6,7 @@ $(document).ready(function(){
 
         $.ajax({
 			type: "GET",
-			url:"GetTeacherBySchool",
+			url:"getTeachersBySchool",
 			data:{schoolId: str},
 			dataType: "json",
 			success: function (response) {
