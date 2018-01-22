@@ -28,7 +28,7 @@ public class SchoolDao {
 
 	public List<School> getSchoolsByUser(String username) {
 		LOGGER.debug("Retrieving schools for " + username);
-		//TODO need to get user_roles? table added
+		//TODO need to get user_schools? table added
 	    return entityManager.createQuery("from schools", School.class)
 	            .getResultList();
 	}

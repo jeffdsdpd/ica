@@ -10,26 +10,26 @@
 		<link rel="icon" type="image/png" href="img/favicon.ico"/>
 		
 		<!--   JS Files   -->
-		<script src="js/jquery.js"></script>
-		<script src="js/jquery-ui.min.js"></script>
-		<script src="js/timepicker.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/bootstrap-select.js"></script>
-		<script src="js/bootstrap-multiselect.js"></script>
-		<script src="js/jquery.validate.min.js"></script>
-		<script src="js/light-bootstrap-dashboard.js"></script>
+		<script src="js/lib/jquery.js"></script>
+		<script src="js/lib/jquery-ui.min.js"></script>
+		<script src="js/lib/timepicker.js"></script>
+		<script src="js/lib/bootstrap.min.js"></script>
+		<script src="js/lib/bootstrap-select.js"></script>
+		<script src="js/lib/bootstrap-multiselect.js"></script>
+		<script src="js/lib/jquery.validate.min.js"></script>
+		<script src="js/lib/light-bootstrap-dashboard.js"></script>
 		<script src="js/coachingForm.js"></script>
 		
 		<!--   CSS Files   -->
-		<link href="css/jquery-ui.css" rel="stylesheet"/>
-	    <link href="css/bootstrap.min.css" rel="stylesheet"/>
-	    <link href="css/light-bootstrap-dashboard.css" rel="stylesheet"/>
-	    <link href="css/timepicker.css" rel="stylesheet"/>
-	    <link href="css/bootstrap-multiselect.css" rel="stylesheet"/>
+		<link href="css/lib/jquery-ui.css" rel="stylesheet"/>
+	    <link href="css/lib/bootstrap.min.css" rel="stylesheet"/>
+	    <link href="css/lib/light-bootstrap-dashboard.css" rel="stylesheet"/>
+	    <link href="css/lib/timepicker.css" rel="stylesheet"/>
+	    <link href="css/lib/bootstrap-multiselect.css" rel="stylesheet"/>
 	    <link href="css/misc.css" rel="stylesheet"/>
 	    
 	    <!--   Fonts and icons     -->
-	    <link href="css/pe-icon-7-stroke.css" rel="stylesheet"/>
+	    <link href="css/lib/pe-icon-7-stroke.css" rel="stylesheet"/>
     	    <link href='//fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'/>
     	    <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'/>
     </head>
@@ -49,7 +49,7 @@
 		                                <h2 class="title">Coaching Data Input Form</h2>
 		                            </div>
 		                            <div class="content">
-		                                <form id="frm" name="frm" action="#" th:action="@{/coachingForm}" th:object="${coachingData}" method="post">
+		                                <form id="frm" name="frm" action="#" th:action="@{/coachingForm}" th:object="${coachingData}" method="post" enctype="multipart/form-data">
 		                                    <div class="row">
 		                                        <div class="col-md-5">
 		                                            <div class="form-group">
@@ -88,6 +88,15 @@
 			                                           <input type="text" id="timeend" class="form-control" placeholder="End Time" name="endtime" th:field="*{endTime}"/>
 			                                       </div>
 			                                    </div>
+			                                </div>
+			                                
+			                                <div class="row">
+			                                		<div class="col-md-3">
+		                                            <div class="form-group">
+		                                                	<label class="control-label">Photo Upload</label>
+		                                               	 	<input type="file" id="photo" class="file" placeholder="Photo" name="photo" />
+													</div>
+		                                        </div>  
 			                                </div>
 			                                
 			                                <div class="row">

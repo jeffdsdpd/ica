@@ -10,8 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity(name = "coaching_interactions")
 public class CoachingData implements Serializable {
@@ -41,7 +43,8 @@ public class CoachingData implements Serializable {
 	@DateTimeFormat(pattern = "hh:mma")
 	private Date endTime;
 
-//photo
+	@Transient
+	private MultipartFile photo;
 
 	@Column
 	private String lessonTitle;
@@ -113,6 +116,14 @@ public class CoachingData implements Serializable {
 
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
+	}
+
+	public MultipartFile getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(MultipartFile photo) {
+		this.photo = photo;
 	}
 
 	public String getLessonTitle() {
