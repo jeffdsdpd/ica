@@ -128,13 +128,13 @@ $(document).ready(function(){
             		 
     				$("#coachlabel").text((response.userId));
 
-    				if (response.photoString == "") {
+    				if (response.photo == "") {
             			document.getElementById("classphoto").style.display = "none";
             		} else  {
             			document.getElementById("classphoto").style.display = "block";
             		}
             		
-    				document.getElementById("classphoto").src  = "data:image/png;base64," + response.photoString;
+    				document.getElementById("classphoto").src  = "data:image/png;base64," + response.photo;
             		 
     				if (response.lessonTitle == undefined) {
             			document.getElementById("lessontitle").value ="Not Recorded";
@@ -143,8 +143,8 @@ $(document).ready(function(){
             		}
             		 
 				document.getElementById("notes").value = removeBRStrings(response.notes);
-				document.getElementById("timestart").value = format12Hour(response.starttime);
-				document.getElementById("timeend").value = format12Hour(response.endtime);
+//				document.getElementById("timestart").value = format12Hour(response.startTime);
+//				document.getElementById("timeend").value = format12Hour(response.endTime);
 				document.getElementById("strategies").value = removeBRStrings(response.strategies);
 				document.getElementById("goals").value = removeBRStrings(response.goals);
 				document.getElementById("tools").value = removeBRStrings(response.tools);

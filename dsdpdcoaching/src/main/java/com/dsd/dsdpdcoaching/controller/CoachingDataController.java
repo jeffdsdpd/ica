@@ -1,5 +1,6 @@
 package com.dsd.dsdpdcoaching.controller;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -41,10 +42,14 @@ public class CoachingDataController {
 	}
 
 	@PostMapping("/coachingForm")
-	public String postCoachingForm(HttpServletRequest request, @ModelAttribute CoachingData coachingData, @RequestParam("photo") final MultipartFile photo) {
+	public String postCoachingForm(HttpServletRequest request, @ModelAttribute CoachingData coachingData, @RequestParam("file") final MultipartFile file) {
 		LOGGER.debug("Teacher posted: " + coachingData.getTeacherid());
-		LOGGER.debug("Photo: " + photo);
 		coachingData.setUserid(request.getUserPrincipal().getName());
+		try {
+			coachingData.setPhoto(file.getBytes());
+		} catch (IOException e) {
+			LOGGER.error("Error converting file to byte array", e);
+		}
 		coachingDataDao.saveCoachingData(coachingData);
 		return "coachingForm";
 	}
