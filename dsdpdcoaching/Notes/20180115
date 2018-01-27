@@ -2,11 +2,11 @@ TASKS:
 Kish - Cleanup and connect the Dashboard page with data
 Kish - Create common header across entire application. (No dropdown menus, common 'ICA' header)
 Bilyeu - 
-Bilyeu - Create separate folder structure for our javascript libraries vs. pre-defined libraries
-Bilyeu - Create the pattern to blank out form after submitting
+Bilyeu - Done - Create separate folder structure for our javascript libraries vs. pre-defined libraries
+Bilyeu - Done - Create the pattern to blank out form after submitting
 Bilyeu - Create single java controller file to hold 'common' server side ajax calls - REST Controller?
 Bilyeu - Create single import script tag for javascript,css files
-Bilyeu - Create USER_ROLE Table to include an id/userid/schoolid columns
+Bilyeu - Done - Create USER_SCHOOL Table to include an id/userid/schoolid columns
 
 
 DECISIONS:
