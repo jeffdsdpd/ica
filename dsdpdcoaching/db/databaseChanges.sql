@@ -6,6 +6,17 @@ ALTER TABLE users ADD email_address varchar(100);
 
 ALTER TABLE teachers ADD adminemailaddress varchar(100);
 
+CREATE TABLE `user_school` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `schoolid` int(11) DEFAULT NULL,
+  `userid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`));
+
+INSERT INTO user_school VALUES(1,1,3);
+INSERT INTO user_school VALUES(1,2,3);
+INSERT INTO user_school VALUES(2,3,4);
+
 --/***********************************************************************************************************/
 
 ALTER TABLE users CHANGE id username varchar(20) NOT NULL;

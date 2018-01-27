@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.SerializationUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,16 +43,22 @@ public class CoachingDataController {
 	}
 
 	@PostMapping("/coachingForm")
-	public String postCoachingForm(HttpServletRequest request, @ModelAttribute CoachingData coachingData, @RequestParam("file") final MultipartFile file) {
-		LOGGER.debug("Teacher posted: " + coachingData.getTeacherid());
+	public String postCoachingForm(HttpServletRequest request, Model model, @ModelAttribute CoachingData coachingData, @RequestParam("file") final MultipartFile file) {
+		LOGGER.debug("Teachers posted: " + coachingData.getTeacherids());
 		coachingData.setUserid(request.getUserPrincipal().getName());
 		try {
 			coachingData.setPhoto(file.getBytes());
 		} catch (IOException e) {
 			LOGGER.error("Error converting file to byte array", e);
 		}
-		coachingDataDao.saveCoachingData(coachingData);
-		return "coachingForm";
+		for(Integer teacherId : coachingData.getTeacherids()) {
+			CoachingData data = (CoachingData)SerializationUtils.clone(coachingData);
+			coachingData.setTeacherid(teacherId);
+			coachingDataDao.saveCoachingData(data);
+		}
+
+		//Redirect user back to blank form so they can enter more data
+		return "redirect:/coachingForm.html";
 	}
 
 	@GetMapping("/coachingReport.html")
@@ -80,6 +87,7 @@ public class CoachingDataController {
 	@GetMapping(value="/getCoachingDataById", produces="application/json")
 	@ResponseBody
 	public CoachingData getCoachingReportById(@RequestParam Integer id) {
-		return coachingDataDao.getCoachingDataById(id);
+		CoachingData cac =  coachingDataDao.getCoachingDataById(id);
+		return cac;
 	}
 }

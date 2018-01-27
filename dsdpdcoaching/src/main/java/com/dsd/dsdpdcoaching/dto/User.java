@@ -29,6 +29,9 @@ public class User implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	private Set<UserRole> userRoles = new HashSet<>();
 	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+	private Set<UserSchool> userSchool = new HashSet<>();
+	
 	public Integer getId() {
 		return id;
 	}
@@ -59,5 +62,13 @@ public class User implements Serializable {
 
 	public void setUserRoles(Set<UserRole> userRoles) {
 		this.userRoles = userRoles;
+	}
+
+	public Set<UserSchool> getUserSchool() {
+		return userSchool;
+	}
+
+	public void setUserSchool(Set<UserSchool> userSchool) {
+		this.userSchool = userSchool;
 	}
 }

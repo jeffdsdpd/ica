@@ -2,6 +2,7 @@ package com.dsd.dsdpdcoaching.dto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -25,6 +27,9 @@ public class CoachingData implements Serializable {
 	@Column
 	private Integer schoolid;
 
+	@Transient
+	private List<Integer> teacherids;
+	
 	@Column
 	private Integer teacherid;
 
@@ -76,6 +81,14 @@ public class CoachingData implements Serializable {
 
 	public void setSchoolid(Integer schoolid) {
 		this.schoolid = schoolid;
+	}
+
+	public List<Integer> getTeacherids() {
+		return teacherids;
+	}
+
+	public void setTeacherids(List<Integer> teacherids) {
+		this.teacherids = teacherids;
 	}
 
 	public Integer getTeacherid() {

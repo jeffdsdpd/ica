@@ -143,8 +143,8 @@ $(document).ready(function(){
             		}
             		 
 				document.getElementById("notes").value = removeBRStrings(response.notes);
-//				document.getElementById("timestart").value = format12Hour(response.startTime);
-//				document.getElementById("timeend").value = format12Hour(response.endTime);
+				document.getElementById("timestart").value = (new Date(response.startTime)).toLocaleTimeString();
+				document.getElementById("timeend").value = (new Date(response.endTime)).toLocaleTimeString()
 				document.getElementById("strategies").value = removeBRStrings(response.strategies);
 				document.getElementById("goals").value = removeBRStrings(response.goals);
 				document.getElementById("tools").value = removeBRStrings(response.tools);
@@ -194,12 +194,4 @@ $(document).ready(function(){
 function removeBRStrings(str) {
 	var newStr = str.replace(/<br *\/?>/gi,'');
 	return newStr;
-};
-
-function format12Hour(timeString) {
-	var H = +timeString.substr(0, 2);
-	var h = H % 12 || 12;
-	var ampm = H < 12 ? "AM" : "PM";
-	timeString = h + timeString.substr(2, 3) + ampm;
-	return timeString;
 };

@@ -1,12 +1,16 @@
 package com.dsd.dsdpdcoaching.dto;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity(name = "schools")
 public class School implements Serializable {
@@ -24,6 +28,9 @@ public class School implements Serializable {
 
 	@Column(name = "admin_emailaddress")
 	private String adminEmailAddress;
+	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "school")
+	private Set<UserSchool> userSchool = new HashSet<>();
 
 	public Integer getId() {
 		return id;
@@ -55,5 +62,13 @@ public class School implements Serializable {
 
 	public void setAdminEmailAddress(String adminEmailAddress) {
 		this.adminEmailAddress = adminEmailAddress;
+	}
+
+	public Set<UserSchool> getUserSchool() {
+		return userSchool;
+	}
+
+	public void setUserSchool(Set<UserSchool> userSchool) {
+		this.userSchool = userSchool;
 	}
 }
