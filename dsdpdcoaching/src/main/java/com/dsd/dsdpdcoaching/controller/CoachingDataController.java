@@ -44,16 +44,15 @@ public class CoachingDataController {
 
 	@PostMapping("/coachingForm")
 	public String postCoachingForm(HttpServletRequest request, Model model, @ModelAttribute CoachingData coachingData, @RequestParam("file") final MultipartFile file) {
-		LOGGER.debug("Teachers posted: " + coachingData.getTeacherids());
-		coachingData.setUserid(request.getUserPrincipal().getName());
+		coachingData.setUserId(request.getUserPrincipal().getName());
 		try {
 			coachingData.setPhoto(file.getBytes());
 		} catch (IOException e) {
 			LOGGER.error("Error converting file to byte array", e);
 		}
-		for(Integer teacherId : coachingData.getTeacherids()) {
+		for(Integer teacherId : coachingData.getTeacherIds()) {
 			CoachingData data = (CoachingData)SerializationUtils.clone(coachingData);
-			coachingData.setTeacherid(teacherId);
+			data.setTeacherId(teacherId);
 			coachingDataDao.saveCoachingData(data);
 		}
 

@@ -1,15 +1,15 @@
 $(document).ready(function(){
 	$("#schoolName").change(function(){
 		var selectedSchoolId =  $("#schoolName :selected").val();
-		document.getElementById("classphoto").src = "";
-		$("#teacherlabel").text("");
-        	$("#adminlabel").text("");
+		document.getElementById("classPhoto").src = "";
+		$("#teacherLabel").text("");
+        	$("#adminLabel").text("");
         	$("#date").empty();
 		$("#date").append($('<option></option>').attr('value', '').text('Please Select'));
-		$("#timestart").val("");
-		$("#timeend").val("");
+		$("#timeStart").val("");
+		$("#timeEnd").val("");
 		$("#user").val("");
-		$("#lessontitle").val("");
+		$("#lessonTitle").val("");
 		$("#notes").val("");
 		$("#strategies").val("");
 		$("#goals").val("");
@@ -37,18 +37,18 @@ $(document).ready(function(){
 	$("#teacherName").change(function(){
 		var selectedSchoolId = $("#schoolName :selected").val();
 		var selectedTeacherId = $("#teacherName :selected").val();
-		$("#teacherlabel").text("");
-		$("#teachercheckbox").prop("checked", false);
-	    	$("#adminlabel").text("");
-		$("#admincheckbox").prop("checked", false);
+		$("#teacherLabel").text("");
+		$("#teacherCheckbox").prop("checked", false);
+	    	$("#adminLabel").text("");
+		$("#adminCheckbox").prop("checked", false);
 		$(".button").fadeOut("slow");
 
-		document.getElementById("classphoto").src  = "";
+		document.getElementById("classPhoto").src  = "";
 		$("#date").empty();
 		$("#date").append($('<option></option>').attr('value', '').text('Please Select'));
-		$("#timestart").val("");
-		$("#timeend").val("");
-		$("#lessontitle").val("");
+		$("#timeStart").val("");
+		$("#timeEnd").val("");
+		$("#lessonTitle").val("");
 		$("#user").val("");
 		$("#notes").val("");
 		$("#strategies").val("");
@@ -76,8 +76,8 @@ $(document).ready(function(){
 	$("#teacherName").change(function(){
 		var selectedTeacherId = $("#teacherName :selected").val();
 		$("button").prop("disabled",false);
-		document.getElementById("teachercheckbox").style.display = "inline";
-		document.getElementById("admincheckbox").style.display = "inline";
+		document.getElementById("teacherCheckbox").style.display = "inline";
+		document.getElementById("adminCheckbox").style.display = "inline";
 		$.ajax({
 			type: "GET",
 			url:"GetEmailAddress",
@@ -86,15 +86,15 @@ $(document).ready(function(){
 			success: function (response) {
                 	$.each(response, function(key, value) {
 	            		if (key == 0) {
-	            			$("#teacherlabel").text(value);
+	            			$("#teacherLabel").text(value);
                 		} else if (key == 1) {
-                			$("#userlabel").text(value);
-                		} else $("#adminlabel").text(value);
+                			$("#userLabel").text(value);
+                		} else $("#adminLabel").text(value);
                  });
-                	if ( $("#teacherlabel").text() == "Teacher Email Unavailable" && 
-		        			$("#adminlabel").text() == "Admin Email Unavailable") {
-                		document.getElementById("teachercheckbox").style.display = "none";
-                		document.getElementById("admincheckbox").style.display = "none";
+                	if ( $("#teacherLabel").text() == "Teacher Email Unavailable" && 
+		        			$("#adminLabel").text() == "Admin Email Unavailable") {
+                		document.getElementById("teacherCheckbox").style.display = "none";
+                		document.getElementById("adminCheckbox").style.display = "none";
                 		$("button").prop("disabled",true);
                 	}
             }
@@ -104,10 +104,10 @@ $(document).ready(function(){
 	$("#date").change(function(){
 		var selectedId = $("#date :selected").val();
 		if (selectedId == 0){
-			document.getElementById("classphoto").src = "";
-			$("#timestart").val("");
-			$("#timeend").val("");
-			$("#lessontitle").val("");
+			document.getElementById("classPhoto").src = "";
+			$("#timeStart").val("");
+			$("#timeEnd").val("");
+			$("#lessonTitle").val("");
 			$("#user").val("");
 			$("#notes").val("");
 			$("#strategies").val("");
@@ -126,25 +126,25 @@ $(document).ready(function(){
     					document.getElementById("user").value = (response.userId);
 					}
             		 
-    				$("#coachlabel").text((response.userId));
+    				$("#coachLabel").text((response.userId));
 
     				if (response.photo == "") {
-            			document.getElementById("classphoto").style.display = "none";
+            			document.getElementById("classPhoto").style.display = "none";
             		} else  {
-            			document.getElementById("classphoto").style.display = "block";
+            			document.getElementById("classPhoto").style.display = "block";
             		}
             		
-    				document.getElementById("classphoto").src  = "data:image/png;base64," + response.photo;
+    				document.getElementById("classPhoto").src  = "data:image/png;base64," + response.photo;
             		 
     				if (response.lessonTitle == undefined) {
-            			document.getElementById("lessontitle").value ="Not Recorded";
+            			document.getElementById("lessonTitle").value ="Not Recorded";
             		} else {
-            			document.getElementById("lessontitle").value = (response.lessonTitle);
+            			document.getElementById("lessonTitle").value = (response.lessonTitle);
             		}
             		 
 				document.getElementById("notes").value = removeBRStrings(response.notes);
-				document.getElementById("timestart").value = (new Date(response.startTime)).toLocaleTimeString();
-				document.getElementById("timeend").value = (new Date(response.endTime)).toLocaleTimeString()
+				document.getElementById("timeStart").value = (new Date(response.startTime)).toLocaleTimeString();
+				document.getElementById("timeEnd").value = (new Date(response.endTime)).toLocaleTimeString()
 				document.getElementById("strategies").value = removeBRStrings(response.strategies);
 				document.getElementById("goals").value = removeBRStrings(response.goals);
 				document.getElementById("tools").value = removeBRStrings(response.tools);
@@ -161,20 +161,20 @@ $(document).ready(function(){
 		var userEmail = null;
 		var adminEmail = null;
 		
-		if ( $("#teachercheckbox").is(':checked')) {
-			teacherEmail = $("#teacherlabel").text();
+		if ( $("#teacherCheckbox").is(':checked')) {
+			teacherEmail = $("#teacherLabel").text();
 		} else teacherEmail = "not selected";
 		
-		if ( $("#usercheckbox").is(':checked')) {
-			userEmail = $("#userlabel").text();
+		if ( $("#userCheckbox").is(':checked')) {
+			userEmail = $("#userLabel").text();
 		} else userEmail = "not selected";
 		
-		if ( $("#admincheckbox").is(':checked')) {
-			adminEmail = $("#adminlabel").text();
+		if ( $("#adminCheckbox").is(':checked')) {
+			adminEmail = $("#adminLabel").text();
 		} else adminEmail = "not selected";
 		
 		var date = $("#date :selected").text();
-		var lessontitle = $("#lessontitle").val();
+		var lessontitle = $("#lessonTitle").val();
 		var notes = $("#notes").val();
 		var strategies = $("#strategies").val();
 		var steps = $("#goals").val();

@@ -24,17 +24,17 @@ public class CoachingData implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-	@Column
-	private Integer schoolid;
+	@Column(name="schoolid")
+	private Integer schoolId;
 
 	@Transient
-	private List<Integer> teacherids;
+	private List<Integer> teacherIds;
 	
-	@Column
-	private Integer teacherid;
+	@Column(name="teacherid")
+	private Integer teacherId;
 
-	@Column
-	private String userid;
+	@Column(name="userid")
+	private String userId;
 
 	@Temporal(TemporalType.DATE)
 	private Date date;
@@ -75,36 +75,36 @@ public class CoachingData implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getSchoolid() {
-		return schoolid;
+	public Integer getSchoolId() {
+		return schoolId;
 	}
 
-	public void setSchoolid(Integer schoolid) {
-		this.schoolid = schoolid;
+	public void setSchoolId(Integer schoolId) {
+		this.schoolId = schoolId;
 	}
 
-	public List<Integer> getTeacherids() {
-		return teacherids;
+	public List<Integer> getTeacherIds() {
+		return teacherIds;
 	}
 
-	public void setTeacherids(List<Integer> teacherids) {
-		this.teacherids = teacherids;
+	public void setTeacherIds(List<Integer> teacherIds) {
+		this.teacherIds = teacherIds;
 	}
 
-	public Integer getTeacherid() {
-		return teacherid;
+	public Integer getTeacherId() {
+		return teacherId;
 	}
 
-	public void setTeacherid(Integer teacherid) {
-		this.teacherid = teacherid;
+	public void setTeacherId(Integer teacherId) {
+		this.teacherId = teacherId;
 	}
 
-	public String getUserid() {
-		return userid;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public Date getDate() {

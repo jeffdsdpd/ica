@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 	$("#schoolId").change(function() {
 		var str =  $("#schoolId :selected").val();
-		$("#teacherId").multiselect('destroy');
+		$("#teacherIds").multiselect('destroy');
 
         $.ajax({
 			type: "GET",
@@ -10,7 +10,7 @@ $(document).ready(function(){
 			data:{schoolId: str},
 			dataType: "json",
 			success: function (response) {
-				var $dropdownList = $("#teacherId");
+				var $dropdownList = $("#teacherIds");
 				$dropdownList.empty();
 				$.each(response, function(value, key) {
 					$dropdownList.append($("<option></option>").attr("value", key.id).text((key.name)));
@@ -23,21 +23,21 @@ $(document).ready(function(){
         });
 	});
 
-	var validator = $("#frm").validate({
+	$("#frm").validate({
       	rules: {
 	      	schoolId: { required: true },
-			teacherId: { required: true },
-			entrydate: { required: true },
-			starttime: { required: true },
-			endtime: { required: true }
+			teacherIds: { required: true },
+			date: { required: true },
+			startTime: { required: true },
+			endTime: { required: true }
          },
          messages: {
-        	 schoolId: "School is required",
-        	 teacherId: "Teacher(s) is required",
-        	 entrydate: "Date is required",
-        	 starttime: "Start time is required",
-        	 endtime: "End time is required"
-	         },
+	        	 schoolId: "School is required",
+	        	 teacherIds: "Teacher(s) is required",
+	        	 date: "Date is required",
+	        	 startTime: "Start time is required",
+	        	 endTime: "End time is required"
+         },
          highlight: function (element) {
              $(element).parent().addClass('error')
          },
@@ -45,11 +45,11 @@ $(document).ready(function(){
 });
 
 $(function() {
-	$("#entrydate").datepicker();
+	$("#entryDate").datepicker();
 });
 
 $(function() {
-	$("#timestart").timepicker({
+	$("#startTime").timepicker({
 		'minTime': '7:00am',
 		'maxTime': '5:00pm',
 		'step': 15
@@ -57,7 +57,7 @@ $(function() {
 });
 
 $(function() {
-	$("#timeend").timepicker({
+	$("#endTime").timepicker({
 		'minTime': '7:00am',
 		'maxTime': '5:00pm',
 		'step': 15
@@ -65,8 +65,10 @@ $(function() {
 });
 
 function textCounter(field, countfield, maxlimit) {
-	if (field.value.length > maxlimit) // if too long...trim it!
+	if (field.value.length > maxlimit) {
+		// if too long...trim it!
 		field.value = field.value.substring(0, maxlimit);
-	else
+	} else {
 		countfield.value = maxlimit - field.value.length;
+	}
 };

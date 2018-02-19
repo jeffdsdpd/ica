@@ -48,7 +48,7 @@
 		                                        <div class="col-md-4">
 		                                            <div class="form-group">
 		                                                <label>School</label>
-		                                                <select name="schoolName" id="schoolName" class="form-control">
+		                                                <select id="schoolName" class="form-control">
 			                                                	<option value="0">Please Select</option>
 			                                                	<option th:each="school: ${schoolList}" th:value="${school.id}" th:text="${school.name}"></option>
 														</select>
@@ -58,7 +58,7 @@
 		                                     	<div class="col-md-4">
 		                                            <div class="form-group">
 		                                                <label>Teacher</label>
-														<select name="teacherName" id="teacherName" class="form-control">
+														<select id="teacherName" class="form-control">
 			                                                	<option value="0">Please Select</option>
 														</select>
 		                                            </div>
@@ -69,7 +69,7 @@
 		                                     	<div class="col-md-3">
 		                                         	<div class="form-group">
 		                                             	<label>Date</label>
-		                                             	<select name="date" id="date" class="form-control">
+		                                             	<select id="date" class="form-control">
 		    													<option value="0">Please Select</option>
 														</select>
 		                                         	</div>
@@ -77,19 +77,19 @@
 			                                   	<div class="col-md-2">
 				                                    <div class="form-group">
 				                                        <label>Start Time</label>
-				                                        <input type="text" class="form-control timepicker appt_time" readonly="readonly" style="border: 0px; background-color:transparent;" name="starttime" id="timestart"/>
+				                                        <input type="text" class="form-control timepicker appt_time" readonly="readonly" style="border: 0px; background-color:transparent;" id="timeStart"/>
 				                                    </div>
 			                                     </div>
 			                                     <div class="col-md-2">
 			                                        <div class="form-group">
 			                                            <label>End Time</label>
-			                                            <input type="text" class="form-control" readonly="readonly" style="border: 0px; background-color:transparent;" name="endtime" id="timeend"/>
+			                                            <input type="text" class="form-control" readonly="readonly" style="border: 0px; background-color:transparent;" id="timeEnd"/>
 			                                        </div>
 			                                     </div>
 			                                     <div class="col-md-2">
 		                                            <div class="form-group">
 		                                                <label>Recorded By</label>
-		                                                <input type="text" class="form-control" name="user" id="user" readonly="readonly" style="border: 0px; background-color:transparent;  text-align:left"/>
+		                                                <input type="text" class="form-control" id="user" readonly="readonly" style="border: 0px; background-color:transparent;  text-align:left"/>
 		                                            </div>
 		                                         </div>
 											</div>
@@ -98,7 +98,7 @@
 												<div class="col-md-4">
 													<div class="form-group">
 														<label>Lesson Title</label>
-														<input type="text" class="form-control" name="lessontitle" id="lessontitle" readonly="readonly" style="border: 0px; background-color:transparent; text-align:left"/>
+														<input type="text" class="form-control" id="lessonTitle" readonly="readonly" style="border: 0px; background-color:transparent; text-align:left"/>
 													</div>
 												</div>
 											
@@ -107,14 +107,14 @@
 														<label>Email Report</label><br />
 														
 														<div class="checkboxes">
-															<input type="checkbox" id="teachercheckbox" name="teachercheckbox" value="teachercheckbox"/>
-															<label for="teachercheckbox" class="checkbox-inline" id="teacherlabel" style="margin-left: 2px; padding-left:2px; padding-top:4px; padding-right:15px;"></label>
+															<input type="checkbox" id="teacherCheckbox" value="teachercheckbox"/>
+															<label for="teacherCheckbox" class="checkbox-inline" id="teacherlabel" style="margin-left: 2px; padding-left:2px; padding-top:4px; padding-right:15px;"></label>
 															<br />
-															<input type="checkbox" id="usercheckbox" name="usercheckbox" value="usercheckbox"/>
-															<label for="usercheckbox" class="checkbox-inline" id="userlabel" style="margin-left: 2px; padding-left:2px; padding-top:4px; padding-right:15px;"></label>
+															<input type="checkbox" id="userCheckbox" value="usercheckbox"/>
+															<label for="userCheckbox" class="checkbox-inline" id="userlabel" style="margin-left: 2px; padding-left:2px; padding-top:4px; padding-right:15px;"></label>
 															<br />
-															<input type="checkbox" id="admincheckbox" name="admincheckbox" value="admincheckbox"/>
-															<label for="admincheckbox" class="checkbox-inline" id="adminlabel" style="margin-left: 2px; padding-left:2px; padding-top:4px;"></label>
+															<input type="checkbox" id="adminCheckbox" value="admincheckbox"/>
+															<label for="adminCheckbox" class="checkbox-inline" id="adminlabel" style="margin-left: 2px; padding-left:2px; padding-top:4px;"></label>
 														</div>
 														<button type="button" name="button" class="btn btn-info" id="button">Email Selected Person(s)</button>        
 													</div>
@@ -125,7 +125,7 @@
 												<div class="col-md-9">
 													<div class="form-group">
 														<label>Photo</label><br />
-														<img id="classphoto" name="classphoto" width="400" height="350" src="" style="display:none" /><br/>
+														<img id="classPhoto" width="400" height="350" src="" style="display:none" /><br/>
 													</div>
 												</div>
 											</div>
@@ -134,7 +134,7 @@
 												<div class="col-md-9">
 													<div class="form-group">
 														<label>Notes</label>
-														<textarea rows="5" cols="50" class="form-control" placeholder="Notes for teacher evaluation" name="notes" id="notes" wrap="hard" maxlength="500"></textarea><br/>
+														<textarea rows="5" cols="50" class="form-control" placeholder="Notes for teacher evaluation" id="notes" wrap="hard" maxlength="500"></textarea><br/>
 													</div>
 												</div>
 											</div>
@@ -143,7 +143,7 @@
 												<div class="col-md-9">
 													<div class="form-group">
 														<label>Strategies</label>                                            
-														<textarea rows="4" cols="50" class="form-control" placeholder="Strategies for teacher evaluation" name="strategies" id="strategies" wrap="hard" maxlength="300"></textarea><br/>
+														<textarea rows="4" cols="50" class="form-control" placeholder="Strategies for teacher evaluation" id="strategies" wrap="hard" maxlength="300"></textarea><br/>
 													</div>
 												</div>
 											</div>
@@ -152,7 +152,7 @@
 												<div class="col-md-9">
 													<div class="form-group">
 														<label>Next Steps</label>
-														<textarea rows="4" cols="50" class="form-control" placeholder="Steps for teacher evaluation" name="goals" id="goals" wrap="hard" maxlength="200"></textarea><br/>
+														<textarea rows="4" cols="50" class="form-control" placeholder="Steps for teacher evaluation" id="goals" wrap="hard" maxlength="200"></textarea><br/>
 													</div>
 												</div>
 											</div>
@@ -161,7 +161,7 @@
 												<div class="col-md-9">
 													<div class="form-group">
 														<label>Suggested Tools</label>                                            
-														<textarea rows="4" cols="50" class="form-control" placeholder="Tools for teacher evaluation" name="tools" id="tools" wrap="hard" maxlength="200"></textarea><br/>
+														<textarea rows="4" cols="50" class="form-control" placeholder="Tools for teacher evaluation" id="tools" wrap="hard" maxlength="200"></textarea><br/>
 													</div>
 												</div>
 											</div>
