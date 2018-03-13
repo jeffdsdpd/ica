@@ -32,7 +32,7 @@ public class CoachingDataDao {
 	public List<Map<Integer, Date>> getCoachingDatesBySchoolAndTeacher(Integer schoolId, Integer teacherId) {
 		LOGGER.debug("Retrieving coaching dates for school id " + schoolId + " and teacher id " + teacherId);
 	    return (List<Map<Integer, Date>>)entityManager
-	    		.createQuery("select new map(ci.id as id, ci.date as date) from coaching_interactions ci where schoolid = :schoolid and teacherid = :teacherid order by date desc")
+	    		.createQuery("select new map(ci.id as id, ci.entryDate as entryDate) from coaching_interactions ci where schoolid = :schoolid and teacherid = :teacherid order by entryDate desc")
     			.setParameter("schoolid", schoolId)
     			.setParameter("teacherid", teacherId)
     			.getResultList();

@@ -1,13 +1,12 @@
 $(document).ready(function(){
 
 	$("#schoolId").change(function() {
-		var str =  $("#schoolId :selected").val();
 		$("#teacherIds").multiselect('destroy');
 
         $.ajax({
 			type: "GET",
 			url:"getTeachersBySchool",
-			data:{schoolId: str},
+			data:{schoolId: $("#schoolId :selected").val()},
 			dataType: "json",
 			success: function (response) {
 				var $dropdownList = $("#teacherIds");
@@ -23,24 +22,24 @@ $(document).ready(function(){
         });
 	});
 
-	$("#frm").validate({
+	$("#coachingForm").validate({
       	rules: {
 	      	schoolId: { required: true },
 			teacherIds: { required: true },
-			date: { required: true },
+			entryDate: { required: true },
 			startTime: { required: true },
 			endTime: { required: true }
          },
          messages: {
 	        	 schoolId: "School is required",
 	        	 teacherIds: "Teacher(s) is required",
-	        	 date: "Date is required",
+	        	 entryDate: "Date is required",
 	        	 startTime: "Start time is required",
 	        	 endTime: "End time is required"
          },
          highlight: function (element) {
              $(element).parent().addClass('error')
-         },
+         }
      });
 });
 

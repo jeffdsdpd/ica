@@ -36,8 +36,9 @@ public class CoachingData implements Serializable {
 	@Column(name="userid")
 	private String userId;
 
+	@Column(name="date")
 	@Temporal(TemporalType.DATE)
-	private Date date;
+	private Date entryDate;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "hh:mma")
@@ -107,12 +108,12 @@ public class CoachingData implements Serializable {
 		this.userId = userId;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getEntryDate() {
+		return entryDate;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setEntryDate(Date entryDate) {
+		this.entryDate = entryDate;
 	}
 
 	public Date getStartTime() {

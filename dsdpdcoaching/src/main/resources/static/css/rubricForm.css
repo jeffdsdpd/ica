@@ -1,0 +1,19 @@
+.leawoodRadioGroup {
+	padding-bottom: 20px;
+}
+
+.leawoodRadioLabel {
+	width: 500px;
+}
+
+.leawoodRadioInputLabel {
+	width: 75px;
+}
+
+.charactersLeftStatus {
+	padding-left: 15px;
+}
+
+#rubricForm .error {
+    color: red;
+}
