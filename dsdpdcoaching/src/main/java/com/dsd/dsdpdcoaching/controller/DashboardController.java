@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,21 +28,25 @@ public class DashboardController {
 	
 	
 	@GetMapping({"/", "/dashboard.html"})
-	public String getDashboard() {
+	public String getDashboard(HttpServletRequest request, HttpSession session) {	
+		  
 		return "dashboard";
 	}
 
     @ModelAttribute("schoolList")
     public List<School> getSchoolList(HttpServletRequest request) {
+    		List<School> schools = new ArrayList<>();
+    		User user = new User();
+    	
     		if(request.isUserInRole("admin")) {
-	        return schoolDao.getSchools();
+    			schools = schoolDao.getSchools();
     		} else {
-    			List<School> schools = new ArrayList<>();
-    			User user = userDao.getUserByUsername(request.getUserPrincipal().getName());
+    			user = userDao.getUserByUsername(request.getUserPrincipal().getName());
     			for(UserSchool userSchool : user.getUserSchool()) {
     				schools.add(userSchool.getSchool());
     			}
-    	        return schools;
     		}
+    		System.out.println("User "+user.getUsername()+" has logged in with " + schools.size()+" schools");
+	    return schools;
     }
 }

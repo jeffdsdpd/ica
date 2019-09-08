@@ -5,7 +5,7 @@
 	</head>
 	<body>
 		<nav class="navbar navbar-default navbar-fixed" th:fragment="header">
-			<div class="container-fluid">
+			<div class="container-fluid" style="background-color:aliceblue">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
 						<span class="sr-only">Toggle navigation</span>
@@ -13,18 +13,23 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-				</div>
+					<ul class="nav navbar-nav">
+	      				<li class="active"><img align="top" src="/images/ica.png" style="max-height: 60px; max-width: 60px; float:left;"></img></li>
+       				</ul>
+					<a style="padding-left: 1.0em" class="navbar-brand" href="#">
+						<b>DSDPD - Instructional Coaching Application</b>
+					</a>
+  				</div>
+					
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">                      
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="coachingDataForm.jsp">Coaching Form</a></li>
-								<li><a href="coachingReport.jsp">Coaching Report</a></li>
-								<li><a href="rubricDataForm.jsp">Rubric Form</a></li>
-								<li><a href="rubricReport.jsp">Rubric Report</a></li>
-								<li><a href="schoolHoursReport.jsp">School Hours Report</a></li>
-								<li><a href="schoolRubricReport.jsp">SchoolRubric Report</a></li>
+								<li><a href="coachingForm.html">Coaching Form</a></li>
+								<li><a href="coachingReport.html">Coaching Report</a></li>
+								<li><a href="rubricForm.html">Rubric Form</a></li>
+								<li><a href="rubricReport.html">Rubric Report</a></li>
 							</ul>
 						</li>                        
 						<li>
