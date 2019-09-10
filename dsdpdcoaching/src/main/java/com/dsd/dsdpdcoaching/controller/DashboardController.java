@@ -33,6 +33,7 @@ public class DashboardController {
 		return "dashboard";
 	}
 
+	
     @ModelAttribute("schoolList")
     public List<School> getSchoolList(HttpServletRequest request) {
     		List<School> schools = new ArrayList<>();
@@ -46,7 +47,6 @@ public class DashboardController {
     				schools.add(userSchool.getSchool());
     			}
     		}
-    		System.out.println("User "+user.getUsername()+" has logged in with " + schools.size()+" schools");
-	    return schools;
+    		return schools;
     }
 }

@@ -59,7 +59,6 @@ public class CoachingController {
 
 	@GetMapping("/coachingReport.html")
 	public String getCoachingReport(HttpSession session) {
-
 		return "coachingReport";
 	}
 

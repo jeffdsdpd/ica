@@ -24,6 +24,9 @@ public class Teacher implements Serializable {
 
 	@Column(name = "emailaddress")
 	private String emailAddress;
+	
+	@Column(name = "adminemailaddress")
+	private String adminEmailAddress;
 
 	public Integer getId() {
 		return id;
@@ -55,5 +58,13 @@ public class Teacher implements Serializable {
 
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
+	}
+
+	public String getAdminEmailAddress() {
+		return adminEmailAddress;
+	}
+
+	public void setAdminEmailAddress(String adminEmailAddress) {
+		this.adminEmailAddress = adminEmailAddress;
 	}
 }
