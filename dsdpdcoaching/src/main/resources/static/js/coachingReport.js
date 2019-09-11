@@ -75,7 +75,7 @@ $(document).ready(function(){
         }
 	});
 	
-	$("#teacherName").change(function(){
+	$("#teacherName").change(function() {
 		var selectedTeacherId = $("#teacherName :selected").val();
 		$("button").prop("disabled",false);
 		document.getElementById("teacherCheckbox").style.display = "inline";
