@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,8 @@ import com.dsd.dsdpdcoaching.dto.UserSchool;
 @Controller
 @SessionAttributes("schoolList")
 public class DashboardController {
+	private static final Logger LOGGER = LoggerFactory.getLogger(DashboardController.class);
+	
 	@Autowired
 	private SchoolDao schoolDao;
 	@Autowired
@@ -41,11 +45,13 @@ public class DashboardController {
     	
     		if(request.isUserInRole("admin")) {
     			schools = schoolDao.getSchools();
+    			LOGGER.debug("User is an admin with " + schools.size() + " schools");
     		} else {
     			user = userDao.getUserByUsername(request.getUserPrincipal().getName());
     			for(UserSchool userSchool : user.getUserSchool()) {
     				schools.add(userSchool.getSchool());
     			}
+    			LOGGER.debug("User is " + user + " with " + schools.size() + " schools");
     		}
     		return schools;
     }
