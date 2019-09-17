@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+		<title>DSD-PD Coaching Application | Rubric Form</title>
+		
+		<meta charset="utf-8" />	
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+		
+		<link rel="icon" type="image/png" href="img/favicon.ico"/>
+		
+		<!--   JS Files   -->
+		<script src="js/lib/jquery.js"></script>
+		<script src="js/lib/jquery-ui.min.js"></script>
+		<script src="js/lib/timepicker.js"></script>
+		<script src="js/lib/bootstrap.min.js"></script>
+		<script src="js/lib/bootstrap-select.js"></script>
+		<script src="js/lib/bootstrap-multiselect.js"></script>
+		<script src="js/lib/jquery.validate.min.js"></script>
+		<script src="js/lib/light-bootstrap-dashboard.js"></script>
+		<script src="js/rubricForm.js"></script>
+		
+		<!--   CSS Files   -->
+		<link href="css/lib/jquery-ui.css" rel="stylesheet"/>
+	    <link href="css/lib/bootstrap.min.css" rel="stylesheet"/>
+	    <link href="css/lib/light-bootstrap-dashboard.css" rel="stylesheet"/>
+	    <link href="css/lib/timepicker.css" rel="stylesheet"/>
+	    <link href="css/lib/bootstrap-multiselect.css" rel="stylesheet"/>
+	    <link href="css/misc.css" rel="stylesheet"/>
+	    
+	    <!--   Fonts and icons     -->
+	    <link href="css/lib/pe-icon-7-stroke.css" rel="stylesheet"/>
+    	    <link href='//fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'/>
+    	    <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'/>
+    </head>
+    
+     <body>
+		<div class="wrapper">
+		    <div th:replace="fragments/nav :: nav"></div>
+		    
+			<div class="main-panel">
+			    <div th:replace="fragments/header :: header"></div>
+
+		        <div class="content">
+		            <div class="container-fluid">
+		                <div class="row">
+		                    <div class="col-md-10">
+		                        <div class="card">
+		                            <div class="header">
+		                                <h2 class="title">Rubric Form</h2>
+		                            </div>
+		                            <div class="content">
+		                                <form id="frm" name="frm" action="#" th:action="@{/rubricForm}" th:object="${rubricData}" method="post">
+		                                    <div class="row">
+		                                        <div class="col-md-5">
+		                                            <div class="form-group">
+		                                                <label>School</label>
+		                                                <select id="schoolId" class="form-control" th:field="*{schoolId}">
+			                                                	<option value="">Please Select</option>
+			                                                	<option th:each="school: ${schoolList}" 
+			                                                			th:value="${school.id}" 
+			                                                			th:text="${school.name}">
+			                                                	</option>
+														</select>
+		                                            </div>
+		                                        </div>                          
+		      
+		                                        <div class="col-md-5">
+		                                            <div class="form-group">
+		                                                <label>Teacher</label> <br></br>
+		                                            			<select style="display:none;" th:field="*{teacherId}">
+								                         		<option value=""> Please Select </option>
+								                         		<option th:each="teacher : ${teachers}"
+								                            				th:value="${teacher.teacherId}"
+								                            				th:text="${teacher.teacherId">
+																</option>
+								                  			</select>
+		                                            </div>
+		                                        </div>
+		                                    </div>
+		
+		                                    <div class="row">
+		                                        <div class="col-md-3">
+		                                            <div class="form-group">
+		                                                	<label>Date</label>
+		                                               	<input type="text" id="entryDate" class="form-control" placeholder="Date" th:field="*{date}"/>
+													</div>
+		                                        </div>
+		                                        <div class="col-md-2">
+				                                    <div class="form-group">
+				                                        <label>Time Observed</label>
+				                                        <input type="text" id="timeObserved" 
+				                                        class="time form-control" placeholder="Time Observed" th:field="*{timeObserved}"/>
+				                                    </div>
+			                                    </div>
+			                                </div>
+			                                
+			                                
+			                                <div class="container">
+                                  	<h5>Data Entered</h5>
+										<label class="radio-inline" style="width:250px;"><input type="radio" id="observed" name="observed" value="Observed Classroom" />Coach's View of the Classroom</label><br></br>
+                                     	<label class="radio-inline" style="width:250px;"><input type="radio" id="observed" name="observed" value="Teacher Completed" />Teacher's View of the Classroom</label><br></br>
+                                     	<label class="radio-inline" style="width:250px;"><input type="radio" id="observed" name="observed" value="Site Visit" />Visitor's View of the Classroom</label><br></br>
+                                    		<label for="observed" class="error"></label>
+                                    </div>
+                            
+                                    
+                                    <hr></hr>
+                                   	
+                                    <div class="container">
+                                     <h4 style="color: #E64B50" data-tooltip="tooltip" title="Build, maintain and execute a plan that identifies key accounts and customer segments to target, and makes the best use of SE/TSS/FAS/IS/Marketing resources and activities like seminars and UGM's.  Plans should be updated quarterly and be a living document.  Activities throughout the year should be aligned with plan.">Business &amp; Territory Planning</h4>
+	  								
+                                    	<h4 style="color: red; font-weight: bold">Planning</h4>
+	  										<label class="radio-inline" style="width:170px;"><input type="radio" id='planning' name="planning" value="Whole group timer" />Whole group timer</label>
+	  										<label class="radio-inline" style="width:210px;"><input type="radio" id='planning' name="planning" value="No whole group timer, implements checklist" />No whole group timer, implements checklist</label>
+	  										<label class="radio-inline" style="width:230px;"><input type="radio" id='planning' name="planning" value="Individual checklist and differentiated activities" />Individual checklist and differentiated activities</label>
+	  										<label class="radio-inline" style="width:180px;"><input type="radio" id='planning' name="planning" value="Not Observed" />Not Observed</label>
+	  									<br /><label for="planning" class="error"></label>
+	  									<br /><br />
+	  									
+	  									<h4 style="color: red; font-weight: bold">Assessment And Data</h4>
+	  										<label class="radio-inline" style="width:185px;"><input type="radio" id='assessmentAndData' name="assessmentAndData" value="Collecting data" />Collecting data</label>
+	  										<label class="radio-inline" style="width:210px;"><input type="radio" id='assessmentAndData' name="assessmentAndData" value="Using data to drive mini lesson" />Using data to drive mini lesson</label>
+	  										<label class="radio-inline" style="width:215px;"><input type="radio" id='assessmentAndData' name="assessmentAndData" value="Pre-assessment to advance students" />Pre-assessment to advance students</label>
+	  										<label class="radio-inline" style="width:180px;"><input type="radio" id='assessmentAndData' name="assessmentAndData" value="Not Observed" />Not Observed</label>
+										<br /><label for="assessanddata" class="error"></label>
+										<br /><br />
+										
+										<h4 style="color: red; font-weight: bold">Path</h4>
+	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='path' name="path" value="Same activites" />Same activites</label>
+	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='path' name="path" value="Differentiated activities" />Differentiated activities</label>
+	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='path' name="path" value="Individual checklist" />Individual checklist</label>
+	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='path' name="path" value="Not Observed" />Not Observed</label>
+	  									<br /><label for="path" class="error"></label>
+	  									<br /><br />
+	  									
+	  									<h4 style="color: red; font-weight: bold">Place</h4>
+	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='place' name="place" value="Move to assigned learning studios" />Move to assigned learning studios</label>
+	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='place' name="place" value="Flexible seating options" />Flexible seating options</label>
+	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='place' name="place" value="Pick learning environment" />Pick learning environment</label>			
+	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='place' name="place" value="Not Observed" />Not Observed</label>
+	  									<br /><label for="place" class="error"></label>
+	  									<br /><br />
+	  									
+	  									<h4 style="color: red; font-weight: bold">Pace</h4>
+	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='pace' name="pace" value="Whole group timer moves student" />Whole group timer moves student</label>
+	  										<label class="radio-inline" style="width:165px;"><input type="radio" id='pace' name="pace" value="Students move when ready" />Students move when ready</label>
+	  										<label class="radio-inline" style="width:195px;"><input type="radio" id='pace' name="pace" value="Move after mastery of content" />Move after mastery of content</label>
+	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='pace' name="pace" value="Not Observed" />Not Observed</label>
+	  									<br /><label for="pace" class="error"></label>
+	  									<br /><br />
+	  									
+	  									<h4 style="color: red; font-weight: bold">Classroom Mgmt.</h4>
+	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='classroommgmt' name="classroommgmt" value="Restating directions" />Restating directions</label>
+	  										<label class="radio-inline" style="width:165px;"><input type="radio" id='classroommgmt' name="classroommgmt" value="Self direction" />Self direction</label>
+	  										<label class="radio-inline" style="width:195px;"><input type="radio" id='classroommgmt' name="classroommgmt" value="Automatic understanding" />Automatic understanding</label>
+	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='classroommgmt' name="classroommgmt" value="Not Observed" />Not Observed</label>
+	  									<br /><label for="classroommgmt" class="error"></label>
+	  									<br /><br />
+	  									
+	  									<h4 style="color: red; font-weight: bold">Teacher Role</h4>
+	  										<label class="radio-inline" style="width:185px;"><input type="radio" id='teacherrole' name="teacherrole" value="Mini lesson and facilitator" />Mini lesson and facilitator</label>
+	  										<label class="radio-inline" style="width:220px;"><input type="radio" id='teacherrole' name="teacherrole" value="Mini lesson with few distractions" />Mini lesson with few distractions</label>
+	  										<label class="radio-inline" style="width:135px;"><input type="radio" id='teacherrole' name="teacherrole" value="Mini lesson 99%" />Mini lesson 99%</label>
+	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='teacherrole' name="teacherrole" value="Not Observed" />Not Observed</label>
+	  									<br /><label for="teacherrole" class="error"></label>
+	  									<br /><br />
+	  									
+	  									<h4 style="color: red; font-weight: bold">Student Engagement</h4>
+	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='studentegmt' name="studentegmt" value="Following directions" />Following direction</label>
+	  										<label class="radio-inline" style="width:180px;"><input type="radio" id='studentegmt' name="studentegmt" value="Engaged with content" />Engaged with content</label>
+	  										<label class="radio-inline" style="width:220px;"><input type="radio" id='studentegmt' name="studentegmt" value="Deeply involved with content" />Deeply involved with content</label>
+	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='studentegmt' name="studentegmt" value="Not Observed" />Not Observed</label>
+	  									<br /><label for="studentegmt" class="error"></label>
+	  									<br /><br />
+	  									
+	  									<h4 style="color: red; font-weight: bold">Student Collaboration</h4>
+	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='studentcolab' name="studentcolab" value="Teacher created future ready skills" />Teacher created future ready skills</label>
+	  										<label class="radio-inline" style="width:135px;"><input type="radio" id='studentcolab' name="studentcolab" value="Choice in future ready skills" />Choice in future ready skills</label>
+	  										<label class="radio-inline" style="width:150px;"><input type="radio" id='studentcolab' name="studentcolab" value="PBL or 20% time" />PBL or 20% time</label>
+	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='studentcolab' name="studentcolab" value="Not Observed" />Not Observed</label>
+	  									<br /><label for="studentcolab" class="error"></label>
+	  									<br /><br />
+	  									
+	  									<h4 style="color: red; font-weight: bold">Technology</h4>
+	  										<label class="radio-inline" style="width:195px;"><input type="radio" id='technology' name="technology" value="Technology integration" />Technology integration</label>
+	  										<label class="radio-inline" style="width:180px;"><input type="radio" id='technology' name="technology" value="Using digital content data to drive mini lessons" />Using digital content data to drive mini lessons</label>
+	  										<label class="radio-inline" style="width:220px;"><input type="radio" id='technology' name="technology" value="Students determine what program works best for learning target" />Students determine what program works best for learning target</label>
+											<label class="radio-inline" style="width:175px;"><input type="radio" id='technology' name="technology" value="Not Observed" />Not Observed</label>
+	  									<br /><label for="technology" class="error"></label>
+	  								<br />
+	  								<hr></hr>
+	  								</div>
+		                                    <button type="submit" class="btn btn-info btn-fill pull-right" name="Submit" value="Submit">Submit</button>
+		                                    <div class="clearfix"></div>
+		                                </form>
+		                            </div>
+		                        </div>
+									
+								<div th:replace="fragments/footer :: footer"></div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+			</div>
+		</div>
+	</body>
+</html>
