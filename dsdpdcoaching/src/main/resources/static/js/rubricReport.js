@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 	$(document).ready(function() {
 		
@@ -638,3 +639,5 @@
 
 		
 	});
+=======
+>>>>>>> branch 'master' of ssh://git@github.com/jeffdsdpd/ica.git

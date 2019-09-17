@@ -8,12 +8,7 @@
 .legend .phasethree { float: left; background-color: #0FAD00; }
 .legend .empty { float: left; background-color: black; }
 
-
-#frm .error {
-    color: red;
-}
-
-#rubricform .error {
+#coachingForm .error {
     color: red;
 }
 

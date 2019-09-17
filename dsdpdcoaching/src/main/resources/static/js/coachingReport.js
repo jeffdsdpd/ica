@@ -5,8 +5,8 @@ $(document).ready(function(){
 		
 		$("#teacherLabel").text("");
         	$("#adminLabel").text("");
-        	$("#date").empty();
-		$("#date").append($('<option></option>').attr('value', '').text('Please Select'));
+        	$("#entryDate").empty();
+		$("#entryDate").append($('<option></option>').attr('value', '').text('Please Select'));
 		$("#timeStart").val("");
 		$("#timeEnd").val("");
 		$("#user").val("");
@@ -44,10 +44,16 @@ $(document).ready(function(){
 		$("#adminCheckbox").prop("checked", false);
 		$(".button").fadeOut("slow");
 
+<<<<<<< HEAD
 		//document.getElementById("classPhoto").src  = "";
 		
 		$("#date").empty();
 		$("#date").append($('<option></option>').attr('value', '').text('Please Select'));
+=======
+		document.getElementById("classPhoto").src  = "";
+		$("#entryDate").empty();
+		$("#entryDate").append($('<option></option>').attr('value', '').text('Please Select'));
+>>>>>>> branch 'master' of ssh://git@github.com/jeffdsdpd/ica.git
 		$("#timeStart").val("");
 		$("#timeEnd").val("");
 		$("#lessonTitle").val("");
@@ -64,11 +70,11 @@ $(document).ready(function(){
                 data:{schoolId: selectedSchoolId, teacherId: selectedTeacherId},
                 dataType: "json",
                 success: function (response) {
-                		var $dropdownList = $("#date");
+                		var $dropdownList = $("#entryDate");
                     	$dropdownList.empty();
                     	$dropdownList.append($("<option></option>").attr("value", '').text('Please Select'));
                     	$.each(response, function(value, key) {
-                             $dropdownList.append($("<option></option>").attr("value", key.id).text((key.date)));	                    
+                             $dropdownList.append($("<option></option>").attr("value", key.id).text((key.entryDate)));	                    
                      });
                 }
             });
@@ -102,12 +108,19 @@ $(document).ready(function(){
         });
 	});
 		
+<<<<<<< HEAD
 	$("#date").change(function(){
 		var selectedId = $("#date :selected").val();
 		if (selectedId == 0) {
 			
 			//document.getElementById("classPhoto").src = "";
 			
+=======
+	$("#entryDate").change(function(){
+		var selectedId = $("#entryDate :selected").val();
+		if (selectedId == 0){
+			document.getElementById("classPhoto").src = "";
+>>>>>>> branch 'master' of ssh://git@github.com/jeffdsdpd/ica.git
 			$("#timeStart").val("");
 			$("#timeEnd").val("");
 			$("#lessonTitle").val("");
@@ -172,7 +185,7 @@ $(document).ready(function(){
 			adminEmail = $("#adminLabel").text();
 		} else adminEmail = "not selected";
 		
-		var date = $("#date :selected").text();
+		var entryDate = $("#entryDate :selected").text();
 		var lessontitle = $("#lessonTitle").val();
 		var notes = $("#notes").val();
 		var strategies = $("#strategies").val();
@@ -181,7 +194,7 @@ $(document).ready(function(){
             $.ajax({
                 type: 'POST',
                 url: 'SendEmail',
-                data:{date:date, schoolId:selectedSchoolId, teacherId:selectedTeacherId, lessonTitle:lessontitle, teacherEmail:teacherEmail, userEmail:userEmail, adminEmail:adminEmail, notes:notes, strategies:strategies, steps:steps, tools:tools},
+                data:{entryDate:entryDate, schoolId:selectedSchoolId, teacherId:selectedTeacherId, lessonTitle:lessontitle, teacherEmail:teacherEmail, userEmail:userEmail, adminEmail:adminEmail, notes:notes, strategies:strategies, steps:steps, tools:tools},
                 success: function(data) {
                 	alert("Email has been sent!");
                 }
