@@ -1,17 +1,11 @@
 $(document).ready(
 		function() {
 
-<<<<<<< HEAD
 			$("#schoolId").change(
 					function() {
 						var str = $("#schoolId :selected").val();
 						$("#teacherIds").multiselect('destroy');
-=======
-	$("#schoolId").change(function() {
-		$("#teacherIds").multiselect('destroy');
->>>>>>> branch 'master' of ssh://git@github.com/jeffdsdpd/ica.git
 
-<<<<<<< HEAD
 						$.ajax({
 							type : "GET",
 							url : "getTeachersBySchool",
@@ -27,28 +21,7 @@ $(document).ready(
 											.attr("value", key.id).text(
 													(key.name)));
 								});
-=======
-        $.ajax({
-			type: "GET",
-			url:"getTeachersBySchool",
-			data:{schoolId: $("#schoolId :selected").val()},
-			dataType: "json",
-			success: function (response) {
-				var $dropdownList = $("#teacherIds");
-				$dropdownList.empty();
-				$.each(response, function(value, key) {
-					$dropdownList.append($("<option></option>").attr("value", key.id).text((key.name)));
-				});
-	
-				$dropdownList.multiselect({
-					includeSelectAllOption: true
-				});
-            }
-        });
-	});
->>>>>>> branch 'master' of ssh://git@github.com/jeffdsdpd/ica.git
 
-<<<<<<< HEAD
 								$dropdownList.multiselect({
 									includeSelectAllOption : true
 								});
@@ -86,7 +59,7 @@ $(document).ready(
 				},
 			});
 		});
-=======
+
 	$("#coachingForm").validate({
       	rules: {
 	      	schoolId: { required: true },
@@ -106,9 +79,7 @@ $(document).ready(
              $(element).parent().addClass('error')
          }
      });
-});
->>>>>>> branch 'master' of ssh://git@github.com/jeffdsdpd/ica.git
-
+	
 $(function() {
 	$("#entryDate").datepicker();
 });

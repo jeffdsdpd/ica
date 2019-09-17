@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 	$(document).ready(function() {
 		
 		var selectedSchoolId = null;
@@ -639,5 +637,3 @@
 
 		
 	});
-=======
->>>>>>> branch 'master' of ssh://git@github.com/jeffdsdpd/ica.git
