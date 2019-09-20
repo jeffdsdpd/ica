@@ -1,8 +1,14 @@
 package com.dsd.dsdpdcoaching.dao;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TemporalType;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -167,4 +173,29 @@ public class RubricDao {
 		PhaseValues phaseValues = (PhaseValues) query.getSingleResult();
 		return phaseValues;
 		}
+
+	//Called by the JSONRequestController to select the rubric dates by school to display on the schoolRubricReport.html triggered from dropdown school list
+	@SuppressWarnings("unchecked")
+	public List<Date> getRubricDatesBySchool(Integer schoolId) {
+		return (List<Date>) entityManager.createQuery("select date from rubric where schoolid = :schoolId")
+    			.setParameter("schoolId", schoolId)
+    			.getResultList();
+	}
+
+	//Called by the JSONRequestController to select the rubric 'observed' column values for the dropdown on the schoolRubricReport.html
+	@SuppressWarnings("unchecked")
+	public List<String> getRubricObservedValuesBySchoolAndDate(Integer schoolId, String date) {
+		SimpleDateFormat formatter1=new SimpleDateFormat("yyyy-MM-dd");
+		Date date1 = null;
+		try {
+			date1=formatter1.parse(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		} 
+
+		 return (List<String>) entityManager.createQuery("select observed from rubric where schoolid = :schoolId and date = :date")
+    			.setParameter("schoolId", schoolId)
+    			.setParameter("date", date1, TemporalType.DATE)
+    			.getResultList();
+	}
 }

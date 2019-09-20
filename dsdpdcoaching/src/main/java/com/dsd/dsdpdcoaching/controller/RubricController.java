@@ -36,6 +36,11 @@ public class RubricController {
 		return "rubricReport";
 	}
 	
+	@GetMapping("/schoolRubricReport.html")
+	public String getSchoolRubricReport(Model model) {
+		return "schoolRubricReport";
+	}
+	
 	@PostMapping("/rubricForm")
 	public String postRubricForm(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute Rubric rubricData) {
 

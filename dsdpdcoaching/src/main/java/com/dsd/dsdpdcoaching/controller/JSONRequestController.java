@@ -77,6 +77,20 @@ public class JSONRequestController {
 		return rubricDao.getRubricById(recordId);
 	}
 	
+	//Called from schoolRubricReport.js
+	@GetMapping(value="/getRubricDatesBySchool")
+	@ResponseBody
+	public List<Date> getRubricDatesBySchool(@RequestParam Integer schoolId) {	
+		return rubricDao.getRubricDatesBySchool(schoolId);
+	}
+	
+	//Called from schoolRubricReport.js
+	@GetMapping(value="/getRubricObservedValuesBySchoolAndDate")
+	@ResponseBody
+	public List<String> getRubricObservedValuesBySchoolAndDate(@RequestParam Integer schoolId, @RequestParam String date) {	
+		return rubricDao.getRubricObservedValuesBySchoolAndDate(schoolId, date);
+	}
+	
 	//Called from initial load of dashboard page via dashboard.js
 	@GetMapping(value = "/getDashboardPhaseValuesForRequiredSchools")
 	@ResponseBody

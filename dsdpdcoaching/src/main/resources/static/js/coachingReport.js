@@ -6,7 +6,6 @@ $(document).ready(function(){
 		$("#teacherLabel").text("");
         	$("#adminLabel").text("");
         	$("#date").empty();
-		$("#date").append($('<option></option>').attr('value', '').text('Please Select'));
 		$("#timeStart").val("");
 		$("#timeEnd").val("");
 		$("#user").val("");
@@ -47,7 +46,6 @@ $(document).ready(function(){
 		//document.getElementById("classPhoto").src  = "";
 		
 		$("#date").empty();
-		$("#date").append($('<option></option>').attr('value', '').text('Please Select'));
 		$("#timeStart").val("");
 		$("#timeEnd").val("");
 		$("#lessonTitle").val("");
@@ -63,14 +61,14 @@ $(document).ready(function(){
                 url:"getCoachingDatesBySchoolAndTeacher",
                 data:{schoolId: selectedSchoolId, teacherId: selectedTeacherId},
                 dataType: "json",
-                success: function (response) {
-                		var $dropdownList = $("#date");
-                    	$dropdownList.empty();
-                    	$dropdownList.append($("<option></option>").attr("value", '').text('Please Select'));
-                    	$.each(response, function(value, key) {
-                             $dropdownList.append($("<option></option>").attr("value", key.id).text((key.date)));	                    
-                     });
-                }
+                success: function (response) {	          
+           		 var $dropdownList = $("#date");
+                   	$dropdownList.empty();
+                   	$dropdownList.append($("<option></option>").attr("value", '').text('Please Select'));
+                   	$.each(response, function(value, key) {
+                            $dropdownList.append($("<option></option>").attr("value", key.id).text((key.entryDate)));	                    
+                });
+               }
             });
         }
 	});
