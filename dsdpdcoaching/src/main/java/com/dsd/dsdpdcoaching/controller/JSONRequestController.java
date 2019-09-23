@@ -77,20 +77,27 @@ public class JSONRequestController {
 		return rubricDao.getRubricById(recordId);
 	}
 	
-	//Called from schoolRubricReport.js
+	//Called from schoolRubricReport.js to get all the rubric dates by the school
 	@GetMapping(value="/getRubricDatesBySchool")
 	@ResponseBody
 	public List<Date> getRubricDatesBySchool(@RequestParam Integer schoolId) {	
 		return rubricDao.getRubricDatesBySchool(schoolId);
 	}
 	
-	//Called from schoolRubricReport.js
+	//Called from schoolRubricReport.js to get the values of how the rubric data was collected (e.g. observed, teacher, etc..)
 	@GetMapping(value="/getRubricObservedValuesBySchoolAndDate")
 	@ResponseBody
 	public List<String> getRubricObservedValuesBySchoolAndDate(@RequestParam Integer schoolId, @RequestParam String date) {	
 		return rubricDao.getRubricObservedValuesBySchoolAndDate(schoolId, date);
 	}
 	
+	//Called from schoolRubricReport.js to get the data for the graph
+	@GetMapping(value="/getRubricValuesBySchoolDateObserved")
+	@ResponseBody
+	public List<Rubric> getRubricValuesBySchoolDateObserved(@RequestParam Integer schoolId, @RequestParam String date, @RequestParam String observed) {	
+		return rubricDao.getRubricValuesBySchoolDateObserved(schoolId, date, observed);
+	}
+
 	//Called from initial load of dashboard page via dashboard.js
 	@GetMapping(value = "/getDashboardPhaseValuesForRequiredSchools")
 	@ResponseBody

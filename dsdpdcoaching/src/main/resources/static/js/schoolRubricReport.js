@@ -67,109 +67,108 @@ $(document).ready(function() {
             url:"getRubricValuesBySchoolDateObserved",
             data:{schoolId:selectedSchoolId, date:selectedDate, observed:selectedDataEntered},
             dataType: "json",
-            success: function (response) {	               
-            	 $.each(response, function(i, interactionObject) {
+            success: function (response) {
 
-            		 if ((interactionObject.planning) != null) {
-            		 if ((interactionObject.planning) == ("Whole group timer")) {
+            		 if ((response[0].planning) != null) {
+            		 if ((response[0].planning) == ("Whole group timer")) {
             			 planningPhaseOne += 1; }
-            		 	else if ((interactionObject.planning).includes("implements checklist")) {
+            		 	else if ((response[0].planning).includes("implements checklist")) {
             		 		planningPhaseTwo += 1; }
-            		 	else if ((interactionObject.planning).includes("differentiated")) {
+            		 	else if ((response[0].planning).includes("differentiated")) {
             		 		planningPhaseThree += 1; }
             		 	else planningNE += 1;
             		 } else planningNE += 1;
             		  
-            		 if ((interactionObject.assessmentAndData) != null) {
-            		 if ((interactionObject.assessmentAndData).includes("Collecting")) {
+            		 if ((response[0].assessmentAndData) != null) {
+            		 if ((response[0].assessmentAndData).includes("Collecting")) {
             			 assessanddataPhaseOne += 1; }
-            		 	else if ((interactionObject.assessmentAndData).includes("Using")) {
+            		 	else if ((response[0].assessmentAndData).includes("Using")) {
             		 		assessanddataPhaseTwo += 1; }
-            		 	else if ((interactionObject.assessmentAndData).includes("advance")) {
+            		 	else if ((response[0].assessmentAndData).includes("advance")) {
             		 		assessanddataPhaseThree += 1; }
             		 	else assessanddataNE += 1;
             		 } else assessanddataNE += 1;
             		 
-            		 if ((interactionObject.path) != null) {
-            		 if ((interactionObject.path).includes("Same")) {
+            		 if ((response[0].path) != null) {
+            		 if ((response[0].path).includes("Same")) {
             			 pathPhaseOne += 1; }
-            		 	else if ((interactionObject.path).includes("Differentiated")) {
+            		 	else if ((response[0].path).includes("Differentiated")) {
             		 		pathPhaseTwo += 1; }
-            		 	else if ((interactionObject.path).includes("Individual")) {
+            		 	else if ((response[0].path).includes("Individual")) {
             		 		pathPhaseThree += 1; }
             		 	else pathNE += 1;
             		 } else pathNE += 1;
             		 
-            		 if ((interactionObject.place) != null) {
-            		 if ((interactionObject.place).includes("Move")) {
+            		 if ((response[0].place) != null) {
+            		 if ((response[0].place).includes("Move")) {
             			 placePhaseOne += 1; }
-            		 	else if ((interactionObject.place).includes("Flexible")) {
+            		 	else if ((response[0].place).includes("Flexible")) {
             		 		placePhaseTwo += 1; }
-            		 	else if ((interactionObject.place).includes("Pick")) {
+            		 	else if ((response[0].place).includes("Pick")) {
             		 		placePhaseThree += 1; }
             		 	else placeNE += 1;
             		 } else placeNE += 1;
             		 
-            		 if ((interactionObject.pace) != null) {
-            		 if ((interactionObject.pace).includes("timer")) {
+            		 if ((response[0].pace) != null) {
+            		 if ((response[0].pace).includes("timer")) {
             			 pacePhaseOne += 1; }
-            		 	else if ((interactionObject.pace).includes("move")) {
+            		 	else if ((response[0].pace).includes("move")) {
             		 		pacePhaseTwo += 1; }
-            		 	else if ((interactionObject.pace).includes("mastery")) {
+            		 	else if ((response[0].pace).includes("mastery")) {
             		 		pacePhaseThree += 1; }
             		 	else paceNE += 1;
             		 } else paceNE += 1;
             		 
-            		 if ((interactionObject.classroomManagement) != null) {
-            		 if ((interactionObject.classroomManagement).includes("Restating")) {
+            		 if ((response[0].classroomManagement) != null) {
+            		 if ((response[0].classroomManagement).includes("Restating")) {
             			 classmgmtPhaseOne += 1; }
-            		 	else if ((interactionObject.classroomManagement).includes("Self")) {
+            		 	else if ((response[0].classroomManagement).includes("Self")) {
             		 		classmgmtPhaseTwo += 1; }
-            		 	else if ((interactionObject.classroomManagement).includes("Automatic")) {
+            		 	else if ((response[0].classroomManagement).includes("Automatic")) {
             		 		classmgmtPhaseThree += 1; }
             		 	else classmgmtNE += 1;
             		 } else classmgmtNE += 1;
             		 
-            		 if ((interactionObject.teacherRole) != null) {
-            		 if ((interactionObject.teacherRole).includes("facilitator")) {
+            		 if ((response[0].teacherRole) != null) {
+            		 if ((response[0].teacherRole).includes("facilitator")) {
             			 teacherrolePhaseOne += 1; }
-            		 	else if ((interactionObject.teacherRole).includes("distractions")) {
+            		 	else if ((response[0].teacherRole).includes("distractions")) {
             		 		teacherrolePhaseTwo += 1; }
-            		 	else if ((interactionObject.teacherRole).includes("99%")) {
+            		 	else if ((response[0].teacherRole).includes("99%")) {
             		 		teacherrolePhaseThree += 1; }
             		 	else teacherroleNE += 1;
             		 } else teacherroleNE += 1;
             		 
-            		 if ((interactionObject.studentEngagement) != null) {
-            		 if ((interactionObject.studentEngagement).includes("Following")) {
+            		 if ((response[0].studentEngagement) != null) {
+            		 if ((response[0].studentEngagement).includes("Following")) {
             			 studentengagePhaseOne += 1; }
-            		 	else if ((interactionObject.studentEngagement).includes("Engaged")) {
+            		 	else if ((response[0].studentEngagement).includes("Engaged")) {
             		 		studentengagePhaseTwo += 1; }
-            		 	else if ((interactionObject.studentEngagement).includes("Deeply")) {
+            		 	else if ((response[0].studentEngagement).includes("Deeply")) {
             		 		studentengagePhaseThree += 1; }
             		 	else studentengageNE += 1;
             		 } else studentengageNE += 1;
             		 
-            		 if ((interactionObject.studentCollaboration) != null) {
-            		 if ((interactionObject.studentCollaboration).includes("Teacher")) {
+            		 if ((response[0].studentCollaboration) != null) {
+            		 if ((response[0].studentCollaboration).includes("Teacher")) {
             			 studentcollabPhaseOne += 1; }
-            		 	else if ((interactionObject.studentCollaboration).includes("Choice")) {
+            		 	else if ((response[0].studentCollaboration).includes("Choice")) {
             		 		studentcollabPhaseTwo += 1; }
-            		 	else if ((interactionObject.studentCollaboration).includes("PBL")) {
+            		 	else if ((response[0].studentCollaboration).includes("PBL")) {
             		 		studentcollabPhaseThree += 1; }
             		 	else studentcollabNE += 1;
             		 } else studentcollabNE += 1;
 
-            		if ((interactionObject.technology) != null) {
-            		 if ((interactionObject.technology) != null && (interactionObject.technology).includes("Technology")) {
+            		if ((response[0].technology) != null) {
+            		 if ((response[0].technology) != null && (response[0].technology).includes("Technology")) {
             			 technologyPhaseOne += 1; }
-            		 	else if ((interactionObject.technology).includes("Using")) {
+            		 	else if ((response[0].technology).includes("Using")) {
             		 		technologyPhaseTwo += 1; }
-            		 	else if ((interactionObject.technology).includes("Students")) {
+            		 	else if ((response[0].technology).includes("Students")) {
             		 		technologyPhaseThree += 1; }
             		 	else technologyNE += 1;
             		} else technologyNE += 1;
-                 });
+               
             	 
             	 $(".planningPhaseOne").html(planningPhaseOne);
             	 $(".planningPhaseTwo").html(planningPhaseTwo);
@@ -221,104 +220,49 @@ $(document).ready(function() {
             	 $(".technologyPhaseThree").html(technologyPhaseThree);
             	 $(".technologyNE").html(technologyNE);
             	 
+            	 console.log("Planning "+planningPhaseOne);
+            	 console.log("A&Data "+assessanddataPhaseOne);
+
+         	// start loading the 3d cylinder highchart
+            	 Highcharts.chart('container', {
+            		    chart: {
+            		        type: 'cylinder',
+            		        options3d: {
+            		            enabled: true,
+            		            alpha: 15,
+            		            beta: 15,
+            		            depth: 50,
+            		            viewDistance: 25
+            		        }
+            		    },
+            		    title: {
+            		        text: 'Rubric Values For ' + $("#date :selected").val()
+            		    },
+            		    plotOptions: {
+            		        series: {
+            		            depth: 25,
+            		            colorByPoint: true
+            		        }
+            		    },
+            		    xAxis: {
+            		        categories: [
+            		            'Planning','A&Data','Path','Place','Pace','Class Mgmt.','T.Role','S.Engmt.','S.Collab','Tech'
+            		        ],
+            		        crosshair: true
+            		    },
+            		    series: [{
+            		    		name: 'Phase 1',
+            		        data: [planningPhaseOne, assessanddataPhaseOne, pathPhaseOne, placePhaseOne, pacePhaseOne, classmgmtPhaseOne, teacherrolePhaseOne, studentengagePhaseOne, studentcollabPhaseOne, technologyPhaseOne],
+            		    }, {
+            		    		name: 'Phase 2',
+            		        data: [planningPhaseTwo, assessanddataPhaseTwo, pathPhaseTwo, placePhaseTwo, pacePhaseTwo, classmgmtPhaseTwo, teacherrolePhaseTwo, studentengagePhaseTwo, studentcollabPhaseTwo, technologyPhaseTwo],
+            		    }, {
+            		    		name: 'Phase 3',
+            		        data: [planningPhaseThree, assessanddataPhaseThree, pathPhaseThree, placePhaseThree, pacePhaseThree, classmgmtPhaseThree, teacherrolePhaseThree, studentengagePhaseThree, studentcollabPhaseThree, technologyPhaseThree],
+            		    }]
+            		});
             	 
 
-         		//load the Google Visualization API and the chart
-         	    google.charts.load('current', {packages: ['corechart', 'bar']});
-         		google.charts.setOnLoadCallback(createChart);
-
-         	    //callback function
-         	    function createChart() {
-
-         	        //create data table object
-         	        var dataTable = new google.visualization.DataTable();
-
-         	        //define columns
-         	        dataTable.addColumn('string','Phases');
-         			dataTable.addColumn('number', 'Phase1');
-         			dataTable.addColumn('number', 'Phase2');
-         			dataTable.addColumn('number', 'Phase3');
-         			dataTable.addColumn('number', 'Not Observed');
-
-         	        //define rows of data
-         	        dataTable.addRows([
-         	                           ['Planning', planningPhaseOne,planningPhaseTwo,planningPhaseThree,planningNE],
-         	                           ['A&Data', assessanddataPhaseOne,assessanddataPhaseTwo,assessanddataPhaseThree,assessanddataNE],  
-         	                           ['Path', pathPhaseOne,pathPhaseTwo,pathPhaseThree,pathNE], 
-         	                           ['Place', placePhaseOne,placePhaseTwo,placePhaseThree,placeNE], 
-         	                           ['Pace', pacePhaseOne,pacePhaseTwo,pacePhaseThree,paceNE],
-         	                           ['Class Mgmt.', classmgmtPhaseOne,classmgmtPhaseTwo,classmgmtPhaseThree,classmgmtNE], 
-         	                           ['T.Role', teacherrolePhaseOne,teacherrolePhaseTwo,teacherrolePhaseThree,teacherroleNE],  
-         	                           ['St. Engmt.', studentengagePhaseOne,studentengagePhaseTwo,studentengagePhaseThree,studentengageNE], 
-         	                           ['St. Collab.', studentcollabPhaseOne,studentcollabPhaseTwo,studentcollabPhaseThree,studentcollabNE], 
-         	                           ['Technology', technologyPhaseOne,technologyPhaseTwo,technologyPhaseThree,technologyNE]
-         	                           
-
-         	        ]);
-         	        
-         	        //define options for visualization
-         	        var options = {
-         	        		legend: { position: 'right' },
-         	                width: 850, height: 350,
-         	                colors: ['#FF9900', '#6300A5', '#0FAD00', "black"],
-         	                chartArea:{left:35,top:10}
-         	            };
-
-         	        //instantiate our chart object and draw
-         	        var chart = new google.visualization.ColumnChart (document.getElementById('chart'));
-         	        chart.draw(dataTable, options);
-         	    }
-            	 
-            	 ------------------------------------------------------------------------------------------------------------
-SHOULD NOT NEED BELOW THIS LINE
-            		//load the Google Visualization API and the chart
-            	    google.charts.load('current', {packages: ['corechart', 'bar']});
-            		google.charts.setOnLoadCallback(createChart);
-
-            	    //callback function
-            	    function createChart() {
-
-            	        //create data table object
-            	        var dataTable = new google.visualization.DataTable();
-
-            	        //define columns
-            	        dataTable.addColumn('string','Phases');
-            			dataTable.addColumn('number', 'Phase1');
-            			dataTable.addColumn('number', 'Phase2');
-            			dataTable.addColumn('number', 'Phase3');
-            			dataTable.addColumn('number', 'Not Observed');
-
-            	        //define rows of data
-            	        dataTable.addRows([
-            	                           ['Planning', planningPhaseOne,planningPhaseTwo,planningPhaseThree,planningNE],
-            	                           ['A&Data', assessanddataPhaseOne,assessanddataPhaseTwo,assessanddataPhaseThree,assessanddataNE],  
-            	                           ['Path', pathPhaseOne,pathPhaseTwo,pathPhaseThree,pathNE], 
-            	                           ['Place', placePhaseOne,placePhaseTwo,placePhaseThree,placeNE], 
-            	                           ['Pace', pacePhaseOne,pacePhaseTwo,pacePhaseThree,paceNE],
-            	                           ['Class Mgmt.', classmgmtPhaseOne,classmgmtPhaseTwo,classmgmtPhaseThree,classmgmtNE], 
-            	                           ['T.Role', teacherrolePhaseOne,teacherrolePhaseTwo,teacherrolePhaseThree,teacherroleNE],  
-            	                           ['St. Engmt.', studentengagePhaseOne,studentengagePhaseTwo,studentengagePhaseThree,studentengageNE], 
-            	                           ['St. Collab.', studentcollabPhaseOne,studentcollabPhaseTwo,studentcollabPhaseThree,studentcollabNE], 
-            	                           ['Technology', technologyPhaseOne,technologyPhaseTwo,technologyPhaseThree,technologyNE]
-            	                           
-
-            	        ]);
-            	        
-            	        //define options for visualization
-            	        var options = {
-            	        		legend: { position: 'right' },
-            	                width: 850, height: 350,
-            	                colors: ['#FF9900', '#6300A5', '#0FAD00', "black"],
-            	                chartArea:{left:35,top:10}
-            	            };
-
-            	        //instantiate our chart object and draw
-            	        var chart = new google.visualization.ColumnChart (document.getElementById('chart'));
-            	        chart.draw(dataTable, options);
-            	    }
-            	    
-            	    -------------------------------------------------------------------------------------
-             
             } //end of success for 'dataentered' field changed ajax function
         }); //end of the ajax function
 	}); //end of the 'dataentered' change function

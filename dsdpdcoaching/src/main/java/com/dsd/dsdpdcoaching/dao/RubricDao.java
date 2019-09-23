@@ -198,4 +198,21 @@ public class RubricDao {
     			.setParameter("date", date1, TemporalType.DATE)
     			.getResultList();
 	}
+
+	//Called by the JSONRequestController to get the rubic data to create the graph on the schoolRubricReport.html
+	@SuppressWarnings("unchecked")
+	public List<Rubric> getRubricValuesBySchoolDateObserved(Integer schoolId, String date, String observed) {
+		SimpleDateFormat formatter1=new SimpleDateFormat("yyyy-MM-dd");
+		Date date1 = null;
+		try {
+			date1=formatter1.parse(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		} 
+		return (List<Rubric>) entityManager.createQuery("from rubric where schoolid = :schoolId and date = :date and observed = :observed")
+	    			.setParameter("schoolId", schoolId)
+	    			.setParameter("date", date1, TemporalType.DATE)
+	    			.setParameter("observed", observed)
+	    			.getResultList();
+	}
 }
