@@ -42,10 +42,9 @@
 				var stcollabLevelData = $('#studentcollabLevelUpData').attr("data-content");
 				var technologyLevelData = $('#technologyLevelUpData').attr("data-content");
 			
-	
 		            $.ajax({
-		                type: 'POST',
-		                url: 'SendRubricEmail',
+		                type: 'GET',
+		                url: 'sendRubricEmail',
 		                data:{date:date, schoolId:selectedSchoolId, teacherId:selectedTeacherId, teacherEmail:teacherEmail,
 		                	adminEmail:adminEmail, planning:planning, assessanddata:assessanddata, path:path, place:place, pace:pace, classmgmt:classmgmt, 
 		                	teacherrole:teacherrole, studentengage:studentengage, studentcollab:studentcollab, technology:technology, rubricnotes:rubricnotes,levelup:levelup, questions:questions,
@@ -53,13 +52,14 @@
 		                	paceLevelData:paceLevelData, classmgmtLevelData:classmgmtLevelData, teachroleLevelData:teachroleLevelData, stengageLevelData:stengageLevelData,
 		                	stcollabLevelData:stcollabLevelData, technologyLevelData:technologyLevelData, rubricTotal:rubricTotal
 		             },
+		             	async: false,
 		                success: function(data) {
 		                	alert("Email has been sent!");
 		                }
 		            });
 			 });
 
-		$('[data-toggle="popover"]').popover();   
+		$('[data-toggle="popover"]').popover();
  
 		$("#schoolName").change(function(){
 				rubricTotal = 0;
@@ -272,7 +272,7 @@
 			document.getElementById("technologyLevelUpData").style.visibility = "hidden";
 			
 			var selectedId = $("#date :selected").val();
-			console.log("selectedId = "+selectedId);
+
 			var low = '#FF9900';
 			var med = '#6300A5';
 			var high = '#0FAD00';
@@ -320,8 +320,6 @@
 	                		 } else {
 	                			 $(".timeTaken").html(format12Hour(response.timeObserved));
 	                			 }
-	                		 
-	                		 console.log("planning = "+response.planning);
 	                		 
 	                		 $(".planning").html(response.planning);
 	                		 if ((response.planning) == ("Whole group timer")) {

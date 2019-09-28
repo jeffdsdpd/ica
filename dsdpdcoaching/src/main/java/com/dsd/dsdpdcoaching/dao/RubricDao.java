@@ -215,4 +215,9 @@ public class RubricDao {
 	    			.setParameter("observed", observed)
 	    			.getResultList();
 	}
+
+	public Object sendRubricEmail() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

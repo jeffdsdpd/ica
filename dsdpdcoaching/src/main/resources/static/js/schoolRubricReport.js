@@ -220,9 +220,6 @@ $(document).ready(function() {
             	 $(".technologyPhaseThree").html(technologyPhaseThree);
             	 $(".technologyNE").html(technologyNE);
             	 
-            	 console.log("Planning "+planningPhaseOne);
-            	 console.log("A&Data "+assessanddataPhaseOne);
-
          	// start loading the 3d cylinder highchart
             	 Highcharts.chart('container', {
             		    chart: {

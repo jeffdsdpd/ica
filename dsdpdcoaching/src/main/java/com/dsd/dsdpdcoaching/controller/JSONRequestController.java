@@ -4,7 +4,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,10 +23,12 @@ import com.dsd.dsdpdcoaching.dto.PhaseValues;
 import com.dsd.dsdpdcoaching.dto.Rubric;
 import com.dsd.dsdpdcoaching.dto.Teacher;
 import com.dsd.dsdpdcoaching.dto.User;
-
+import com.dsd.dsdpdcoaching.service.EmailService;
 
 @RestController
-public class JSONRequestController {
+public class JSONRequestController extends HttpServlet { 
+
+	private static final long serialVersionUID = 8395780964203382899L;
 	
 	@Autowired
 	private TeacherDao teacherDao;
@@ -34,6 +38,8 @@ public class JSONRequestController {
 	private RubricDao rubricDao;
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private EmailService emailService;
 
 	//Called from coachingForm.js, coachingReport.js,rubricForm.js, and rubricReport.js
 	@GetMapping(value="/getTeachersBySchool")
@@ -97,6 +103,14 @@ public class JSONRequestController {
 	public List<Rubric> getRubricValuesBySchoolDateObserved(@RequestParam Integer schoolId, @RequestParam String date, @RequestParam String observed) {	
 		return rubricDao.getRubricValuesBySchoolDateObserved(schoolId, date, observed);
 	}
+	
+	//Called from rubricReport.js to send an email
+	@GetMapping(value="/sendRubricEmail")
+	@ResponseBody
+	public String sendRubricEmail(HttpServletRequest request, HttpServletResponse response) {
+		emailService.sendRubricEmail(request, response);
+		return "success";
+	}
 
 	//Called from initial load of dashboard page via dashboard.js
 	@GetMapping(value = "/getDashboardPhaseValuesForRequiredSchools")
@@ -104,14 +118,12 @@ public class JSONRequestController {
 	public PhaseValues getDashboardPhaseValuesForRequiredSchools(HttpServletRequest request) {
 		User user = new User();
 		user = userDao.getUserByUsername(request.getUserPrincipal().getName());
-		PhaseValues pv = null;
-		
+		PhaseValues pv = null;	
 		if(request.isUserInRole("admin")) {
 			pv =  rubricDao.getDashboardPhaseValuesForAllSchools();
 		} else {
 			pv =  rubricDao.getDashboardPhaseValuesForRequiredSchools(user.getId());
 		}
-
 		return pv;
 	}
 
