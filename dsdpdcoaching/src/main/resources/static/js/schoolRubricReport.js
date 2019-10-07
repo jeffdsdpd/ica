@@ -6,7 +6,7 @@ $(document).ready(function() {
 	//SCHOOL field has changed
 	$("#schoolName").change(function() {
 		clearRubricFields();
-		$(".container").fadeOut("slow");
+		$("#container").fadeOut("slow");
 		$("#date").empty();
 		$("#dataentered").empty();
 		$("#dataentered").append($("<option></option>").attr("value", '').text('Please Select'));
@@ -32,7 +32,7 @@ $(document).ready(function() {
 	//DATE field has changed
 	$("#date").change(function(){
 		clearRubricFields();
-		$(".container").fadeOut("slow");
+		$("#container").fadeOut("slow");
 		selectedSchoolId =  $("#schoolName :selected").val();
 		selectedDate =   $("#date :selected").val();
 				
@@ -55,12 +55,12 @@ $(document).ready(function() {
 	//DATEENTERED field has changed
 	$("#dataentered").change(function(){
 		clearRubricFields();
-		$(".container").fadeOut("slow");
+		$("#container").fadeOut("slow");
 		selectedSchoolId =  $("#schoolName :selected").val();
 		selectedDate =   $("#date :selected").val();
 		selectedDataEntered = $("#dataentered :selected").text();
 		
-		$(".container").fadeIn("slow");
+		$("#container").fadeIn("slow");
 				
 		$.ajax({
             type: "GET",

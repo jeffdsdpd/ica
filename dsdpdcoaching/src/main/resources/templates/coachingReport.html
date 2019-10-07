@@ -42,7 +42,7 @@
 		                                <h2 class="title">Coaching Report</h2>
 		                            </div>
 		                            <div class="content">
-		                                <form id="frm" name="frm" action="#" th:action="@{/coachingForm}" th:object="${coachingData}" method="post" enctype="multipart/form-data">
+		                                <form>
 		                                		<div class="row">
 		                                        <div class="col-md-4">
 		                                            <div class="form-group">
@@ -101,20 +101,29 @@
 													</div>
 												</div>
 											
-												<div class="col-md-8">
-													<div class="form-group button" style="display:none">
-														<label>Email Report</label><br />
+												<div class="col-md-4">
+												<div class="form-group button" style="display: none">
+													<label id="emailreport">Email Report</label><br />
+
+													<div class="checkboxes">
+														<input type="checkbox" id="teachercheckbox" name="teachercheckbox" value="teachercheckbox"></input> 
+														<label for="teachercheckbox" class="checkbox-inline" id="teacherlabel"
+															style="margin-left: 2px; padding-left: 2px; padding-top: 4px; padding-right: 15px;"></label>
 														
-														<div class="checkboxes">
-															<input type="checkbox" id="teacherCheckbox" value="teachercheckbox"/>
-															<label for="teacherCheckbox" class="checkbox-inline" id="teacherLabel" style="margin-left: 2px; padding-left:2px; padding-top:4px; padding-right:15px;"></label>
-															<br />
-															<input type="checkbox" id="adminCheckbox" value="admincheckbox"/>
-															<label for="adminCheckbox" class="checkbox-inline" id="adminLabel" style="margin-left: 2px; padding-left:2px; padding-top:4px;"></label>
-														</div>
-														<button type="button" name="button" class="btn btn-info" id="button">Email Selected Person(s)</button>        
+														<br /> 
+														
+														<input type="checkbox" id="admincheckbox" name="admincheckbox" value="admincheckbox"></input> 
+														<label for="admincheckbox" class="checkbox-inline" id="adminlabel"
+															style="margin-left: 2px; padding-left: 2px; padding-top: 4px;"></label>
 													</div>
+													
+													<br />
+													
+													<button type="emailButton" name="emailButton" class="btn btn-info"
+														id="button">Email Selected Person(s)</button>
 												</div>
+											</div>
+												
 											</div>
 											
 											<!--  
@@ -133,7 +142,7 @@
 												<div class="col-md-9">
 													<div class="form-group">
 														<label>Notes</label>
-														<textarea rows="5" cols="50" class="form-control" placeholder="Notes for teacher evaluation" id="notes" wrap="hard" maxlength="500"></textarea><br/>
+														<textarea rows="5" cols="50" class="form-control" placeholder="Notes for teacher evaluation" id="notes" wrap="hard" maxlength="500" readonly="readonly"></textarea><br/>
 													</div>
 												</div>
 											</div>
@@ -142,7 +151,7 @@
 												<div class="col-md-9">
 													<div class="form-group">
 														<label>Strategies</label>                                            
-														<textarea rows="4" cols="50" class="form-control" placeholder="Strategies for teacher evaluation" id="strategies" wrap="hard" maxlength="300"></textarea><br/>
+														<textarea rows="4" cols="50" class="form-control" placeholder="Strategies for teacher evaluation" id="strategies" wrap="hard" maxlength="300" readonly="readonly"></textarea><br/>
 													</div>
 												</div>
 											</div>
@@ -151,7 +160,7 @@
 												<div class="col-md-9">
 													<div class="form-group">
 														<label>Next Steps</label>
-														<textarea rows="4" cols="50" class="form-control" placeholder="Steps for teacher evaluation" id="goals" wrap="hard" maxlength="200"></textarea><br/>
+														<textarea rows="4" cols="50" class="form-control" placeholder="Steps for teacher evaluation" id="goals" wrap="hard" maxlength="200" readonly="readonly"></textarea><br/>
 													</div>
 												</div>
 											</div>
@@ -160,7 +169,7 @@
 												<div class="col-md-9">
 													<div class="form-group">
 														<label>Suggested Tools</label>                                            
-														<textarea rows="4" cols="50" class="form-control" placeholder="Tools for teacher evaluation" id="tools" wrap="hard" maxlength="200"></textarea><br/>
+														<textarea rows="4" cols="50" class="form-control" placeholder="Tools for teacher evaluation" id="tools" wrap="hard" maxlength="200" readonly="readonly"></textarea><br/>
 													</div>
 												</div>
 											</div>

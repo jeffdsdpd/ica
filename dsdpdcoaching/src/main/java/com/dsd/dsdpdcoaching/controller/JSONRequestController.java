@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dsd.dsdpdcoaching.dao.CoachingDataDao;
+import com.dsd.dsdpdcoaching.dao.LevelUpDao;
 import com.dsd.dsdpdcoaching.dao.RubricDao;
 import com.dsd.dsdpdcoaching.dao.TeacherDao;
 import com.dsd.dsdpdcoaching.dao.UserDao;
@@ -38,6 +39,8 @@ public class JSONRequestController extends HttpServlet {
 	private RubricDao rubricDao;
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private LevelUpDao levelUpDao;
 	@Autowired
 	private EmailService emailService;
 
@@ -79,8 +82,10 @@ public class JSONRequestController extends HttpServlet {
 	//Called from rubricReport.js
 	@GetMapping(value="/getRubricById")
 	@ResponseBody
-	public Rubric getRubricById(@RequestParam Integer recordId) {	
-		return rubricDao.getRubricById(recordId);
+	public Rubric getRubricById(@RequestParam Integer recordId) {
+		Rubric r = new Rubric();
+		r = rubricDao.getRubricById(recordId);
+		return r;
 	}
 	
 	//Called from schoolRubricReport.js to get all the rubric dates by the school
@@ -104,11 +109,19 @@ public class JSONRequestController extends HttpServlet {
 		return rubricDao.getRubricValuesBySchoolDateObserved(schoolId, date, observed);
 	}
 	
-	//Called from rubricReport.js to send an email
+	//Called from rubricReport.js to send the rubric report email
 	@GetMapping(value="/sendRubricEmail")
 	@ResponseBody
 	public String sendRubricEmail(HttpServletRequest request, HttpServletResponse response) {
 		emailService.sendRubricEmail(request, response);
+		return "success";
+	}
+	
+	//Called from coachingReport.js to send the coaching report email
+	@GetMapping(value="/sendCoachingEmail")
+	@ResponseBody
+	public String sendCoachingEmail(HttpServletRequest request, HttpServletResponse response) {
+		emailService.sendCoachingReportEmail(request, response);
 		return "success";
 	}
 
@@ -133,6 +146,13 @@ public class JSONRequestController extends HttpServlet {
 	public PhaseValues getDashboardPhaseValuesBySchool(@RequestParam Integer schoolId) {	
 		 PhaseValues pv =  rubricDao.getDashboardPhaseValuesBySchool(schoolId);
 		 return pv;
+	}
+	
+	//Called from rubricReport.js to get the appropriate levelup data to display
+	@GetMapping(value="/getLevelUpData")
+	@ResponseBody
+	public String[][] getLevelUpData(HttpServletRequest request, HttpServletResponse response) {	
+		return levelUpDao.getLevelUpData(request, response);
 	}
 
 }

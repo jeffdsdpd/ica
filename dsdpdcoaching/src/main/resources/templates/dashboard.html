@@ -29,13 +29,11 @@
 <link href="css/lib/timepicker.css" rel="stylesheet" />
 <link href="css/lib/bootstrap-multiselect.css" rel="stylesheet" />
 <link href="css/misc.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
 
 <!--   Fonts and icons     -->
 <link href="css/lib/pe-icon-7-stroke.css" rel="stylesheet" />
 <link href='//fonts.googleapis.com/css?family=Roboto:400,700,300'
-	rel='stylesheet' type='text/css' />
-<link
-	href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'
 	rel='stylesheet' type='text/css' />
 </head>
 <body>
@@ -61,13 +59,15 @@
 												<div class="panel-heading">
 													<div id="school"></div>
 													<h3 class="panel-title">
-														<i class="fa fa-bar-chart-o fa-fw"></i><b> Teacher Statistics</b>
+														<i class="fa fa-chart-pie"></i><b> Teacher Statistics</b>
 													</h3>
 												</div>
+												
+												<br />
 
 												<div class="col-md-3">
 													<div class="form-group" id="schoolIdGroup">
-														<label>School</label>
+														<label><b>School</b></label>
 		                                                	<select id="schoolId" class="form-control" th:field="*{schoolList}">
 			                                                	<option value="">Please Select</option>
 			                                                	<option th:each="school: ${schoolList}" 

@@ -1,10 +1,59 @@
 $(document).ready(function(){
-	$("#schoolName").change(function(){
+	
+	//document.getElementById("classPhoto").src = "";
+ 	$('#notes').addClass('input-disabled');
+ 	$('#strategies').addClass('input-disabled');
+ 	$('#goals').addClass('input-disabled');
+ 	$('#tools').addClass('input-disabled');
+	
+	//executed when the email button is clicked
+	$("button").click(function() {
+		var selectedSchoolId = $("#schoolName :selected").text();
+		var selectedTeacherId = $("#teacherName :selected").text();
+		var teacherEmail = null;
+		var adminEmail = null;
+		
+		if ( $("#teachercheckbox").is(':checked')) {
+			teacherEmail = $("#teacherlabel").text();
+		} else teacherEmail = "not selected";
+		
+		if ( $("#admincheckbox").is(':checked')) {
+			adminEmail = $("#adminlabel").text();
+		} else adminEmail = "not selected";
+		
+		var date = $("#date :selected").text();
+		var lessontitle = $("#lessonTitle").val();
+		var notes = $("#notes").val();
+		var strategies = $("#strategies").val();
+		var steps = $("#goals").val();
+		var tools = $("#tools").val();
+	
+            $.ajax({
+                type: 'GET',
+                url: 'sendCoachingEmail',
+                data:{date:date, schoolId:selectedSchoolId, teacherId:selectedTeacherId, lessonTitle:lessontitle, teacherEmail:teacherEmail, adminEmail:adminEmail, notes:notes, strategies:strategies, steps:steps, tools:tools},
+             	async: false,
+                success: function(data) {
+                	alert("Email has been sent!");
+                }
+            });
+	 });//end of button click function
+	
+		
+	//start of changing school function
+	 	$("#schoolName").change(function(){
 		var selectedSchoolId =  $("#schoolName :selected").val();
 		//document.getElementById("classPhoto").src = "";
 		
-		$("#teacherLabel").text("");
-        	$("#adminLabel").text("");
+		document.getElementById("emailreport").style.display = "none";
+		document.getElementById("teachercheckbox").style.display = "none";
+		document.getElementById("admincheckbox").style.display = "none";
+		document.getElementById("teacherlabel").style.display = "none";
+		document.getElementById("adminlabel").style.display = "none";
+		document.getElementById("button").style.display = "none";
+		
+		$("#teacherlabel").text("");
+        	$("#adminlabel").text("");
         	$("#date").empty();
 		$("#timeStart").val("");
 		$("#timeEnd").val("");
@@ -37,10 +86,10 @@ $(document).ready(function(){
 	$("#teacherName").change(function(){
 		var selectedSchoolId = $("#schoolName :selected").val();
 		var selectedTeacherId = $("#teacherName :selected").val();
-		$("#teacherLabel").text("");
-		$("#teacherCheckbox").prop("checked", false);
-	    	$("#adminLabel").text("");
-		$("#adminCheckbox").prop("checked", false);
+		$("#teacherlabel").text("");
+		$("#teachercheckbox").prop("checked", false);
+	    	$("#adminlabel").text("");
+		$("#admincheckbox").prop("checked", false);
 		$(".button").fadeOut("slow");
 
 		//document.getElementById("classPhoto").src  = "";
@@ -76,8 +125,8 @@ $(document).ready(function(){
 	$("#teacherName").change(function(){
 		var selectedTeacherId = $("#teacherName :selected").val();
 		$("button").prop("disabled",false);
-		document.getElementById("teacherCheckbox").style.display = "inline";
-		document.getElementById("adminCheckbox").style.display = "inline";
+		document.getElementById("teachercheckbox").style.display = "inline";
+		document.getElementById("admincheckbox").style.display = "inline";
 		$.ajax({
 			type: "GET",
 			url:"getEmailAddress",
@@ -85,23 +134,40 @@ $(document).ready(function(){
 			dataType: "json",
 			success: function (response) {
 				    
-                $.each(response, function(key, value) {
-                		$("#teacherLabel").text(value[0]);
-                		$("#adminLabel").text(value[1]);
-                })
-      
-                	if ( $("#teacherLabel").text() == "" && 
-		        			$("#adminLabel").text() == "") {
-                		document.getElementById("teacherCheckbox").style.display = "none";
-                		document.getElementById("adminCheckbox").style.display = "none";
-                		$("button").prop("disabled",true);
-                	}
+				$.each(response, function(key, value) {
+            		if (value[0] != null) {
+            			$("#teacherlabel").text(value[0]);
+            		} else {
+            			document.getElementById("teachercheckbox").style.display = "none";
+            		}
+            		
+            		if (value[1] != null) {
+            			$("#adminlabel").text(value[1]);
+            			
+            		} else {
+            			document.getElementById("admincheckbox").style.display = "none";
+            		}
+			})
             }
         });
 	});
 		
 	$("#date").change(function(){
 		var selectedId = $("#date :selected").val();
+		if ( $("#teacherlabel").text() != "" ) {
+			document.getElementById("teacherlabel").style.display = "inline";
+			document.getElementById("button").style.display = "inline";
+			document.getElementById("emailreport").style.display = "inline";
+			document.getElementById("teachercheckbox").style.display = "inline";
+		}
+		
+		if ( $("#adminlabel").text() != "" ) {
+			document.getElementById("adminlabel").style.display = "inline";
+				document.getElementById("button").style.display = "inline";
+				document.getElementById("emailreport").style.display = "inline";
+				document.getElementById("admincheckbox").style.display = "inline";
+		}
+		
 		if (selectedId == 0) {
 			
 			//document.getElementById("classPhoto").src = "";
@@ -154,37 +220,6 @@ $(document).ready(function(){
             }
         });
 	});
-	
-	$("button").click(function(){
-		var selectedSchoolId = $("#schoolName :selected").text();
-		var selectedTeacherId = $("#teacherName :selected").text();
-		var teacherEmail = null;
-		var userEmail = null;
-		var adminEmail = null;
-		
-		if ( $("#teacherCheckbox").is(':checked')) {
-			teacherEmail = $("#teacherLabel").text();
-		} else teacherEmail = "not selected";
-		
-		if ( $("#adminCheckbox").is(':checked')) {
-			adminEmail = $("#adminLabel").text();
-		} else adminEmail = "not selected";
-		
-		var date = $("#date :selected").text();
-		var lessontitle = $("#lessonTitle").val();
-		var notes = $("#notes").val();
-		var strategies = $("#strategies").val();
-		var steps = $("#goals").val();
-		var tools = $("#tools").val();
-            $.ajax({
-                type: 'POST',
-                url: 'SendEmail',
-                data:{date:date, schoolId:selectedSchoolId, teacherId:selectedTeacherId, lessonTitle:lessontitle, teacherEmail:teacherEmail, userEmail:userEmail, adminEmail:adminEmail, notes:notes, strategies:strategies, steps:steps, tools:tools},
-                success: function(data) {
-                	alert("Email has been sent!");
-                }
-            });
-	 });
 });
 
 

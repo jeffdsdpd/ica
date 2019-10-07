@@ -28,7 +28,7 @@ public class Rubric implements Serializable {
 	@Column(name="schoolid")
 	private Integer schoolId;
 	
-	//@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "hh:mma")
 	@Column(name="timeobserved")
 	private Date timeObserved;
@@ -71,6 +71,15 @@ public class Rubric implements Serializable {
 	
 	@Column(name="technology")
 	private String technology;
+	
+	@Column(name="rubricnotes")
+	private String rubricnotes;
+	
+	@Column(name="levelup")
+	private String levelup;
+	
+	@Column(name="questions")
+	private String questions;
 	
 
 	public Integer getId() {
@@ -208,5 +217,31 @@ public class Rubric implements Serializable {
 	public void setTechnology(String technology) {
 		this.technology = technology;
 	}
+
+	public String getRubricNotes() {
+		return rubricnotes;
+	}
+
+	public void setRubricNotes(String rubricNotes) {
+		this.rubricnotes = rubricNotes;
+	}
+
+	public String getLevelUp() {
+		return levelup;
+	}
+
+	public void setLevelUp(String levelUp) {
+		this.levelup = levelUp;
+	}
+
+	public String getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(String questions) {
+		this.questions = questions;
+	}
+	
+	
 	
 }

@@ -13,9 +13,9 @@ CREATE TABLE `user_school` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`));
 
-INSERT INTO user_school VALUES(1,1,3);
-INSERT INTO user_school VALUES(1,2,3);
-INSERT INTO user_school VALUES(2,3,4);
+INSERT INTO user_school VALUES(1,1,1);
+INSERT INTO user_school VALUES(2,2,2);
+INSERT INTO user_school VALUES(3,3,3);
 
 --/***********************************************************************************************************/
 

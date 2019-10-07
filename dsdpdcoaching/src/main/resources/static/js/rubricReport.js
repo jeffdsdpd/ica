@@ -63,6 +63,12 @@
  
 		$("#schoolName").change(function(){
 				rubricTotal = 0;
+				document.getElementById("emailreport").style.display = "none";
+				document.getElementById("teachercheckbox").style.display = "none";
+				document.getElementById("admincheckbox").style.display = "none";
+				document.getElementById("teacherlabel").style.display = "none";
+				document.getElementById("adminlabel").style.display = "none";
+				document.getElementById("button").style.display = "none";
 				
 				planningLevel = 0;
 				document.getElementById("planningLevelUpData").style.visibility = "hidden";
@@ -207,13 +213,9 @@
 	                     });
 	                    }
 	                });
-	            });
-		
-		$("#teacherName").change(function() {
+
 			var selectedTeacherId = $("#teacherName :selected").val();
 			$("button").prop("disabled",false);
-			document.getElementById("teachercheckbox").style.display = "inline";
-			document.getElementById("admincheckbox").style.display = "inline";
 			$.ajax({
 				type: "GET",
 				url:"getEmailAddress",
@@ -222,16 +224,20 @@
 				success: function (response) {
 					    
 	                $.each(response, function(key, value) {
-	                		$("#teacherlabel").text(value[0]);
-	                		$("#adminlabel").text(value[1]);
+	                		if (value[0] != null) {
+	                			$("#teacherlabel").text(value[0]);
+	                		} else {
+	                			document.getElementById("teachercheckbox").style.display = "none";
+	                		}
+	                		
+	                		if (value[1] != null) {
+	                			$("#adminlabel").text(value[1]);
+	                			
+	                		} else {
+	                			document.getElementById("admincheckbox").style.display = "none";
+	                		}
+	                		
 	                })
-	      
-	                	if ( $("#teacherlabel").text() == "" && 
-			        			$("#adminlabel").text() == "") {
-	                		document.getElementById("teachercheckbox").style.display = "none";
-	                		document.getElementById("admincheckbox").style.display = "none";
-	                		$("button").prop("disabled",true);
-	                	}
 	            }
 	        });
 		});
@@ -239,6 +245,21 @@
 		
 		
 		$("#date").change(function() {
+			
+			if ( $("#teacherlabel").text() != "" ) {
+    				document.getElementById("teacherlabel").style.display = "inline";
+    				document.getElementById("button").style.display = "inline";
+    				document.getElementById("emailreport").style.display = "inline";
+    				document.getElementById("teachercheckbox").style.display = "inline";
+			}
+			
+			if ( $("#adminlabel").text() != "" ) {
+				document.getElementById("adminlabel").style.display = "inline";
+    				document.getElementById("button").style.display = "inline";
+    				document.getElementById("emailreport").style.display = "inline";
+    				document.getElementById("admincheckbox").style.display = "inline";
+			}
+			
 			rubricTotal = 0;
 			
 			planningLevel = 0;
@@ -526,7 +547,7 @@
 	                				
 	   	                		 $.ajax({
 	   	         	                type: "GET",
-	   	         	                url:"getLevelUpById",
+	   	         	                url:"getLevelUpData",
 	   	         	                data:{
 	   	         	                	rubricItemName1:rubricValuesArray[0].name, rubricItemValue1:rubricValuesArray[0].value,
 	   	         	                	rubricItemName2:rubricValuesArray[1].name, rubricItemValue2:rubricValuesArray[1].value,
@@ -553,37 +574,8 @@
 	                		 document.getElementById("questions").value = response.questions;
 	                		 
 	                	 $(".rubricTotal").html(rubricTotal);
-	                	 
-	                	 $("#teacherName").change(function() {
-	             			var selectedTeacherId = $("#teacherName :selected").val();
-	             			$("button").prop("disabled",false);
-	             			document.getElementById("teachercheckbox").style.display = "inline";
-	             			document.getElementById("admincheckbox").style.display = "inline";
-	             			 $.ajax({
-	             	                type: "GET",
-	             	                url:"getEmailAddress",
-	             	                data:{teacherId: selectedTeacherId},
-	             	                dataType: "json",
-	             	                success: function (response) {
-	             	                    	$.each(response, function(key, value) {
-	             	                    		if (key == 0) {
-	             	                    			$("#teacherlabel").text(value);
-	             	                    		} else if (key == 1) {
-	             	                    			$("#userlabel").text(value);
-	             	                    		} else $("#adminlabel").text(value);
-	             	                     });
-	             	                    	if ( $("#teacherlabel").text() == "Teacher Email Unavailable" && 
-	             	                    			$("#adminlabel").text() == "Admin Email Unavailable") {
-	             	                    		document.getElementById("teachercheckbox").style.display = "none";
-	             	                    		document.getElementById("admincheckbox").style.display = "none";
-	             	                    		$("button").prop("disabled",true);
-	             	                    	}
-	                                 	
-	             	                    }
-	             	                });
-	             		});
-	                	 
-	                	
+	               
+	               
 		google.charts.load('current', {'packages':['gauge']});
 	      google.charts.setOnLoadCallback(drawChart);
 	      function drawChart() {
@@ -612,11 +604,13 @@
 		});
 		
 		function format12Hour(timeString) {
-			var H = +timeString.substr(0, 2);
-			var h = H % 12 || 12;
-			var ampm = H < 12 ? "AM" : "PM";
-			timeString = h + timeString.substr(2, 3) + ampm;
-			return timeString;
+			 var date = new Date(timeString);
+			 var hh = date.getHours();
+			 var mm = date.getMinutes();
+			 hh = hh < 10 ? '0'+hh : hh; 
+			 mm = mm < 10 ? '0'+mm : mm;
+			 var curr_time = hh+':'+mm;
+			 return curr_time;
 		};
 		
 

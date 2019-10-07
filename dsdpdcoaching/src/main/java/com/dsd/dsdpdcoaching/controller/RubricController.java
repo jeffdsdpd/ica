@@ -4,8 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.SerializationUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +18,6 @@ import com.dsd.dsdpdcoaching.dto.Rubric;
 @Controller
 @SessionAttributes("schoolList")
 public class RubricController {
-	private static final Logger LOGGER = LoggerFactory.getLogger(RubricController.class);
 
 	@Autowired
 	private RubricDao rubricDao;
@@ -44,7 +41,6 @@ public class RubricController {
 	@PostMapping("/rubricForm")
 	public String postRubricForm(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute Rubric rubricData) {
 
-		LOGGER.debug("About to save rubric data in RubricController");
 		rubricData.setUserId(request.getUserPrincipal().getName());
 		
 		Integer teacherId = rubricData.getTeacherId();
