@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "teachers")
+@Entity(name = "TEACHERS")
 public class Teacher implements Serializable {
 	private static final long serialVersionUID = 197457185756925814L;
 

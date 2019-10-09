@@ -1,5 +1,10 @@
 	$(document).ready(function() {
 		
+		//document.getElementById("classPhoto").src = "";
+	 	$('#rubricnotes').addClass('input-disabled');
+	 	$('#levelup').addClass('input-disabled');
+	 	$('#questions').addClass('input-disabled');
+		
 		var selectedSchoolId = null;
 
 		 $("button").click(function() {
@@ -570,7 +575,7 @@
 	   	                		 });
 
 	                		 document.getElementById("rubricnotes").value = response.rubricNotes;
-	                		 document.getElementById("levelup").value = response.levelup;
+	                		 document.getElementById("levelup").value = response.levelUp;
 	                		 document.getElementById("questions").value = response.questions;
 	                		 
 	                	 $(".rubricTotal").html(rubricTotal);

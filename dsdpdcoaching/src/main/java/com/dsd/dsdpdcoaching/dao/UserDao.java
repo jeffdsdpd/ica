@@ -16,7 +16,7 @@ public class UserDao {
 
 	public User getUserByUsername(String username) {
 	    return entityManager.createQuery(
-	            "from users where username = :username", User.class)
+	            "from USERS where username = :username", User.class)
 	            .setParameter("username", username)
 	            .getSingleResult();
 	}

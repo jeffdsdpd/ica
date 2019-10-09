@@ -210,13 +210,13 @@ public class HTMLRubricEmail implements Serializable {
 				"		    	<th style=\"text-align:center; color: #00b100; font-weight: bold;\">LEVEL UP DATA:</th> \r\n" +
 				"			</tr> \r\n" +
 				"			<tr> \r\n" +
-				"		    	<td style=\"text-align:center; font-weight:normal;\"> \r\n  levelUpItemsToEmail </td>" +
+				"		    	<td style=\"text-align:center; font-weight:normal;\"> \r\n" + levelUpItemsToEmail.get(0) + "</td>" +
 				"			</tr> \r\n" +
 				"			<tr> \r\n" +
-				"		    	<td style=\"text-align:center; font-weight:normal;\"> \r\n levelUpItemsToEmail </td>" +
+				"		    	<td style=\"text-align:center; font-weight:normal;\"> \r\n" + levelUpItemsToEmail.get(1) + "</td>" +
 				"			</tr> \r\n" +
 				"			<tr> \r\n" +
-				"		    	<td style=\"text-align:center; font-weight:normal;\"> \r\n  levelUpItemsToEmail </td>" +
+				"		    	<td style=\"text-align:center; font-weight:normal;\"> \r\n" + levelUpItemsToEmail.get(2) + "</td>" +
 				"			</tr> \r\n" +
 				
 				"			<tr> \r\n" +

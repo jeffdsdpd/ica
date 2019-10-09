@@ -927,7 +927,7 @@ body > .navbar-collapse[data-color="purple"]:after {
 
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
   background-color: #F5F5F5;
-  color: #888888;
+  color: #0000d8;
   cursor: not-allowed;
 }
 

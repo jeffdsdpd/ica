@@ -12,7 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-@Entity(name = "schools")
+@Entity(name = "SCHOOLS")
 public class School implements Serializable {
 	private static final long serialVersionUID = 1646739365424179981L;
 

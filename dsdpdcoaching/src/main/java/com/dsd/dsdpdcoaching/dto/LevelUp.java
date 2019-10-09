@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "level_up")
+@Entity(name = "LEVEL_UP")
 public class LevelUp implements Serializable {
 
 	private static final long serialVersionUID = -7864258018033610410L;

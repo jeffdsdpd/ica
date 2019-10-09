@@ -1,35 +1,26 @@
 
 --/***********************************************************************************************************/
---The following changes were required in my DB from the one I created in the original DB dump file.
---They should not need to be made on your/prod database
-ALTER TABLE users ADD email_address varchar(100);
-
-ALTER TABLE teachers ADD adminemailaddress varchar(100);
-
-CREATE TABLE `user_school` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `schoolid` int(11) DEFAULT NULL,
-  `userid` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`));
-
-INSERT INTO user_school VALUES(1,1,1);
-INSERT INTO user_school VALUES(2,2,2);
-INSERT INTO user_school VALUES(3,3,3);
-
---/***********************************************************************************************************/
+--These updates were made on a database that was copied down from the server to my local database
 
 ALTER TABLE users CHANGE id username varchar(20) NOT NULL;
 
 ALTER TABLE users ADD id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY;
 
+Copy table and data from RUBERIC to RUBRIC
 
-CREATE TABLE user_roles (
+DROP TABLE USER_ROLES
+
+CREATE TABLE USER_ROLES (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id int(11) NOT NULL,
   role varchar(100) NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users (id)
 );
+
+--/***********************************************************************************************************/
+
+
+ALTER TABLE USER_ROLES
 
 ALTER TABLE user_roles ADD UNIQUE unique_user_role_index(user_id, role);
 

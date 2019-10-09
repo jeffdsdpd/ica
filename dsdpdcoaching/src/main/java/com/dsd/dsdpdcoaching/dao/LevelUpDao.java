@@ -26,9 +26,9 @@ public class LevelUpDao {
 	String result1 = null;
 	String result2 = null;
 	String result3 = null;
-	String levelData1 = null;
-	String levelData2 = null;
-	String levelData3 = null;
+	//String levelData1 = null;
+	//String levelData2 = null;
+	//String levelData3 = null;
 	String levelUpPageDisplay[][] = new String[3][2];
 	
 	String rubricItemName1 = request.getParameter("rubricItemName1");
@@ -56,8 +56,8 @@ public class LevelUpDao {
 	query.setParameter(1, rubricItemValue3);
 	query.setParameter(2, rubricItemName3.toUpperCase());
 	result3 = (String) query.getSingleResult();
-	levelUpPageDisplay[2][0]=rubricItemName1;
-	levelUpPageDisplay[2][1]=result1;
+	levelUpPageDisplay[2][0]=rubricItemName3;
+	levelUpPageDisplay[2][1]=result3;
 		
 	return levelUpPageDisplay;
 	}

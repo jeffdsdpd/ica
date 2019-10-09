@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity(name = "user_school")
+@Entity(name = "USER_SCHOOL")
 public class UserSchool implements Serializable {
 	private static final long serialVersionUID = 3049917155747556813L;
 

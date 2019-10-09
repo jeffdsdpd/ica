@@ -13,7 +13,7 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity(name = "rubric")
+@Entity(name = "RUBRIC")
 public class Rubric implements Serializable {
 
 	private static final long serialVersionUID = 5484940451243537773L;

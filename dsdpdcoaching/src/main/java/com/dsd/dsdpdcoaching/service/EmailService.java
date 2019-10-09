@@ -58,6 +58,38 @@ public class EmailService {
 			phase = "2";
 		} else phase = "3";
 		
+		//Check which three of the levelup suggestions we need to email out
+		if (!checkIfNull(request.getParameter("planningLevelData"))) {
+			levelUpItemsToEmail.add(request.getParameter("planningLevelData"));
+		}
+		if (!checkIfNull(request.getParameter("assessLevelData"))) {
+			levelUpItemsToEmail.add(request.getParameter("assessLevelData"));
+		}
+		if (!checkIfNull(request.getParameter("pathLevelData"))) {
+			levelUpItemsToEmail.add(request.getParameter("pathLevelData"));
+		}
+		if (!checkIfNull(request.getParameter("placeLevelData"))) {
+			levelUpItemsToEmail.add(request.getParameter("placeLevelData"));
+		}
+		if (!checkIfNull(request.getParameter("paceLevelData"))) {
+			levelUpItemsToEmail.add(request.getParameter("paceLevelData"));
+		}
+		if (!checkIfNull(request.getParameter("classmgmtLevelData"))) {
+			levelUpItemsToEmail.add(request.getParameter("classmgmtLevelData"));
+		}
+		if (!checkIfNull(request.getParameter("teachroleLevelData"))) {
+			levelUpItemsToEmail.add(request.getParameter("teachroleLevelData"));
+		}
+		if (!checkIfNull(request.getParameter("stengageLevelData"))) {
+			levelUpItemsToEmail.add(request.getParameter("stengageLevelData"));
+		}
+		if (!checkIfNull(request.getParameter("stcollabLevelData"))) {
+			levelUpItemsToEmail.add(request.getParameter("stcollabLevelData"));
+		}
+		if (!checkIfNull(request.getParameter("technologyLevelData"))) {
+			levelUpItemsToEmail.add(request.getParameter("technologyLevelData"));
+		}
+		
 		final String username = "dsdpdemail";
 		final String password = "Flight70";
 		
@@ -120,7 +152,8 @@ public class EmailService {
 		String tools = request.getParameter("tools");
 		
 		final String username = "dsdpdemail";
-		final String password = "Flight70";
+		//final String password = "Flight70";
+		final String password = "Flight00!";
 		
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -162,6 +195,13 @@ public class EmailService {
 			throw new RuntimeException(e);
 		}
 		
+	}
+	
+	boolean checkIfNull(String rubricItem) {
+		if (rubricItem.length() == 0 || rubricItem.contains("not initialized")) {
+			return true;
+		}
+		return false;
 	}
 
 }

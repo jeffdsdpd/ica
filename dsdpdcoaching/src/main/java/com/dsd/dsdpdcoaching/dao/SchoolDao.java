@@ -29,7 +29,7 @@ public class SchoolDao {
 	public List<School> getSchoolsByUser(String username) {
 		LOGGER.debug("Retrieving schools for " + username);
 		// select * from schools where id in (select schoolid from user_school where userid in (select id from users where username='mlynch'));
-	    return entityManager.createQuery("from users where username = :username", School.class)
+	    return entityManager.createQuery("from USERS where username = :username", School.class)
 	    		.setParameter("username", username)
             .getResultList();
 	}

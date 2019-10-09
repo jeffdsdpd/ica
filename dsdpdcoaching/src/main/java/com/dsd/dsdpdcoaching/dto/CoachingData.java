@@ -16,7 +16,7 @@ import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity(name = "coaching_interactions")
+@Entity(name = "COACHING_INTERACTIONS")
 public class CoachingData implements Serializable {
 	private static final long serialVersionUID = 5994240587457165352L;
 
