@@ -42,17 +42,19 @@ public class CoachingData implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "hh:mma")
+	@Column(name="start_time")
 	private Date startTime;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "hh:mma")
+	@Column(name="end_time")
 	private Date endTime;
 
 	@Column
 	@Lob
 	private byte[] photo;
 
-	@Column
+	@Column(name="lesson_title")
 	private String lessonTitle;
 
 	@Column

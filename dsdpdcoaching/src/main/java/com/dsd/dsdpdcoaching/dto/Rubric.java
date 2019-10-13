@@ -16,7 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity(name = "RUBRIC")
 public class Rubric implements Serializable {
 
-	private static final long serialVersionUID = 5484940451243537773L;
+	private static final long serialVersionUID = -4939822350121215142L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -73,10 +73,10 @@ public class Rubric implements Serializable {
 	private String technology;
 	
 	@Column(name="rubricnotes")
-	private String rubricnotes;
+	private String rubricNotes;
 	
 	@Column(name="levelup")
-	private String levelup;
+	private String levelUp;
 	
 	@Column(name="questions")
 	private String questions;
@@ -219,19 +219,19 @@ public class Rubric implements Serializable {
 	}
 
 	public String getRubricNotes() {
-		return rubricnotes;
+		return rubricNotes;
 	}
 
-	public void setRubricNotes(String rubricNotes) {
-		this.rubricnotes = rubricNotes;
+	public void setRubricNotes(String rubricnotes) {
+		this.rubricNotes = rubricnotes;
 	}
 
 	public String getLevelUp() {
-		return levelup;
+		return levelUp;
 	}
 
-	public void setLevelUp(String levelUp) {
-		this.levelup = levelUp;
+	public void setLevelUp(String levelup) {
+		this.levelUp = levelup;
 	}
 
 	public String getQuestions() {
@@ -241,7 +241,5 @@ public class Rubric implements Serializable {
 	public void setQuestions(String questions) {
 		this.questions = questions;
 	}
-	
-	
 	
 }

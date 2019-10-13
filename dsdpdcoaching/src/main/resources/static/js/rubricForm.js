@@ -4,7 +4,7 @@ $(document).ready(
 			$("#schoolId").change(
 					function() {
 						var str = $("#schoolId :selected").val();
-						$("#teacherIds").multiselect('destroy');
+						$("#teacherId").multiselect('destroy');
 
 						$.ajax({
 							type : "GET",

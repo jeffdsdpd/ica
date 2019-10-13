@@ -30,7 +30,7 @@ public class RubricDao {
 
 	//Called by the JSONRequestController to select the rubric to display on the rubricReport.html
 	public Rubric getRubricById(Integer rubricId) {
-	    return entityManager.createQuery("from rubric where id = :rubricId", Rubric.class)
+	    return entityManager.createQuery("from RUBRIC where id = :rubricId", Rubric.class)
     			.setParameter("rubricId", rubricId)
     			.getSingleResult();
 	}
@@ -67,10 +67,10 @@ public class RubricDao {
 		    						+ " CASE WHEN studentengagement like 'Deeply%' THEN 1 else 0 END + "
 		    						+ " CASE WHEN studentcollaboration like 'PBL%' THEN 1 else 0 END + "
 		    						+ " CASE WHEN technology like 'Projects%' THEN 1 else 0 END) AS phase3 "
-		    						+ " FROM rubric R1 "
+		    						+ " FROM RUBRIC R1 "
 		    						+ " WHERE schoolId = ?"
 		    						+ " AND EXISTS (Select null "
-		    						+ " FROM rubric R2 "
+		    						+ " FROM RUBRIC R2 "
 		    						+ " WHERE R2.schoolId = R1.schoolId "
 		    						+ " and R2.teacherId = R1.teacherId "
 		    						+ " GROUP BY schoolId, teacherId "
@@ -114,9 +114,9 @@ public class RubricDao {
 				+ " CASE WHEN studentengagement like 'Deeply%' THEN 1 else 0 END + "
 				+ " CASE WHEN studentcollaboration like 'PBL%' THEN 1 else 0 END + "
 				+ " CASE WHEN technology like 'Projects%' THEN 1 else 0 END) AS phase3 "
-				+ " FROM rubric R1 "
+				+ " FROM RUBRIC R1 "
 				+ " WHERE EXISTS (Select null "
-				+ " FROM rubric R2 "
+				+ " FROM RUBRIC R2 "
 				+ " WHERE R2.schoolId = R1.schoolId "
 				+ " and R2.teacherId = R1.teacherId "
 				+ " GROUP BY schoolId, teacherId "
@@ -159,10 +159,10 @@ public class RubricDao {
 			+ " CASE WHEN studentengagement like 'Deeply%' THEN 1 else 0 END + "
 			+ " CASE WHEN studentcollaboration like 'PBL%' THEN 1 else 0 END + "
 			+ " CASE WHEN technology like 'Projects%' THEN 1 else 0 END) AS phase3 "
-			+ " FROM rubric R1 "
+			+ " FROM RUBRIC R1 "
 			+ " WHERE schoolId in (SELECT schoolid FROM user_school WHERE userid = ?)"
 			+ " AND EXISTS (Select null "
-			+ " FROM rubric R2 "
+			+ " FROM RUBRIC R2 "
 			+ " WHERE R2.schoolId = R1.schoolId "
 			+ " and R2.teacherId = R1.teacherId "
 			+ " GROUP BY schoolId, teacherId "
@@ -177,8 +177,18 @@ public class RubricDao {
 	//Called by the JSONRequestController to select the rubric dates by school to display on the schoolRubricReport.html triggered from dropdown school list
 	@SuppressWarnings("unchecked")
 	public List<Date> getRubricDatesBySchool(Integer schoolId) {
-		return (List<Date>) entityManager.createQuery("select date from rubric where schoolid = :schoolId")
+		return (List<Date>) entityManager.createQuery("select date from RUBRIC where schoolid = :schoolId")
     			.setParameter("schoolId", schoolId)
+    			.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Rubric> getRubricDatesAndId(Integer schoolId, Integer teacherId) {
+		//LOGGER.debug("Retrieving rubric dates for rubric report for teacher id =  " + teacherId);
+		return entityManager.createQuery(
+				"from RUBRIC where schoolid = :schoolId and teacherid = :teacherId")
+				.setParameter("schoolId", schoolId)
+    				.setParameter("teacherId", teacherId)
     			.getResultList();
 	}
 
@@ -193,7 +203,7 @@ public class RubricDao {
 			e.printStackTrace();
 		} 
 
-		 return (List<String>) entityManager.createQuery("select observed from rubric where schoolid = :schoolId and date = :date")
+		 return (List<String>) entityManager.createQuery("select observed from RUBRIC where schoolid = :schoolId and date = :date")
     			.setParameter("schoolId", schoolId)
     			.setParameter("date", date1, TemporalType.DATE)
     			.getResultList();
@@ -209,7 +219,7 @@ public class RubricDao {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		} 
-		return (List<Rubric>) entityManager.createQuery("from rubric where schoolid = :schoolId and date = :date and observed = :observed")
+		return (List<Rubric>) entityManager.createQuery("from RUBRIC where schoolid = :schoolId and date = :date and observed = :observed")
 	    			.setParameter("schoolId", schoolId)
 	    			.setParameter("date", date1, TemporalType.DATE)
 	    			.setParameter("observed", observed)

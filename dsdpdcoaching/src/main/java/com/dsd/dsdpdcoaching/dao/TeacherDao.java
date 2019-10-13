@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
-import com.dsd.dsdpdcoaching.dto.Rubric;
 import com.dsd.dsdpdcoaching.dto.Teacher;
 
 @Repository
@@ -22,14 +21,14 @@ public class TeacherDao {
 	public List<Teacher> getTeachers() {
 		//LOGGER.debug("Retrieving teachers");
 	    return entityManager.createQuery(
-	    			"from teachers", Teacher.class)
+	    			"from TEACHERS", Teacher.class)
 	            .getResultList();
 	}
 	
 	public List<Teacher> getTeachersBySchoolId(Integer id) {
 		//LOGGER.debug("Retrieving teachers for school id " + id);
 	    return entityManager.createQuery(
-	    			"from teachers where schoolid = :id", Teacher.class)
+	    			"from TEACHERS where schoolid = :id", Teacher.class)
 	    			.setParameter("id", id)
 	            .getResultList();
 	}
@@ -38,18 +37,8 @@ public class TeacherDao {
 	public List<Map<String, String>> getEmailAddress(Integer teacherId) {
 		//LOGGER.debug("Retrieving emails for coaching report for teacher id =  " + teacherId);
 		return (List<Map<String, String>>)entityManager
-	    		.createQuery("select new map (emailAddress, adminEmailAddress) from teachers t where id = :teacherid")
+	    		.createQuery("select new map (emailAddress, adminEmailAddress) from TEACHERS t where id = :teacherid")
     			.setParameter("teacherid", teacherId)
-    			.getResultList();
-	}
-
-	@SuppressWarnings("unchecked")
-	public List<Rubric> getRubricDatesAndId(Integer schoolId, Integer teacherId) {
-		//LOGGER.debug("Retrieving rubric dates for rubric report for teacher id =  " + teacherId);
-		return entityManager.createQuery(
-				"from rubric where schoolid = :schoolId and teacherid = :teacherId")
-				.setParameter("schoolId", schoolId)
-    				.setParameter("teacherId", teacherId)
     			.getResultList();
 	}
 

@@ -66,17 +66,17 @@
 		                                        </div>                          
 		      
 		                                        <div class="col-md-5">
-		                                            <div class="form-group">
-		                                                <label>Teacher</label> <br></br>
-		                                            			<select style="display:none;" th:field="*{teacherId}">
-								                         		<option value=""> Please Select </option>
-								                         		<option th:each="teacher : ${teachers}"
-								                            				th:value="${teacher.teacherId}"
-								                            				th:text="${teacher.teacherId">
-																</option>
-								                  			</select>
-		                                            </div>
-		                                        </div>
+												<div class="form-group">
+													<label>Teacher</label> <br></br>
+													<!-- <select id="teacherIds" multiple="multiple" style="display:none;" th:field="*{teacherIds}"></select> -->
+													<select id="teacherId" style="display: none;" th:field="*{teacherId}">
+														<option value=""> Please Select </option>
+														<option th:each="teacher : ${teachers}"
+															th:value="${teacher.teacherId}"
+															th:utext="${teacher.teacherId" />
+													</select>
+												</div>
+											</div>
 		                                    </div>
 		
 		                                    <div class="row">
@@ -193,7 +193,7 @@
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>Rubric Notes</label>
-                                                <textarea rows="5" cols="50" class="form-control" placeholder="Notes from Rubric" name="rubricnotes" id="rubricnotes" wrap="hard" maxlength="500"></textarea><br />
+                                                <textarea rows="5" cols="50" class="form-control" placeholder="Notes from Rubric" name="rubricNotes" id="rubricNotes" wrap="hard" maxlength="500"></textarea><br />
 											</div>
                                         </div>
                                     </div>
@@ -202,7 +202,7 @@
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>Levelup Strategies</label>
-                                                <textarea rows="5" cols="50" class="form-control" placeholder="Levelup Strategies" name="levelup" id="levelup" wrap="hard" maxlength="500"></textarea><br />
+                                                <textarea rows="5" cols="50" class="form-control" placeholder="Levelup Strategies" name="levelUp" id="levelUp" wrap="hard" maxlength="500"></textarea><br />
 											</div>
                                         </div>
                                     </div>

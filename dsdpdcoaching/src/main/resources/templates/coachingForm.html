@@ -31,11 +31,9 @@
 
 <!--   Fonts and icons     -->
 <link href="css/lib/pe-icon-7-stroke.css" rel="stylesheet" />
-<link href='//fonts.googleapis.com/css?family=Roboto:400,700,300'
-	rel='stylesheet' type='text/css' />
-<link
-	href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'
-	rel='stylesheet' type='text/css' />
+<link href='//fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css' />
+<link href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css' />
+
 </head>
 <body>
 	<div class="wrapper">
@@ -53,8 +51,7 @@
 									<h2 class="title">Coaching Form</h2>
 								</div>
 								<div class="content">
-									<form id="frm" name="frm" action="#"
-										th:action="@{/coachingForm}" th:object="${coachingData}"
+									<form id="frm" name="frm" action="#" th:action="@{/coachingForm}" th:object="${coachingData}"
 										method="post" enctype="multipart/form-data">
 										<div class="row">
 											<div class="col-md-5">
@@ -92,16 +89,16 @@
 											</div>
 											<div class="col-md-2">
 												<div class="form-group">
-													<label>Start Time</label> <input type="text" id="startTime"
-														class="time form-control" placeholder="Start Time"
-														th:field="*{startTime}" />
+													<label>Start Time</label>
+													<input type="text" id="startTime"
+														class="time form-control" placeholder="Start Time" th:field="*{startTime}" />
 												</div>
 											</div>
 											<div class="col-md-2">
 												<div class="form-group">
-													<label>End Time</label> <input type="text" id="endTime"
-														class="form-control" placeholder="End Time"
-														th:field="*{endTime}" />
+													<label>End Time</label>
+													<input type="text" id="endTime" 
+														class="form-control" placeholder="End Time" th:field="*{endTime}" />
 												</div>
 											</div>
 										</div>
@@ -121,10 +118,9 @@
 										<div class="row">
 											<div class="col-md-4">
 												<div class="form-group">
-													<label class="control-label">Lesson Title</label> <input
-														type="text" id="lessontitle" class="form-control"
-														placeholder="Lesson Title" maxlength="100"
-														th:field="*{lessonTitle}" />
+													<label class="control-label">Lesson Title</label> 
+													<input type="text" id="lessontitle" 
+														class="form-control" placeholder="Lesson Title" maxlength="100" th:field="*{lessonTitle}" />
 												</div>
 											</div>
 										</div>
@@ -132,16 +128,14 @@
 										<div class="row">
 											<div class="col-md-9">
 												<div class="form-group">
-													<label>Notes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-														readonly="readonly" type="text" name="remLen" size="4"
-														value="1000" style="border: 0;"></input><label
-														class='foot'>characters left</label>
-													<textarea rows="7" cols="50" class="form-control"
-														placeholder="Notes" id="notes" wrap="hard"
-														maxlength="1000"
+													<label>Notes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<input readonly="readonly" type="text" name="remLen" size="4" value="1000" style="border: 0;"></input>
+													<label class='foot'>characters left</label>
+													<textarea rows="7" cols="50" class="form-control" placeholder="Notes" id="notes" wrap="hard" maxlength="1000"
 														onKeyDown="textCounter(this.form.notes,this.form.remLen,1000);"
 														onKeyUp="textCounter(this.form.notes,this.form.remLen,1000);"
-														th:field="*{notes}"></textarea>
+														th:field="*{notes}">
+													</textarea>
 													<br></br>
 												</div>
 											</div>
@@ -149,16 +143,14 @@
 										<div class="row">
 											<div class="col-md-9">
 												<div class="form-group">
-													<label>Strategies</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-														readonly="readonly" type="text" name="remLen1" size="3"
-														value="300" style="border: 0;"></input><label class='foot'>characters
-														left</label>
-													<textarea rows="4" cols="50" class="form-control"
-														placeholder="Strategies" id="strategies" wrap="hard"
-														maxlength="300"
+													<label>Strategies</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<input readonly="readonly" type="text" name="remLen1" size="3" value="300" style="border: 0;"></input>
+													<label class='foot'>characters left</label>
+													<textarea rows="4" cols="50" class="form-control" placeholder="Strategies" id="strategies" wrap="hard" maxlength="300"
 														onKeyDown="textCounter(this.form.strategies,this.form.remLen1,300);"
 														onKeyUp="textCounter(this.form.strategies,this.form.remLen1,300);"
-														th:field="*{strategies}"></textarea>
+														th:field="*{strategies}">
+													</textarea>
 													<br></br>
 												</div>
 											</div>
@@ -166,16 +158,14 @@
 										<div class="row">
 											<div class="col-md-9">
 												<div class="form-group">
-													<label>Next Steps</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-														readonly="readonly" type="text" name="remLen2" size="3"
-														maxlength="3" value="200" style="border: 0;"></input><label
-														class='foot'>characters left</label>
-													<textarea rows="4" cols="50" class="form-control"
-														placeholder="Next Steps" id="goals" wrap="hard"
-														maxlength="200"
+													<label>Next Steps</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<input readonly="readonly" type="text" name="remLen2" size="3" maxlength="3" value="200" style="border: 0;"></input>
+													<label class='foot'>characters left</label>
+													<textarea rows="4" cols="50" class="form-control" placeholder="Next Steps" id="goals" wrap="hard" maxlength="200"
 														onKeyDown="textCounter(this.form.goals,this.form.remLen2,200);"
 														onKeyUp="textCounter(this.form.goals,this.form.remLen2,200);"
-														th:field="*{goals}"></textarea>
+														th:field="*{goals}">
+													</textarea>
 													<br></br>
 												</div>
 											</div>

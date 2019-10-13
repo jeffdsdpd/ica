@@ -22,7 +22,7 @@ public class CoachingDataDao {
 	
 	public List<CoachingData> getCoachingData() {
 		//LOGGER.debug("Retrieving all coaching data");
-	    return entityManager.createQuery("from coaching_interactions", CoachingData.class)
+	    return entityManager.createQuery("from COACHING_INTERACTIONS", CoachingData.class)
 	            .getResultList();
 	}
 	
@@ -30,7 +30,7 @@ public class CoachingDataDao {
 	public List<Map<Integer, Date>> getCoachingDatesBySchoolAndTeacher(Integer schoolId, Integer teacherId) {
 		//LOGGER.debug("Retrieving coaching dates for school id " + schoolId + " and teacher id " + teacherId);
 	    return (List<Map<Integer, Date>>)entityManager
-	    		.createQuery("select new map(ci.id as id, ci.entryDate as entryDate) from coaching_interactions ci where schoolid = :schoolid and teacherid = :teacherid order by entryDate desc")
+	    		.createQuery("select new map(ci.id as id, ci.entryDate as entryDate) from COACHING_INTERACTIONS ci where schoolid = :schoolid and teacherid = :teacherid order by entryDate desc")
     			.setParameter("schoolid", schoolId)
     			.setParameter("teacherid", teacherId)
     			.getResultList();
@@ -38,7 +38,7 @@ public class CoachingDataDao {
 	
 	public CoachingData getCoachingDataById(Integer id) {
 		//LOGGER.debug("Retrieving coaching data for id " + id);
-	    return entityManager.createQuery("from coaching_interactions where id = :id", CoachingData.class)
+	    return entityManager.createQuery("from COACHING_INTERACTIONS where id = :id", CoachingData.class)
     			.setParameter("id", id)
     			.getSingleResult();
 	}

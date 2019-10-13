@@ -76,7 +76,7 @@ public class JSONRequestController extends HttpServlet {
 	@GetMapping(value="/getRubricDatesAndId")
 	@ResponseBody
 	public List<Rubric> getRubricDatesAndId(@RequestParam Integer schoolId, @RequestParam Integer teacherId) {	
-		return teacherDao.getRubricDatesAndId(schoolId, teacherId);
+		return rubricDao.getRubricDatesAndId(schoolId, teacherId);
 	}
 	
 	//Called from rubricReport.js

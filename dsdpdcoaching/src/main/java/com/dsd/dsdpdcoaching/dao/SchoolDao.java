@@ -22,7 +22,7 @@ public class SchoolDao {
 	
 	public List<School> getSchools() {
 		LOGGER.debug("Retrieving schools for admin user");
-	    return entityManager.createQuery("from schools", School.class)
+	    return entityManager.createQuery("from SCHOOLS", School.class)
 	            .getResultList();
 	}
 

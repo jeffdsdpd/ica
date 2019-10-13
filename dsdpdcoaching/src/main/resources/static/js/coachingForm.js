@@ -30,56 +30,37 @@ $(document).ready(
 					});
 
 			$("#frm").validate({
-				rules : {
-					schoolId : {
-						required : true
-					},
-					teacherIds : {
-						required : true
-					},
-					date : {
-						required : true
-					},
-					startTime : {
-						required : true
-					},
-					endTime : {
-						required : true
-					}
-				},
-				messages : {
-					schoolId : "School is required",
-					teacherIds : "Teacher(s) is required",
-					date : "Date is required",
-					startTime : "Start time is required",
-					endTime : "End time is required"
-				},
-				highlight : function(element) {
-					$(element).parent().addClass('error')
-				},
-			});
+				rules: {
+			      	schoolId: { required: true },
+					teacherIds: { required: true },
+					entryDate: { required: true },
+					startTime: { required: true },
+					endTime: { required: true },
+					notes: { required: true },
+					strategies: { required: true },
+					goals: { required: true },
+					tools: { required: true }
+		         },
+		         messages: {
+			        	 schoolId: "School is required",
+			        	 teacherIds: "Teacher(s) is required",
+			        	 entryDate: "Date is required",
+			        	 startTime: "Start time is required",
+			        	 endTime: "End time is required",
+			        	 notes: "Notes are required",
+			        	 strategies: "Strategies are required",
+			        	 goals: "Goals are required",
+			        	 tools: "Tools are required"
+		         },
+		         highlight: function (element) {
+		             $(element).parent().addClass('error')
+		         },
+		         unhighlight: function (element) {
+		             $(element).parent().removeClass('error')
+		         }
+		     });
 		});
 
-	$("#coachingForm").validate({
-      	rules: {
-	      	schoolId: { required: true },
-			teacherIds: { required: true },
-			entryDate: { required: true },
-			startTime: { required: true },
-			endTime: { required: true }
-         },
-         messages: {
-	        	 schoolId: "School is required",
-	        	 teacherIds: "Teacher(s) is required",
-	        	 entryDate: "Date is required",
-	        	 startTime: "Start time is required",
-	        	 endTime: "End time is required"
-         },
-         highlight: function (element) {
-             $(element).parent().addClass('error')
-         }
-     });
-	
 $(function() {
 	$("#entryDate").datepicker();
 });
