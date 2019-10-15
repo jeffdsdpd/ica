@@ -7,11 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.dsd.dsdpdcoaching.dao.LoginDao;
 import com.dsd.dsdpdcoaching.dao.SchoolDao;
 import com.dsd.dsdpdcoaching.dao.UserDao;
 import com.dsd.dsdpdcoaching.dto.School;
@@ -22,15 +24,20 @@ import com.dsd.dsdpdcoaching.dto.UserSchool;
 @SessionAttributes("schoolList")
 public class DashboardController {
 	
+	private static final Authentication Authentication = null;
 	@Autowired
 	private SchoolDao schoolDao;
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private LoginDao loginDao;
 	
 	//Starting point after logging in to the application
 	@GetMapping({"/", "/dashboard.html"})
-	public String getDashboard(HttpServletRequest request, HttpSession session) {	
-		  
+	public String getDashboard(HttpServletRequest request, HttpSession session) {
+		if (request.getHeader("referer").contains("login.html")) {
+			loginDao.insertLogin();
+		}
 		return "dashboard";
 	}
 
