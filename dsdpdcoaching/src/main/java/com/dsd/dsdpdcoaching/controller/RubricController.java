@@ -33,6 +33,11 @@ public class RubricController {
 		return "rubricReport";
 	}
 	
+	@GetMapping("/teacherProgressionReport.html")
+	public String getTeacherProgressionReport(Model model) {
+		return "teacherProgressionReport";
+	}
+	
 	@GetMapping("/schoolRubricReport.html")
 	public String getSchoolRubricReport(Model model) {
 		return "schoolRubricReport";

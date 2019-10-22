@@ -1,15 +1,12 @@
 $(document).ready(function() {
 	var selectedSchoolId = null;
 	var selectedDate = null;
-	var selectedDataEntered = null;
 
 	//SCHOOL field has changed
 	$("#schoolName").change(function() {
 		clearRubricFields();
 		$("#container").fadeOut("slow");
 		$("#date").empty();
-		$("#dataentered").empty();
-		$("#dataentered").append($("<option></option>").attr("value", '').text('Please Select'));
 		
 		selectedSchoolId =  $("#schoolName :selected").val();
 		$.ajax({
@@ -34,140 +31,121 @@ $(document).ready(function() {
 		clearRubricFields();
 		$("#container").fadeOut("slow");
 		selectedSchoolId =  $("#schoolName :selected").val();
-		selectedDate =   $("#date :selected").val();
-				
-        $.ajax({
-            type: "GET",
-            url:"getRubricObservedValuesBySchoolAndDate",
-            data:{schoolId: selectedSchoolId, date: selectedDate},
-            dataType: "json",
-            success: function (response) {
-            	var $dropdownList = $("#dataentered");
-            	$dropdownList.empty();
-            	$dropdownList.append($("<option></option>").attr("value", '').text('Please Select'));
-            	 $.each(response, function(value, key) {
-                     $dropdownList.append($("<option></option>").attr("value", key).text((key)));
-                 });			
-                } //end of the 'success' function
-            }); //end of the ajax function
-        }); //end of the 'date' change function
-	
-	//DATEENTERED field has changed
-	$("#dataentered").change(function(){
-		clearRubricFields();
-		$("#container").fadeOut("slow");
-		selectedSchoolId =  $("#schoolName :selected").val();
-		selectedDate =   $("#date :selected").val();
-		selectedDataEntered = $("#dataentered :selected").text();
-		
+		selectedDate =   $("#date :selected").val();	
 		$("#container").fadeIn("slow");
 				
 		$.ajax({
             type: "GET",
             url:"getRubricValuesBySchoolDateObserved",
-            data:{schoolId:selectedSchoolId, date:selectedDate, observed:selectedDataEntered},
+            data:{schoolId:selectedSchoolId, date:selectedDate},
             dataType: "json",
             success: function (response) {
+            	var nbrOfRecords = 0;
+            	
+            	$.each(response, function(value, key) {
+            		nbrOfRecords += 1 ;
 
-            		 if ((response[0].planning) != null) {
-            		 if ((response[0].planning) == ("Whole group timer")) {
+            		 if ((response[value].planning) != null) {
+            		 if ((response[value].planning) == ("Whole group timer")) {
             			 planningPhaseOne += 1; }
-            		 	else if ((response[0].planning).includes("implements checklist")) {
+            		 	else if ((response[value].planning).includes("implements checklist")) {
             		 		planningPhaseTwo += 1; }
-            		 	else if ((response[0].planning).includes("differentiated")) {
+            		 	else if ((response[value].planning).includes("differentiated")) {
             		 		planningPhaseThree += 1; }
             		 	else planningNE += 1;
             		 } else planningNE += 1;
             		  
-            		 if ((response[0].assessmentAndData) != null) {
-            		 if ((response[0].assessmentAndData).includes("Collecting")) {
+            		 if ((response[value].assessmentAndData) != null) {
+            		 if ((response[value].assessmentAndData).includes("Collecting")) {
             			 assessanddataPhaseOne += 1; }
-            		 	else if ((response[0].assessmentAndData).includes("Using")) {
+            		 	else if ((response[value].assessmentAndData).includes("Using")) {
             		 		assessanddataPhaseTwo += 1; }
-            		 	else if ((response[0].assessmentAndData).includes("advance")) {
+            		 	else if ((response[value].assessmentAndData).includes("advance")) {
             		 		assessanddataPhaseThree += 1; }
             		 	else assessanddataNE += 1;
             		 } else assessanddataNE += 1;
             		 
-            		 if ((response[0].path) != null) {
-            		 if ((response[0].path).includes("Same")) {
+            		 if ((response[value].path) != null) {
+            		 if ((response[value].path).includes("Same")) {
             			 pathPhaseOne += 1; }
-            		 	else if ((response[0].path).includes("Differentiated")) {
+            		 	else if ((response[value].path).includes("Differentiated")) {
             		 		pathPhaseTwo += 1; }
-            		 	else if ((response[0].path).includes("Individual")) {
+            		 	else if ((response[value].path).includes("Individual")) {
             		 		pathPhaseThree += 1; }
             		 	else pathNE += 1;
             		 } else pathNE += 1;
             		 
-            		 if ((response[0].place) != null) {
-            		 if ((response[0].place).includes("Move")) {
+            		 if ((response[value].place) != null) {
+            		 if ((response[value].place).includes("Move")) {
             			 placePhaseOne += 1; }
-            		 	else if ((response[0].place).includes("Flexible")) {
+            		 	else if ((response[value].place).includes("Flexible")) {
             		 		placePhaseTwo += 1; }
-            		 	else if ((response[0].place).includes("Pick")) {
+            		 	else if ((response[value].place).includes("Pick")) {
             		 		placePhaseThree += 1; }
             		 	else placeNE += 1;
             		 } else placeNE += 1;
             		 
-            		 if ((response[0].pace) != null) {
-            		 if ((response[0].pace).includes("timer")) {
+            		 if ((response[value].pace) != null) {
+            		 if ((response[value].pace).includes("timer")) {
             			 pacePhaseOne += 1; }
-            		 	else if ((response[0].pace).includes("move")) {
+            		 	else if ((response[value].pace).includes("move")) {
             		 		pacePhaseTwo += 1; }
-            		 	else if ((response[0].pace).includes("mastery")) {
+            		 	else if ((response[value].pace).includes("mastery")) {
             		 		pacePhaseThree += 1; }
             		 	else paceNE += 1;
             		 } else paceNE += 1;
             		 
-            		 if ((response[0].classroomManagement) != null) {
-            		 if ((response[0].classroomManagement).includes("Restating")) {
+            		 if ((response[value].classroommgmt) != null) {
+            		 if ((response[value].classroommgmt).includes("Restating")) {
             			 classmgmtPhaseOne += 1; }
-            		 	else if ((response[0].classroomManagement).includes("Self")) {
+            		 	else if ((response[value].classroommgmt).includes("Self")) {
             		 		classmgmtPhaseTwo += 1; }
-            		 	else if ((response[0].classroomManagement).includes("Automatic")) {
+            		 	else if ((response[value].classroommgmt).includes("Automatic")) {
             		 		classmgmtPhaseThree += 1; }
             		 	else classmgmtNE += 1;
             		 } else classmgmtNE += 1;
             		 
-            		 if ((response[0].teacherRole) != null) {
-            		 if ((response[0].teacherRole).includes("facilitator")) {
+            		 if ((response[value].teacherrole) != null) {
+            		 if ((response[value].teacherrole).includes("facilitator")) {
             			 teacherrolePhaseOne += 1; }
-            		 	else if ((response[0].teacherRole).includes("distractions")) {
+            		 	else if ((response[value].teacherrole).includes("distractions")) {
             		 		teacherrolePhaseTwo += 1; }
-            		 	else if ((response[0].teacherRole).includes("99%")) {
+            		 	else if ((response[value].teacherrole).includes("99%")) {
             		 		teacherrolePhaseThree += 1; }
             		 	else teacherroleNE += 1;
             		 } else teacherroleNE += 1;
             		 
-            		 if ((response[0].studentEngagement) != null) {
-            		 if ((response[0].studentEngagement).includes("Following")) {
+            		 if ((response[value].studentegmt) != null) {
+            		 if ((response[value].studentegmt).includes("Following")) {
             			 studentengagePhaseOne += 1; }
-            		 	else if ((response[0].studentEngagement).includes("Engaged")) {
+            		 	else if ((response[value].studentegmt).includes("Engaged")) {
             		 		studentengagePhaseTwo += 1; }
-            		 	else if ((response[0].studentEngagement).includes("Deeply")) {
+            		 	else if ((response[value].studentegmt).includes("Deeply")) {
             		 		studentengagePhaseThree += 1; }
             		 	else studentengageNE += 1;
             		 } else studentengageNE += 1;
             		 
-            		 if ((response[0].studentCollaboration) != null) {
-            		 if ((response[0].studentCollaboration).includes("Teacher")) {
+            		 if ((response[value].studentcolab) != null) {
+            		 if ((response[value].studentcolab).includes("Teacher")) {
             			 studentcollabPhaseOne += 1; }
-            		 	else if ((response[0].studentCollaboration).includes("Choice")) {
+            		 	else if ((response[value].studentcolab).includes("Choice")) {
             		 		studentcollabPhaseTwo += 1; }
-            		 	else if ((response[0].studentCollaboration).includes("PBL")) {
+            		 	else if ((response[value].studentcolab).includes("PBL")) {
             		 		studentcollabPhaseThree += 1; }
             		 	else studentcollabNE += 1;
             		 } else studentcollabNE += 1;
 
-            		if ((response[0].technology) != null) {
-            		 if ((response[0].technology) != null && (response[0].technology).includes("Technology")) {
+            		if ((response[value].technology) != null) {
+            		 if ((response[value].technology).includes("Technology")) {
             			 technologyPhaseOne += 1; }
-            		 	else if ((response[0].technology).includes("Using")) {
+            		 	else if ((response[value].technology).includes("Using")) {
             		 		technologyPhaseTwo += 1; }
-            		 	else if ((response[0].technology).includes("Students")) {
+            		 	else if ((response[value].technology).includes("Students")) {
             		 		technologyPhaseThree += 1; }
             		 	else technologyNE += 1;
             		} else technologyNE += 1;
+            		
+            	});//end of iterating through response
                
             	 
             	 $(".planningPhaseOne").html(planningPhaseOne);
@@ -235,6 +213,9 @@ $(document).ready(function() {
             		    title: {
             		        text: 'Rubric Values For ' + $("#date :selected").val()
             		    },
+            		    subtitle: {
+            		        text: nbrOfRecords + ' RUBRIC(S) entered on ' + $("#date :selected").val()
+            		    },
             		    plotOptions: {
             		        series: {
             		            depth: 25,
@@ -258,13 +239,9 @@ $(document).ready(function() {
             		        data: [planningPhaseThree, assessanddataPhaseThree, pathPhaseThree, placePhaseThree, pacePhaseThree, classmgmtPhaseThree, teacherrolePhaseThree, studentengagePhaseThree, studentcollabPhaseThree, technologyPhaseThree],
             		    }]
             		});
-            	 
-
             } //end of success for 'dataentered' field changed ajax function
         }); //end of the ajax function
-	}); //end of the 'dataentered' change function
-	
-	
+	}); //end of the 'date change' change function
 	
 }); //end of the 'document' ready function
 		

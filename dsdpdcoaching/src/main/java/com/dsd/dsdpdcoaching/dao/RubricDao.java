@@ -160,7 +160,7 @@ public class RubricDao {
 			+ " CASE WHEN studentcollaboration like 'PBL%' THEN 1 else 0 END + "
 			+ " CASE WHEN technology like 'Projects%' THEN 1 else 0 END) AS phase3 "
 			+ " FROM RUBRIC R1 "
-			+ " WHERE schoolId in (SELECT schoolid FROM user_school WHERE userid = ?)"
+			+ " WHERE schoolId in (SELECT schoolid FROM USER_SCHOOL WHERE userid = ?)"
 			+ " AND EXISTS (Select null "
 			+ " FROM RUBRIC R2 "
 			+ " WHERE R2.schoolId = R1.schoolId "
@@ -177,7 +177,7 @@ public class RubricDao {
 	//Called by the JSONRequestController to select the rubric dates by school to display on the schoolRubricReport.html triggered from dropdown school list
 	@SuppressWarnings("unchecked")
 	public List<Date> getRubricDatesBySchool(Integer schoolId) {
-		return (List<Date>) entityManager.createQuery("select date from RUBRIC where schoolid = :schoolId")
+		return (List<Date>) entityManager.createQuery("select distinct date from RUBRIC where schoolid = :schoolId and observed = 'Observed Classroom' order by date desc")
     			.setParameter("schoolId", schoolId)
     			.getResultList();
 	}
@@ -211,7 +211,7 @@ public class RubricDao {
 
 	//Called by the JSONRequestController to get the rubic data to create the graph on the schoolRubricReport.html
 	@SuppressWarnings("unchecked")
-	public List<Rubric> getRubricValuesBySchoolDateObserved(Integer schoolId, String date, String observed) {
+	public List<Rubric> getRubricValuesBySchoolDateObserved(Integer schoolId, String date) {
 		SimpleDateFormat formatter1=new SimpleDateFormat("yyyy-MM-dd");
 		Date date1 = null;
 		try {
@@ -219,15 +219,41 @@ public class RubricDao {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		} 
-		return (List<Rubric>) entityManager.createQuery("from RUBRIC where schoolid = :schoolId and date = :date and observed = :observed")
+		return (List<Rubric>) entityManager.createQuery("from RUBRIC where schoolid = :schoolId and date = :date and observed = 'Observed Classroom'")
 	    			.setParameter("schoolId", schoolId)
 	    			.setParameter("date", date1, TemporalType.DATE)
-	    			.setParameter("observed", observed)
 	    			.getResultList();
 	}
 
 	public Object sendRubricEmail() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public Rubric getTeacherProgressionReportData(Integer sid, Integer tid) {
+
+		
+		String sql = "SELECT R.ID, R.LEVELUP, R.DATE, R.OBSERVED, R.QUESTIONS, R.RUBRICNOTES, R.SCHOOLID, R.TEACHERID, R.TIMEOBSERVED, " +
+				" R.USERID, R.PLANNING, R.ASSESSMENTANDDATA, R.PATH, R.PLACE, R.PACE, R.CLASSROOMMANAGEMENT, R.TEACHERROLE, " +
+				" R.STUDENTENGAGEMENT, R.STUDENTCOLLABORATION, R.TECHNOLOGY " +
+				" FROM RUBRIC R " +
+				" WHERE R.SCHOOLID = ?" + 
+				" AND R.TEACHERID = ?" + 
+				" AND R.OBSERVED = 'Observed Classroom'" + 
+				" AND R.DATE = (SELECT MIN(DATE) FROM RUBRIC R2 WHERE R2.SCHOOLID = ? AND R2.TEACHERID = ? AND R2.OBSERVED = 'Observed Classroom')" +
+				" GROUP BY ID, DATE, PLANNING, ASSESSMENTANDDATA, PATH, PLACE, PACE, CLASSROOMMANAGEMENT, TEACHERROLE, STUDENTENGAGEMENT, STUDENTCOLLABORATION, TECHNOLOGY";
+
+		Query query = entityManager.createNativeQuery(sql, Rubric.class);
+		query.setParameter(1, sid);
+		query.setParameter(2, tid);
+		query.setParameter(3, sid);
+		query.setParameter(4, tid);
+		//TeacherProgressionReportData results = (TeacherProgressionReportData) query.getResultList();
+		//TeacherProgressionReportData teacherProgressionReportData = (TeacherProgressionReportData) query.getSingleResult();
+	
+		Rubric rubric = (Rubric) query.getSingleResult();
+		return rubric;
+		
+		
 	}
 }

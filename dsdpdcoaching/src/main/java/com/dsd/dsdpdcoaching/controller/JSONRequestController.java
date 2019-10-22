@@ -23,6 +23,7 @@ import com.dsd.dsdpdcoaching.dto.CoachingData;
 import com.dsd.dsdpdcoaching.dto.PhaseValues;
 import com.dsd.dsdpdcoaching.dto.Rubric;
 import com.dsd.dsdpdcoaching.dto.Teacher;
+import com.dsd.dsdpdcoaching.dto.TeacherProgressionReportData;
 import com.dsd.dsdpdcoaching.dto.User;
 import com.dsd.dsdpdcoaching.service.EmailService;
 
@@ -95,18 +96,18 @@ public class JSONRequestController extends HttpServlet {
 		return rubricDao.getRubricDatesBySchool(schoolId);
 	}
 	
-	//Called from schoolRubricReport.js to get the values of how the rubric data was collected (e.g. observed, teacher, etc..)
-	@GetMapping(value="/getRubricObservedValuesBySchoolAndDate")
-	@ResponseBody
-	public List<String> getRubricObservedValuesBySchoolAndDate(@RequestParam Integer schoolId, @RequestParam String date) {	
-		return rubricDao.getRubricObservedValuesBySchoolAndDate(schoolId, date);
-	}
-	
 	//Called from schoolRubricReport.js to get the data for the graph
 	@GetMapping(value="/getRubricValuesBySchoolDateObserved")
 	@ResponseBody
-	public List<Rubric> getRubricValuesBySchoolDateObserved(@RequestParam Integer schoolId, @RequestParam String date, @RequestParam String observed) {	
-		return rubricDao.getRubricValuesBySchoolDateObserved(schoolId, date, observed);
+	public List<Rubric> getRubricValuesBySchoolDateObserved(@RequestParam Integer schoolId, @RequestParam String date) {	
+		return rubricDao.getRubricValuesBySchoolDateObserved(schoolId, date);
+	}
+	
+	//Called from teacherProgressionReport.js to get the data for the graph
+	@GetMapping(value="/getTeacherProgressionReportData")
+	@ResponseBody
+	public Rubric getTeacherProgressionReportData(@RequestParam Integer schoolId, @RequestParam Integer teacherId) {	
+		return rubricDao.getTeacherProgressionReportData(schoolId, teacherId);
 	}
 	
 	//Called from rubricReport.js to send the rubric report email

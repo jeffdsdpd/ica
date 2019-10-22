@@ -22,14 +22,13 @@ public class SchoolDao {
 	
 	public List<School> getSchools() {
 		LOGGER.debug("Retrieving schools for admin user");
-	    return entityManager.createQuery("from SCHOOLS", School.class)
+	    return entityManager.createQuery("from SCHOOLS order by name", School.class)
 	            .getResultList();
 	}
 
 	public List<School> getSchoolsByUser(String username) {
 		LOGGER.debug("Retrieving schools for " + username);
-		// select * from schools where id in (select schoolid from user_school where userid in (select id from users where username='mlynch'));
-	    return entityManager.createQuery("from USERS where username = :username", School.class)
+	    return entityManager.createQuery("from USERS where username = :username ORDER BY name", School.class)
 	    		.setParameter("username", username)
             .getResultList();
 	}
