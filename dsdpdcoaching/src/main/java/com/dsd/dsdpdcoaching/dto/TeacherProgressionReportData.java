@@ -1,11 +1,14 @@
 package com.dsd.dsdpdcoaching.dto;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import org.springframework.stereotype.Component;
+
 @Entity
+@Component
 public class TeacherProgressionReportData implements Serializable {
 
 	private static final long serialVersionUID = -5238678864495240271L;
@@ -25,7 +28,7 @@ public class TeacherProgressionReportData implements Serializable {
         this.id = id;
     }
 	
-	private String schoolId;
+	private int schoolId;
 	private String teacherId;
 	private Date date = null;
 	private String planning = null;
@@ -49,22 +52,11 @@ public class TeacherProgressionReportData implements Serializable {
 	private String studentEngagementLatest = null;
 	private String studentCollaborationLatest = null;
 	private String technologyLatest = null;
-	private Date dateMiddle = null;
-	private String planningMiddle = null;
-	private String assessmentAndDataMiddle = null;
-	private String pathMiddle = null;
-	private String paceMiddle = null;
-	private String placeMiddle = null;
-	private String classroomManagementMiddle = null;
-	private String teacherRoleMiddle = null;
-	private String studentEngagementMiddle = null;
-	private String studentCollaborationMiddle = null;
-	private String technologyMiddle = null;
 	
-	public String getSchoolId() {
+	public int getSchoolId() {
 		return schoolId;
 	}
-	public void setSchoolId(String schoolId) {
+	public void setSchoolId(int schoolId) {
 		this.schoolId = schoolId;
 	}
 	public String getTeacherId() {
@@ -205,71 +197,4 @@ public class TeacherProgressionReportData implements Serializable {
 	public void setDateLatest(Date dateLatest) {
 		this.dateLatest = dateLatest;
 	}
-	public Date getDateMiddle() {
-		return dateMiddle;
-	}
-	public void setDateMiddle(Date dateMiddle) {
-		this.dateMiddle = dateMiddle;
-	}
-	public String getPlanningMiddle() {
-		return planningMiddle;
-	}
-	public void setPlanningMiddle(String planningMiddle) {
-		this.planningMiddle = planningMiddle;
-	}
-	public String getAssessmentAndDataMiddle() {
-		return assessmentAndDataMiddle;
-	}
-	public void setAssessmentAndDataMiddle(String assessmentAndDataMiddle) {
-		this.assessmentAndDataMiddle = assessmentAndDataMiddle;
-	}
-	public String getPathMiddle() {
-		return pathMiddle;
-	}
-	public void setPathMiddle(String pathMiddle) {
-		this.pathMiddle = pathMiddle;
-	}
-	public String getPaceMiddle() {
-		return paceMiddle;
-	}
-	public void setPaceMiddle(String paceMiddle) {
-		this.paceMiddle = paceMiddle;
-	}
-	public String getPlaceMiddle() {
-		return placeMiddle;
-	}
-	public void setPlaceMiddle(String placeMiddle) {
-		this.placeMiddle = placeMiddle;
-	}
-	public String getClassroomManagementMiddle() {
-		return classroomManagementMiddle;
-	}
-	public void setClassroomManagementMiddle(String classroomManagementMiddle) {
-		this.classroomManagementMiddle = classroomManagementMiddle;
-	}
-	public String getTeacherRoleMiddle() {
-		return teacherRoleMiddle;
-	}
-	public void setTeacherRoleMiddle(String teacherRoleMiddle) {
-		this.teacherRoleMiddle = teacherRoleMiddle;
-	}
-	public String getStudentEngagementMiddle() {
-		return studentEngagementMiddle;
-	}
-	public void setStudentEngagementMiddle(String studentEngagementMiddle) {
-		this.studentEngagementMiddle = studentEngagementMiddle;
-	}
-	public String getStudentCollaborationMiddle() {
-		return studentCollaborationMiddle;
-	}
-	public void setStudentCollaborationMiddle(String studentCollaborationMiddle) {
-		this.studentCollaborationMiddle = studentCollaborationMiddle;
-	}
-	public String getTechnologyMiddle() {
-		return technologyMiddle;
-	}
-	public void setTechnologyMiddle(String technologyMiddle) {
-		this.technologyMiddle = technologyMiddle;
-	}
-
 }

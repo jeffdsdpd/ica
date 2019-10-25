@@ -11,10 +11,12 @@ import javax.persistence.Query;
 import javax.persistence.TemporalType;
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.dsd.dsdpdcoaching.dto.PhaseValues;
 import com.dsd.dsdpdcoaching.dto.Rubric;
+import com.dsd.dsdpdcoaching.dto.TeacherProgressionReportData;
 
 @Repository
 @Transactional
@@ -22,6 +24,9 @@ public class RubricDao {
 	
 	@PersistenceContext
 	private EntityManager entityManager;
+	
+	@Autowired
+	TeacherProgressionReportData teacherProgressionReportData;
 
 	//Called by the JSONRequestController to save rubric data on rubricForm.html
 	public void saveRubricData(Rubric data) {
@@ -230,10 +235,10 @@ public class RubricDao {
 		return null;
 	}
 
-	public Rubric getTeacherProgressionReportData(Integer sid, Integer tid) {
+	//Called by the JSONRequestController to get the MIN and MAX data to for the teacherProgressionReport.html
+	public TeacherProgressionReportData getTeacherProgressionReportData(Integer sid, Integer tid) {
 
-		
-		String sql = "SELECT R.ID, R.LEVELUP, R.DATE, R.OBSERVED, R.QUESTIONS, R.RUBRICNOTES, R.SCHOOLID, R.TEACHERID, R.TIMEOBSERVED, " +
+		String sqlMin = "SELECT R.ID, R.LEVELUP, R.DATE, R.OBSERVED, R.QUESTIONS, R.RUBRICNOTES, R.SCHOOLID, R.TEACHERID, R.TIMEOBSERVED, " +
 				" R.USERID, R.PLANNING, R.ASSESSMENTANDDATA, R.PATH, R.PLACE, R.PACE, R.CLASSROOMMANAGEMENT, R.TEACHERROLE, " +
 				" R.STUDENTENGAGEMENT, R.STUDENTCOLLABORATION, R.TECHNOLOGY " +
 				" FROM RUBRIC R " +
@@ -241,19 +246,69 @@ public class RubricDao {
 				" AND R.TEACHERID = ?" + 
 				" AND R.OBSERVED = 'Observed Classroom'" + 
 				" AND R.DATE = (SELECT MIN(DATE) FROM RUBRIC R2 WHERE R2.SCHOOLID = ? AND R2.TEACHERID = ? AND R2.OBSERVED = 'Observed Classroom')" +
-				" GROUP BY ID, DATE, PLANNING, ASSESSMENTANDDATA, PATH, PLACE, PACE, CLASSROOMMANAGEMENT, TEACHERROLE, STUDENTENGAGEMENT, STUDENTCOLLABORATION, TECHNOLOGY";
+				" GROUP BY ID, DATE, PLANNING, ASSESSMENTANDDATA, PATH, PLACE, PACE, CLASSROOMMANAGEMENT, TEACHERROLE, STUDENTENGAGEMENT, STUDENTCOLLABORATION, TECHNOLOGY" +
+				" LIMIT 0,1";
 
-		Query query = entityManager.createNativeQuery(sql, Rubric.class);
-		query.setParameter(1, sid);
-		query.setParameter(2, tid);
-		query.setParameter(3, sid);
-		query.setParameter(4, tid);
-		//TeacherProgressionReportData results = (TeacherProgressionReportData) query.getResultList();
-		//TeacherProgressionReportData teacherProgressionReportData = (TeacherProgressionReportData) query.getSingleResult();
-	
-		Rubric rubric = (Rubric) query.getSingleResult();
-		return rubric;
+		String sqlMax = "SELECT R.ID, R.LEVELUP, R.DATE, R.OBSERVED, R.QUESTIONS, R.RUBRICNOTES, R.SCHOOLID, R.TEACHERID, R.TIMEOBSERVED, " +
+				" R.USERID, R.PLANNING, R.ASSESSMENTANDDATA, R.PATH, R.PLACE, R.PACE, R.CLASSROOMMANAGEMENT, R.TEACHERROLE, " +
+				" R.STUDENTENGAGEMENT, R.STUDENTCOLLABORATION, R.TECHNOLOGY " +
+				" FROM RUBRIC R " +
+				" WHERE R.SCHOOLID = ?" + 
+				" AND R.TEACHERID = ?" + 
+				" AND R.OBSERVED = 'Observed Classroom'" + 
+				" AND R.DATE = (SELECT MAX(DATE) FROM RUBRIC R2 WHERE R2.SCHOOLID = ? AND R2.TEACHERID = ? AND R2.OBSERVED = 'Observed Classroom')" +
+				" GROUP BY ID, DATE, PLANNING, ASSESSMENTANDDATA, PATH, PLACE, PACE, CLASSROOMMANAGEMENT, TEACHERROLE, STUDENTENGAGEMENT, STUDENTCOLLABORATION, TECHNOLOGY" +
+				" LIMIT 0,1";
+				
+		Query queryMin = entityManager.createNativeQuery(sqlMin, Rubric.class);
+		queryMin.setParameter(1, sid);
+		queryMin.setParameter(2, tid);
+		queryMin.setParameter(3, sid);
+		queryMin.setParameter(4, tid);
+
+		List results = queryMin.getResultList();
+		if (results.isEmpty()) return null;
+		else if (results.size() == 1) {
+			Rubric rubricMin = (Rubric) queryMin.getSingleResult();
 		
+			teacherProgressionReportData.setDate(rubricMin.getDate());
+			teacherProgressionReportData.setPlanning(rubricMin.getPlanning());
+			teacherProgressionReportData.setAssessmentAndData(rubricMin.getAssessmentAndData());
+			teacherProgressionReportData.setPath(rubricMin.getPath());
+			teacherProgressionReportData.setPlace(rubricMin.getPlace());
+			teacherProgressionReportData.setPace(rubricMin.getPace());
+			teacherProgressionReportData.setClassroomManagement(rubricMin.getClassroommgmt());
+			teacherProgressionReportData.setTeacherRole(rubricMin.getTeacherrole());
+			teacherProgressionReportData.setStudentEngagement(rubricMin.getStudentegmt());
+			teacherProgressionReportData.setStudentCollaboration(rubricMin.getStudentcolab());
+			teacherProgressionReportData.setTechnology(rubricMin.getTechnology());
+		}
+		
+		Query queryMax = entityManager.createNativeQuery(sqlMax, Rubric.class);
+		queryMax.setParameter(1, sid);
+		queryMax.setParameter(2, tid);
+		queryMax.setParameter(3, sid);
+		queryMax.setParameter(4, tid);
+		
+		List resultsMax = queryMax.getResultList();
+		if (resultsMax.isEmpty()) return null;
+		else if (results.size() == 1) {
+		
+		Rubric rubricMax = (Rubric) queryMax.getSingleResult();
+		teacherProgressionReportData.setDateLatest(rubricMax.getDate());
+		teacherProgressionReportData.setPlanningLatest(rubricMax.getPlanning());
+		teacherProgressionReportData.setAssessmentAndDataLatest(rubricMax.getAssessmentAndData());
+		teacherProgressionReportData.setPathLatest(rubricMax.getPath());
+		teacherProgressionReportData.setPlaceLatest(rubricMax.getPlace());
+		teacherProgressionReportData.setPaceLatest(rubricMax.getPace());
+		teacherProgressionReportData.setClassroomManagementLatest(rubricMax.getClassroommgmt());
+		teacherProgressionReportData.setTeacherRoleLatest(rubricMax.getTeacherrole());
+		teacherProgressionReportData.setStudentEngagementLatest(rubricMax.getStudentegmt());
+		teacherProgressionReportData.setStudentCollaborationLatest(rubricMax.getStudentcolab());
+		teacherProgressionReportData.setTechnologyLatest(rubricMax.getTechnology());
+		}
+		
+		return teacherProgressionReportData;
 		
 	}
 }

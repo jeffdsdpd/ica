@@ -210,17 +210,16 @@ $(document).ready(function() {
             		            viewDistance: 25
             		        }
             		    },
+                    colors: [
+                        '#5DE3FA',
+                        '#e57106',
+                        '#778899'
+                    ],
             		    title: {
             		        text: 'Rubric Values For ' + $("#date :selected").val()
             		    },
             		    subtitle: {
             		        text: nbrOfRecords + ' RUBRIC(S) entered on ' + $("#date :selected").val()
-            		    },
-            		    plotOptions: {
-            		        series: {
-            		            depth: 25,
-            		            colorByPoint: true
-            		        }
             		    },
             		    xAxis: {
             		        categories: [

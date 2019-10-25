@@ -106,7 +106,7 @@ public class JSONRequestController extends HttpServlet {
 	//Called from teacherProgressionReport.js to get the data for the graph
 	@GetMapping(value="/getTeacherProgressionReportData")
 	@ResponseBody
-	public Rubric getTeacherProgressionReportData(@RequestParam Integer schoolId, @RequestParam Integer teacherId) {	
+	public TeacherProgressionReportData getTeacherProgressionReportData(@RequestParam Integer schoolId, @RequestParam Integer teacherId) {	
 		return rubricDao.getTeacherProgressionReportData(schoolId, teacherId);
 	}
 	
