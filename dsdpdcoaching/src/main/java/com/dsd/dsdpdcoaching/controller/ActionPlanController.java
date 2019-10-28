@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.dsd.dsdpdcoaching.dto.ActionPlanData;
+
 
 @Controller
 @SessionAttributes("schoolList")
@@ -16,6 +18,7 @@ public class ActionPlanController {
 
 	@GetMapping("/actionPlanForm.html")
 	public String getActionPlanForm(Model model) {
+		model.addAttribute("actionPlanData", new ActionPlanData());
 		return "actionPlanForm";
 	}
 

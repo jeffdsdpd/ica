@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity(name = "ACTION")
-public class Action implements Serializable {
+public class ActionPlanData implements Serializable {
 
 	private static final long serialVersionUID = 105036012542207078L;
 	
