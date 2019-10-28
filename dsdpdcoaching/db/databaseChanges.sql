@@ -42,3 +42,20 @@ ALTER TABLE COACHING_INTERACTIONS MODIFY PHOTO mediumblob DEFAULT NULL;
 
 
 --/***********************************************************************************************************/
+--/ Added on 10/28/2019 to support the action plan integrated into the application
+CREATE TABLE `dsdpdica`.`ACTION` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `schoolid` INT NULL,
+  `grade` VARCHAR(45) NULL,
+  `task` VARCHAR(250) NULL,
+  `completed` VARCHAR(25) NULL,
+  `owner` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
+  
+ --/ Added on 10/28/2019 to support the action plan integrated into the application
+ ALTER TABLE `dsdpdica`.`ACTION` 
+ADD COLUMN `entrydate` DATE NULL AFTER `owner`,
+ADD COLUMN `completeddate` DATE NULL AFTER `entrydate`;
+
+
