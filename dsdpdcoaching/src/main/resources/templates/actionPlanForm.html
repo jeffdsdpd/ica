@@ -64,12 +64,72 @@
 													</select>
 												</div>
 											</div>
-
-											
 										</div>
-
 										
-								
+										<div class="row">
+											<div class="col-md-2">
+												<div class="form-group">
+													<label>Grade Level</label>
+													<select th:field="*{grade}">
+														<option value=""> Please Select </option>
+														<option	th:value="K" th:text="K"></option>
+														<option th:value="'First Grade'" th:text="1"></option>
+														<option th:value="'Second Grade'" th:text="2"></option>
+														<option th:value="'Third Grade'" th:text="3"></option>
+														<option th:value="'Fourth Grade'" th:text="4"></option>
+														<option th:value="'Fifth Grade'" th:text="5"></option>
+														<option th:value="'Sixth Grade'" th:text="6"></option>
+														<option th:value="'Seventh Grade'" th:text="7"></option>
+														<option th:value="'Eighth Grade'" th:text="8"></option>
+														<option th:value="'Ninth Grade'" th:text="9"></option>
+														<option th:value="'Tenth Grade'" th:text="10"></option>
+														<option th:value="'Eleventh Grade'" th:text="11"></option>
+														<option th:value="'Twelvth Grade'" th:text="12"></option>
+													</select>
+												</div>
+											</div>
+										</div>
+										
+										<div class="row">	
+											<div class="col-md-2">
+												<div class="form-group">
+													<label>Owner</label>
+													<select th:field="*{owner}">
+														<option th:value="'Coaches'" th:text="Coaches"></option>
+														<option th:value="'Administrators'" th:text="Administrators"></option>
+														<option th:value="'DSDPD Staff'" th:text="DSDPDStaff"></option>
+													</select>
+												</div>
+											</div>
+										</div>
+											
+											<div class="row">	
+												<div class="col-md-2">
+													<div class="form-group">
+														<label>Action Items</label>
+								      					<div class="input-group control-group after-add-more">
+								      						<div class="col-md-10">
+											   					<input type="text" id="task[]" name="task[]" th:field="*{task}" size="60" placeholder="Item"></input>
+											   				</div>
+													  		<div class="input-group-btn" style="float:right; align:middle;"> 
+																<button class="btn-xs add-more" id="add-more" type="button">Add Item</button> 
+													  		</div>
+													  	</div>
+													</div>
+												</div>
+											</div>
+											
+											<!-- Copy Fields-These are the fields which we get through jquery and then add after the above input,-->
+									        <div class="copy-fields hide">
+									       	 	<div class=" input-group control-group">   	
+													<div class="col-md-10">
+														<input type="text" id="task[]" name="task[]" th:field="*{task}" size="60" placeholder="Item"></input>
+													</div>
+													<div class="input-group-btn" style="float:right; align:middle;">
+										            		<button class="btn-xs remove" type="button">Remove  &nbsp;</button>
+										            </div>
+										        </div> 
+									        </div>
 
 										<button type="submit" class="btn btn-info btn-fill pull-right"
 											name="Submit" value="Submit">Submit</button>

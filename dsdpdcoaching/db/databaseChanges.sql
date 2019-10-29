@@ -58,4 +58,8 @@ CREATE TABLE `dsdpdica`.`ACTION` (
 ADD COLUMN `entrydate` DATE NULL AFTER `owner`,
 ADD COLUMN `completeddate` DATE NULL AFTER `entrydate`;
 
-
+--/ Added on 10/29/2019 to support the insertion of multiple tasks per record of the action plan
+CREATE TABLE `dsdpdica`.`ACTION_TASKS` (
+  `actionid` INT NOT NULL,
+  `task` VARCHAR(250) NULL,
+  FOREIGN KEY (actionid) REFERENCES ACTION(id));

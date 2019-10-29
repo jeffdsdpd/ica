@@ -1,13 +1,18 @@
 package com.dsd.dsdpdcoaching.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -26,9 +31,11 @@ public class ActionPlanData implements Serializable {
 	@Column(name="grade")
 	private String grade;
 	
+	@ElementCollection
+	@CollectionTable(name="ACTION_TASKS", joinColumns=@JoinColumn(name = "actionid", referencedColumnName = "id"))
 	@Column(name="task")
-	private String task;
-	
+    private List<String> task = new ArrayList<String>();
+    
 	@Column(name="completed")
 	private String completed;
 	
@@ -67,11 +74,11 @@ public class ActionPlanData implements Serializable {
 		this.grade = grade;
 	}
 
-	public String getTask() {
+	public List<String> getTask() {
 		return task;
 	}
 
-	public void setTask(String task) {
+	public void setTask(List<String> task) {
 		this.task = task;
 	}
 
@@ -106,6 +113,5 @@ public class ActionPlanData implements Serializable {
 	public void setCompleteddate(Date completeddate) {
 		this.completeddate = completeddate;
 	}
-	
 
 }
