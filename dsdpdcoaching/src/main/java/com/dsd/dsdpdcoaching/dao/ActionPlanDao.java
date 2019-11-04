@@ -16,14 +16,15 @@ public class ActionPlanDao {
 	private EntityManager entityManager;
 	
 	public void saveActionPlanData(ActionPlanData actionPlanData) {
-		
-		int count = actionPlanData.getTask().size();
-		
-		for(int i=0;i<count;i++) {
-			//String currentTask = actionPlanData.getTasks()[i];
-			//actionPlanData.setTask(currentTask);
-			entityManager.persist(actionPlanData);
-		}
+		entityManager.persist(actionPlanData);
+
+	}
+	
+	public ActionPlanData getActionPlanDataBySchoolAndGrade(Integer id, String grade) {
+	    return entityManager.createQuery("from ACTION where schoolid = :id and grade = :grade", ActionPlanData.class)
+    			.setParameter("id", id)
+    			.setParameter("grade", grade)
+    			.getSingleResult();
 	}
 
 }

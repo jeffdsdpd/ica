@@ -63,3 +63,6 @@ CREATE TABLE `dsdpdica`.`ACTION_TASKS` (
   `actionid` INT NOT NULL,
   `task` VARCHAR(250) NULL,
   FOREIGN KEY (actionid) REFERENCES ACTION(id));
+  
+ALTER TABLE `dsdpdica`.`ACTION` 
+ADD COLUMN `subject` VARCHAR(25) NULL AFTER `grade`

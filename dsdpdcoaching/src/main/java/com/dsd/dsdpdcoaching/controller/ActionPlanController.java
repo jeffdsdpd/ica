@@ -30,6 +30,11 @@ public class ActionPlanController {
 		return "actionPlanForm";
 	}
 	
+	@GetMapping("/actionPlanReport.html")
+	public String getActionPlanReport(HttpSession session) {
+		return "actionPlanReport";
+	}
+	
 	@PostMapping("/actionPlanForm")
 	public String postActionPlanForm(HttpSession session, HttpServletRequest request, Model model,
 			@ModelAttribute ActionPlanData actionPlanData) {

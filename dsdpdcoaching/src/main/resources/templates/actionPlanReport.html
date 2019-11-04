@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+		<title>DSD-PD Coaching Application | Action Plan Report</title>
+		<meta charset="utf-8" />	
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+		
+		<link rel="icon" type="image/png" href="img/favicon.ico"/>
+		
+		<!--   JS Files   -->
+		<script src="js/lib/jquery.js"></script>
+		<script src="js/lib/jquery-ui.min.js"></script>
+		<script src="js/lib/bootstrap.min.js"></script>
+		<script src="js/lib/light-bootstrap-dashboard.js"></script>
+		<script src="js/actionPlanReport.js"></script>
+		
+		<!--   CSS Files   -->
+		<link href="css/lib/jquery-ui.css" rel="stylesheet"/>
+	    <link href="css/lib/bootstrap.min.css" rel="stylesheet"/>
+	    <link href="css/lib/light-bootstrap-dashboard.css" rel="stylesheet"/>
+	    <link href="css/misc.css" rel="stylesheet"/>
+	    
+	    <!--   Fonts and icons     -->
+	    <link href="css/lib/pe-icon-7-stroke.css" rel="stylesheet"/>
+    	    <link href='//fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'/>
+    	    <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'/>
+    </head>
+    <body>
+		<div class="wrapper">
+		    <div th:replace="fragments/nav :: nav"></div>
+		    
+			<div class="main-panel">
+			    <div th:replace="fragments/header :: header"></div>
+
+		        <div class="content">
+		            <div class="container-fluid">
+		                <div class="row">
+		                    <div class="col-md-10">
+		                        <div class="card">
+		                            <div class="header">
+		                                <h2 class="title">Action Plan Report</h2>
+		                            </div>
+		                            <div class="content">
+		                                <form>
+		                                
+		                                		<div class="row">
+		                                        <div class="col-md-4">
+		                                            <div class="form-group">
+		                                                <label>School</label>
+		                                                <select id="schoolName" class="form-control">
+			                                                	<option value="0">Please Select</option>
+			                                                	<option th:each="school: ${schoolList}" th:value="${school.id}" th:text="${school.name}"></option>
+														</select>
+		                                            </div>
+		                                     	</div>
+		                                     	<div class="col-md-2">
+													<div class="form-group">
+														<label>Grade Level</label>
+														<select id="grade">
+															<option value=""> Please Select </option>
+															<option	th:value="K" th:text="K"></option>
+															<option th:value="'First Grade'" th:text="1"></option>
+															<option th:value="'Second Grade'" th:text="2"></option>
+															<option th:value="'Third Grade'" th:text="3"></option>
+															<option th:value="'Fourth Grade'" th:text="4"></option>
+															<option th:value="'Fifth Grade'" th:text="5"></option>
+															<option th:value="'Sixth Grade'" th:text="6"></option>
+															<option th:value="'Seventh Grade'" th:text="7"></option>
+															<option th:value="'Eighth Grade'" th:text="8"></option>
+															<option th:value="'Ninth Grade'" th:text="9"></option>
+															<option th:value="'Tenth Grade'" th:text="10"></option>
+															<option th:value="'Eleventh Grade'" th:text="11"></option>
+															<option th:value="'Twelvth Grade'" th:text="12"></option>
+														</select>
+													</div>
+												</div>
+		                                 	</div>
+		                                 	
+		                                </form>
+		                            </div>
+		                        </div>
+									
+								<div th:replace="fragments/footer :: footer"></div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dsd.dsdpdcoaching.dao.ActionPlanDao;
 import com.dsd.dsdpdcoaching.dao.CoachingDataDao;
 import com.dsd.dsdpdcoaching.dao.LevelUpDao;
 import com.dsd.dsdpdcoaching.dao.RubricDao;
 import com.dsd.dsdpdcoaching.dao.TeacherDao;
 import com.dsd.dsdpdcoaching.dao.UserDao;
+import com.dsd.dsdpdcoaching.dto.ActionPlanData;
 import com.dsd.dsdpdcoaching.dto.CoachingData;
 import com.dsd.dsdpdcoaching.dto.PhaseValues;
 import com.dsd.dsdpdcoaching.dto.Rubric;
@@ -44,6 +46,8 @@ public class JSONRequestController extends HttpServlet {
 	private LevelUpDao levelUpDao;
 	@Autowired
 	private EmailService emailService;
+	@Autowired
+	private ActionPlanDao actionPlanDao;
 
 	//Called from coachingForm.js, coachingReport.js,rubricForm.js, and rubricReport.js
 	@GetMapping(value="/getTeachersBySchool")
@@ -154,6 +158,14 @@ public class JSONRequestController extends HttpServlet {
 	@ResponseBody
 	public String[][] getLevelUpData(HttpServletRequest request, HttpServletResponse response) {	
 		return levelUpDao.getLevelUpData(request, response);
+	}
+	
+	//Called from actinPlanReport.js
+	@GetMapping(value="/getActionPlanBySchoolAndGrade")
+	@ResponseBody
+	public String getActionPlanBySchoolAndGrade(@RequestParam Integer schoolId, @RequestParam String grade) {	
+		ActionPlanData apd = actionPlanDao.getActionPlanDataBySchoolAndGrade(schoolId, grade);
+		return "test";
 	}
 
 }

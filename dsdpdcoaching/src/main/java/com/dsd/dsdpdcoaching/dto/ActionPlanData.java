@@ -31,6 +31,9 @@ public class ActionPlanData implements Serializable {
 	@Column(name="grade")
 	private String grade;
 	
+	@Column(name="subject")
+	private String subject;
+	
 	@ElementCollection
 	@CollectionTable(name="ACTION_TASKS", joinColumns=@JoinColumn(name = "actionid", referencedColumnName = "id"))
 	@Column(name="task")
@@ -113,5 +116,15 @@ public class ActionPlanData implements Serializable {
 	public void setCompleteddate(Date completeddate) {
 		this.completeddate = completeddate;
 	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+	
+	
 
 }
