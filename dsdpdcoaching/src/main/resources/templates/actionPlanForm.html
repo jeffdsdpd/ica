@@ -96,6 +96,7 @@
 													<select th:field="*{subject}">
 														<option value=""> Please Select </option>
 														<option th:value="'Math'" th:text="Math"></option>
+														<option th:value="'SocialStudies'" th:text="SocialStudies"></option>
 														<option th:value="'Science'" th:text="Science"></option>
 														<option th:value="'ELAR'" th:text="ELAR"></option>
 														<option th:value="'Other'" th:text="Other"></option>
@@ -123,27 +124,20 @@
 														<label>Action Items</label>
 								      					<div class="input-group control-group after-add-more">
 								      						<div class="col-md-10">
-											   					<input type="text" id="task[]" name="task[]" th:field="*{task}" size="60" placeholder="Item"></input>
+								      							<div class="input_wrap">
+								      								<div>
+											   							<input type="text" id="task[]" name="task[]" th:field="*{task}" size="60" placeholder="Task"></input>
+											   						</div>
+											   					</div>
 											   				</div>
 													  		<div class="input-group-btn" style="float:right; align:middle;"> 
-																<button class="btn-xs add-more" id="add-more" type="button">Add Item</button> 
+																<button class="btn-xs add-more" id="add-more" type="button">Add Taks</button> 
 													  		</div>
 													  	</div>
 													</div>
 												</div>
 											</div>
 											
-											<!-- Copy Fields-These are the fields which we get through jquery and then add after the above input,-->
-									        <div class="copy-fields hide">
-									       	 	<div class=" input-group control-group">   	
-													<div class="col-md-10">
-														<input type="text" id="task[]" name="task[]" th:field="*{task}" size="60" placeholder="Item"></input>
-													</div>
-													<div class="input-group-btn" style="float:right; align:middle;">
-										            		<button class="btn-xs remove" type="button">Remove  &nbsp;</button>
-										            </div>
-										        </div> 
-									        </div>
 
 										<button type="submit" class="btn btn-info btn-fill pull-right"
 											name="Submit" value="Submit">Submit</button>

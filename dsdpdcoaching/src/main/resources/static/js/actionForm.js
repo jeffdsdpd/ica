@@ -1,56 +1,28 @@
 $(document).ready(function() {
-			
-			$("#schoolId").change(
-					function() {
-						var str = $("#schoolId :selected").val();
-					});
-			
-			//first get the contents of the div with name class copy-fields and add it to after "after-add-more" div class.
-		      $("#add-more").click(function(){ 
-		          var html = $(".copy-fields").html();
-		          $(".after-add-more").after(html);
-		      });
-			//here it will remove the current value of the remove button which has been pressed
-		      $("body").on("click",".remove",function(){ 
-		          $(this).parents(".control-group").remove();
-		      });
-		      
-		      
-		      
-		      //NEW
-		      var wrapper = $(".input_wrap>div");
-		      var add_button = $(".add_field_button");
+		var wrapper = $(".input_wrap>div");
+		var add_button = $(".add-more");
+		var counter = 1;
 
-		      $(add_button).click(function (e) {
-		          e.preventDefault();
-		          $(wrapper).after('<div><input type="text" name="text[]" class="form-control"><a href="#" class="remove_field">Remove</a></div>'); //add input box
-		      });
+		$("#schoolId").change(function() {
+			var str = $("#schoolId :selected").val();
+		});
 
-		      $(document).on("click",".remove_field",function(){
-		          $(this).parent().remove();
-		      });
-		      //
-		      
-		      <!-- Copy Fields-These are the fields which we get through jquery and then add after the above input,-->
-		        <div class="copy-fields hide">
-		       	 	<div class=" input-group control-group">   	
-						<div class="col-md-10">
-							<input type="text" id="task[]" name="task[]" th:field="*{task}" size="60" placeholder="Item"></input>
-						</div>
-						<div class="input-group-btn" style="float:right; align:middle;">
-			            		<button class="btn-xs remove" type="button">Remove  &nbsp;</button>
-			            </div>
-			        </div> 
-		        </div>
-		        
-		        
-		        
-		        
-		        
-		        
-		        
-		        
-		        
-						
+		//add another input text line for additional tasks
+		$("#add-more").click(function(e) {
+			e.preventDefault();
 
-		});//end of document ready
+			var newAdd = '<div id=div-'+counter+'><input type="text" id="task" name="task" th:field="*{task}" size="60" placeholder="Task"></input><a href="#" class="remove_field">Remove</a></div>';
+		
+			var el = $('.input_wrap div:last');
+		    $(el).after(newAdd);
+		    
+		    counter++;
+		});
+		
+
+		//remove the current value of the remove button which has been pressed
+		$(document).on("click",".remove_field",function(){
+		    $(this).parent().remove();
+		});
+
+	});// end of document ready
