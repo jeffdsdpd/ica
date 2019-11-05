@@ -1,7 +1,11 @@
 package com.dsd.dsdpdcoaching.dao;
 
+import java.util.List;
+
+import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -20,11 +24,22 @@ public class ActionPlanDao {
 
 	}
 	
-	public ActionPlanData getActionPlanDataBySchoolAndGrade(Integer id, String grade) {
-	    return entityManager.createQuery("from ACTION where schoolid = :id and grade = :grade", ActionPlanData.class)
-    			.setParameter("id", id)
-    			.setParameter("grade", grade)
-    			.getSingleResult();
+	public ActionPlanData getActionPlanBySchoolGradeSubject(Integer id, String grade, String subject) {
+		
+		String sql = "SELECT * from ACTION where schoolid = ? and grade = ? and subject = ? LIMIT 0,1";
+		
+		Query query = entityManager.createNativeQuery(sql, ActionPlanData.class);
+		query.setParameter(1, id);
+		query.setParameter(2, grade);
+		query.setParameter(3, subject);
+		
+		List results = query.getResultList();
+
+		if (results.isEmpty()) return null;
+		else if (results.size() == 1) {
+			return (ActionPlanData) results.get(0);
+		}
+		return null;
 	}
 
 }

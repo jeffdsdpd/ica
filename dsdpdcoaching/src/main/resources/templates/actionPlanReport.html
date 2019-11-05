@@ -57,7 +57,7 @@
 		                                     	<div class="col-md-2">
 													<div class="form-group">
 														<label>Grade Level</label>
-														<select id="grade">
+														<select id="grade" style="margin-right:10px;">
 															<option value=""> Please Select </option>
 															<option	th:value="K" th:text="K"></option>
 															<option th:value="'First Grade'" th:text="1"></option>
@@ -75,6 +75,22 @@
 														</select>
 													</div>
 												</div>
+												
+												<div class="col-md-2">
+													<div class="form-group">
+														<label>Subject</label>
+														<select id="subject">
+															<option value=""> Please Select </option>
+															<option th:value="'Math'" th:text="Math"></option>
+															<option th:value="'SocialStudies'" th:text="SocialStudies"></option>
+															<option th:value="'Science'" th:text="Science"></option>
+															<option th:value="'ELAR'" th:text="ELAR"></option>
+															<option th:value="'Other'" th:text="Other"></option>
+														</select>
+													</div>
+											</div>
+											
+											
 		                                 	</div>
 		                                 	
 		                                </form>

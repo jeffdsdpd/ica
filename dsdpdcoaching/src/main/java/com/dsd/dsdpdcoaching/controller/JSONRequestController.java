@@ -161,11 +161,11 @@ public class JSONRequestController extends HttpServlet {
 	}
 	
 	//Called from actinPlanReport.js
-	@GetMapping(value="/getActionPlanBySchoolAndGrade")
+	@GetMapping(value="/getActionPlanBySchoolGradeSubject")
 	@ResponseBody
-	public String getActionPlanBySchoolAndGrade(@RequestParam Integer schoolId, @RequestParam String grade) {	
-		ActionPlanData apd = actionPlanDao.getActionPlanDataBySchoolAndGrade(schoolId, grade);
-		return "test";
+	public ActionPlanData getActionPlanBySchoolGradeSubject(@RequestParam Integer schoolId, @RequestParam String grade, @RequestParam String subject) {	
+		ActionPlanData apd = actionPlanDao.getActionPlanBySchoolGradeSubject(schoolId, grade, subject);
+		return apd;
 	}
 
 }
