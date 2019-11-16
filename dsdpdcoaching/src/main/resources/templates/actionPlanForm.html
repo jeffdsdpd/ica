@@ -72,7 +72,7 @@
 													<label>Grade Level</label>
 													<select th:field="*{grade}">
 														<option value=""> Please Select </option>
-														<option	th:value="K" th:text="K"></option>
+														<option	th:value="Kindergarden" th:text="K"></option>
 														<option th:value="'First Grade'" th:text="1"></option>
 														<option th:value="'Second Grade'" th:text="2"></option>
 														<option th:value="'Third Grade'" th:text="3"></option>
@@ -126,19 +126,18 @@
 								      						<div class="col-md-10">
 								      							<div class="input_wrap">
 								      								<div>
-											   							<input type="text" id="task[]" name="task[]" th:field="*{task}" size="60" placeholder="Task"></input>
+									      								<input type="text" name="task[]" id="task[]" th:field="*{taskList[0].task}" size="60" placeholder="Task"></input>
 											   						</div>
 											   					</div>
 											   				</div>
 													  		<div class="input-group-btn" style="float:right; align:middle;"> 
-																<button class="btn-xs add-more" id="add-more" type="button">Add Taks</button> 
+																<button class="btn-xs add-more" id="add-more" type="button">Add Tasks</button> 
 													  		</div>
 													  	</div>
 													</div>
 												</div>
 											</div>
 											
-
 										<button type="submit" class="btn btn-info btn-fill pull-right"
 											name="Submit" value="Submit">Submit</button>
 										<div class="clearfix"></div>

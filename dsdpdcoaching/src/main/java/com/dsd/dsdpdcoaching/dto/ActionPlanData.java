@@ -1,7 +1,6 @@
 package com.dsd.dsdpdcoaching.dto;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +8,7 @@ import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,11 +16,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.stereotype.Component;
+
 @Entity(name = "ACTION")
+@Component
 public class ActionPlanData implements Serializable {
 
 	private static final long serialVersionUID = 105036012542207078L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
@@ -34,24 +37,17 @@ public class ActionPlanData implements Serializable {
 	@Column(name="subject")
 	private String subject;
 	
-	@ElementCollection
+	@ElementCollection(fetch = FetchType.LAZY)
 	@CollectionTable(name="ACTION_TASKS", joinColumns=@JoinColumn(name = "actionid", referencedColumnName = "id"))
 	@Column(name="task")
-    private List<String> task = new ArrayList<String>();
-    
-	@Column(name="completed")
-	private String completed;
-	
+    private List<ActionTaskData> taskList;
+
 	@Column(name="owner")
 	private String owner;
 	
 	@Column(name="entrydate")
 	@Temporal(TemporalType.DATE)
 	private Date entrydate;
-	
-	@Column(name="completeddate")
-	@Temporal(TemporalType.DATE)
-	private Date completeddate;
 
 	public Integer getId() {
 		return id;
@@ -76,21 +72,13 @@ public class ActionPlanData implements Serializable {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-
-	public List<String> getTask() {
-		return task;
+	
+	public List<ActionTaskData> getTaskList() {
+		return taskList;
 	}
 
-	public void setTask(List<String> task) {
-		this.task = task;
-	}
-
-	public String getCompleted() {
-		return completed;
-	}
-
-	public void setCompleted(String completed) {
-		this.completed = completed;
+	public void setTaskList(List<ActionTaskData> taskList) {
+		this.taskList = taskList;
 	}
 
 	public String getOwner() {
@@ -108,15 +96,6 @@ public class ActionPlanData implements Serializable {
 	public void setEntrydate(Date entrydate) {
 		this.entrydate = entrydate;
 	}
-
-	public Date getCompleteddate() {
-		return completeddate;
-	}
-
-	public void setCompleteddate(Date completeddate) {
-		this.completeddate = completeddate;
-	}
-
 	public String getSubject() {
 		return subject;
 	}
@@ -124,7 +103,10 @@ public class ActionPlanData implements Serializable {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	
-	
 
+	public void setActionTaskDataRecord(ActionTaskData atd) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

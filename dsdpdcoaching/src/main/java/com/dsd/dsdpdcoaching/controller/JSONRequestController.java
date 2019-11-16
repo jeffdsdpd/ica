@@ -160,11 +160,11 @@ public class JSONRequestController extends HttpServlet {
 		return levelUpDao.getLevelUpData(request, response);
 	}
 	
-	//Called from actinPlanReport.js
+	//Called from actionPlanReport.js
 	@GetMapping(value="/getActionPlanBySchoolGradeSubject")
 	@ResponseBody
-	public ActionPlanData getActionPlanBySchoolGradeSubject(@RequestParam Integer schoolId, @RequestParam String grade, @RequestParam String subject) {	
-		ActionPlanData apd = actionPlanDao.getActionPlanBySchoolGradeSubject(schoolId, grade, subject);
+	public List<ActionPlanData> getActionPlanBySchoolGradeSubject(@RequestParam Integer schoolId, @RequestParam String grade, @RequestParam String subject) {	
+		List<ActionPlanData> apd = actionPlanDao.getActionPlanBySchoolGradeSubject(schoolId, grade, subject);
 		return apd;
 	}
 

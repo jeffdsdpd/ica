@@ -477,7 +477,7 @@ $(document).ready(function() {
             			$("#container").html("");
             			$("#container").fadeOut("slow");
             	       	$("#nodatacontainer").fadeIn("slow");
-                }//end of the 'success' function
+                }//end of the 'error' function
                 
                 });
             

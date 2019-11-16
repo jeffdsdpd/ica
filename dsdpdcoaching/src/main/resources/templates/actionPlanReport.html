@@ -25,7 +25,21 @@
 	    <link href="css/lib/pe-icon-7-stroke.css" rel="stylesheet"/>
     	    <link href='//fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'/>
     	    <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'/>
-    </head>
+    	    
+   	 	<style>
+    			.checkboxes input{
+      			margin: 0px 0px 0px 0px;
+     		}
+
+     		.checkboxes label{
+     			font-size: 15px;
+     			color: #666;
+       			margin: 10px 20px 0px 5px;
+       			text-transform: none;
+     		}
+		</style>
+    	
+    	</head>
     <body>
 		<div class="wrapper">
 		    <div th:replace="fragments/nav :: nav"></div>
@@ -43,7 +57,6 @@
 		                            </div>
 		                            <div class="content">
 		                                <form>
-		                                
 		                                		<div class="row">
 		                                        <div class="col-md-4">
 		                                            <div class="form-group">
@@ -88,12 +101,41 @@
 															<option th:value="'Other'" th:text="Other"></option>
 														</select>
 													</div>
-											</div>
-											
-											
+												</div>
 		                                 	</div>
-		                                 	
 		                                </form>
+		                                
+		                                	<div class="row">
+											<div class="col-md-9">
+												<div class="form-group">
+													<div class="gradeheading" id="gradeheading">
+														<h2></h2>
+														<h3></h3>
+														<hr/>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										
+										<div class="row">
+											<div class="col-md-11">
+												<div class="checkboxes">
+													<div id="checkboxes" class="custom-control-input"></div>
+												</div>
+											</div>
+										</div>
+										
+										<div class="row">
+											<div class="col-md-9">
+												<div class="form-group">
+													<div class="nodatatodisplay" id="nodatatodisplay" style="display: none;">
+														<h3 style="text-align:center;">NO Action Plan Data To Display!</h3>
+													</div>
+												</div>
+											</div>
+										</div>
+										
 		                            </div>
 		                        </div>
 									

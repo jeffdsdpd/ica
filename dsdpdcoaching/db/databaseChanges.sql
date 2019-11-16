@@ -48,15 +48,13 @@ CREATE TABLE `dsdpdica`.`ACTION` (
   `schoolid` INT NULL,
   `grade` VARCHAR(45) NULL,
   `task` VARCHAR(250) NULL,
-  `completed` VARCHAR(25) NULL,
   `owner` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC));
   
  --/ Added on 10/28/2019 to support the action plan integrated into the application
  ALTER TABLE `dsdpdica`.`ACTION` 
-ADD COLUMN `entrydate` DATE NULL AFTER `owner`,
-ADD COLUMN `completeddate` DATE NULL AFTER `entrydate`;
+ADD COLUMN `entrydate` DATE NULL AFTER `owner`;
 
 --/ Added on 10/29/2019 to support the insertion of multiple tasks per record of the action plan
 CREATE TABLE `dsdpdica`.`ACTION_TASKS` (
@@ -66,3 +64,13 @@ CREATE TABLE `dsdpdica`.`ACTION_TASKS` (
   
 ALTER TABLE `dsdpdica`.`ACTION` 
 ADD COLUMN `subject` VARCHAR(25) NULL AFTER `grade`
+
+ALTER TABLE `dsdpdica`.`ACTION_TASKS` 
+ADD COLUMN `completed` VARCHAR(25) NULL AFTER `task`
+
+ALTER TABLE `dsdpdica`.`ACTION_TASKS`
+ADD column `actiontaskid` INT NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST
+
+
+ALTER TABLE ACTION_TASKS ALTER completed SET DEFAULT 'false';
+

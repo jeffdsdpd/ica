@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.dsd.dsdpdcoaching.dao.ActionPlanDao;
 import com.dsd.dsdpdcoaching.dto.ActionPlanData;
+import com.dsd.dsdpdcoaching.dto.ActionTaskData;
 
 
 @Controller
@@ -26,7 +27,10 @@ public class ActionPlanController {
 
 	@GetMapping("/actionPlanForm.html")
 	public String getActionPlanForm(Model model) {
+		
+		model.addAttribute("actionTaskData", new ActionTaskData());
 		model.addAttribute("actionPlanData", new ActionPlanData());
+		
 		return "actionPlanForm";
 	}
 	
@@ -37,12 +41,11 @@ public class ActionPlanController {
 	
 	@PostMapping("/actionPlanForm")
 	public String postActionPlanForm(HttpSession session, HttpServletRequest request, Model model,
-			@ModelAttribute ActionPlanData actionPlanData) {
+			@ModelAttribute ActionPlanData actionPlanData, @ModelAttribute ActionTaskData actionTaskData) {
 		
 		//store the date the record was created
 		java.util.Date currentDate = Calendar.getInstance().getTime();
-		
-		actionPlanData.setCompleted("false");
+
 		actionPlanData.setEntrydate(currentDate);
 		
 		actionPlanDao.saveActionPlanData(actionPlanData);
