@@ -209,7 +209,12 @@
 	                url:"getRubricDatesAndId",
 	                data:{schoolId: selectedSchoolId, teacherId: selectedTeacherId},
 	                dataType: "json",
-	                success: function (response) {	          
+	                success: function (response) {
+	                	
+	                	if(response.length==0){
+	                		document.getElementById("nodatatodisplay").style.display = "inline";
+	                	 }
+	                
 	                		 var $dropdownList = $("#date");
 		                    	$dropdownList.empty();
 		                    	$dropdownList.append($("<option></option>").attr("value", '').text('Please Select'));

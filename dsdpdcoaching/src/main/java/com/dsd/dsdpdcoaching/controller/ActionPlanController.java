@@ -34,10 +34,12 @@ public class ActionPlanController {
 		return "actionPlanForm";
 	}
 	
+	
 	@GetMapping("/actionPlanReport.html")
 	public String getActionPlanReport(HttpSession session) {
 		return "actionPlanReport";
 	}
+	
 	
 	@PostMapping("/actionPlanForm")
 	public String postActionPlanForm(HttpSession session, HttpServletRequest request, Model model,
@@ -52,6 +54,21 @@ public class ActionPlanController {
 
 		// Redirect user back to blank form so they can enter more data
 		return "redirect:/actionPlanForm.html";
+	}
+	
+	
+	@PostMapping("/actionPlanReportUpdate")
+	public String postActionPlanReportUpdate(HttpSession session, HttpServletRequest request, Model model) { 
+
+		String checked = request.getParameter("checkedValues");
+		String[] checkedarray = checked.split(",");
+
+		String unchecked = request.getParameter("unCheckedValues");
+		String[] uncheckedarray = unchecked.split(",");
+		
+		actionPlanDao.updateActionPlanTasks(checkedarray, uncheckedarray);
+	
+		return "redirect:/actionPlanReport.html";
 	}
 
 }

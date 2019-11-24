@@ -105,8 +105,7 @@ public class ActionPlanData implements Serializable {
 	}
 
 	public void setActionTaskDataRecord(ActionTaskData atd) {
-		// TODO Auto-generated method stub
-		
+		taskList.add(atd);
 	}
 	
 }

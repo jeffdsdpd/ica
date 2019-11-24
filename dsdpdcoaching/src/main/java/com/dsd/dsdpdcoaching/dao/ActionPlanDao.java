@@ -38,44 +38,57 @@ public class ActionPlanDao {
 		query.setParameter(3, subjectstring);
 		
 		List<Object[]> results = query.getResultList();
+		
 		List<ActionPlanData> actionPlanList = new ArrayList<ActionPlanData>();
 		
+		//loop through the results - there could be multiple records with same school, grade, subject
 		results.stream().forEach((record) -> {
 			ActionPlanData apd = new ActionPlanData();
 			ActionTaskData atd = new ActionTaskData();
+			List<ActionTaskData> taskList = new ArrayList<ActionTaskData>();
+
+			//set the results to the objects
+			atd.setTaskid((Integer) record[6]);
+			atd.setTask((String) record[8]);
+			atd.setCompleted((String) record[9]);
+			taskList.add(atd);
 			
-			Integer id = ((Integer) record[0]);
-			Integer schoolId = ((Integer) record[1]);
-			String grade = (String) record[2];
-			String subject = (String) record[3];
-			String owner = (String) record[4];
-			Date date = (Date) record[5];
-			Integer taskid = ((Integer) record[6]);
-			Integer taskactionid = ((Integer) record[7]);
-			String task = (String) record[8];
-			String completed = (String) record[9];
-			
-			atd.setTaskid(taskid);
-			atd.setTask(task);
-			atd.setCompleted(completed);
-			
-			apd.setId(id);
-			apd.setSchoolId(schoolId);
-			apd.setGrade(grade);
-			apd.setSubject(subject);
-			apd.setActionTaskDataRecord(atd);
-			apd.setOwner(owner);
-			apd.setEntrydate(date);
+			apd.setId((Integer) record[0]);
+			apd.setSchoolId((Integer) record[1]);
+			apd.setGrade((String) record[2]);
+			apd.setSubject((String) record[3]);
+			apd.setTaskList(taskList);
+			apd.setOwner((String) record[4]);
+			apd.setEntrydate((Date) record[5]);
 			
 			actionPlanList.add(apd);
 			
 		});
-		
 		return actionPlanList;
-		
-		//if (results.isEmpty()) return null;
-		//else return (ActionPlanData) results.get(0);
-
 	}
 
+	
+	public void updateActionPlanTasks(String[] checked, String[] unchecked) {
+		
+		String sql = "Update ACTION_TASKS set completed = ? where actionid = ? AND taskid = ?";
+		Query query = entityManager.createNativeQuery(sql);
+		
+		for( int i = 0; i < checked.length; i++) {
+			String recordstring = checked[i];
+			String[] splitrecordstring = recordstring.split(" ");
+				query.setParameter(1, "true");
+				query.setParameter(2, splitrecordstring[0]);
+				query.setParameter(3, splitrecordstring[1]);
+				query.executeUpdate();
+		}
+		
+		for( int i = 0; i < unchecked.length; i++) {
+			String recordstring = unchecked[i];
+			String[] splitrecordstring = recordstring.split(" ");
+				query.setParameter(1, "false");
+				query.setParameter(2, splitrecordstring[0]);
+				query.setParameter(3, splitrecordstring[1]);
+				query.executeUpdate();
+		}
+	}
 }
