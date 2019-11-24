@@ -43,34 +43,20 @@ ALTER TABLE COACHING_INTERACTIONS MODIFY PHOTO mediumblob DEFAULT NULL;
 
 --/***********************************************************************************************************/
 --/ Added on 10/28/2019 to support the action plan integrated into the application
-CREATE TABLE `dsdpdica`.`ACTION` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `schoolid` INT NULL,
-  `grade` VARCHAR(45) NULL,
-  `task` VARCHAR(250) NULL,
-  `owner` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC));
-  
- --/ Added on 10/28/2019 to support the action plan integrated into the application
- ALTER TABLE `dsdpdica`.`ACTION` 
-ADD COLUMN `entrydate` DATE NULL AFTER `owner`;
+CREATE TABLE ACTION (
+  id INT NOT NULL AUTO_INCREMENT,
+  schoolid INT NULL,
+  grade VARCHAR(45) NULL,
+  subject VARCHAR(25) NULL,
+  task VARCHAR(250) NULL,
+  owner VARCHAR(45) NULL,
+  entrydate DATE NULL,
+  PRIMARY KEY (id),
+  UNIQUE INDEX id_UNIQUE (id ASC));
 
 --/ Added on 10/29/2019 to support the insertion of multiple tasks per record of the action plan
-CREATE TABLE `dsdpdica`.`ACTION_TASKS` (
-  `actionid` INT NOT NULL,
-  `task` VARCHAR(250) NULL,
+CREATE TABLE ACTION_TASKS (
+  actionid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  task VARCHAR(250) NULL,
+  completed VARCHAR(25) NULL DEFAULT 'false',
   FOREIGN KEY (actionid) REFERENCES ACTION(id));
-  
-ALTER TABLE `dsdpdica`.`ACTION` 
-ADD COLUMN `subject` VARCHAR(25) NULL AFTER `grade`
-
-ALTER TABLE `dsdpdica`.`ACTION_TASKS` 
-ADD COLUMN `completed` VARCHAR(25) NULL AFTER `task`
-
-ALTER TABLE `dsdpdica`.`ACTION_TASKS`
-ADD column `actiontaskid` INT NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST
-
-
-ALTER TABLE ACTION_TASKS ALTER completed SET DEFAULT 'false';
-
