@@ -36,7 +36,7 @@ public class Teacher implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getSchoolid() {
+	public Integer getSchoolId() {
 		return schoolId;
 	}
 

@@ -73,22 +73,26 @@ public class ActionPlanDao {
 		String sql = "Update ACTION_TASKS set completed = ? where actionid = ? AND taskid = ?";
 		Query query = entityManager.createNativeQuery(sql);
 		
-		for( int i = 0; i < checked.length; i++) {
-			String recordstring = checked[i];
-			String[] splitrecordstring = recordstring.split(" ");
-				query.setParameter(1, "true");
-				query.setParameter(2, splitrecordstring[0]);
-				query.setParameter(3, splitrecordstring[1]);
-				query.executeUpdate();
+		if (!checked[0].isEmpty()) {
+			for( int i = 0; i < checked.length; i++) {
+				String recordstring = checked[i];
+				String[] splitrecordstring = recordstring.split(" ");
+					query.setParameter(1, "true");
+					query.setParameter(2, splitrecordstring[0]);
+					query.setParameter(3, splitrecordstring[1]);
+					query.executeUpdate();
+			}
 		}
 		
-		for( int i = 0; i < unchecked.length; i++) {
-			String recordstring = unchecked[i];
-			String[] splitrecordstring = recordstring.split(" ");
-				query.setParameter(1, "false");
-				query.setParameter(2, splitrecordstring[0]);
-				query.setParameter(3, splitrecordstring[1]);
-				query.executeUpdate();
+		if (!unchecked[0].isEmpty()) {
+			for( int i = 0; i < unchecked.length; i++) {
+				String recordstring = unchecked[i];
+				String[] splitrecordstring = recordstring.split(" ");
+					query.setParameter(1, "false");
+					query.setParameter(2, splitrecordstring[0]);
+					query.setParameter(3, splitrecordstring[1]);
+					query.executeUpdate();
+			}
 		}
 	}
 }

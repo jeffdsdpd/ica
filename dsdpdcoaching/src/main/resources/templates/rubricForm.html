@@ -32,6 +32,15 @@
 	    <link href="css/lib/pe-icon-7-stroke.css" rel="stylesheet"/>
     	    <link href='//fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'/>
     	    <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'/>
+    
+    <style>
+     		.radio-inline{
+     			font-family: arial, Times, serif;
+     			font-size: 14px;
+     			color: yellow;
+     		}
+	</style>
+    
     </head>
     
      <body>
@@ -66,17 +75,16 @@
 		                                        </div>                          
 		      
 		                                        <div class="col-md-5">
-												<div class="form-group">
-													<label>Teacher</label> <br></br>
-													<!-- <select id="teacherIds" multiple="multiple" style="display:none;" th:field="*{teacherIds}"></select> -->
-													<select id="teacherId" style="display: none;" th:field="*{teacherId}">
-														<option value=""> Please Select </option>
-														<option th:each="teacher : ${teachers}"
-															th:value="${teacher.teacherId}"
-															th:utext="${teacher.teacherId" />
-													</select>
+													<div class="form-group">
+														<label>Teacher</label> <br></br>
+														<select id="teacherId" th:field="*{teacherId}">
+															<option value=""> Please Select </option>
+															<option th:each="teacher : ${teachers}"
+																th:value="${teacher.teacherId}"
+																th:utext="${teacher.teacherId" />
+														</select>
+													</div>
 												</div>
-											</div>
 		                                    </div>
 		
 		                                    <div class="row">
@@ -97,10 +105,15 @@
 			                                
 			                                
 			                                <div class="container">
-                                  	<h5>Data Entered</h5>
-										<label class="radio-inline" style="width:250px;"><input type="radio" id="observed" name="observed" value="Observed Classroom" />Coach's View of the Classroom</label><br></br>
-                                     	<label class="radio-inline" style="width:250px;"><input type="radio" id="observed" name="observed" value="Teacher Completed" />Teacher's View of the Classroom</label><br></br>
-                                     	<label class="radio-inline" style="width:250px;"><input type="radio" id="observed" name="observed" value="Site Visit" />Visitor's View of the Classroom</label><br></br>
+                                  	<h5 style="font-weight:bold">Data Entered</h5>
+										<label class="radio-inline" style="width:250px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+										<input type="radio" id="observed" name="observed" value="Observed Classroom" />Coach's View of the Classroom</label><br></br>
+                                     	
+                                     	<label class="radio-inline" style="width:250px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+                                     	<input type="radio" id="observed" name="observed" value="Teacher Completed" />Teacher's View of the Classroom</label><br></br>
+                                     	
+                                     	<label class="radio-inline" style="width:250px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+                                     	<input type="radio" id="observed" name="observed" value="Site Visit" />Visitor's View of the Classroom</label><br></br>
                                     		<label for="observed" class="error"></label>
                                     </div>
                             
@@ -109,82 +122,152 @@
                                    	
                                     <div class="container">
                                     	<h4 style="color: red; font-weight: bold">Planning</h4>
-	  										<label class="radio-inline" style="width:170px;"><input type="radio" id='planning' name="planning" value="Whole group timer" />Whole group timer</label>
-	  										<label class="radio-inline" style="width:210px;"><input type="radio" id='planning' name="planning" value="No whole group timer, implements checklist" />No whole group timer, implements checklist</label>
-	  										<label class="radio-inline" style="width:230px;"><input type="radio" id='planning' name="planning" value="Individual checklist and differentiated activities" />Individual checklist and differentiated activities</label>
-	  										<label class="radio-inline" style="width:180px;"><input type="radio" id='planning' name="planning" value="Not Observed" />Not Observed</label>
+	  										<label class="radio-inline" style="width:170px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='planning' name="planning" value="Whole group timer" />Whole group timer</label>
+	  										
+	  										<label class="radio-inline" style="width:210px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='planning' name="planning" value="No whole group timer, implements checklist" />No whole group timer, implements checklist</label>
+	  										
+	  										<label class="radio-inline" style="width:230px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='planning' name="planning" value="Individual checklist and differentiated activities" />Individual checklist and differentiated activities</label>
+	  										
+	  										<label class="radio-inline" style="width:180px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='planning' name="planning" value="Not Observed" />Not Observed</label>
 	  									<br /><label for="planning" class="error"></label>
 	  									<br /><br />
 	  									
 	  									<h4 style="color: red; font-weight: bold">Assessment And Data</h4>
-	  										<label class="radio-inline" style="width:185px;" data-tooltip="tooltip" title="Collecting data from digital content"><input type="radio" id='assessmentAndData' name="assessmentAndData" value="Collecting data" />Collecting data</label>
-	  										<label class="radio-inline" style="width:210px;"><input type="radio" id='assessmentAndData' name="assessmentAndData" value="Using data to drive mini lesson" />Using data to drive mini lesson</label>
-	  										<label class="radio-inline" style="width:215px;" data-tooltip="tooltip" title="Pre test to advance, extend, or reteach content"><input type="radio" id='assessmentAndData' name="assessmentAndData" value="Pre-assessment to advance students" />Pre-assessment to advance students</label>
-	  										<label class="radio-inline" style="width:180px;"><input type="radio" id='assessmentAndData' name="assessmentAndData" value="Not Observed" />Not Observed</label>
+	  										<label class="radio-inline" style="width:185px; font-family:arial; font-weight:normal; font-size:12px; color:#585858" data-tooltip="tooltip" title="Collecting data from digital content">
+	  										<input type="radio" id='assessmentAndData' name="assessmentAndData" value="Collecting data" />Collecting data</label>
+	  										
+	  										<label class="radio-inline" style="width:210px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='assessmentAndData' name="assessmentAndData" value="Using data to drive mini lesson" />Using data to drive mini lesson</label>
+	  										
+	  										<label class="radio-inline" style="width:215px; font-family:arial; font-weight:normal; font-size:12px; color:#585858" data-tooltip="tooltip" title="Pre test to advance, extend, or reteach content">
+	  										<input type="radio" id='assessmentAndData' name="assessmentAndData" value="Pre-assessment to advance students" />Pre-assessment to advance students</label>
+	  										
+	  										<label class="radio-inline" style="width:180px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='assessmentAndData' name="assessmentAndData" value="Not Observed" />Not Observed</label>
 										<br /><label for="assessanddata" class="error"></label>
 										<br /><br />
 										
 										<h4 style="color: red; font-weight: bold">Path</h4>
-	  										<label class="radio-inline" style="width:175px;" data-tooltip="tooltip" title="Same activities for all learners"><input type="radio" id='path' name="path" value="Same activites" />Same activites</label>
-	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='path' name="path" value="Differentiated activities" />Differentiated activities</label>
-	  										<label class="radio-inline" style="width:175px;" data-tooltip="tooltip" title="Individual checklist generated with the input from the learner"><input type="radio" id='path' name="path" value="Individual checklist" />Individual checklist</label>
-	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='path' name="path" value="Not Observed" />Not Observed</label>
+	  										<label class="radio-inline" style="width:175px; font-family:arial; font-weight:normal; font-size:12px; color:#585858" data-tooltip="tooltip" title="Same activities for all learners">
+	  										<input type="radio" id='path' name="path" value="Same activites" />Same activites</label>
+	  										
+	  										<label class="radio-inline" style="width:175px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='path' name="path" value="Differentiated activities" />Differentiated activities</label>
+	  										
+	  										<label class="radio-inline" style="width:175px; font-family:arial; font-weight:normal; font-size:12px; color:#585858" data-tooltip="tooltip" title="Individual checklist generated with the input from the learner">
+	  										<input type="radio" id='path' name="path" value="Individual checklist" />Individual checklist</label>
+	  										
+	  										<label class="radio-inline" style="width:175px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='path' name="path" value="Not Observed" />Not Observed</label>
 	  									<br /><label for="path" class="error"></label>
 	  									<br /><br />
 	  									
 	  									<h4 style="color: red; font-weight: bold">Place</h4>
-	  										<label class="radio-inline" style="width:175px;" data-tooltip="tooltip" title="Learner moves to designated locations for activites"><input type="radio" id='place' name="place" value="Move to assigned learning studios" />Move to assigned learning studios</label>
-	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='place' name="place" value="Flexible seating options" />Flexible seating options</label>
-	  										<label class="radio-inline" style="width:175px;" data-tooltip="tooltip" title="Learner can pick learning environment. (online, offline, small group, 1-1)"><input type="radio" id='place' name="place" value="Pick learning environment" />Pick learning environment</label>			
-	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='place' name="place" value="Not Observed" />Not Observed</label>
+	  										<label class="radio-inline" style="width:175px; font-family:arial; font-weight:normal; font-size:12px; color:#585858" data-tooltip="tooltip" title="Learner moves to designated locations for activites">
+	  										<input type="radio" id='place' name="place" value="Move to assigned learning studios" />Move to assigned learning studios</label>
+	  										
+	  										<label class="radio-inline" style="width:175px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='place' name="place" value="Flexible seating options" />Flexible seating options</label>
+	  										
+	  										<label class="radio-inline" style="width:175px; font-family:arial; font-weight:normal; font-size:12px; color:#585858" data-tooltip="tooltip" title="Learner can pick learning environment. (online, offline, small group, 1-1)">
+	  										<input type="radio" id='place' name="place" value="Pick learning environment" />Pick learning environment</label>			
+	  										
+	  										<label class="radio-inline" style="width:175px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='place' name="place" value="Not Observed" />Not Observed</label>
 	  									<br /><label for="place" class="error"></label>
 	  									<br /><br />
 	  									
 	  									<h4 style="color: red; font-weight: bold">Pace</h4>
-	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='pace' name="pace" value="Whole group timer moves student" />Whole group timer moves student</label>
-	  										<label class="radio-inline" style="width:165px;"><input type="radio" id='pace' name="pace" value="Students move when ready" />Students move when ready</label>
-	  										<label class="radio-inline" style="width:195px;"><input type="radio" id='pace' name="pace" value="Move after mastery of content" />Move after mastery of content</label>
-	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='pace' name="pace" value="Not Observed" />Not Observed</label>
+	  										<label class="radio-inline" style="width:175px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='pace' name="pace" value="Whole group timer moves student" />Whole group timer moves student</label>
+	  										
+	  										<label class="radio-inline" style="width:165px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='pace' name="pace" value="Students move when ready" />Students move when ready</label>
+	  										
+	  										<label class="radio-inline" style="width:195px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='pace' name="pace" value="Move after mastery of content" />Move after mastery of content</label>
+	  										
+	  										<label class="radio-inline" style="width:175px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='pace' name="pace" value="Not Observed" />Not Observed</label>
 	  									<br /><label for="pace" class="error"></label>
 	  									<br /><br />
 	  									
 	  									<h4 style="color: red; font-weight: bold">Classroom Mgmt.</h4>
-	  										<label class="radio-inline" style="width:175px;" data-tooltip="tooltip" title="Facilitator states or restates directions of learning activities"><input type="radio" id='classroommgmt' name="classroommgmt" value="Restating directions" />Restating directions</label>
-	  										<label class="radio-inline" style="width:165px;" data-tooltip="tooltip" title="Learner knows what to do at each learning activity with little direction"><input type="radio" id='classroommgmt' name="classroommgmt" value="Self direction" />Self direction</label>
-	  										<label class="radio-inline" style="width:195px;" data-tooltip="tooltip" title="Leaner has automatic understanding of learning objectives for each activity"><input type="radio" id='classroommgmt' name="classroommgmt" value="Automatic understanding" />Automatic understanding</label>
-	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='classroommgmt' name="classroommgmt" value="Not Observed" />Not Observed</label>
+	  										<label class="radio-inline" style="width:175px; font-family:arial; font-weight:normal; font-size:12px; color:#585858" data-tooltip="tooltip" title="Facilitator states or restates directions of learning activities">
+	  										<input type="radio" id='classroommgmt' name="classroommgmt" value="Restating directions" />Restating directions</label>
+	  										
+	  										<label class="radio-inline" style="width:165px; font-family:arial; font-weight:normal; font-size:12px; color:#585858" data-tooltip="tooltip" title="Learner knows what to do at each learning activity with little direction">
+	  										<input type="radio" id='classroommgmt' name="classroommgmt" value="Self direction" />Self direction</label>
+	  										
+	  										<label class="radio-inline" style="width:195px; font-family:arial; font-weight:normal; font-size:12px; color:#585858" data-tooltip="tooltip" title="Leaner has automatic understanding of learning objectives for each activity">
+	  										<input type="radio" id='classroommgmt' name="classroommgmt" value="Automatic understanding" />Automatic understanding</label>
+	  										
+	  										<label class="radio-inline" style="width:175px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='classroommgmt' name="classroommgmt" value="Not Observed" />Not Observed</label>
 	  									<br /><label for="classroommgmt" class="error"></label>
 	  									<br /><br />
 	  									
 	  									<h4 style="color: red; font-weight: bold">Teacher Role</h4>
-	  										<label class="radio-inline" style="width:185px;"><input type="radio" id='teacherrole' name="teacherrole" value="Mini lesson and facilitator" />Mini lesson and facilitates</label>
-	  										<label class="radio-inline" style="width:220px;"><input type="radio" id='teacherrole' name="teacherrole" value="Mini lesson with few distractions" />Mini lesson with few distractions</label>
-	  										<label class="radio-inline" style="width:135px;"><input type="radio" id='teacherrole' name="teacherrole" value="Mini lesson 99%" />Mini lesson 99%</label>
-	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='teacherrole' name="teacherrole" value="Not Observed" />Not Observed</label>
+	  										<label class="radio-inline" style="width:185px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='teacherrole' name="teacherrole" value="Mini lesson and facilitator" />Mini lesson and facilitates</label>
+	  										
+	  										<label class="radio-inline" style="width:220px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='teacherrole' name="teacherrole" value="Mini lesson with few distractions" />Mini lesson with few distractions</label>
+	  										
+	  										<label class="radio-inline" style="width:135px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='teacherrole' name="teacherrole" value="Mini lesson 99%" />Mini lesson 99%</label>
+	  										
+	  										<label class="radio-inline" style="width:175px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='teacherrole' name="teacherrole" value="Not Observed" />Not Observed</label>
 	  									<br /><label for="teacherrole" class="error"></label>
 	  									<br /><br />
 	  									
 	  									<h4 style="color: red; font-weight: bold">Student Engagement</h4>
-	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='studentegmt' name="studentegmt" value="Following directions" />Following direction</label>
-	  										<label class="radio-inline" style="width:180px;"><input type="radio" id='studentegmt' name="studentegmt" value="Engaged with content" />Engaged with content</label>
-	  										<label class="radio-inline" style="width:220px;"><input type="radio" id='studentegmt' name="studentegmt" value="Deeply involved with content" />Deeply involved with content</label>
-	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='studentegmt' name="studentegmt" value="Not Observed" />Not Observed</label>
+	  										<label class="radio-inline" style="width:175px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='studentegmt' name="studentegmt" value="Following directions" />Following direction</label>
+	  										
+	  										<label class="radio-inline" style="width:180px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='studentegmt' name="studentegmt" value="Engaged with content" />Engaged with content</label>
+	  										
+	  										<label class="radio-inline" style="width:220px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='studentegmt' name="studentegmt" value="Deeply involved with content" />Deeply involved with content</label>
+	  										
+	  										<label class="radio-inline" style="width:175px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='studentegmt' name="studentegmt" value="Not Observed" />Not Observed</label>
 	  									<br /><label for="studentegmt" class="error"></label>
 	  									<br /><br />
 	  									
 	  									<h4 style="color: red; font-weight: bold">Student Collaboration</h4>
-	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='studentcolab' name="studentcolab" value="Teacher created future ready skills" />Teacher created future ready skills</label>
-	  										<label class="radio-inline" style="width:135px;"><input type="radio" id='studentcolab' name="studentcolab" value="Choice in future ready skills" />Choice in future ready skills</label>
-	  										<label class="radio-inline" style="width:150px;"><input type="radio" id='studentcolab' name="studentcolab" value="PBL or 20% time" />PBL or 20% time</label>
-	  										<label class="radio-inline" style="width:175px;"><input type="radio" id='studentcolab' name="studentcolab" value="Not Observed" />Not Observed</label>
+	  										<label class="radio-inline" style="width:175px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='studentcolab' name="studentcolab" value="Teacher created future ready skills" />Teacher created future ready skills</label>
+	  										
+	  										<label class="radio-inline" style="width:135px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='studentcolab' name="studentcolab" value="Choice in future ready skills" />Choice in future ready skills</label>
+	  										
+	  										<label class="radio-inline" style="width:150px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='studentcolab' name="studentcolab" value="PBL or 20% time" />PBL or 20% time</label>
+	  										
+	  										<label class="radio-inline" style="width:175px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='studentcolab' name="studentcolab" value="Not Observed" />Not Observed</label>
 	  									<br /><label for="studentcolab" class="error"></label>
 	  									<br /><br />
 	  									
 	  									<h4 style="color: red; font-weight: bold">Technology</h4>
-	  										<label class="radio-inline" style="width:195px;"><input type="radio" id='technology' name="technology" value="Technology integration" />Technology integration</label>
-	  										<label class="radio-inline" style="width:180px;"><input type="radio" id='technology' name="technology" value="Using digital content data to drive mini lessons" />Using digital content data to drive mini lessons</label>
-	  										<label class="radio-inline" style="width:220px;"><input type="radio" id='technology' name="technology" value="Students determine what program works best for learning target" />Students determine what program works best for learning target</label>
-											<label class="radio-inline" style="width:175px;"><input type="radio" id='technology' name="technology" value="Not Observed" />Not Observed</label>
+	  										<label class="radio-inline" style="width:195px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='technology' name="technology" value="Technology integration" />Technology integration</label>
+	  										
+	  										<label class="radio-inline" style="width:180px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='technology' name="technology" value="Using digital content data to drive mini lessons" />Using digital content data to drive mini lessons</label>
+	  										
+	  										<label class="radio-inline" style="width:220px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+	  										<input type="radio" id='technology' name="technology" value="Students determine what program works best for learning target" />Students determine what program works best for learning target</label>
+											
+											<label class="radio-inline" style="width:175px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+											<input type="radio" id='technology' name="technology" value="Not Observed" />Not Observed</label>
 	  									<br /><label for="technology" class="error"></label>
 	  								<br />
 	  								<hr></hr>

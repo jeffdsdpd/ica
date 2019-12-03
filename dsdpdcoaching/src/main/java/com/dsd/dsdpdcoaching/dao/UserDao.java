@@ -20,5 +20,4 @@ public class UserDao {
 	            .setParameter("username", username)
 	            .getSingleResult();
 	}
-	
 }

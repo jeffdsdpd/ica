@@ -48,7 +48,6 @@ CREATE TABLE ACTION (
   schoolid INT NULL,
   grade VARCHAR(45) NULL,
   subject VARCHAR(25) NULL,
-  task VARCHAR(250) NULL,
   owner VARCHAR(45) NULL,
   entrydate DATE NULL,
   PRIMARY KEY (id),
@@ -56,7 +55,8 @@ CREATE TABLE ACTION (
 
 --/ Added on 10/29/2019 to support the insertion of multiple tasks per record of the action plan
 CREATE TABLE ACTION_TASKS (
-  actionid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  taskid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  actionid INT NULL,
   task VARCHAR(250) NULL,
   completed VARCHAR(25) NULL DEFAULT 'false',
   FOREIGN KEY (actionid) REFERENCES ACTION(id));

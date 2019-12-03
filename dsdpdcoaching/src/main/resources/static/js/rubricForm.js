@@ -4,8 +4,7 @@ $(document).ready(
 			$("#schoolId").change(
 					function() {
 						var str = $("#schoolId :selected").val();
-						$("#teacherId").multiselect('destroy');
-
+						
 						$.ajax({
 							type : "GET",
 							url : "getTeachersBySchool",
@@ -20,10 +19,6 @@ $(document).ready(
 									$dropdownList.append($("<option></option>")
 											.attr("value", key.id).text(
 													(key.name)));
-								});
-
-								$dropdownList.multiselect({
-									includeSelectAllOption : true
 								});
 							}
 						});

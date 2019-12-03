@@ -20,3 +20,9 @@
 .input-disabled{
 	background-color:#FFF !important;
 }
+
+.radio-inline1 {
+	font-family: arial, Times, serif;
+	font-size: 14px;
+	color: yellow;
+}

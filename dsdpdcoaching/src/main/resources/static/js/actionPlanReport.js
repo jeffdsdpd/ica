@@ -67,7 +67,7 @@ $(document).ready(function(){
        	   			actionid = e.id;
        	   			$("#checkboxes").append("<br/>");
        	   			$("#checkboxes").append( $("<div id="+actionid+">"));
-       	   			$("#checkboxes").append( $("<div id="+"actionplanheader"+">").text('Action Plan Recorded On '+e.entrydate));
+       	   			$("#checkboxes").append( $("<div id="+"actionplanheader"+">").text('Action Plan Recorded On '+e.entrydate+' for '+e.owner));
        	   			if (e.taskList[0].completed == 'true') {   //check if the task has completed=true and check the check box
        	   				
        	   				$("#checkboxes").append( $("<input>")
