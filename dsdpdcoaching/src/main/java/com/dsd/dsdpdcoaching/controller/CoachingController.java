@@ -51,7 +51,7 @@ public class CoachingController {
 		}
 
 		// Redirect user back to blank form so they can enter more data
-		return "coachingForm.html";
+		return "coachingForm";
 	}
 
 	@GetMapping("/coachingReport.html")

@@ -10,16 +10,16 @@ public class PhaseValues implements Serializable {
 
 	private static final long serialVersionUID = -5710286257790721091L;
 	
+	//This constructor is needed to map the database result set
+	public PhaseValues() {
+    };
+	
 	@Id
 	private Long id; 
 	
 	private Integer phase1;
 	private Integer phase2;
 	private Integer phase3;
-	
-	//This constructor is needed to map the database result set
-	public PhaseValues() {
-    };
 	
 	public Long getId() {
         return id;

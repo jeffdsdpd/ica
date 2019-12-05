@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import com.dsd.dsdpdcoaching.dto.Teacher;
+import com.dsd.dsdpdcoaching.dto.TeacherInteraction;
 
 @Repository
 @Transactional
@@ -64,6 +65,30 @@ public class TeacherDao {
 		query.setParameter(1, teacherId);
 		
 		query.executeUpdate();
+	}
+	
+
+	public List<TeacherInteraction> getInteractionTeacherListBySchool(String schoolId) {
+		
+		String sql = "SELECT TEACHERS.NAME, RUBRIC.DATE, 'Rubric' AS INTERACTIONMETHOD, RUBRIC.USERID, RUBRIC.RUBRICSCORE"
+				+ " FROM RUBRIC, TEACHERS"
+				+ " WHERE RUBRIC.TEACHERID = TEACHERS.ID"
+				+ " AND RUBRIC.SCHOOLID = ?"
+				+ " UNION"
+				+ " SELECT TEACHERS.NAME, COACHING_INTERACTIONS.DATE, 'Coaching Notes' AS INTERACTIONMETHOD, COACHING_INTERACTIONS.USERID, '' "
+				+ " FROM COACHING_INTERACTIONS, TEACHERS"
+				+ " WHERE COACHING_INTERACTIONS.TEACHERID = TEACHERS.ID"
+				+ " AND COACHING_INTERACTIONS.SCHOOLID = ?"
+				+ " ORDER BY DATE DESC";
+		
+		Query query = entityManager.createNativeQuery(sql);
+		query.setParameter(1, schoolId);
+		query.setParameter(2, schoolId);
+		
+		List<TeacherInteraction> results = query.getResultList();
+		
+		return results;
+
 	}
 
 }

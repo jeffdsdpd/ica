@@ -25,6 +25,7 @@ import com.dsd.dsdpdcoaching.dto.CoachingData;
 import com.dsd.dsdpdcoaching.dto.PhaseValues;
 import com.dsd.dsdpdcoaching.dto.Rubric;
 import com.dsd.dsdpdcoaching.dto.Teacher;
+import com.dsd.dsdpdcoaching.dto.TeacherInteraction;
 import com.dsd.dsdpdcoaching.dto.TeacherProgressionReportData;
 import com.dsd.dsdpdcoaching.dto.User;
 import com.dsd.dsdpdcoaching.service.EmailService;
@@ -166,6 +167,13 @@ public class JSONRequestController extends HttpServlet {
 	public List<ActionPlanData> getActionPlanBySchoolGradeSubject(@RequestParam Integer schoolId, @RequestParam String grade, @RequestParam String subject) {	
 		List<ActionPlanData> apd = actionPlanDao.getActionPlanBySchoolGradeSubject(schoolId, grade, subject);
 		return apd;
+	}
+	
+	//Called from interactionReport.js
+	@GetMapping(value="/getInteractionTeacherListBySchool")
+	@ResponseBody
+	public List<TeacherInteraction> getInteractionTeacherListBySchool(@RequestParam String schoolId) {
+		return teacherDao.getInteractionTeacherListBySchool(schoolId);
 	}
 
 }

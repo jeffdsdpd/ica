@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>DSD-PD Coaching Application | Interaction Report</title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+<link rel="icon" type="image/png" href="img/favicon.ico" />
+
+<!--   JS Files   -->
+<script src="js/lib/jquery.js"></script>
+<script src="js/lib/jquery-ui.min.js"></script>
+<script src="js/lib/bootstrap.min.js"></script>
+<script src="js/lib/light-bootstrap-dashboard.js"></script>
+<script src="js/lib/highcharts.js"></script>
+<script src="js/lib/highcharts-3d.js"></script>
+<script src="js/lib/cylinder.js"></script>
+<script src="js/lib/exporting.js"></script>
+<script src="js/lib/export-data.js"></script>
+<script src="js/interactionReport.js"></script>
+
+<!--   CSS Files   -->
+<link href="css/lib/jquery-ui.css" rel="stylesheet" />
+<link href="css/lib/bootstrap.min.css" rel="stylesheet" />
+<link href="css/lib/light-bootstrap-dashboard.css" rel="stylesheet" />
+<link href="css/misc.css" rel="stylesheet" />
+
+<!--   Fonts and icons     -->
+<link href="css/lib/pe-icon-7-stroke.css" rel="stylesheet" />
+<link href='//fonts.googleapis.com/css?family=Roboto:400,700,300'
+	rel='stylesheet' type='text/css' />
+<link
+	href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'
+	rel='stylesheet' type='text/css' />
+</head>
+<body>
+		<div class="wrapper">
+		    <div th:replace="fragments/nav :: nav"></div>
+		    
+			<div class="main-panel">
+			    <div th:replace="fragments/header :: header"></div>
+
+		        <div class="content">
+		            <div class="container-fluid">
+		                <div class="row">
+		                    <div class="col-md-11">
+		                        <div class="card">
+		                            <div class="header">
+		                                <h2 class="title">Interaction Report</h2>
+		                            </div>
+		                            <div class="content">
+		                                <form id="frm" name="frm">
+		                                		<div class="row">
+		                                        <div class="col-md-4">
+		                                            <div class="form-group">
+		                                                <label>School</label>
+		                                                <select id="schoolId" name="schoolId" class="form-control">
+			                                                	<option value="0">Please Select</option>
+			                                                	<option th:each="school: ${schoolList}" th:value="${school.id}" th:text="${school.name}"></option>
+														</select>
+		                                            </div>
+		                                     	</div>
+												
+		                                 	</div>
+		                               
+											<table id="table" class="table table-striped"></table>
+										
+										</form>
+										
+		                            </div>
+		                        </div>
+									
+								<div th:replace="fragments/footer :: footer"></div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+			</div>
+		</div>
+	</body>
+</html>
