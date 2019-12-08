@@ -1,5 +1,6 @@
 package com.dsd.dsdpdcoaching.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.dsd.dsdpdcoaching.dto.ActionPlanData;
+import com.dsd.dsdpdcoaching.dto.Rubric;
 import com.dsd.dsdpdcoaching.dto.Teacher;
 import com.dsd.dsdpdcoaching.dto.TeacherInteraction;
 
@@ -70,24 +73,22 @@ public class TeacherDao {
 
 	public List<TeacherInteraction> getInteractionTeacherListBySchool(String schoolId) {
 		
-		String sql = "SELECT TEACHERS.NAME, RUBRIC.DATE, 'Rubric' AS INTERACTIONMETHOD, RUBRIC.USERID, RUBRIC.RUBRICSCORE"
+		String sql = "SELECT RUBRIC.ID as ID, TEACHERS.NAME, RUBRIC.DATE, 'Rubric' AS INTERACTIONMETHOD, RUBRIC.USERID, RUBRIC.RUBRICSCORE"
 				+ " FROM RUBRIC, TEACHERS"
 				+ " WHERE RUBRIC.TEACHERID = TEACHERS.ID"
 				+ " AND RUBRIC.SCHOOLID = ?"
 				+ " UNION"
-				+ " SELECT TEACHERS.NAME, COACHING_INTERACTIONS.DATE, 'Coaching Notes' AS INTERACTIONMETHOD, COACHING_INTERACTIONS.USERID, '' "
+				+ " SELECT COACHING_INTERACTIONS.ID as ID, TEACHERS.NAME, COACHING_INTERACTIONS.DATE, 'Coaching Notes' AS INTERACTIONMETHOD, COACHING_INTERACTIONS.USERID, '' "
 				+ " FROM COACHING_INTERACTIONS, TEACHERS"
 				+ " WHERE COACHING_INTERACTIONS.TEACHERID = TEACHERS.ID"
 				+ " AND COACHING_INTERACTIONS.SCHOOLID = ?"
 				+ " ORDER BY DATE DESC";
 		
-		Query query = entityManager.createNativeQuery(sql);
+		Query query = entityManager.createNativeQuery(sql,TeacherInteraction.class);
 		query.setParameter(1, schoolId);
 		query.setParameter(2, schoolId);
 		
-		List<TeacherInteraction> results = query.getResultList();
-		
-		return results;
+		return query.getResultList();
 
 	}
 

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.dsd.dsdpdcoaching.dao.RubricDao;
 import com.dsd.dsdpdcoaching.dto.Rubric;
+import com.dsd.dsdpdcoaching.service.RubricTotalCalculator;
 
 @Controller
 @SessionAttributes("schoolList")
@@ -21,6 +22,8 @@ public class RubricController {
 
 	@Autowired
 	private RubricDao rubricDao;
+	@Autowired
+	private RubricTotalCalculator rubricTotalCalculator;
 
 	@GetMapping("/rubricForm.html")
 	public String getRubricForm(Model model) {
@@ -48,13 +51,19 @@ public class RubricController {
 
 		rubricData.setUserId(request.getUserPrincipal().getName());
 		
+		//call the class to get the rubric total value
+		int rubricScore = rubricTotalCalculator.getRubricTotal(rubricData.getPlanning(), rubricData.getAssessmentAndData(), rubricData.getPath(),
+				rubricData.getPlace(), rubricData.getPace(), rubricData.getClassroommgmt(), rubricData.getTeacherrole(), rubricData.getStudentegmt(),
+				rubricData.getStudentcolab(), rubricData.getTechnology());
+		
 		Integer teacherId = rubricData.getTeacherId();
 		Rubric data = ((Rubric) SerializationUtils.clone(rubricData));
 		data.setTeacherId(teacherId);
+		data.setRubricScore(rubricScore);
 			
 		rubricDao.saveRubricData(data);
 
-		// Redirect user back to blank form so they can enter more data
+		//redirect user back to blank form so they can enter more data
 		return "redirect:/rubricForm.html";
 	}
 

@@ -17,17 +17,25 @@ public class TeacherInteraction implements Serializable {
     @Id
 	private Long id;
     
-	private String teacherName;
+	private String name;
 	private String date;
 	private String interactionMethod;
 	private String userid;
 	private int rubricscore;
 	
-	public String getTeacherName() {
-		return teacherName;
+	public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+	
+	public String getName() {
+		return name;
 	}
-	public void setTeacherName(String teacherName) {
-		this.teacherName = teacherName;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getDate() {
 		return date;

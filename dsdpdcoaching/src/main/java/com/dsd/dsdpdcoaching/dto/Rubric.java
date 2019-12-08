@@ -75,6 +75,9 @@ public class Rubric implements Serializable {
 	@Column(name="rubricnotes")
 	private String rubricNotes;
 	
+	@Column(name="rubricscore")
+	private int rubricScore;
+	
 	@Column(name="levelup")
 	private String levelUp;
 	
@@ -224,6 +227,14 @@ public class Rubric implements Serializable {
 
 	public void setRubricNotes(String rubricnotes) {
 		this.rubricNotes = rubricnotes;
+	}
+	
+	public int getRubricScore() {
+		return rubricScore;
+	}
+
+	public void setRubricScore(int rubricScore) {
+		this.rubricScore = rubricScore;
 	}
 
 	public String getLevelUp() {

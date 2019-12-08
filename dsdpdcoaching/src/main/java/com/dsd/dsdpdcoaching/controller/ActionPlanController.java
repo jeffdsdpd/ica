@@ -52,7 +52,7 @@ public class ActionPlanController {
 		
 		actionPlanDao.saveActionPlanData(actionPlanData);
 
-		// Redirect user back to blank form so they can enter more data
+		//redirect user back to blank form so they can enter more data
 		return "redirect:/actionPlanForm.html";
 	}
 	
