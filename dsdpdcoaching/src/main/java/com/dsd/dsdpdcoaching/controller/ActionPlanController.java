@@ -27,10 +27,8 @@ public class ActionPlanController {
 
 	@GetMapping("/actionPlanForm.html")
 	public String getActionPlanForm(Model model) {
-		
 		model.addAttribute("actionTaskData", new ActionTaskData());
 		model.addAttribute("actionPlanData", new ActionPlanData());
-		
 		return "actionPlanForm";
 	}
 	
@@ -45,14 +43,16 @@ public class ActionPlanController {
 	public String postActionPlanForm(HttpSession session, HttpServletRequest request, Model model,
 			@ModelAttribute ActionPlanData actionPlanData, @ModelAttribute ActionTaskData actionTaskData) {
 		
+		//set the 'completed' field for all of the task lists to 'false'
+		for (int i = 0; i<actionPlanData.getTaskList().size(); i++) {
+			  actionPlanData.getTaskList().get(i).setCompleted("false");
+			}
+
 		//store the date the record was created
 		java.util.Date currentDate = Calendar.getInstance().getTime();
-
-		actionPlanData.setEntrydate(currentDate);
-		
+		actionPlanData.setEntrydate(currentDate);	
 		actionPlanDao.saveActionPlanData(actionPlanData);
 
-		//redirect user back to blank form so they can enter more data
 		return "redirect:/actionPlanForm.html";
 	}
 	
