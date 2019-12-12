@@ -19,7 +19,7 @@ $(document).ready(function() {
 		$("#add-more").click(function(e) {
 			e.preventDefault();
 
-			var newAdd = '<div id=div-'+counter+'><input type="text" id="task[]" name="taskList['+counter+'].task"  size="60" placeholder="Task"></input><a href="#" class="remove_field">Remove</a></div>';
+			var newAdd = '<div id=div-'+counter+'><input type="text" size="75" id="task[]" name="taskList['+counter+'].task" placeholder="Task"></input><a href="#" class="remove_field">Remove</a></div>';
 		
 			var el = $('.input_wrap div:last');
 		    $(el).after(newAdd);

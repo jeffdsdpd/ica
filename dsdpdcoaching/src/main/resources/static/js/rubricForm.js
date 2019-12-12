@@ -1,5 +1,8 @@
 $(document).ready(
 		function() {
+			var wrapper = $(".input_wrap>div");
+			var add_button = $(".add-more");
+			var counter = 1;
 
 			$("#schoolId").change(
 					function() {
@@ -93,7 +96,26 @@ $(document).ready(
 					$(element).parent().addClass('error')
 				},
 			});
-		});
+			
+			//add another input text line for additional tasks
+			$("#add-more").click(function(e) {
+				e.preventDefault();
+
+				var newAdd = '<div id=div-'+counter+'><input size="75" type="levelup" id="levelup[]" name="levelupList['+counter+'].levelup" placeholder="LevelUp Item"></input><a href="#" class="remove_field">Remove</a></div>';
+
+				var el = $('.input_wrap div:last');
+			    $(el).after(newAdd);
+
+			    counter++;
+			});
+
+
+			//remove the current value of the remove button which has been pressed
+			$(document).on("click",".remove_field",function(){
+			    $(this).parent().remove();
+			});
+			
+		});//end of document ready function
 
 $(function() {
     $("#entryDate").datepicker();

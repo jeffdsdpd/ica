@@ -2,18 +2,25 @@ package com.dsd.dsdpdcoaching.dto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
 
 @Entity(name = "RUBRIC")
+@Component
 public class Rubric implements Serializable {
 
 	private static final long serialVersionUID = -4939822350121215142L;
@@ -78,8 +85,10 @@ public class Rubric implements Serializable {
 	@Column(name="rubricscore")
 	private int rubricScore;
 	
+	@ElementCollection(fetch = FetchType.LAZY)
+	@CollectionTable(name="RUBRIC_LEVELUP", joinColumns=@JoinColumn(name = "rubricid", referencedColumnName = "id"))
 	@Column(name="levelup")
-	private String levelUp;
+    private List<RubricLevelUp> levelupList;
 	
 	@Column(name="questions")
 	private String questions;
@@ -236,13 +245,13 @@ public class Rubric implements Serializable {
 	public void setRubricScore(int rubricScore) {
 		this.rubricScore = rubricScore;
 	}
-
-	public String getLevelUp() {
-		return levelUp;
+	
+	public List<RubricLevelUp> getLevelupList() {
+		return levelupList;
 	}
 
-	public void setLevelUp(String levelup) {
-		this.levelUp = levelup;
+	public void setLevelupList(List<RubricLevelUp> levelupList) {
+		this.levelupList = levelupList;
 	}
 
 	public String getQuestions() {

@@ -284,21 +284,33 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
-                                                <label>Levelup Strategies</label>
-                                                <textarea rows="5" cols="50" class="form-control" placeholder="Levelup Strategies" name="levelUp" id="levelUp" wrap="hard" maxlength="500"></textarea><br />
-											</div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="form-group">
                                                 <label>Questions</label>
                                                 <textarea rows="5" cols="50" class="form-control" placeholder="Questions" name="questions" id="questions" wrap="hard" maxlength="500"></textarea><br />
 											</div>
                                         </div>
                                     </div>
                                     
+                                    <div class="row">	
+										<div class="col-md-8">
+											<div class="form-group">
+												<label>LevelUp Strategies</label>
+								      			<div class="input-group control-group after-add-more">
+								      				<div class="col-md-10">
+								      					<div class="input_wrap">
+								      						<div>
+									      						<input size="75" type="text" name="levelup[]" id="levelup[]" th:field="*{levelupList[0].levelup}" placeholder="LevelUp Item"></input>
+											   				</div>
+											   			</div>
+											   		</div>
+											  		<div class="input-group-btn" style="float:right; align:middle;"> 
+														<button class="btn-xs add-more" id="add-more" type="button">Add Tasks</button> 
+											  		</div>
+												</div>
+											</div>
+										</div>
+									</div>
+											
+			
 	  								</div>
 		                                    <button type="submit" class="btn btn-info btn-fill pull-right" name="Submit" value="Submit">Submit</button>
 		                                    <div class="clearfix"></div>

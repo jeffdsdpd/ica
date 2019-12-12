@@ -68,6 +68,7 @@
  
 		$("#schoolName").change(function(){
 				rubricTotal = 0;
+				$("#levelupcheckboxes").html("");
 				document.getElementById("emailreport").style.display = "none";
 				document.getElementById("teachercheckbox").style.display = "none";
 				document.getElementById("admincheckbox").style.display = "none";
@@ -151,6 +152,7 @@
 		$("#teacherName").change(function(){
 			var selectedSchoolId = $("#schoolName :selected").val();
 			var selectedTeacherId = $("#teacherName :selected").val();
+			$("#levelupcheckboxes").html("");
 				rubricTotal = 0;
 
 				planningLevel = 0;
@@ -255,6 +257,7 @@
 		
 		
 		$("#date").change(function() {
+			$("#checkboxes").html("");
 			
 			if ( $("#teacherlabel").text() != "" ) {
     				document.getElementById("teacherlabel").style.display = "inline";
@@ -533,6 +536,32 @@
 	                		 		$(".technology").removeAttr('style');
 	                		 	}
 	                		 
+	                		 $("#levelupcheckboxes").append( $("<label>").attr('id', 'levelupheader').text("LevelUp Items"));
+	                		 $("#levelupcheckboxes").append( $("<br />"));
+	                		 $("#levelupcheckboxes").append( $("<br />"));
+	                				 
+	                		 //loop through the levelup list and build the html
+	                		 for (i = 0; i < response.levelupList.length; i++) {
+	                		 		if (response.levelupList[i].completed == 'true') {
+	                		 			$("#levelupcheckboxes").append( $("<input>")
+	                   	   						.attr('type', 'checkbox')
+	                   	   						.attr('id', 'checkbox')
+	                   	   						.attr('name','checkbox')
+	                   	   						.attr('checked','checked')
+	                   	   						.val(response.id + ' ' + response.levelupList[i].levelupid));
+	                		 	} else {
+	                		 		$("#levelupcheckboxes").append( $("<input>")
+	               	   						.attr('type', 'checkbox')
+	               	   						.attr('id', 'checkbox')
+	               	   						.attr('name','checkbox')
+	               	   						.val(response.id + ' ' + response.levelupList[i].levelupid) );
+	                		 		}
+	                		 		$("#levelupcheckboxes").append( $("<label>").text(response.levelupList[i].levelup));
+	        	        	   			$("#levelupcheckboxes").append("<br/>");
+	                		 	};
+	                			 
+
+	                		 
 	                		 var rubricValuesArray = [	{name: 'planning', value: planningLevel},
                 		                            	   	{name: 'assessanddata', value: assessanddataLevel},
                 		                            	   	{name: 'path', value: pathLevel},
@@ -580,7 +609,7 @@
 	   	                		 });
 
 	                		 document.getElementById("rubricnotes").value = response.rubricNotes;
-	                		 document.getElementById("levelup").value = response.levelUp;
+	                		 //document.getElementById("levelup").value = response.levelUp;
 	                		 document.getElementById("questions").value = response.questions;
 	                		 
 	                	 $(".rubricTotal").html(rubricTotal);

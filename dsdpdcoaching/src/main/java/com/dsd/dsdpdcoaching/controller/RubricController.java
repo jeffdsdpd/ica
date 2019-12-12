@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.dsd.dsdpdcoaching.dao.RubricDao;
 import com.dsd.dsdpdcoaching.dto.Rubric;
+import com.dsd.dsdpdcoaching.dto.RubricLevelUp;
 import com.dsd.dsdpdcoaching.service.RubricTotalCalculator;
 
 @Controller
@@ -28,6 +29,7 @@ public class RubricController {
 	@GetMapping("/rubricForm.html")
 	public String getRubricForm(Model model) {
 		model.addAttribute("rubricData", new Rubric());
+		model.addAttribute("rubricLevelUp", new RubricLevelUp());
 		return "rubricForm";
 	}
 	
@@ -47,9 +49,14 @@ public class RubricController {
 	}
 	
 	@PostMapping("/rubricForm")
-	public String postRubricForm(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute Rubric rubricData) {
+	public String postRubricForm(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute Rubric rubricData, @ModelAttribute RubricLevelUp rubricLevelUp) {
 
 		rubricData.setUserId(request.getUserPrincipal().getName());
+		
+		//set the 'completed' field for all records in the levelup list to 'false'
+		for (int i = 0; i<rubricData.getLevelupList().size(); i++) {
+			rubricData.getLevelupList().get(i).setCompleted("false");
+			}
 		
 		//call the class to get the rubric total value
 		int rubricScore = rubricTotalCalculator.getRubricTotal(rubricData.getPlanning(), rubricData.getAssessmentAndData(), rubricData.getPath(),
@@ -60,7 +67,7 @@ public class RubricController {
 		Rubric data = ((Rubric) SerializationUtils.clone(rubricData));
 		data.setTeacherId(teacherId);
 		data.setRubricScore(rubricScore);
-			
+
 		rubricDao.saveRubricData(data);
 
 		//redirect user back to blank form so they can enter more data

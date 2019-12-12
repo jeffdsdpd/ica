@@ -60,3 +60,12 @@ CREATE TABLE ACTION_TASKS (
   task VARCHAR(250) NULL,
   completed VARCHAR(25) NULL DEFAULT 'false',
   FOREIGN KEY (actionid) REFERENCES ACTION(id));
+  
+--/***********************************************************************************************************/
+--/ Added on 12/10/2019 to support the levelup items as a checklist type item on the rubric report
+  CREATE TABLE `dsdpdica`.`RUBRIC_LEVELUP` (
+  `levelupid` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `rubricid` INT NULL,
+  `levelup` VARCHAR(250) NULL,
+  `completed` VARCHAR(25) NULL,
+FOREIGN KEY (rubricid) REFERENCES RUBRIC(id));

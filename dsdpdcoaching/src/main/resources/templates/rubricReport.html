@@ -32,25 +32,42 @@
 	rel='stylesheet' type='text/css' />
 
 <style>
-.blue {
-	color: #3A55A5;
-}
+	.blue {
+		color: #3A55A5;
+	}
+	
+	.red {
+		color: #CF5300;
+	}
+	
+	.yellow {
+		color: #cccc00;
+	}
+	
+	.green {
+		color: #A2AB58;
+	}
+	
+	.black {
+		color: #000000;
+	}
 
-.red {
-	color: #CF5300;
-}
+	.levelupcheckboxes input{
+    			margin: 0px 0px 0px 0px;
+   	}
 
-.yellow {
-	color: #cccc00;
-}
-
-.green {
-	color: #A2AB58;
-}
-
-.black {
-	color: #000000;
-}
+	.levelupcheckboxes label{
+		font-weight: normal;
+		font-size: 14px;
+  		margin: 0px 0px 5px 5px;
+   	}
+   	
+   	#levelupheader{
+		font-weight: bold;
+		font-size: 16px;
+		color: #666;
+  		margin: 0px 0px 0px 0px;
+  		text-transform: uppercase;
 </style>
 </head>
 <body>
@@ -305,17 +322,6 @@
 										<div class="row">
 											<div class="col-md-9">
 												<div class="form-group">
-													<label>Levelup Strategies</label>
-													<textarea rows="5" cols="50" class="form-control" placeholder="Levelup Strategies" name="levelup"
-														id="levelup" wrap="hard" maxlength="500" readonly="readonly"></textarea>
-													<br />
-												</div>
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-md-9">
-												<div class="form-group">
 													<label>Questions</label>
 													<textarea rows="5" cols="50" class="form-control" placeholder="Questions" name="questions" id="questions"
 														wrap="hard" maxlength="500" readonly="readonly"></textarea>
@@ -323,6 +329,25 @@
 												</div>
 											</div>
 										</div>
+										
+										<div class="row">
+											<div class="col-md-11">
+												<div class="levelupcheckboxes">
+													<div id="levelupcheckboxes" class="custom-control-input"></div>
+												</div>
+											</div>
+										</div>
+										
+										<div id="cbResults">
+											<input type="hidden" id="checkedValues" name="checkedValues" ></input>
+										  	<input type="hidden" id="unCheckedValues" name="unCheckedValues"></input>
+										</div>
+										
+										<button type="submit" class="btn btn-info btn-fill" style="margin:auto; display:block;" 
+											name="Submit" value="Submit" onclick="loopForm(document.frm);">Update LevelUp Items
+										</button>
+										
+										
 									</form>
 
 								</div>

@@ -43,14 +43,15 @@ public class ActionPlanController {
 	public String postActionPlanForm(HttpSession session, HttpServletRequest request, Model model,
 			@ModelAttribute ActionPlanData actionPlanData, @ModelAttribute ActionTaskData actionTaskData) {
 		
-		//set the 'completed' field for all of the task lists to 'false'
+		//set the 'completed' field for all records in the task list to 'false'
 		for (int i = 0; i<actionPlanData.getTaskList().size(); i++) {
 			  actionPlanData.getTaskList().get(i).setCompleted("false");
 			}
 
 		//store the date the record was created
 		java.util.Date currentDate = Calendar.getInstance().getTime();
-		actionPlanData.setEntrydate(currentDate);	
+		actionPlanData.setEntrydate(currentDate);
+		
 		actionPlanDao.saveActionPlanData(actionPlanData);
 
 		return "redirect:/actionPlanForm.html";
