@@ -311,4 +311,32 @@ public class RubricDao {
 		return teacherProgressionReportData;
 		
 	}
+
+	public void updateRubricLevelupItems(String[] checked, String[] unchecked) {
+		
+		String sql = "Update RUBRIC_LEVELUP set completed = ? where levelupid = ? AND rubricid = ?";
+		Query query = entityManager.createNativeQuery(sql);
+		
+		if (!checked[0].isEmpty()) {
+			for( int i = 0; i < checked.length; i++) {
+				String recordstring = checked[i];
+				String[] splitrecordstring = recordstring.split(" ");
+					query.setParameter(1, "true");
+					query.setParameter(2, splitrecordstring[1]);
+					query.setParameter(3, splitrecordstring[0]);
+					query.executeUpdate();
+			}
+		}
+		
+		if (!unchecked[0].isEmpty()) {
+			for( int i = 0; i < unchecked.length; i++) {
+				String recordstring = unchecked[i];
+				String[] splitrecordstring = recordstring.split(" ");
+					query.setParameter(1, "false");
+					query.setParameter(2, splitrecordstring[1]);
+					query.setParameter(3, splitrecordstring[0]);
+					query.executeUpdate();
+			}
+		}
+	}
 }

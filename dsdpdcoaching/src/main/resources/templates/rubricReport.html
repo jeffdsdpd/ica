@@ -53,7 +53,7 @@
 	}
 
 	.levelupcheckboxes input{
-    			margin: 0px 0px 0px 0px;
+    		margin: 0px 0px 0px 0px;
    	}
 
 	.levelupcheckboxes label{
@@ -68,6 +68,19 @@
 		color: #666;
   		margin: 0px 0px 0px 0px;
   		text-transform: uppercase;
+  		}
+  		
+  	#wrapper {
+  		display: flex;
+	}
+	
+	#left {
+	  	flex: 0 0 35%;
+	}
+	
+	#chart_div{
+	  	flex: 1;
+	}
 </style>
 </head>
 <body>
@@ -87,7 +100,7 @@
 								</div>
 								<div class="content">
 
-									<form>
+									<form id="frm" name="frm" method="post" action="#" th:action="@{/rubricReportUpdate}" th:object="${levelupdata}">
 										<div class="row">
 											<div class="col-md-4">
 												<div class="form-group">
@@ -157,35 +170,35 @@
 
 										<div class="container" style="display: none"></div>
 
-										<div class="floating-box">
-											<h5>
-												<b>Recorded By: </b><span class="user" name="user" id="user"></span>
-											</h5>
-											<h5>
-												<b>Rubric Total: </b><span class="rubricTotal"></span> Out
-												of possible 30
-											</h5>
-											<h5>
-												<b>Observed: </b><span class="observed" style="color: red"></span>
-											</h5>
-										</div>
-										
-										
-										<div class="row">
-											<div class="col-md-9">
-												<div class="form-group">
-													<div class="nodatatodisplay" id="nodatatodisplay" style="display: none;">
-														<h3 style="text-align:center;">NO RUBRIC Data To Display!</h3>
+										<div id="wrapper">
+											<div id="left" class="floating-box">
+												<h5>
+													<b>Recorded By: </b><span class="user" name="user" id="user"></span>
+												</h5>
+												<h5>
+													<b>Rubric Total: </b><span class="rubricTotal"></span> Out
+													of possible 30
+												</h5>
+												<h5>
+													<b>Observed: </b><span class="observed" style="color: red"></span>
+												</h5>
+											</div>
+											
+											<div class="floating-box" id="chart_div" style="width: 400px; height: 120px;"></div>
+											
+											
+											<div class="row">
+												<div class="col-md-9">
+													<div class="form-group">
+														<div class="nodatatodisplay" id="nodatatodisplay" style="display: none;">
+															<h3 style="text-align:center;">NO RUBRIC Data To Display!</h3>
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 										
 										
-
-										<div class="floating-box" id="chart_div"
-											style="width: 400px; height: 120px;"></div>
-
 										<hr align="left" width="50%"></hr>
 										<div style="float: left; width: 65%">
 											<ul class="legend">

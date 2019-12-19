@@ -150,6 +150,7 @@
                 });
 		
 		$("#teacherName").change(function(){
+			$("#levelupcheckboxes").html("");
 			var selectedSchoolId = $("#schoolName :selected").val();
 			var selectedTeacherId = $("#teacherName :selected").val();
 			$("#levelupcheckboxes").html("");
@@ -257,7 +258,7 @@
 		
 		
 		$("#date").change(function() {
-			$("#checkboxes").html("");
+			$("#levelupcheckboxes").html("");
 			
 			if ( $("#teacherlabel").text() != "" ) {
     				document.getElementById("teacherlabel").style.display = "inline";
@@ -595,7 +596,7 @@
 	   	         	                dataType: "json",
 	   	         	                success: function (response) {
 	   	         	                	
-	   	         	                	<!-- result = result[randomNumber] ;  -->          	
+	   	         	                	<!-- result = result[randomNumber] ;  -->
 	   	         	                	
 	   	         	                $.each(response, function(key, value) {
 	   	         	                	var result= (value[1]).split(/\n/g);
@@ -665,6 +666,26 @@
 		        e.preventDefault();
 		    });
 		});
+	
+	});// end of document ready function
 
-		
-	});
+	function loopForm(form) {
+	    var checkedArray = new Array();
+	    var uncheckedArray = new Array();
+	    
+	    for (var i = 0; i < form.elements.length; i++ ) {
+	        if (form.elements[i].type == 'checkbox') {
+	        		if (form.elements[i].name != 'teachercheckbox' && form.elements[i].name != 'admincheckbox' ) {
+		            if (form.elements[i].checked == true) {
+		                checkedArray.push(form.elements[i].value);
+		           
+		            } else {
+		            		uncheckedArray.push(form.elements[i].value);
+		            		
+		            }
+	        		}
+	        }
+	    }
+	    document.getElementById("checkedValues").value=checkedArray;
+	    document.getElementById("unCheckedValues").value=uncheckedArray;
+	};

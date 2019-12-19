@@ -73,5 +73,20 @@ public class RubricController {
 		//redirect user back to blank form so they can enter more data
 		return "redirect:/rubricForm.html";
 	}
+	
+	@PostMapping("/rubricReportUpdate")
+	public String postRubricReportUpdate(HttpSession session, HttpServletRequest request, Model model) {
+		
+		String checked = request.getParameter("checkedValues");
+		String[] checkedarray = checked.split(",");
+
+		String unchecked = request.getParameter("unCheckedValues");
+		String[] uncheckedarray = unchecked.split(",");
+		
+		rubricDao.updateRubricLevelupItems(checkedarray, uncheckedarray);
+		
+		return "redirect:/rubricReport.html";
+	
+	}
 
 }
