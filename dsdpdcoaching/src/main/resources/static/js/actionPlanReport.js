@@ -8,6 +8,7 @@ $(document).ready(function(){
         $("#gradeheading h3").html("");
 	});
 	
+	
 	$("#grade").change(function(){
 		$("#subject").prop('selectedIndex',0);
 		$("#gradeheading h2").html("");
@@ -16,8 +17,8 @@ $(document).ready(function(){
 		document.getElementById("nodatatodisplay").style.display = "none";
 	});
 	
+	
 	$("#subject").change(function(){
-		
 		$("#checkboxes").html("");
 		document.getElementById("nodatatodisplay").style.display = "none";
 		$("#gradeheading h2").html("");

@@ -43,6 +43,7 @@ ALTER TABLE COACHING_INTERACTIONS MODIFY PHOTO mediumblob DEFAULT NULL;
 
 --/***********************************************************************************************************/
 --/ Added on 10/28/2019 to support the action plan integrated into the application
+
 CREATE TABLE ACTION (
   id INT NOT NULL AUTO_INCREMENT,
   schoolid INT NULL,
@@ -54,6 +55,7 @@ CREATE TABLE ACTION (
   UNIQUE INDEX id_UNIQUE (id ASC));
 
 --/ Added on 10/29/2019 to support the insertion of multiple tasks per record of the action plan
+
 CREATE TABLE ACTION_TASKS (
   taskid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   actionid INT NULL,
@@ -63,6 +65,7 @@ CREATE TABLE ACTION_TASKS (
   
 --/***********************************************************************************************************/
 --/ Added on 12/10/2019 to support the levelup items as a checklist type item on the rubric report
+
   CREATE TABLE `dsdpdica`.`RUBRIC_LEVELUP` (
   `levelupid` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `rubricid` INT NULL,

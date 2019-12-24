@@ -1,6 +1,5 @@
 package com.dsd.dsdpdcoaching.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,8 +10,6 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import com.dsd.dsdpdcoaching.dto.ActionPlanData;
-import com.dsd.dsdpdcoaching.dto.Rubric;
 import com.dsd.dsdpdcoaching.dto.Teacher;
 import com.dsd.dsdpdcoaching.dto.TeacherInteraction;
 
@@ -31,7 +28,7 @@ public class TeacherDao {
 	
 	public List<Teacher> getTeachersBySchoolId(Integer id) {
 	    return entityManager.createQuery(
-	    			"from TEACHERS where schoolid = :id", Teacher.class)
+	    			"from TEACHERS where schoolid = :id order by name ", Teacher.class)
 	    			.setParameter("id", id)
 	            .getResultList();
 	}
