@@ -27,6 +27,7 @@
 	    <link href="css/lib/timepicker.css" rel="stylesheet"/>
 	    <link href="css/lib/bootstrap-multiselect.css" rel="stylesheet"/>
 	    <link href="css/misc.css" rel="stylesheet"/>
+	    <link href="css/popup.css" rel="stylesheet"/>
 	    
 	    <!--   Fonts and icons     -->
 	    <link href="css/lib/pe-icon-7-stroke.css" rel="stylesheet"/>
@@ -61,7 +62,7 @@
 		                            <div class="content">
 		                                <form id="frm" name="frm" action="#" th:action="@{/rubricForm}" th:object="${rubricData}" method="post">
 		                                    <div class="row">
-		                                        <div class="col-md-5">
+		                                        <div class="col-md-4">
 		                                            <div class="form-group">
 		                                                <label>School</label>
 		                                                <select id="schoolId" class="form-control" th:field="*{schoolId}">
@@ -74,9 +75,9 @@
 		                                            </div>
 		                                        </div>                          
 		      
-		                                        <div class="col-md-5">
+		                                        	<div class="col-md-2" style="margin-right:20px;">
 													<div class="form-group">
-														<label>Teacher</label> <br></br>
+														<label>Teacher</label>
 														<select id="teacherId" th:field="*{teacherId}">
 															<option value=""> Please Select </option>
 															<option th:each="teacher : ${teachers}"
@@ -85,6 +86,15 @@
 														</select>
 													</div>
 												</div>
+												
+												<div class="col-md-2">
+													<div class="form-group popup" id="levelupreview" style="display: none;">
+														<label>LevelUp Review</label>
+														<input type="button" id="previewbutton" value="Show Existing LevelUp Items"></input>
+														<span class="popuptext" id="myPopup"></span>
+													</div>
+												</div>
+		                                    
 		                                    </div>
 		
 		                                    <div class="row">

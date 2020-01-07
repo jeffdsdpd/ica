@@ -38,8 +38,7 @@ $(document).ready(function(){
             	 }
             	
             	   var actionid = 0;
-	           $("#gradeheading h2").html(response[0].grade+" -- "+response[0].subject);
-	           
+	          
 	           response.forEach(e => {
 	        	   
        	   		if (actionid == e.id) {  //check if ids match then we have to list out the multiple tasks under one heading
@@ -68,7 +67,7 @@ $(document).ready(function(){
        	   			actionid = e.id;
        	   			$("#checkboxes").append("<br/>");
        	   			$("#checkboxes").append( $("<div id="+actionid+">"));
-       	   			$("#checkboxes").append( $("<div id="+"actionplanheader"+">").text('Action Plan Recorded On '+e.entrydate+' for '+e.owner));
+       	   			$("#checkboxes").append( $("<div id="+"actionplanheader"+">").text('Recorded '+e.entrydate+' for '+e.grade+' by '+e.owner+' for SUBJECT: '+e.subject));
        	   			if (e.taskList[0].completed == 'true') {   //check if the task has completed=true and check the check box
        	   				
        	   				$("#checkboxes").append( $("<input>")
@@ -78,7 +77,7 @@ $(document).ready(function(){
        	   						.attr('name','checkbox')
        	   						.val(e.id + ' ' + e.taskList[0].taskid) );
        	   				
-       	   			} else {   //task is not completed to do not check the check box
+       	   			} else {   //task is not completed so do not check the check box
        	   				
        	   				$("#checkboxes").append( $("<input>")
        	   						.attr('type', 'checkbox')

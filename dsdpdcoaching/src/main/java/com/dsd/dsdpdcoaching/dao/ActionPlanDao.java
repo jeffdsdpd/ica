@@ -28,14 +28,23 @@ public class ActionPlanDao {
 		entityManager.persist(actionPlanData);
 	}
 	
-	public List<ActionPlanData> getActionPlanBySchoolGradeSubject(Integer actionid, String gradestring, String subjectstring) {
+	public List<ActionPlanData> getActionPlanBySchoolGradeSubject(Integer schoolid, String gradestring, String subjectstring) {
 		
 		String sql = "SELECT * from ACTION A, ACTION_TASKS AT WHERE A.id = AT.actionid AND schoolid = ? AND grade = ? AND subject = ?";
+		String everythingSql = "SELECT * from ACTION A, ACTION_TASKS AT WHERE A.id = AT.actionid AND schoolid = ?";
+		Query query;
 		
-		Query query = entityManager.createNativeQuery(sql);
-		query.setParameter(1, actionid);
-		query.setParameter(2, gradestring);
-		query.setParameter(3, subjectstring);
+		if (subjectstring.equalsIgnoreCase("Everything")) {
+			query = entityManager.createNativeQuery(everythingSql);
+			query.setParameter(1, schoolid);
+		}else {
+			query = entityManager.createNativeQuery(sql);
+			query.setParameter(1, schoolid);
+			query.setParameter(2, gradestring);
+			query.setParameter(3, subjectstring);
+		}
+		
+		
 		
 		List<Object[]> results = query.getResultList();
 		

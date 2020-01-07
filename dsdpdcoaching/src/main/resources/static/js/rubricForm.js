@@ -3,10 +3,14 @@ $(document).ready(
 			var wrapper = $(".input_wrap>div");
 			var add_button = $(".add-more");
 			var counter = 1;
+			var teacherId;
 
 			$("#schoolId").change(
 					function() {
 						var str = $("#schoolId :selected").val();
+						document.getElementById("levelupreview").style.display = "none";
+						$("#myPopup").html("");
+						$("#myPopup").hide(100);
 						
 						$.ajax({
 							type : "GET",
@@ -18,14 +22,22 @@ $(document).ready(
 							success : function(response) {
 								var $dropdownList = $("#teacherId");
 								$dropdownList.empty();
+								$dropdownList.append($("<option></option>").text(("Please Select")));
 								$.each(response, function(value, key) {
-									$dropdownList.append($("<option></option>")
-											.attr("value", key.id).text(
-													(key.name)));
+									$dropdownList.append($("<option></option>").attr("value", key.id).text((key.name)));
 								});
 							}
 						});
 					});
+			
+			$("#teacherId").change(
+					function() {
+						teacherId = $("#teacherId :selected").val();
+						document.getElementById("levelupreview").style.display = "inline";
+						$("#myPopup").html("");
+						$("#myPopup").hide(100);
+					});
+			
 
 			$("#frm").validate({
 				rules : {
@@ -100,20 +112,49 @@ $(document).ready(
 			//add another input text line for additional tasks
 			$("#add-more").click(function(e) {
 				e.preventDefault();
-
 				var newAdd = '<div id=div-'+counter+'><input size="75" type="levelup" id="levelup[]" name="levelupList['+counter+'].levelup" placeholder="LevelUp Item"></input><a href="#" class="remove_field">Remove</a></div>';
-
 				var el = $('.input_wrap div:last');
 			    $(el).after(newAdd);
 
 			    counter++;
 			});
 
-
 			//remove the current value of the remove button which has been pressed
 			$(document).on("click",".remove_field",function(){
 			    $(this).parent().remove();
 			});
+			
+			
+			$("#previewbutton").on("click", function(event) {
+				$.ajax({
+					type : "GET",
+					url : "getLevelUpsByTeacher",
+					data : {teacherId : teacherId},
+					dataType : "json",
+					success : function(response) {
+						//var popup = window.open("");
+						var popup = document.getElementById("myPopup");
+						var popupbutton = document.getElementById("previewbutton");
+						var levelupListHtml = "<ul>";
+						
+						if (response.length>0) {
+						$.each(response, function(key, value) {
+							levelupListHtml=levelupListHtml.concat('<li>' +value.levelup+ '</li>');
+						});
+						}else{
+							levelupListHtml=('<li>NO DATA TO DISPLAY</li>');
+						}
+						
+						//popup.document.write("<html><body><div class='popupwindow'><span class='popuptext' id='mypopup'"+ levelupListHtml +'</ul></span></div></body></html>');
+						$("#myPopup").html(levelupListHtml);
+						
+						  popup.classList.toggle("show");
+						  
+						  if (popupbutton.value=="Show Existing LevelUp Items") popupbutton.value = "Close Existing LevelUp Items";
+						    else popupbutton.value = "Show Existing LevelUp Items";
+						
+						}});
+					});
 			
 		});//end of document ready function
 

@@ -75,6 +75,8 @@
 				document.getElementById("teacherlabel").style.display = "none";
 				document.getElementById("adminlabel").style.display = "none";
 				document.getElementById("button").style.display = "none";
+				document.getElementById("nodatatodisplay").style.display = "none";
+				document.getElementById('chart_div').style.display = "none";
 				
 				planningLevel = 0;
 				document.getElementById("planningLevelUpData").style.visibility = "hidden";
@@ -151,8 +153,11 @@
 		
 		$("#teacherName").change(function(){
 			$("#levelupcheckboxes").html("");
+			document.getElementById('chart_div').style.display = "none";
+			document.getElementById("nodatatodisplay").style.display = "none";
 			var selectedSchoolId = $("#schoolName :selected").val();
 			var selectedTeacherId = $("#teacherName :selected").val();
+			
 			$("#levelupcheckboxes").html("");
 				rubricTotal = 0;
 
@@ -259,6 +264,7 @@
 		
 		$("#date").change(function() {
 			$("#levelupcheckboxes").html("");
+			document.getElementById('chart_div').style.display = "none";
 			
 			if ( $("#teacherlabel").text() != "" ) {
     				document.getElementById("teacherlabel").style.display = "inline";

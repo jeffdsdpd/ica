@@ -2,6 +2,7 @@ package com.dsd.dsdpdcoaching.dao;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,8 +15,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.dsd.dsdpdcoaching.dto.ActionPlanData;
 import com.dsd.dsdpdcoaching.dto.PhaseValues;
 import com.dsd.dsdpdcoaching.dto.Rubric;
+import com.dsd.dsdpdcoaching.dto.RubricLevelUp;
 import com.dsd.dsdpdcoaching.dto.TeacherProgressionReportData;
 
 @Repository
@@ -178,6 +181,29 @@ public class RubricDao {
 		PhaseValues phaseValues = (PhaseValues) query.getSingleResult();
 		return phaseValues;
 		}
+	
+	//Called by the JSONRequestController to select all the RUBRIC levelup items for a teacher to display on a popup window on the RUBRIC Form
+	public List<RubricLevelUp> getLevelUpsByTeacher(String teacherId) {
+	String sql = "SELECT * from RUBRIC_LEVELUP WHERE rubricid in (SELECT id FROM `RUBRIC` WHERE teacherId = ?)";
+	Query query = entityManager.createNativeQuery(sql);
+	query.setParameter(1, teacherId);
+	List<String[]> rubricLevelUpItems = (ArrayList)query.getResultList();
+	
+	List<RubricLevelUp> rubricLevelUpList = new ArrayList<RubricLevelUp>();
+	
+	//loop through the results
+	if (!rubricLevelUpItems.isEmpty()) {
+		for (int i=0; i<rubricLevelUpItems.size(); i++) {
+			RubricLevelUp rlu = new RubricLevelUp();
+			Object[] rubricLevelUpItem = rubricLevelUpItems.get(i);
+			rlu.setLevelupid((int) rubricLevelUpItem[0]);
+			rlu.setLevelup((String) rubricLevelUpItem[2]);
+			rlu.setCompleted((String) rubricLevelUpItem[3]);
+
+			rubricLevelUpList.add(rlu);
+		}};
+	return rubricLevelUpList;
+	}
 
 	//Called by the JSONRequestController to select the rubric dates by school to display on the schoolRubricReport.html triggered from dropdown school list
 	@SuppressWarnings("unchecked")

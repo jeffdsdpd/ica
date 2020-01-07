@@ -24,6 +24,7 @@ import com.dsd.dsdpdcoaching.dto.ActionPlanData;
 import com.dsd.dsdpdcoaching.dto.CoachingData;
 import com.dsd.dsdpdcoaching.dto.PhaseValues;
 import com.dsd.dsdpdcoaching.dto.Rubric;
+import com.dsd.dsdpdcoaching.dto.RubricLevelUp;
 import com.dsd.dsdpdcoaching.dto.Teacher;
 import com.dsd.dsdpdcoaching.dto.TeacherInteraction;
 import com.dsd.dsdpdcoaching.dto.TeacherProgressionReportData;
@@ -174,6 +175,14 @@ public class JSONRequestController extends HttpServlet {
 	@ResponseBody
 	public List<TeacherInteraction> getInteractionTeacherListBySchool(@RequestParam String schoolId) {
 		return teacherDao.getInteractionTeacherListBySchool(schoolId);
+	}
+	
+	//Called from rubricForm.js
+	@GetMapping(value="/getLevelUpsByTeacher")
+	@ResponseBody
+	public List<RubricLevelUp> getLevelUpsByTeacher(@RequestParam String teacherId) {
+		return rubricDao.getLevelUpsByTeacher(teacherId);
+		//return teacherDao.getInteractionTeacherListBySchool(teacherId);
 	}
 
 }
