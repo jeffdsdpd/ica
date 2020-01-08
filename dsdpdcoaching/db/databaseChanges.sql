@@ -72,3 +72,7 @@ CREATE TABLE ACTION_TASKS (
   `levelup` VARCHAR(250) NULL,
   `completed` VARCHAR(25) NULL,
 FOREIGN KEY (rubricid) REFERENCES RUBRIC(id));
+
+--/***********************************************************************************************************/
+--/ Added on 1/8/2020 to record the user that creates the action plan
+	ALTER TABLE ACTION ADD username VARCHAR(45) NULL;

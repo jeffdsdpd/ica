@@ -45,6 +45,9 @@ public class ActionPlanData implements Serializable {
 	@Column(name="owner")
 	private String owner;
 	
+	@Column(name="username")
+	private String username;
+	
 	@Column(name="entrydate")
 	@Temporal(TemporalType.DATE)
 	private Date entrydate;
@@ -87,6 +90,14 @@ public class ActionPlanData implements Serializable {
 
 	public void setOwner(String owner) {
 		this.owner = owner;
+	}
+	
+	public String getUserName() {
+		return username;
+	}
+
+	public void setUserName(String userId) {
+		this.username = userId;
 	}
 
 	public Date getEntrydate() {
