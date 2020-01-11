@@ -48,7 +48,8 @@ public class EmailService {
 		String studentcollab = request.getParameter("studentcollab");
 		String technology = request.getParameter("technology");
 		String rubricnotes = request.getParameter("rubricnotes");
-		String levelup = request.getParameter("levelup");
+		//String levelupLines[]=(request.getParameter("levelup").split("\n"));
+		String levelup = (request.getParameter("levelup").replace("\n", "<br />"));
 		String questions = request.getParameter("questions");
 		String rubricTotalForPhase = request.getParameter("rubricTotal");
 		

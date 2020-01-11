@@ -189,7 +189,7 @@ public class HTMLRubricEmail implements Serializable {
 				"			</tr> \r\n" +
 				
 				"			<tr> \r\n" +
-				"		    	<th style=\"text-align:center; color: #00b100; font-weight: bold;\">LEVEL UP STRATEGIES:</th> \r\n" +
+				"		    	<th style=\"text-align:center; color: #00b100; font-weight: bold;\">NEXT STEPS:</th> \r\n" +
 				"			</tr> \r\n" +
 				"			<tr> \r\n" +
 				"		    	<td style=\"text-align:center; font-weight:normal;\"> \r\n" + levelup + "</td>" +

@@ -57,9 +57,9 @@ public class ActionPlanDao {
 			List<ActionTaskData> taskList = new ArrayList<ActionTaskData>();
 
 			//set the results to the objects
-			atd.setTaskid((Integer) record[6]);
-			atd.setTask((String) record[8]);
-			atd.setCompleted((String) record[9]);
+			atd.setTaskid((Integer) record[7]);
+			atd.setTask((String) record[9]);
+			atd.setCompleted((String) record[10]);
 			taskList.add(atd);
 			
 			apd.setId((Integer) record[0]);
@@ -69,6 +69,7 @@ public class ActionPlanDao {
 			apd.setTaskList(taskList);
 			apd.setOwner((String) record[4]);
 			apd.setEntrydate((Date) record[5]);
+			apd.setUserName((String) record[6]);
 			
 			actionPlanList.add(apd);
 			

@@ -217,7 +217,7 @@ public class RubricDao {
 	public List<Rubric> getRubricDatesAndId(Integer schoolId, Integer teacherId) {
 		//LOGGER.debug("Retrieving rubric dates for rubric report for teacher id =  " + teacherId);
 		return entityManager.createQuery(
-				"from RUBRIC where schoolid = :schoolId and teacherid = :teacherId")
+				"from RUBRIC where schoolid = :schoolId and teacherid = :teacherId ORDER BY date DESC")
 				.setParameter("schoolId", schoolId)
     				.setParameter("teacherId", teacherId)
     			.getResultList();

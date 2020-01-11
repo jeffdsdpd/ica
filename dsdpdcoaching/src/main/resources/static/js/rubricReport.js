@@ -32,8 +32,8 @@
 				var studentengage = $("#studentengage").text();
 				var studentcollab = $("#studentcollab").text();
 				var technology = $("#technology").text();
-				var rubricnotes = document.getElementById("rubricnotes").value;
-				var levelup = document.getElementById("levelup").value;
+				var rubricnotes = document.getElementById("rubricnotes").innerText;
+				var levelup = document.getElementById("levelupcheckboxes").innerText;
 				var questions = document.getElementById("questions").value;
 				
 				var planningLevelData = $('#planningLevelUpData').attr("data-content");
@@ -543,7 +543,7 @@
 	                		 		$(".technology").removeAttr('style');
 	                		 	}
 	                		 
-	                		 $("#levelupcheckboxes").append( $("<label>").attr('id', 'levelupheader').text("LevelUp Items"));
+	                		 $("#levelupcheckboxes").append( $("<label>").attr('id', 'levelupheader').text("Next Steps"));
 	                		 $("#levelupcheckboxes").append( $("<br />"));
 	                		 $("#levelupcheckboxes").append( $("<br />"));
 	                				 

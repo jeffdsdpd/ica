@@ -67,7 +67,7 @@ $(document).ready(function(){
        	   			actionid = e.id;
        	   			$("#checkboxes").append("<br/>");
        	   			$("#checkboxes").append( $("<div id="+actionid+">"));
-       	   			$("#checkboxes").append( $("<div id="+"actionplanheader"+">").text('Recorded '+e.entrydate+' for '+e.grade+' by '+e.owner+' for SUBJECT: '+e.subject));
+       	   			$("#checkboxes").append( $("<div id="+"actionplanheader"+">").text('Recorded '+e.entrydate+' for '+e.grade+' by '+e.userName+' for '+e.subject+' assigned to '+e.owner));
        	   			if (e.taskList[0].completed == 'true') {   //check if the task has completed=true and check the check box
        	   				
        	   				$("#checkboxes").append( $("<input>")
