@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dsd.dsdpdcoaching.dto.Teacher;
 import com.dsd.dsdpdcoaching.dto.TeacherInteraction;
+import com.dsd.dsdpdcoaching.dto.TeacherInteractionForDailyReport;
 
 @Repository
 @Transactional
@@ -87,6 +88,38 @@ public class TeacherDao {
 		
 		return query.getResultList();
 
+	}
+	
+	public List<TeacherInteractionForDailyReport> getInteractionTeacherListBySchoolForToday() {
+		
+		String sql = "SELECT RUBRIC.ID as ID, TEACHERS.NAME, TEACHERS.EMAILADDRESS as TEACHEREMAIL, RUBRIC.DATE, 'Rubric' AS INTERACTIONMETHOD, "
+				+ "RUBRIC.USERID, RUBRIC.RUBRICSCORE, USERS.EMAIL_ADDRESS as COACHEMAIL"
+				+ " FROM RUBRIC, TEACHERS, USERS"
+				+ " WHERE RUBRIC.TEACHERID = TEACHERS.ID"
+				+ " AND USERS.USERNAME = RUBRIC.USERID"
+				+ " AND DATE = CURDATE()"
+				+ " UNION"
+				+ " SELECT COACHING_INTERACTIONS.ID as ID, TEACHERS.NAME, TEACHERS.EMAILADDRESS as TEACHEREMAIL, COACHING_INTERACTIONS.DATE, "
+				+ " 'Coaching Notes' AS INTERACTIONMETHOD, COACHING_INTERACTIONS.USERID, '',USERS.EMAIL_ADDRESS as COACHEMAIL"
+				+ " FROM COACHING_INTERACTIONS, TEACHERS, USERS"
+				+ " WHERE COACHING_INTERACTIONS.TEACHERID = TEACHERS.ID"
+				+ " AND USERS.USERNAME = COACHING_INTERACTIONS.USERID"
+				+ " AND DATE = CURDATE()"
+				+ " ORDER BY DATE DESC";
+
+		Query query = entityManager.createNativeQuery(sql,TeacherInteractionForDailyReport.class);
+		
+		return query.getResultList();
+
+	}
+
+	public String getTeacherEmailAddressForRubric(Integer teacherId) {
+		String sql = "SELECT EMAILADDRESS FROM TEACHERS WHERE ID = ?";
+		
+		Query query = entityManager.createNativeQuery(sql);
+		query.setParameter(1, teacherId);
+		
+		return query.getSingleResult().toString();
 	}
 
 }

@@ -85,7 +85,7 @@ public class Rubric implements Serializable {
 	@Column(name="rubricscore")
 	private int rubricScore;
 	
-	@ElementCollection(fetch = FetchType.LAZY)
+	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name="RUBRIC_LEVELUP", joinColumns=@JoinColumn(name = "rubricid", referencedColumnName = "id"))
 	@Column(name="levelup")
     private List<RubricLevelUp> levelupList;

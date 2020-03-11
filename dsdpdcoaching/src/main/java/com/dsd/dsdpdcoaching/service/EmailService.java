@@ -21,7 +21,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Configuration;
 
 import com.dsd.dsdpdcoaching.dto.HTMLCoachingEmail;
+import com.dsd.dsdpdcoaching.dto.HTMLDailyInteractionEmail;
 import com.dsd.dsdpdcoaching.dto.HTMLRubricEmail;
+import com.dsd.dsdpdcoaching.dto.HTMLRubricEmailFromForm;
+import com.dsd.dsdpdcoaching.dto.Rubric;
+import com.dsd.dsdpdcoaching.dto.RubricLevelUp;
+import com.dsd.dsdpdcoaching.dto.TeacherInteractionForDailyReport;
 
 @Configuration
 public class EmailService {
@@ -92,7 +97,7 @@ public class EmailService {
 		}
 		
 		final String username = "dsdpdemail";
-		final String password = "Flight70";
+		final String password = "GgsjDF3984i()";
 		
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -135,6 +140,85 @@ public class EmailService {
 		}
 		
 	}
+	
+	
+	//Send a RUBRIC email by sending in a RUBRIC object
+	public void sendRubricEmail(Rubric rubric, String teacherEmail) {
+		HTMLRubricEmailFromForm emailString = new HTMLRubricEmailFromForm();
+		String phase = null;
+		List<String> levelUpItemsToEmail = new ArrayList<String>();
+
+		//Get the school id passed via ajax from the coachingReport.jsp
+		String date = rubric.getDate().toString();
+		String schoolId = rubric.getSchoolId().toString();
+		String teacherId = rubric.getTeacherId().toString();
+		String planning = rubric.getPlanning();
+		String assessanddata = rubric.getAssessmentAndData();
+		String path = rubric.getPath();
+		String place = rubric.getPlace();
+		String pace = rubric.getPace();
+		String classmgmt = rubric.getClassroommgmt();
+		String teacherrole = rubric.getTeacherrole();
+		String studentengage = rubric.getStudentegmt();
+		String studentcollab = rubric.getStudentcolab();
+		String technology = rubric.getTechnology();
+		String rubricnotes = rubric.getRubricNotes();
+		String levelup = "";
+		//= (request.getParameter("levelup").replace("\n", "<br />"));
+		List<RubricLevelUp> rubricLevelUps = rubric.getLevelupList();
+		for(int i=0;i<rubricLevelUps.size();i++) {
+			levelup+=rubricLevelUps.get(i).getLevelup()+"<br />";
+		}
+		
+		String questions = rubric.getQuestions();
+		String rubricTotal = (Integer.toString(rubric.getRubricScore()));
+		
+		if (Integer.parseInt(rubricTotal) <= 10) {
+			phase = "1";
+		} else if (Integer.parseInt(rubricTotal) <= 20) {
+			phase = "2";
+		} else phase = "3";
+		
+		final String username = "dsdpdemail";
+		final String password = "GgsjDF3984i()";
+		
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "mail.smtp2go.com");
+		props.put("mail.smtp.port", "587"); // 2525, 8025 and 25 can also be used.
+ 
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		  });
+		
+		try { 
+			Message message = new MimeMessage(session);
+			Multipart mp = new MimeMultipart("alternative");
+			BodyPart textmessage = new MimeBodyPart();
+			textmessage.setText("It is a text message \n");
+			BodyPart htmlmessage = new MimeBodyPart();
+
+			htmlmessage.setContent(emailString.getHtmlString(teacherId, schoolId, date, planning, assessanddata, path, place, pace, classmgmt, teacherrole, studentengage, studentcollab, technology, rubricnotes, levelup, questions, levelUpItemsToEmail, phase), "text/html");	
+			
+			mp.addBodyPart(textmessage);
+			mp.addBodyPart(htmlmessage);
+			message.setFrom(new InternetAddress("DSDPD@DSDPDCoaching.com"));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(teacherEmail));
+			//message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("jeffwk@yahoo.com"));
+			//message.setRecipients(Message.RecipientType.BCC, InternetAddress.parse("jeff@dsdpdcoaching.com"));
+			message.setSubject("Instructional Coaching Application - Rubric Report For: "+teacherId);
+			message.setContent(mp); 
+			Transport.send(message);
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
+		
+	}
+	
+	
 
 	//called from jsonrequestcontroller triggered from Coaching Report - Email report
 	public void sendCoachingReportEmail(HttpServletRequest request, HttpServletResponse response) {
@@ -153,8 +237,8 @@ public class EmailService {
 		String tools = request.getParameter("tools");
 		
 		final String username = "dsdpdemail";
-		//final String password = "Flight70";
-		final String password = "Flight00!";
+		final String password = "GgsjDF3984i()";
+		//final String password = "Flight00!";
 		
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -203,6 +287,59 @@ public class EmailService {
 			return true;
 		}
 		return false;
+	}
+	
+	
+
+	public void sendDailyInteractionEmail(TeacherInteractionForDailyReport teacherInteractionForDailyReport) {
+		HTMLDailyInteractionEmail emailString = new HTMLDailyInteractionEmail();
+		
+		String teacherName = teacherInteractionForDailyReport.getName();
+		String teacherEmail = teacherInteractionForDailyReport.getTeacherEmail();
+		String date = teacherInteractionForDailyReport.getDate();
+		String interactionMethod = teacherInteractionForDailyReport.getInteractionMethod();
+		String userid = teacherInteractionForDailyReport.getUserid();
+		int rubricScore = teacherInteractionForDailyReport.getRubricscore();
+		
+				final String username = "dsdpdemail";
+				final String password = "GgsjDF3984i()";
+				
+				Properties props = new Properties();
+				props.put("mail.smtp.auth", "true");
+				props.put("mail.smtp.starttls.enable", "true");
+				props.put("mail.smtp.host", "mail.smtp2go.com");
+				props.put("mail.smtp.port", "587"); // 2525, 8025 and 25 can also be used.
+				
+				Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+					protected PasswordAuthentication getPasswordAuthentication() {
+						return new PasswordAuthentication(username, password);
+					}
+				  });
+		
+		try { 
+			Message message = new MimeMessage(session);
+			Multipart mp = new MimeMultipart("alternative");
+			BodyPart textmessage = new MimeBodyPart();
+			textmessage.setText("It is a text message \n");
+			BodyPart htmlmessage = new MimeBodyPart();
+
+			htmlmessage.setContent(emailString.getHtmlString(teacherName, teacherEmail, date, interactionMethod, userid, rubricScore), "text/html");
+			
+			mp.addBodyPart(textmessage);
+			mp.addBodyPart(htmlmessage);
+			message.setFrom(new InternetAddress("DSDPD@DSDPDCoaching.com"));
+			//message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(teacherEmail));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("jeffwk@yahoo.com"));
+			//message.setRecipients(Message.RecipientType.BCC, InternetAddress.parse("jeff@dsdpdcoaching.com"));
+			message.setSubject("Instructional Coaching Application - Interaction Report For: "+teacherName);
+			message.setContent(mp); 
+			Transport.send(message);
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
+		
+				
+				
 	}
 
 }

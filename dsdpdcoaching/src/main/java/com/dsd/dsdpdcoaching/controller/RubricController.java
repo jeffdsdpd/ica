@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.dsd.dsdpdcoaching.dao.RubricDao;
 import com.dsd.dsdpdcoaching.dto.Rubric;
 import com.dsd.dsdpdcoaching.dto.RubricLevelUp;
+import com.dsd.dsdpdcoaching.service.EmailService;
 import com.dsd.dsdpdcoaching.service.RubricTotalCalculator;
 
 @Controller
@@ -25,6 +26,8 @@ public class RubricController {
 	private RubricDao rubricDao;
 	@Autowired
 	private RubricTotalCalculator rubricTotalCalculator;
+	@Autowired
+	private EmailService emailService;
 
 	@GetMapping("/rubricForm.html")
 	public String getRubricForm(Model model) {
@@ -67,8 +70,14 @@ public class RubricController {
 		Rubric data = ((Rubric) SerializationUtils.clone(rubricData));
 		data.setTeacherId(teacherId);
 		data.setRubricScore(rubricScore);
+		rubricData.setRubricScore(rubricScore);
 
 		rubricDao.saveRubricData(data);
+		
+		//check if the email checkbox was checked to email the report to the teacher
+		if(request.getParameter("teachercheckbox")!=null) {
+			emailService.sendRubricEmail(rubricData, request.getParameter("teachercheckbox"));
+		}
 
 		//redirect user back to blank form so they can enter more data
 		return "redirect:/rubricForm.html";

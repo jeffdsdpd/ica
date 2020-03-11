@@ -39,7 +39,7 @@
      			font-family: arial, Times, serif;
      			font-size: 14px;
      			color: yellow;
-     		}
+     			}
 	</style>
     
     </head>
@@ -54,7 +54,7 @@
 		        <div class="content">
 		            <div class="container-fluid">
 		                <div class="row">
-		                    <div class="col-md-10">
+		                    <div class="col-md-11">
 		                        <div class="card">
 		                            <div class="header">
 		                                <h2 class="title">Rubric Form</h2>
@@ -91,7 +91,7 @@
 													<div class="form-group popup" id="levelupreview" style="display: none;">
 														<label>LevelUp Review</label>
 														<input type="button" id="previewbutton" value="Show Existing LevelUp Items"></input>
-														<span class="popuptext" id="myPopup"></span>
+														<div class="popuptext" id="myPopup"></div>
 													</div>
 												</div>
 		                                    
@@ -111,6 +111,20 @@
 				                                        class="time form-control" placeholder="Time Observed" th:field="*{timeObserved}"/>
 				                                    </div>
 			                                    </div>
+			                                    
+			                                    <div class="col-md-5">
+												<div class="form-group">
+													<label id="emailreport">Email Report</label><br />
+													<div class="checkboxes" id="teachercheckboxdiv">
+														<input type="checkbox" id="teachercheckbox" style="display: none;" name="teachercheckbox"></input> 
+														<label for="teachercheckbox" class="checkbox-inline" id="teacherlabel" name="teacherlabel"
+															style="margin-left: 2px; padding-left: 2px; padding-top: 4px; padding-right: 15px;">
+														</label>
+													</div>
+													
+												</div>
+											</div>
+											
 			                                </div>
 			                                
 			                                
@@ -308,7 +322,7 @@
 								      				<div class="col-md-10">
 								      					<div class="input_wrap">
 								      						<div>
-									      						<input size="75" type="text" name="levelup[]" id="levelup[]" th:field="*{levelupList[0].levelup}" placeholder="LevelUp Item"></input>
+									      						<input size="75" type="text" name="levelup[]" id="levelup[]" th:field="*{levelupList[0].levelup}" placeholder="Next Step Item"></input>
 											   				</div>
 											   			</div>
 											   		</div>

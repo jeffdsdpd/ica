@@ -9,6 +9,8 @@ $(document).ready(
 					function() {
 						var str = $("#schoolId :selected").val();
 						document.getElementById("levelupreview").style.display = "none";
+						document.getElementById("teacherlabel").style.display = "none";
+						document.getElementById("teachercheckbox").style.display = "none";
 						$("#myPopup").html("");
 						$("#myPopup").hide(100);
 						
@@ -30,12 +32,30 @@ $(document).ready(
 						});
 					});
 			
-			$("#teacherId").change(
-					function() {
+			$("#teacherId").change(function() {
 						teacherId = $("#teacherId :selected").val();
 						document.getElementById("levelupreview").style.display = "inline";
+						document.getElementById("teachercheckbox").style.display = "inline";
+						document.getElementById("teacherlabel").style.display = "inline";
 						$("#myPopup").html("");
 						$("#myPopup").hide(100);
+						var selectedTeacherId = $("#teacherId :selected").val();
+						
+						$.ajax({
+							type: "GET",
+							url:"getEmailAddress",
+							data:{teacherId: selectedTeacherId},
+							dataType: "json",
+							success: function (response) {
+								    
+				                $.each(response, function(key, value) {
+				                		if (value[0] != null) {
+				                			$("#teacherlabel").text(value[0]);
+				                			document.getElementById("teachercheckbox").value=value[0];
+				                		}
+				                })
+				            }
+				        });
 					});
 			
 

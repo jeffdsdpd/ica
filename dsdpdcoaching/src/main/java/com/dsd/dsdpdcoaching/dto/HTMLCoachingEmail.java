@@ -53,7 +53,7 @@ public class HTMLCoachingEmail implements java.io.Serializable {
 				"			</tr> \r\n" +
 				"		</table>  \r\n" +
 				"		<div style=\"width:850px; font-weight:normal;\"> \r\n" +
-				"			<p align=\"center\" <p>&copy; 2018 DSD Professional Development<p> \r\n" + 
+				"			<p align=\"center\" <p>&copy; 2020 DSD Professional Development<p> \r\n" + 
 				"				Created and Sent by <a href=\"http://dsdpdcoaching.com/\">Datasitedesigns Development Team</a><br>\r\n" + 
 				"			</p>\r\n" + 
 				"		</div>\r\n" + 

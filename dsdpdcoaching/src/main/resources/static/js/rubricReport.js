@@ -641,8 +641,10 @@
 	        };
 
 	        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+	        document.getElementById('chart_div').style.display = "inline";
 
 	        chart.draw(data, options);
+	        
 	        }
 	                }
                 });

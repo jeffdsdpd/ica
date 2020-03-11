@@ -15,7 +15,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.dsd.dsdpdcoaching.dto.ActionPlanData;
 import com.dsd.dsdpdcoaching.dto.PhaseValues;
 import com.dsd.dsdpdcoaching.dto.Rubric;
 import com.dsd.dsdpdcoaching.dto.RubricLevelUp;
@@ -41,6 +40,13 @@ public class RubricDao {
 	    return entityManager.createQuery("from RUBRIC where id = :rubricId", Rubric.class)
     			.setParameter("rubricId", rubricId)
     			.getSingleResult();
+	}
+	
+	//Called by the ScheduledTasks class to send the daily rubric report if rubrics are found for the current date
+	public List<Rubric> getRubricForToday() {
+		List<Rubric> rubricList = entityManager.createQuery("from RUBRIC WHERE DATE = CURDATE()", Rubric.class)
+			.getResultList();
+		return rubricList;
 	}
 
 	//Called by the JSONRequestController to select the rubric data to display on the dashboard.html triggered from dropdown school list
@@ -184,7 +190,7 @@ public class RubricDao {
 	
 	//Called by the JSONRequestController to select all the RUBRIC levelup items for a teacher to display on a popup window on the RUBRIC Form
 	public List<RubricLevelUp> getLevelUpsByTeacher(String teacherId) {
-	String sql = "SELECT * from RUBRIC_LEVELUP WHERE rubricid in (SELECT id FROM `RUBRIC` WHERE teacherId = ?)";
+	String sql = "SELECT * from RUBRIC_LEVELUP WHERE completed = 'false' and rubricid in (SELECT id FROM RUBRIC WHERE teacherId = ?)";
 	Query query = entityManager.createNativeQuery(sql);
 	query.setParameter(1, teacherId);
 	List<String[]> rubricLevelUpItems = (ArrayList)query.getResultList();
