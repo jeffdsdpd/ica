@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dsd.dsdpdcoaching.dto.ActionPlanData;
 import com.dsd.dsdpdcoaching.dto.ActionTaskData;
+import com.dsd.dsdpdcoaching.dto.ActionTaskDataForEmail;
 
 @Repository
 @Transactional
@@ -104,5 +105,19 @@ public class ActionPlanDao {
 					query.executeUpdate();
 			}
 		}
+	}
+	
+
+	public List<ActionTaskDataForEmail> getActionPlanDataForToday() {
+		String sql = "SELECT id, schoolid, grade, subject, owner, username, task, completed " 
+				+ "FROM ACTION A, ACTION_TASKS AT "
+				+ "WHERE A.id = AT.actionid " 
+				+ "AND entrydate = '2019-11-25'";
+		
+		Query query = entityManager.createNativeQuery(sql,ActionTaskDataForEmail.class);
+		
+		List<ActionTaskDataForEmail> l = query.getResultList();
+		
+		return l;
 	}
 }

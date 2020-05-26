@@ -42,110 +42,109 @@ $(document).ready(function() {
             success: function (response) {
             	var nbrOfRecords = 0;
             	
-            	$.each(response, function(value, key) {
+            	$.each(response, function(value, interactionObject) {
             		nbrOfRecords += 1 ;
 
-            		 if ((response[value].planning) != null) {
-            		 if ((response[value].planning) == ("Whole group timer")) {
-            			 planningPhaseOne += 1; }
-            		 	else if ((response[value].planning).includes("implements checklist")) {
-            		 		planningPhaseTwo += 1; }
-            		 	else if ((response[value].planning).includes("differentiated")) {
-            		 		planningPhaseThree += 1; }
-            		 	else planningNE += 1;
-            		 } else planningNE += 1;
-            		  
-            		 if ((response[value].assessmentAndData) != null) {
-            		 if ((response[value].assessmentAndData).includes("Collecting")) {
-            			 assessanddataPhaseOne += 1; }
-            		 	else if ((response[value].assessmentAndData).includes("Using")) {
-            		 		assessanddataPhaseTwo += 1; }
-            		 	else if ((response[value].assessmentAndData).includes("advance")) {
-            		 		assessanddataPhaseThree += 1; }
-            		 	else assessanddataNE += 1;
-            		 } else assessanddataNE += 1;
-            		 
-            		 if ((response[value].path) != null) {
-            		 if ((response[value].path).includes("Same")) {
-            			 pathPhaseOne += 1; }
-            		 	else if ((response[value].path).includes("Differentiated")) {
-            		 		pathPhaseTwo += 1; }
-            		 	else if ((response[value].path).includes("Individual")) {
-            		 		pathPhaseThree += 1; }
-            		 	else pathNE += 1;
-            		 } else pathNE += 1;
-            		 
-            		 if ((response[value].place) != null) {
-            		 if ((response[value].place).includes("Move")) {
-            			 placePhaseOne += 1; }
-            		 	else if ((response[value].place).includes("Flexible")) {
-            		 		placePhaseTwo += 1; }
-            		 	else if ((response[value].place).includes("Pick")) {
-            		 		placePhaseThree += 1; }
-            		 	else placeNE += 1;
-            		 } else placeNE += 1;
-            		 
-            		 if ((response[value].pace) != null) {
-            		 if ((response[value].pace).includes("timer")) {
-            			 pacePhaseOne += 1; }
-            		 	else if ((response[value].pace).includes("move")) {
-            		 		pacePhaseTwo += 1; }
-            		 	else if ((response[value].pace).includes("mastery")) {
-            		 		pacePhaseThree += 1; }
-            		 	else paceNE += 1;
-            		 } else paceNE += 1;
-            		 
-            		 if ((response[value].classroommgmt) != null) {
-            		 if ((response[value].classroommgmt).includes("Restating")) {
-            			 classmgmtPhaseOne += 1; }
-            		 	else if ((response[value].classroommgmt).includes("Self")) {
-            		 		classmgmtPhaseTwo += 1; }
-            		 	else if ((response[value].classroommgmt).includes("Automatic")) {
-            		 		classmgmtPhaseThree += 1; }
-            		 	else classmgmtNE += 1;
-            		 } else classmgmtNE += 1;
-            		 
-            		 if ((response[value].teacherrole) != null) {
-            		 if ((response[value].teacherrole).includes("facilitator")) {
-            			 teacherrolePhaseOne += 1; }
-            		 	else if ((response[value].teacherrole).includes("distractions")) {
-            		 		teacherrolePhaseTwo += 1; }
-            		 	else if ((response[value].teacherrole).includes("99%")) {
-            		 		teacherrolePhaseThree += 1; }
-            		 	else teacherroleNE += 1;
-            		 } else teacherroleNE += 1;
-            		 
-            		 if ((response[value].studentegmt) != null) {
-            		 if ((response[value].studentegmt).includes("Following")) {
-            			 studentengagePhaseOne += 1; }
-            		 	else if ((response[value].studentegmt).includes("Engaged")) {
-            		 		studentengagePhaseTwo += 1; }
-            		 	else if ((response[value].studentegmt).includes("Deeply")) {
-            		 		studentengagePhaseThree += 1; }
-            		 	else studentengageNE += 1;
-            		 } else studentengageNE += 1;
-            		 
-            		 if ((response[value].studentcolab) != null) {
-            		 if ((response[value].studentcolab).includes("Teacher")) {
-            			 studentcollabPhaseOne += 1; }
-            		 	else if ((response[value].studentcolab).includes("Choice")) {
-            		 		studentcollabPhaseTwo += 1; }
-            		 	else if ((response[value].studentcolab).includes("PBL")) {
-            		 		studentcollabPhaseThree += 1; }
-            		 	else studentcollabNE += 1;
-            		 } else studentcollabNE += 1;
+            		if ((interactionObject.planning) != null) {
+               		 if ((interactionObject.planning) == ("Whole group timer")) {
+               			 planningPhaseOne += 1; }
+               		 	else if ((interactionObject.planning).includes("No whole group timer")) {
+               		 		planningPhaseTwo += 1; }
+               		 	else if ((interactionObject.planning).includes("differentiated")) {
+               		 		planningPhaseThree += 1; }
+               		 	else planningNE += 1;
+               		 } else planningNE += 1;
+               		  
+               		 if ((interactionObject.assessmentAndData) != null) {
+               		 if ((interactionObject.assessmentAndData).includes("Collecting")) {
+               			 assessanddataPhaseOne += 1; }
+               		 	else if ((interactionObject.assessmentAndData).includes("Using")) {
+               		 		assessanddataPhaseTwo += 1; }
+               		 	else if ((interactionObject.assessmentAndData).includes("advance")) {
+               		 		assessanddataPhaseThree += 1; }
+               		 	else assessanddataNE += 1;
+               		 } else assessanddataNE += 1;
+               		 
+               		 if ((interactionObject.path) != null) {
+               		 if ((interactionObject.path).includes("Same")) {
+               			 pathPhaseOne += 1; }
+               		 	else if ((interactionObject.path).includes("Differentiated")) {
+               		 		pathPhaseTwo += 1; }
+               		 	else if ((interactionObject.path).includes("Individual")) {
+               		 		pathPhaseThree += 1; }
+               		 	else pathNE += 1;
+               		 } else pathNE += 1;
+               		 
+               		 if ((interactionObject.place) != null) {
+               		 if ((interactionObject.place).includes("Move")) {
+               			 placePhaseOne += 1; }
+               		 	else if ((interactionObject.place).includes("Flexible")) {
+               		 		placePhaseTwo += 1; }
+               		 	else if ((interactionObject.place).includes("Pick")) {
+               		 		placePhaseThree += 1; }
+               		 	else placeNE += 1;
+               		 } else placeNE += 1;
+               		 
+               		 if ((interactionObject.pace) != null) {
+               		 if ((interactionObject.pace).includes("Whole")) {
+               			 pacePhaseOne += 1; }
+               		 	else if ((interactionObject.pace).includes("Students")) {
+               		 		pacePhaseTwo += 1; }
+               		 	else if ((interactionObject.pace).includes("mastery")) {
+               		 		pacePhaseThree += 1; }
+               		 	else paceNE += 1;
+               		 } else paceNE += 1;
+               		 
+               		 if ((interactionObject.classroommgmt) != null) {
+               		 if ((interactionObject.classroommgmt).includes("Restating")) {
+               			 classmgmtPhaseOne += 1; }
+               		 	else if ((interactionObject.classroommgmt).includes("Self")) {
+               		 		classmgmtPhaseTwo += 1; }
+               		 	else if ((interactionObject.classroommgmt).includes("Automatic")) {
+               		 		classmgmtPhaseThree += 1; }
+               		 	else classmgmtNE += 1;
+               		 } else classmgmtNE += 1;
+               		 
+               		 if ((interactionObject.teacherrole) != null) {
+               		 if ((interactionObject.teacherrole).includes("facilitator")) {
+               			 teacherrolePhaseOne += 1; }
+               		 	else if ((interactionObject.teacherrole).includes("distractions")) {
+               		 		teacherrolePhaseTwo += 1; }
+               		 	else if ((interactionObject.teacherrole).includes("99%")) {
+               		 		teacherrolePhaseThree += 1; }
+               		 	else teacherroleNE += 1;
+               		 } else teacherroleNE += 1;
+               		 
+               		 if ((interactionObject.studentegmt) != null) {
+               		 if ((interactionObject.studentegmt).includes("Following")) {
+               			 studentengagePhaseOne += 1; }
+               		 	else if ((interactionObject.studentegmt).includes("Engaged")) {
+               		 		studentengagePhaseTwo += 1; }
+               		 	else if ((interactionObject.studentegmt).includes("Deeply")) {
+               		 		studentengagePhaseThree += 1; }
+               		 	else studentengageNE += 1;
+               		 } else studentengageNE += 1;
+               		 
+               		 if ((interactionObject.studentcolab) != null) {
+               		 if ((interactionObject.studentcolab).includes("Teacher")) {
+               			 studentcollabPhaseOne += 1; }
+               		 	else if ((interactionObject.studentcolab).includes("Choice")) {
+               		 		studentcollabPhaseTwo += 1; }
+               		 	else if ((interactionObject.studentcolab).includes("PBL")) {
+               		 		studentcollabPhaseThree += 1; }
+               		 	else studentcollabNE += 1;
+               		 } else studentcollabNE += 1;
 
-            		if ((response[value].technology) != null) {
-            		 if ((response[value].technology).includes("Technology")) {
-            			 technologyPhaseOne += 1; }
-            		 	else if ((response[value].technology).includes("Using")) {
-            		 		technologyPhaseTwo += 1; }
-            		 	else if ((response[value].technology).includes("Students")) {
-            		 		technologyPhaseThree += 1; }
-            		 	else technologyNE += 1;
-            		} else technologyNE += 1;
-            		
-            	});//end of iterating through response
+               		if ((interactionObject.technology) != null) {
+               		 if ((interactionObject.technology) != null && (interactionObject.technology).includes("Technology")) {
+               			 technologyPhaseOne += 1; }
+               		 	else if ((interactionObject.technology).includes("Using")) {
+               		 		technologyPhaseTwo += 1; }
+               		 	else if ((interactionObject.technology).includes("target")) {
+               		 		technologyPhaseThree += 1; }
+               		 	else technologyNE += 1;
+               		} else technologyNE += 1;
+                    });
                
             	 
             	 $(".planningPhaseOne").html(planningPhaseOne);

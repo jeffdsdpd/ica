@@ -20,6 +20,7 @@ public class PhaseValues implements Serializable {
 	private Integer phase1;
 	private Integer phase2;
 	private Integer phase3;
+	private Integer notObserved;
 	
 	public Long getId() {
         return id;
@@ -51,5 +52,13 @@ public class PhaseValues implements Serializable {
 	
 	public void setPhase3(Integer phase3) {
 		this.phase3 = phase3;
+	}
+	
+	public Integer getNotObserved() {
+		return notObserved;
+	}
+	
+	public void setNotObserved(Integer notObserved) {
+		this.notObserved = notObserved;
 	}
 }

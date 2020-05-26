@@ -109,6 +109,13 @@ public class JSONRequestController extends HttpServlet {
 		return rubricDao.getRubricValuesBySchoolDateObserved(schoolId, date);
 	}
 	
+	//Called from dashboard.js to get the data for the 3d bar graph
+	@GetMapping(value="/getRubricValuesBySchoolForDashboard")
+	@ResponseBody
+	public List<Rubric> getRubricValuesBySchoolForDashboard(@RequestParam Integer schoolId) {	
+		return rubricDao.getRubricValuesBySchoolForDashboard(schoolId);
+	}
+	
 	//Called from teacherProgressionReport.js to get the data for the graph
 	@GetMapping(value="/getTeacherProgressionReportData")
 	@ResponseBody
@@ -152,6 +159,15 @@ public class JSONRequestController extends HttpServlet {
 	@ResponseBody
 	public PhaseValues getDashboardPhaseValuesBySchool(@RequestParam Integer schoolId) {	
 		 PhaseValues pv =  rubricDao.getDashboardPhaseValuesBySchool(schoolId);
+		 if (pv.getPhase1() == null) {
+			 pv.setPhase1(0);
+		 }
+		 if (pv.getPhase2() == null) {
+			 pv.setPhase2(0);
+		 }
+		 if (pv.getPhase3() == null) {
+			 pv.setPhase3(0);
+		 }
 		 return pv;
 	}
 	
