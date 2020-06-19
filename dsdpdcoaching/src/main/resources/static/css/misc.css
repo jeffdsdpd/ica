@@ -26,3 +26,8 @@
 	font-size: 14px;
 	color: yellow;
 }
+
+/*hide role-specific hoke county html*/
+li.hoke {
+display: none;
+}

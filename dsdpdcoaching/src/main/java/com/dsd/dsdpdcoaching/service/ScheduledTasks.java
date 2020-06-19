@@ -27,7 +27,7 @@ public class ScheduledTasks {
 	private ActionPlanDao actionPlanDao;
 
 	
-	@Scheduled(cron = "0 03 10 ? * ?")
+	//@Scheduled(cron = "0 03 10 ? * ?")
 	public void sendDailyActionPlan() {
 	    System.out.println("sendDailyActionPlan Timer has kicked off...");
 	    //Do a query to get the ACTION_TASKS created today

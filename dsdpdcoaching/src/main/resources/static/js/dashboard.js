@@ -466,7 +466,7 @@ $(document)
 		                		    },
 
 		                		    title: {
-		                		        text: 'Number of Teachers in each Rubric Category',
+		                		        text: 'RUBRIC Values for each Category',
 		               		        	style: {
 		               		                fontSize: '20px',
 		               		                fontWeight: 'bold'
@@ -474,7 +474,7 @@ $(document)
 		                		    },
 		                		    
 		                		    subtitle: {
-		                		        text: 'Based on most recent Observed Classroom - Excluding NOT OBSERVED',
+		                		        text: 'Based on most recent Observed Classroom per Teacher - Excluding NOT OBSERVED',
 		                		        style: {
 		               		                fontSize: '16px'
 		               		            }
@@ -502,7 +502,7 @@ $(document)
 		                		        },
 		                		        min: 0,
 		                		        title: {
-		                		            text: 'Number of Teachers',
+		                		            text: 'RUBRIC Value',
 		                		            style: {
 		                		                fontSize: '20px',
 		                		                fontWeight: 'bold'
@@ -535,6 +535,17 @@ $(document)
 		                }}); // This is the end of building the 3d Bar Graph
 					
 					}); // end of $("#schoolId").change(function()
+					
+					
+					//Check if the user is associated to Hoke County - Display their RUBRIC nav
+					var userIsHokeCounty = false;
+					$('#schoolId option').each(function(){
+					    if (this.text == 'Hoke County') {
+					    		userIsHokeCounty = true;
+					    		$("li.hoke").show();
+					        return false;
+					    }
+					});
 
 				}); // end of the Ready Function
 
@@ -671,4 +682,5 @@ function clearRubricFields() {
 	technologyPhaseTwo = 0;
 	technologyPhaseThree = 0;
 	technologyNE = 0;
+	
 };

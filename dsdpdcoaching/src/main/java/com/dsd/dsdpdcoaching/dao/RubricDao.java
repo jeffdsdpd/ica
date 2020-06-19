@@ -410,7 +410,9 @@ public class RubricDao {
 	@SuppressWarnings("unchecked")
 	public List<Rubric> getRubricValuesBySchoolForDashboard(Integer schoolId) {
 		//Called by the JSONRequestController to get the rubic data to create the 3d bar graph on the dashboard
-		List<Rubric> rubricList =  entityManager.createQuery("from RUBRIC where schoolid = :schoolId and observed = 'Observed Classroom' group by teacherId")
+		List<Rubric> rubricList =  entityManager.createQuery("from RUBRIC r WHERE timeObserved = (SELECT MAX(timeObserved) FROM RUBRIC "
+				+ "where schoolid = :schoolId and observed = 'Observed Classroom' and teacherId = r.teacherId group by teacherId) "
+				+ "and schoolid = :schoolId and observed = 'Observed Classroom' group by teacherId")
 	    			.setParameter("schoolId", schoolId)
 	    			.getResultList();
 		return rubricList;
