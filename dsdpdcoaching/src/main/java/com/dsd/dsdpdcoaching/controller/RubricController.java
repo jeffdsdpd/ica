@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.dsd.dsdpdcoaching.dao.RubricDao;
+import com.dsd.dsdpdcoaching.dto.HokeRubric;
+import com.dsd.dsdpdcoaching.dto.HokeRubricLevelUp;
 import com.dsd.dsdpdcoaching.dto.Rubric;
 import com.dsd.dsdpdcoaching.dto.RubricLevelUp;
 import com.dsd.dsdpdcoaching.service.EmailService;
@@ -34,6 +36,13 @@ public class RubricController {
 		model.addAttribute("rubricData", new Rubric());
 		model.addAttribute("rubricLevelUp", new RubricLevelUp());
 		return "rubricForm";
+	}
+	
+	@GetMapping("/hokeRubricForm.html")
+	public String getHokeRubricForm(Model model) {
+		model.addAttribute("hokeRubricData", new HokeRubric());
+		model.addAttribute("hokeRubricLevelUp", new HokeRubricLevelUp());
+		return "hokeRubricForm";
 	}
 	
 	@GetMapping("/rubricReport.html")
@@ -81,6 +90,14 @@ public class RubricController {
 
 		//redirect user back to blank form so they can enter more data
 		return "redirect:/rubricForm.html";
+	}
+	
+	@PostMapping("/hokeRubricForm")
+	public String postHokeRubricForm(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute HokeRubric hokeRubricData, @ModelAttribute HokeRubricLevelUp hokeRubricLevelUp) {
+
+		hokeRubricData.setUserId(request.getUserPrincipal().getName());
+		System.out.println("In Hokey");
+		return null;
 	}
 	
 	@PostMapping("/rubricReportUpdate")

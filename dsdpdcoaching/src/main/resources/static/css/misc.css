@@ -11,23 +11,101 @@
 #frm .error {
     color: red;
 }
-
 .checkboxes label {
     font-size: 12px;
     color: #666;
 }
-
 .input-disabled{
 	background-color:#FFF !important;
 }
-
 .radio-inline1 {
 	font-family: arial, Times, serif;
 	font-size: 14px;
 	color: yellow;
 }
-
 /*hide role-specific hoke county html*/
-li.hoke {
-display: none;
+.modaltext {
+	margin-left:20px; 
+	font-size:14px;
 }
+.hokecontent {
+	display: none;
+	padding: 1px;
+}
+.hokeexpandable {
+	color: white;
+	cursor: pointer;
+	padding: 8px;
+	width: 83%;
+	height: 50px;
+	border: none;
+	text-align: center;
+	outline: none;
+	font-size: 20px;
+	max-width: 90%;
+}
+.hokeactive, .hokeexpandable:hover {
+	background-color: #555;
+}
+
+.heidc {
+	background-color: coral;
+}
+.heti {
+	background-color: #A9DFBF;
+}
+.hee {
+	background-color: #F7DC6F;
+}
+.heenv {
+	background-color: #f5cba7;
+}
+.hesr {
+	background-color: #85c1e9;
+}
+.heddd {
+	background-color: #d2b4de;
+}
+
+.hokecontainer {
+    width: 1000px;
+    margin: auto;
+    float: left;
+}
+#hokecolumn {
+    width: 300px;
+    float: left;
+    height: 30px;
+    opacity: 0.7;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: black;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 1px;
+}
+#spacercolumn {
+    width: 300px;
+    float: left;
+    height: 30px;
+    background-color: white;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+#heidchokecolumn {
+    width: 300px;
+    float: left;
+    height: 30px;
+    opacity: 0.7;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: blue;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 1px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+

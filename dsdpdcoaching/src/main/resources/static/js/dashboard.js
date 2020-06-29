@@ -540,6 +540,7 @@ $(document)
 					//Check if the user is associated to Hoke County - Display their RUBRIC nav
 					var userIsHokeCounty = false;
 					$('#schoolId option').each(function(){
+
 					    if (this.text == 'Hoke County') {
 					    		userIsHokeCounty = true;
 					    		$("li.hoke").show();
