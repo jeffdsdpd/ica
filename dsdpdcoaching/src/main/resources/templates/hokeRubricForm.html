@@ -61,7 +61,7 @@
 		                                <h2 class="title">Hoke Rubric Form</h2>
 		                            </div>
 		                            <div class="content">
-		                                <form id="frm" name="frm" action="#" th:action="@{/hokeRubricForm}" th:object="${hokeRubricData}" method="post">
+		                                <form id="hokeform" name="hokeform" action="#" th:action="@{/hokeRubricForm}" th:object="${hokeRubricData}" method="post">
 		                                    <div class="row">
 		                                        <div class="col-md-4">
 		                                            <div class="form-group">
@@ -143,65 +143,97 @@
                                     
                                     <hr></hr>
                                     
-                                    <div class="container">
+                                    <div class="container-fluid">
                                     
                                     <div id="expandable">
 								   	<button type="button" class="hokeexpandable heidc">INTEGRATED DIGITAL CONTENT</button>
 									   <div class="content hokecontent hokecontainer">
 									   
-										   	<div id="heidchokecolumn" class="heidc">CATEGORY</div>
+									   <div class="container-fluid">
+									   	<div class="row">
+									   	<div class="col-md-12">
+									   		<div class="col-md-4">
+										   		<div id="heidchokecolumn" class="heidc">CATEGORY</div>
 										   	
-										   	<div class="modal fade " data-backdrop="false">
-										      <div class="modal-dialog">
-										          <div class="modal-content">
-										              <div class="modal-header">
-										                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										                  <h4 class="modal-title">GUIDING QUESTIONS</h4>
-										              </div>
-										              <div class="modal-body">
-										                   <h5><b>Students:</b></h5>
-										              </div>
-												              <p class="modaltext">What are you learning today?</p>
-												              <p class="modaltext">What are you completing in this station?</p>
-										              <div class="modal-body">
-										                   <h5><b>Teachers:</b></h5>
-										                    <p class="modaltext">What are your students learning about today?</p>
-										              		<p class="modaltext">How will you determine what your students learned today?</p>
-										              		<p class="modaltext">What are your students producing to show you what they learned?</p>
-										              		<p class="modaltext">What resources are you using in the stations?</p>
-										              		<p class="modaltext">How did you decide to use that station?</p>
-										              		<p class="modaltext">What data, if any, does the digital resource provide to the teacher and/or student?</p>
-										              		<p class="modaltext">How does the digital content provide support for the students?</p>
-										              </div>
-										              <div class="modal-footer">
-										                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-										
-										              </div>
-										          </div><!-- /.modal-content -->
-										      </div><!-- /.modal-dialog -->
-											</div><!-- /.modal -->
+												   	<div class="modal fade " data-backdrop="false">
+												      <div class="modal-dialog">
+												          <div class="modal-content">
+												              <div class="modal-header">
+												                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+												                  <h4 class="modal-title">GUIDING QUESTIONS</h4>
+												              </div>
+												              <div class="modal-body">
+												                   <h5><b>Students:</b></h5>
+												              </div>
+														            <p class="modaltext">What are you learning today?</p>
+														            <p class="modaltext">What are you completing in this station?</p>
+												              <div class="modal-body">
+												                   <h5><b>Teachers:</b></h5>
+												                    <p class="modaltext">What are your students learning about today?</p>
+												              		<p class="modaltext">How will you determine what your students learned today?</p>
+												              		<p class="modaltext">What are your students producing to show you what they learned?</p>
+												              		<p class="modaltext">What resources are you using in the stations?</p>
+												              		<p class="modaltext">How did you decide to use that station?</p>
+												              		<p class="modaltext">What data, if any, does the digital resource provide to the teacher and/or student?</p>
+												              		<p class="modaltext">How does the digital content provide support for the students?</p>
+												              </div>
+												              <div class="modal-footer">
+												                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												              </div>
+												          </div><!-- /.modal-content -->
+												      </div><!-- /.modal-dialog -->
+													</div><!-- /.modal -->
+												</div><!--  end of col div -->
+												
 																				   	
+										 
+    												<div class="col-md-4">	  
+										   			<div id="hokecolumn" class="heidc">NOT YET</div>
+										   		</div>
+										  
 										   	
-										   		  
-										   	<div id="hokecolumn" class="heidc">NOT YET</div>
-										   	<div id="hokecolumn" class="heidc">MODEL</div>
+    												<div class="col-md-4">
+										   			<div id="hokecolumn" class="heidc">MODEL</div>
+										   		</div>
+										 </div> <!--  end of col-md-12 -->
+										   	</div> <!--  end of row div -->
 										   	
-										   	<br />
-										   	
-										   	<div id="hokecolumn" class="heidc" style="font-size:14px; padding-top:5px;"><b>Content Alignment</b></div>
-										   	<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
-	  										<input type="radio" id='idccontentalignment1' name="idccontentalignment1" value="Not Yet" />Digital Content is not integrated to support student-centered learning</label>
+									   		<div class="row">
+									   			<div class="col-md-12">
+										   		<div class="col-md-4">
+												   	<div id="hokecolumn" class="heidc" style="font-size:14px; padding-top:5px;"><b>Content Alignment</b></div>
+												</div>
+												<div class="col-md-4">
+												   	<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='idccontentalignment1' name="idccontentalignment1" value="Not Yet" />Digital Content is not integrated to support student-centered learning</label>
+			  									</div>
+			  									<div class="col-md-4">
+			  										<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='idccontentalignment1' name="idccontentalignment1" value="Model" />Teacher integrates aligned digital content to support student-centered learning</label>
+			  									</div>
+			  									<!-- <label for="idccontentalignment1" class="error"></label> -->
+			  								</div>
+		  									</div> <!--  end of row div -->
 	  										
-	  										<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
-	  										<input type="radio" id='idccontentalignment1' name="idccontentalignment1" value="Model" />Teacher integrates aligned digital content to support student-centered learning</label>
-	  										
-	  										<div id="spacercolumn"></div>
-										   	<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
-	  										<input type="radio" id='idccontentalignment2' name="idccontentalignment2" value="Not Yet" />Digital Content is not aligned to the standards and/or learning targets</label>
-	  										
-	  										<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
-	  										<input type="radio" id='idccontentalignment2' name="idccontentalignment2" value="Model" />Digital content consistently aligns to the standard and/or learning targets</label>
+	  										<div class="row">
+	  										<div class="col-md-12">
+										   		<div class="col-md-4">
+			  										<div id="spacercolumn"></div>
+			  									</div>
+			  									<div class="col-md-4">
+												   	<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='idccontentalignment2' name="idccontentalignment2" value="Not Yet" />Digital Content is not aligned to the standards and/or learning targets</label>
+			  									</div>
+			  									<div class="col-md-4">
+			  										<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='idccontentalignment2' name="idccontentalignment2" value="Model" />Digital content consistently aligns to the standard and/or learning targets</label>
+												</div>
+											</div>
+											</div>
+												
+										   </div> <!--  end of container div -->
 										   	
+										    	
 										   
 	  									<br />
 										</div>

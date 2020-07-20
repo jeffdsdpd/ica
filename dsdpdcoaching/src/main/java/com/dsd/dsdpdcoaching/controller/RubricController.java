@@ -96,8 +96,29 @@ public class RubricController {
 	public String postHokeRubricForm(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute HokeRubric hokeRubricData, @ModelAttribute HokeRubricLevelUp hokeRubricLevelUp) {
 
 		hokeRubricData.setUserId(request.getUserPrincipal().getName());
-		System.out.println("In Hokey");
-		return null;
+		
+		//set the 'completed' field for all records in the levelup list to 'false'
+		for (int i = 0; i<hokeRubricData.getLevelupList().size(); i++) {
+			hokeRubricData.getLevelupList().get(i).setCompleted("false");
+		}
+		
+		int hokeRubricScore = 0;
+		
+		Integer teacherId = hokeRubricData.getTeacherId();
+		HokeRubric hokeData = ((HokeRubric) SerializationUtils.clone(hokeRubricData));
+		hokeData.setTeacherId(teacherId);
+		hokeData.setRubricScore(hokeRubricScore);
+		
+		rubricDao.saveHokeRubricData(hokeData);
+		
+		//check if the email checkbox was checked to email the report to the teacher
+		if(request.getParameter("teachercheckbox")!=null) {
+			//emailService.sendRubricEmail(hokeRubricData, request.getParameter("teachercheckbox"));
+		}
+		
+		//redirect user back to blank form so they can enter more data
+		return "redirect:/hokeRubricForm.html";
+		
 	}
 	
 	@PostMapping("/rubricReportUpdate")

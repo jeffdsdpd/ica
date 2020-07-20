@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
-@Entity(name = "HOKERUBRIC")
+@Entity(name = "HOKE_RUBRIC")
 @Component
 public class HokeRubric implements Serializable {
 

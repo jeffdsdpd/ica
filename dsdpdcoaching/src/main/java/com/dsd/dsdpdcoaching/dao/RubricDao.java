@@ -15,6 +15,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.dsd.dsdpdcoaching.dto.HokeRubric;
 import com.dsd.dsdpdcoaching.dto.PhaseValues;
 import com.dsd.dsdpdcoaching.dto.Rubric;
 import com.dsd.dsdpdcoaching.dto.RubricLevelUp;
@@ -33,6 +34,11 @@ public class RubricDao {
 	//Called by the JSONRequestController to save rubric data on rubricForm.html
 	public void saveRubricData(Rubric data) {
 		entityManager.persist(data);		
+	}
+	
+	//Called by the JSONRequestController to save hoke rubric data on hokeRubricForm.html
+	public void saveHokeRubricData(HokeRubric hokeData) {
+		entityManager.persist(hokeData);		
 	}
 
 	//Called by the JSONRequestController to select the rubric to display on the rubricReport.html
@@ -417,4 +423,5 @@ public class RubricDao {
 	    			.getResultList();
 		return rubricList;
 	}
+
 }
