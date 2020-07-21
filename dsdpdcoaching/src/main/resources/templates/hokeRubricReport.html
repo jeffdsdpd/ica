@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>DSD-PD Coaching Application | Hoke Teacher Rubric Report</title>
+<title>DSD-PD Coaching Application | Hoke Rubric Report</title>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport"
@@ -15,7 +15,7 @@
 <script src="js/lib/bootstrap.min.js"></script>
 <script src="js/lib/light-bootstrap-dashboard.js"></script>
 <script src="js/gstatic.js"></script>
-<script src="js/rubricReport.js"></script>
+<script src="js/hokeRubricReport.js"></script>
 
 <!--   CSS Files   -->
 <link href="css/lib/jquery-ui.css" rel="stylesheet" />
@@ -162,7 +162,7 @@
 													<br />
 													
 													<button type="emailButton" name="emailButton" class="btn btn-info"
-														id="button">Email Selected Person(s)</button>
+														id="emailbutton">Email Selected Person(s)</button>
 												</div>
 											</div>
 
@@ -176,16 +176,9 @@
 													<b>Recorded By: </b><span class="user" name="user" id="user"></span>
 												</h5>
 												<h5>
-													<b>Rubric Total: </b><span class="rubricTotal"></span> Out
-													of possible 30
-												</h5>
-												<h5>
 													<b>Observed: </b><span class="observed" style="color: red"></span>
 												</h5>
 											</div>
-											
-											<div class="floating-box" id="chart_div" style="width: 400px; height: 120px;"></div>
-											
 											
 											<div class="row">
 												<div class="col-md-9">
@@ -200,57 +193,81 @@
 										
 										
 										<hr align="left" width="50%"></hr>
-										<div style="float: left; width: 65%">
-											<ul class="legend">
-												<li><span class="phaseone"></span>Phase 1</li>
-												<li><span class="phasetwo"></span>Phase 2</li>
-												<li><span class="phasethree"></span>Phase 3</li>
-												<li><span class="empty"></span>Not Observed</li>
-											</ul>
-										</div>
-										<div style="float: right; width: 25%; color: green">
-											<b>Level Up</b>
+										<div style="width: 65%">
+											<h3>BLENDED LEARNING MODEL TEACHER RUBRIC</h3>
 										</div>
 
 										<br /> <br />
 
-										<div style="float: left; width: 65%">
-											<h5>
-												<b>Planning: </b><span id="planning" class="planning"></span>
-											</h5>
-											<h5>
-												<b>Assessment And Data: </b><span id="assessanddata"
-													class="assessanddata"></span>
-											</h5>
-											<h5>
-												<b>Path: </b><span id="path" class="path"></span>
-											</h5>
-											<h5>
-												<b>Place: </b><span id="place" class="place"></span>
-											</h5>
-											<h5>
-												<b>Pace: </b><span id="pace" class="pace"></span>
-											</h5>
-											<h5>
-												<b>Classroom Mgmt.: </b><span id="classmgmt"
-													class="classmgmt"></span>
-											</h5>
-											<h5>
-												<b>Teacher Role: </b><span id="teacherrole"
-													class="teacherrole"></span>
-											</h5>
-											<h5>
-												<b>Student Engagement: </b><span id="studentengage"
-													class="studentengage"></span>
-											</h5>
-											<h5>
-												<b>Student Collaboration: </b><span id="studentcollab"
-													class="studentcollab"></span>
-											</h5>
-											<h5>
-												<b>Technology: </b><span id="technology" class="technology"></span>
-											</h5>
+										
+										
+								<div class="container-fluid">
+                                    <div id="expandable">
+								   	<button type="button" class="hokeexpandable heidc">INTEGRATED DIGITAL CONTENT</button>
+									   <div class="content hokecontent hokecontainer">
+									   
+									   <div class="container-fluid">
+									   	<div class="row">
+									   	<div class="col-md-12">
+									   		<div class="col-md-4">
+										   		<div id="heidchokecolumn" class="heidc">CATEGORY</div>
+										   	
+												</div><!--  end of col div -->
+												
+    												<div class="col-md-4">	  
+										   			<div id="hokecolumn" class="heidc">NOT YET</div>
+										   		</div>
+										  
+    												<div class="col-md-4">
+										   			<div id="hokecolumn" class="heidc">MODEL</div>
+										   		</div>
+										 </div> <!--  end of col-md-12 -->
+										   	</div> <!--  end of row div -->
+										   	
+									   		<div class="row">
+									   			<div class="col-md-12">
+										   		<div class="col-md-4">
+												   	<div id="hokecolumn" class="heidc" style="font-size:14px; padding-top:5px;"><b>Content Alignment</b></div>
+												</div>
+												<div class="col-md-4">
+												   	<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='idccontentalignment1' name="idccontentalignment1" value="Not Yet" />Digital Content is not integrated to support student-centered learning</label>
+			  									</div>
+			  									<div class="col-md-4">
+			  										<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='idccontentalignment1' name="idccontentalignment1" value="Model" />Teacher integrates aligned digital content to support student-centered learning</label>
+			  									</div>
+			  									<!-- <label for="idccontentalignment1" class="error"></label> -->
+			  								</div>
+		  									</div> <!--  end of row div -->
+	  										
+	  										<div class="row">
+	  										<div class="col-md-12">
+										   		<div class="col-md-4">
+			  										<div id="spacercolumn"></div>
+			  									</div>
+			  									<div class="col-md-4">
+												   	<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='idccontentalignment2' name="idccontentalignment2" value="Not Yet" />Digital Content is not aligned to the standards and/or learning targets</label>
+			  									</div>
+			  									<div class="col-md-4">
+			  										<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='idccontentalignment2' name="idccontentalignment2" value="Model" />Digital content consistently aligns to the standard and/or learning targets</label>
+												</div>
+											</div>
+											</div>
+												
+										   </div> <!--  end of container div -->
+										   	
+										    	
+										   
+	  									<br />
 										</div>
+										</div>
+									</div>
+										   
+										   
+										   
 
 										<div class="levelupclass" style="float: right; width: 25%;">
 											<a href="#" style="visibility: hidden"

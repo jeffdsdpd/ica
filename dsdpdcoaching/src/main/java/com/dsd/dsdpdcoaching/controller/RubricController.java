@@ -50,6 +50,11 @@ public class RubricController {
 		return "rubricReport";
 	}
 	
+	@GetMapping("/hokeRubricReport.html")
+	public String getHokeRubricReport(Model model) {
+		return "hokeRubricReport";
+	}
+	
 	@GetMapping("/teacherProgressionReport.html")
 	public String getTeacherProgressionReport(Model model) {
 		return "teacherProgressionReport";
