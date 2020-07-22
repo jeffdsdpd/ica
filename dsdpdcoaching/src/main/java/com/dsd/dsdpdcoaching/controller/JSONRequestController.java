@@ -22,6 +22,7 @@ import com.dsd.dsdpdcoaching.dao.TeacherDao;
 import com.dsd.dsdpdcoaching.dao.UserDao;
 import com.dsd.dsdpdcoaching.dto.ActionPlanData;
 import com.dsd.dsdpdcoaching.dto.CoachingData;
+import com.dsd.dsdpdcoaching.dto.HokeRubric;
 import com.dsd.dsdpdcoaching.dto.PhaseValues;
 import com.dsd.dsdpdcoaching.dto.Rubric;
 import com.dsd.dsdpdcoaching.dto.RubricLevelUp;
@@ -86,12 +87,28 @@ public class JSONRequestController extends HttpServlet {
 		return rubricDao.getRubricDatesAndId(schoolId, teacherId);
 	}
 	
+	//Called from hokeRubricReport.js
+	@GetMapping(value="/getHokeRubricDatesAndId")
+	@ResponseBody
+	public List<Rubric> getHokeRubricDatesAndId(@RequestParam Integer schoolId, @RequestParam Integer teacherId) {	
+		return rubricDao.getHokeRubricDatesAndId(schoolId, teacherId);
+	}
+	
 	//Called from rubricReport.js
 	@GetMapping(value="/getRubricById")
 	@ResponseBody
 	public Rubric getRubricById(@RequestParam Integer recordId) {
 		Rubric r = new Rubric();
 		r = rubricDao.getRubricById(recordId);
+		return r;
+	}
+	
+	//Called from hokeRubricReport.js
+	@GetMapping(value="/getHokeRubricById")
+	@ResponseBody
+	public HokeRubric getHokeRubricById(@RequestParam Integer recordId) {
+		HokeRubric r = new HokeRubric();
+		r = rubricDao.getHokeRubricById(recordId);
 		return r;
 	}
 	

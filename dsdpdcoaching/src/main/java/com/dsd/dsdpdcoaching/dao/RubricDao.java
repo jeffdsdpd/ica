@@ -48,6 +48,13 @@ public class RubricDao {
     			.getSingleResult();
 	}
 	
+	//Called by the JSONRequestController to select the rubric to display on the hokeRubricReport.html
+	public HokeRubric getHokeRubricById(Integer rubricId) {
+	    return entityManager.createQuery("from HOKE_RUBRIC where id = :rubricId", HokeRubric.class)
+    			.setParameter("rubricId", rubricId)
+    			.getSingleResult();
+	}
+	
 	//Called by the ScheduledTasks class to send the daily rubric report if rubrics are found for the current date
 	public List<Rubric> getRubricForToday() {
 		List<Rubric> rubricList = entityManager.createQuery("from RUBRIC WHERE DATE = CURDATE()", Rubric.class)
@@ -262,9 +269,18 @@ public class RubricDao {
 	
 	@SuppressWarnings("unchecked")
 	public List<Rubric> getRubricDatesAndId(Integer schoolId, Integer teacherId) {
-		//LOGGER.debug("Retrieving rubric dates for rubric report for teacher id =  " + teacherId);
 		return entityManager.createQuery(
 				"from RUBRIC where schoolid = :schoolId and teacherid = :teacherId ORDER BY date DESC")
+				.setParameter("schoolId", schoolId)
+    				.setParameter("teacherId", teacherId)
+    			.getResultList();
+	}
+	
+	//Called by JSONRequestController to get the Rubrics for the Hoke County School
+	@SuppressWarnings("unchecked")
+	public List<Rubric> getHokeRubricDatesAndId(Integer schoolId, Integer teacherId) {
+		return entityManager.createQuery(
+				"from HOKE_RUBRIC where schoolid = :schoolId and teacherid = :teacherId ORDER BY date DESC")
 				.setParameter("schoolId", schoolId)
     				.setParameter("teacherId", teacherId)
     			.getResultList();
@@ -423,5 +439,6 @@ public class RubricDao {
 	    			.getResultList();
 		return rubricList;
 	}
+
 
 }

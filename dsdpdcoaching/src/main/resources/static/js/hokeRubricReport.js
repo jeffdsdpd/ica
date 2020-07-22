@@ -37,30 +37,11 @@
 				} else adminEmail = "not selected";
 				
 				var date = $("#date :selected").text();
-				var planning = $("#planning").text();
-				var assessanddata = $("#assessanddata").text();
-				var path = $("#path").text();
-				var place = $("#place").text();
-				var pace = $("#pace").text();
-				var classmgmt = $("#classmgmt").text();
-				var teacherrole = $("#teacherrole").text();
-				var studentengage = $("#studentengage").text();
-				var studentcollab = $("#studentcollab").text();
-				var technology = $("#technology").text();
+				
 				var rubricnotes = document.getElementById("rubricnotes").innerText;
 				var levelup = document.getElementById("levelupcheckboxes").innerText;
 				var questions = document.getElementById("questions").value;
 				
-				var planningLevelData = $('#planningLevelUpData').attr("data-content");
-				var assessLevelData = $('#assessanddataLevelUpData').attr("data-content");
-				var pathLevelData = $('#pathLevelUpData').attr("data-content");
-				var placeLevelData = $('#placeLevelUpData').attr("data-content");
-				var paceLevelData = $('#paceLevelUpData').attr("data-content");
-				var classmgmtLevelData = $('#classroommgmtLevelUpData').attr("data-content");
-				var teachroleLevelData = $('#teacherroleLevelUpData').attr("data-content");
-				var stengageLevelData = $('#studentengagementLevelUpData').attr("data-content");
-				var stcollabLevelData = $('#studentcollabLevelUpData').attr("data-content");
-				var technologyLevelData = $('#technologyLevelUpData').attr("data-content");
 			
 		            $.ajax({
 		                type: 'GET',
@@ -88,38 +69,8 @@
 				document.getElementById("admincheckbox").style.display = "none";
 				document.getElementById("teacherlabel").style.display = "none";
 				document.getElementById("adminlabel").style.display = "none";
-				document.getElementById("button").style.display = "none";
+				document.getElementById("emailbutton").style.display = "none";
 				document.getElementById("nodatatodisplay").style.display = "none";
-				
-				planningLevel = 0;
-				document.getElementById("planningLevelUpData").style.visibility = "hidden";
-						
-				assessanddataLevel = 0;
-				document.getElementById("assessanddataLevelUpData").style.visibility = "hidden";
-				
-				pathLevel = 0;
-				document.getElementById("pathLevelUpData").style.visibility = "hidden";
-				
-				placeLevel = 0;
-				document.getElementById("placeLevelUpData").style.visibility = "hidden";
-				
-				paceLevel = 0;
-				document.getElementById("paceLevelUpData").style.visibility = "hidden";
-				
-				classmgmtLevel = 0;
-				document.getElementById("classroommgmtLevelUpData").style.visibility = "hidden";
-				
-				teacherroleLevel = 0;
-				document.getElementById("teacherroleLevelUpData").style.visibility = "hidden";
-				
-				studentengageLevel = 0;
-				document.getElementById("studentengagementLevelUpData").style.visibility = "hidden";
-				
-				studentcollabLevel = 0;
-				document.getElementById("studentcollabLevelUpData").style.visibility = "hidden";
-				
-				technologyLevel = 0;
-				document.getElementById("technologyLevelUpData").style.visibility = "hidden";
 				
 				$(".levelupclass").fadeOut("slow");
 				
@@ -133,17 +84,7 @@
 				$("#rubricnotes").val("");
 				$("#levelup").val("");
 				$("#questions").val("");
-				$(".planning").html("");
-				$(".assessanddata").html("");
-				$(".path").html("");
-				$(".place").html("");
-				$(".pace").html("");
-				$(".classmgmt").html("");
-				$(".teacherrole").html("");
-				$(".studentengage").html("");
-				$(".studentcollab").html("");
-				$(".technology").html("");
-				
+			
 				$(".container").fadeOut("slow");
 				
 			selectedSchoolId =  $("#schoolName :selected").val();
@@ -171,36 +112,6 @@
 			
 			$("#levelupcheckboxes").html("");
 
-				planningLevel = 0;
-				document.getElementById("planningLevelUpData").style.visibility = "hidden";
-						
-				assessanddataLevel = 0;
-				document.getElementById("assessanddataLevelUpData").style.visibility = "hidden";
-				
-				pathLevel = 0;
-				document.getElementById("pathLevelUpData").style.visibility = "hidden";
-				
-				placeLevel = 0;
-				document.getElementById("placeLevelUpData").style.visibility = "hidden";
-				
-				paceLevel = 0;
-				document.getElementById("paceLevelUpData").style.visibility = "hidden";
-				
-				classmgmtLevel = 0;
-				document.getElementById("classroommgmtLevelUpData").style.visibility = "hidden";
-				
-				teacherroleLevel = 0;
-				document.getElementById("teacherroleLevelUpData").style.visibility = "hidden";
-				
-				studentengageLevel = 0;
-				document.getElementById("studentengagementLevelUpData").style.visibility = "hidden";
-				
-				studentcollabLevel = 0;
-				document.getElementById("studentcollabLevelUpData").style.visibility = "hidden";
-				
-				technologyLevel = 0;
-				document.getElementById("technologyLevelUpData").style.visibility = "hidden";
-				
 				$(".levelupclass").fadeOut("slow");
 				
 				$("#date").empty();
@@ -210,20 +121,10 @@
 				$("#rubricnotes").val("");
 				$("#levelup").val("");
 				$("#questions").val("");
-				$(".planning").html("");
-				$(".assessanddata").html("");
-				$(".path").html("");
-				$(".place").html("");
-				$(".pace").html("");
-				$(".classmgmt").html("");
-				$(".teacherrole").html("");
-				$(".studentengage").html("");
-				$(".studentcollab").html("");
-				$(".technology").html("");
 				
 	            $.ajax({
 	                type: "GET",
-	                url:"getRubricDatesAndId",
+	                url:"getHokeRubricDatesAndId",
 	                data:{schoolId: selectedSchoolId, teacherId: selectedTeacherId},
 	                dataType: "json",
 	                success: function (response) {
@@ -242,7 +143,7 @@
 	                });
 
 			var selectedTeacherId = $("#teacherName :selected").val();
-			$("button").prop("disabled",false);
+			$("emailbutton").prop("disabled",false);
 			$.ajax({
 				type: "GET",
 				url:"getEmailAddress",
@@ -276,47 +177,18 @@
 			
 			if ( $("#teacherlabel").text() != "" ) {
     				document.getElementById("teacherlabel").style.display = "inline";
-    				document.getElementById("button").style.display = "inline";
+    				document.getElementById("emailbutton").style.display = "inline";
     				document.getElementById("emailreport").style.display = "inline";
     				document.getElementById("teachercheckbox").style.display = "inline";
 			}
 			
 			if ( $("#adminlabel").text() != "" ) {
 				document.getElementById("adminlabel").style.display = "inline";
-    				document.getElementById("button").style.display = "inline";
+    				document.getElementById("emailbutton").style.display = "inline";
     				document.getElementById("emailreport").style.display = "inline";
     				document.getElementById("admincheckbox").style.display = "inline";
 			}
 			
-			planningLevel = 0;
-			document.getElementById("planningLevelUpData").style.visibility = "hidden";
-					
-			assessanddataLevel = 0;
-			document.getElementById("assessanddataLevelUpData").style.visibility = "hidden";
-			
-			pathLevel = 0;
-			document.getElementById("pathLevelUpData").style.visibility = "hidden";
-			
-			placeLevel = 0;
-			document.getElementById("placeLevelUpData").style.visibility = "hidden";
-			
-			paceLevel = 0;
-			document.getElementById("paceLevelUpData").style.visibility = "hidden";
-			
-			classmgmtLevel = 0;
-			document.getElementById("classroommgmtLevelUpData").style.visibility = "hidden";
-			
-			teacherroleLevel = 0;
-			document.getElementById("teacherroleLevelUpData").style.visibility = "hidden";
-			
-			studentengageLevel = 0;
-			document.getElementById("studentengagementLevelUpData").style.visibility = "hidden";
-			
-			studentcollabLevel = 0;
-			document.getElementById("studentcollabLevelUpData").style.visibility = "hidden";
-			
-			technologyLevel = 0;
-			document.getElementById("technologyLevelUpData").style.visibility = "hidden";
 			
 			var selectedId = $("#date :selected").val();
 
@@ -331,29 +203,19 @@
 			$("#rubricnotes").val("");
 			$("#levelup").val("");
 			$("#questions").val("");
-			$(".planning").html("");
-			$(".assessanddata").html("");
-			$(".path").html("");
-			$(".place").html("");
-			$(".pace").html("");
-			$(".classmgmt").html("");
-			$(".teacherrole").html("");
-			$(".studentengage").html("");
-			$(".studentcollab").html("");
-			$(".technology").html("");
 			
 			if (selectedId == 0){
-				 $(".button").fadeOut("slow");
+				 $(".emailbutton").fadeOut("slow");
 				 $(".container").fadeOut("slow");
 				 $(".additionalRubricItems").fadeOut("slow");
 			} else {
-			$(".button").fadeIn("slow");
+			$(".emailbutton").fadeIn("slow");
 			$(".container").fadeIn("slow");
 			
 			$(".levelupclass").fadeIn("slow");
 	            $.ajax({
 	                type: "GET",
-	                url:"getRubricById",
+	                url:"getHokeRubricById",
 	                data:{recordId: selectedId},
 	                dataType: "json",
 	                success: function (response) {
@@ -366,8 +228,6 @@
 	                		 } else {
 	                			 $(".timeTaken").html(format12Hour(response.timeObserved));
 	                			 }
-	                		 
-	                		
 	                		 
 	                		 $("#levelupcheckboxes").append( $("<label>").attr('id', 'levelupheader').text("Next Steps"));
 	                		 $("#levelupcheckboxes").append( $("<br />"));
@@ -393,30 +253,36 @@
 	        	        	   			$("#levelupcheckboxes").append("<br/>");
 	                		 	};
 	                			 
-
-	                		 
-	                		 var rubricValuesArray = [	{name: 'planning', value: planningLevel},
-                		                            	   	{name: 'assessanddata', value: assessanddataLevel},
-                		                            	   	{name: 'path', value: pathLevel},
-                		                            	   	{name: 'place', value: placeLevel},
-                		                            	   	{name: 'pace', value: paceLevel},
-                		                            	   	{name: 'classroommgmt', value: classmgmtLevel},
-                		                            	   	{name: 'teacherrole', value: teacherroleLevel},
-                		                            	   	{name: 'studentengagement', value: studentengageLevel},
-                		                            	   	{name: 'studentcollab', value: studentcollabLevel},
-                		                            	   	{name: 'technology', value: technologyLevel} ];
-	                
-                		 
-	                		 rubricValuesArray.sort(compare);
-	                		 
-	                		 function compare(a,b) {
-	                			  if (a.value < b.value)
-	                				    return -1;
-	                				  if (a.value > b.value)
-	                				    return 1;
-	                				  return 0;
-	                				};
-	                				
+	                		 	
+	                		 	//start placing check marks in the rubric categories
+	                		 	//INTEGRATED DIGITAL CONTENT
+	                		 	if (response.idccontentalignment1 == 'Not Yet') {
+	                		 		$("#idccontentalignment1NY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#idccontentalignment1M").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	if (response.idccontentalignment1 == 'Not Yet') {
+	                		 		$("#idccontentalignment2NY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#idccontentalignment2M").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	//TARGETED INSTRUCTION
+	                		 	if (response.tistandardalignment1 == 'Not Yet') {
+	                		 		$("#idccontentalignment1NY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#idccontentalignment1M").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	if (response.idccontentalignment1 == 'Not Yet') {
+	                		 		$("#idccontentalignment2NY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#idccontentalignment2M").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	
+	                		 	/*COMMENT THIS OUT UNTIL FIGURE OUT WHAT TO DO FOR LEVELUP AND HOKE SCHOOLS
 	   	                		 $.ajax({
 	   	         	                type: "GET",
 	   	         	                url:"getLevelUpData",
@@ -440,6 +306,7 @@
 	   	         	                });
 	   	         	                }
 	   	                		 });
+	   	                		 */
 
 	                		 document.getElementById("rubricnotes").value = response.rubricNotes;
 	                		 //document.getElementById("levelup").value = response.levelUp;
