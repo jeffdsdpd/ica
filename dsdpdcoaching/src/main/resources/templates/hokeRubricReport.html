@@ -100,7 +100,7 @@
 								</div>
 								<div class="content">
 
-									<form id="frm" name="frm" method="post" action="#" th:action="@{/rubricReportUpdate}" th:object="${levelupdata}">
+									<form id="frm" name="frm" method="post" action="#" th:action="@{/hokeRubricReportUpdate}" th:object="${levelupdata}">
 										<div class="row">
 											<div class="col-md-4">
 												<div class="form-group">
@@ -192,82 +192,173 @@
 										</div>
 										
 										
-										<hr align="left" width="50%"></hr>
-										<div style="width: 65%">
-											<h3>BLENDED LEARNING MODEL TEACHER RUBRIC</h3>
-										</div>
+										<hr align="left" width="100%"></hr>
+										
 
 										<br /> <br />
 
 										
 										
-								<div class="container-fluid">
+								<div class="container-fluid col-md-10">
+								
                                     <div id="expandable">
 								   	<button type="button" class="hokeexpandable heidc">INTEGRATED DIGITAL CONTENT</button>
 									   <div class="content hokecontent hokecontainer">
 									   
 									   <div class="container-fluid">
 									   	<div class="row">
-									   	<div class="col-md-12">
-									   		<div class="col-md-4">
-										   		<div id="heidchokecolumn" class="heidc">CATEGORY</div>
+										   			<div id="hokereportcolumn" class="heidc">NOT YET</div>
+										   			<div id="hokereportcolumn" class="heidc">MODEL</div>
+										</div> <!--  end of row div -->
 										   	
-												</div><!--  end of col div -->
-												
-    												<div class="col-md-4">	  
-										   			<div id="hokecolumn" class="heidc">NOT YET</div>
-										   		</div>
-										  
-    												<div class="col-md-4">
-										   			<div id="hokecolumn" class="heidc">MODEL</div>
-										   		</div>
-										 </div> <!--  end of col-md-12 -->
-										   	</div> <!--  end of row div -->
-										   	
-									   		<div class="row">
-									   			<div class="col-md-12">
-										   		<div class="col-md-4">
-												   	<div id="hokecolumn" class="heidc" style="font-size:14px; padding-top:5px;"><b>Content Alignment</b></div>
-												</div>
-												<div class="col-md-4">
+								   		<div class="row">
+								   			<div>
+								   				<div class="col-md-5">
 												   	<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 			  										<input type="radio" id='idccontentalignment1NY' name="idccontentalignmentNY" value="Not Yet" />Digital Content is not integrated to support student-centered learning</label>
 			  									</div>
-			  									<div class="col-md-4">
-			  										<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  									<div class="col-md-5 col-md-offset-1">
+			  										<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858;">
 			  										<input type="radio" id='idccontentalignment1M' name="idccontentalignmentM" value="Model" />Teacher integrates aligned digital content to support student-centered learning</label>
 			  									</div>
-			  									<!-- <label for="idccontentalignment1" class="error"></label> -->
-			  								</div>
-		  									</div> <!--  end of row div -->
+		  									</div>
+	  									</div> <!--  end of row div -->
 	  										
-	  										<div class="row">
-	  										<div class="col-md-12">
-										   		<div class="col-md-4">
-			  										<div id="spacercolumn"></div>
-			  									</div>
-			  									<div class="col-md-4">
+  										<div class="row">
+	  										<div>
+	  											<div class="col-md-5">
 												   	<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
-			  										<input type="radio" id='idccontentalignment2NY' name="idccontentalignment2" value="Not Yet" />Digital Content is not aligned to the standards and/or learning targets</label>
+			  										<input type="radio" id='idccontentalignment2NY' name="idccontentalignment2NY" value="Not Yet" />Digital Content is not aligned to the standards and/or learning targets</label>
 			  									</div>
-			  									<div class="col-md-4">
-			  										<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
-			  										<input type="radio" id='idccontentalignment2M' name="idccontentalignment2" value="Model" />Digital content consistently aligns to the standard and/or learning targets</label>
+			  									<div class="col-md-5 col-md-offset-1">
+			  										<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858;">
+			  										<input type="radio" id='idccontentalignment2M' name="idccontentalignment2M" value="Model" />Digital content consistently aligns to the standard and/or learning targets</label>
 												</div>
 											</div>
-											</div>
+										</div>
 												
-										   </div> <!--  end of container div -->
+										</div> <!--  end of container fluid div -->
 										   	
-										    	
-										   
 	  									<br />
+	  									
+										</div> <!-- end of div class="content hokecontent hokecontainer" -->
+									</div> <!-- end of the div expandable -->
+										
+										
+									<div id="expandable">
+								   	<button type="button" class="hokeexpandable heti">TARGETED INSTRUCTION</button>
+									   <div class="content hokecontent hokecontainer">
+									   
+									   <div class="container-fluid">
+									   	<div class="row">
+									   		<div>
+									   			<div id="hokereportcolumn" class="heti">NOT YET</div>
+										   		<div id="hokereportcolumn" class="heti">MODEL</div>
+										 	</div>
+										</div> <!--  end of row div -->
+										   	
+								   		<div class="row">
+								   			<div>
+												<div class="col-md-5">
+												   	<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='tistandardalignment1NY' name="tistandardalignment1NY" value="Not Yet" />Instruction is not aligned to the standard of learning targets</label>
+	  											</div>
+			  									<div class="col-md-5 col-md-offset-1">
+			  										<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='tistandardalignment1M' name="tistandardalignment1M" value="Model" />Teacher is using the standard and learning targets to design instruction</label>
+	  											</div>
+		  									</div>
+	  									</div>
+	  										
+  										<div class="row">
+	  										<div>
+			  									<div class="col-md-5">
+												   	<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='tistandardalignment2NY' name="tistandardalignment2NY" value="Not Yet" />Products are not aligned to the learning target</label>
+	  											</div>
+			  									<div class="col-md-5 col-md-offset-1">
+			  										<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='tistandardalignment2M' name="tistandardalignment2M" value="Model" />All products are aligned to the learning target</label>
+										   		</div>
+											</div>
 										</div>
+										
+										<div class="row">
+								   			<div>
+												<div class="col-md-5">
+												   	<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='tismallgroup1NY' name="tismallgroup1NY" value="Not Yet" />Instruction in the teacher-led groups do not address a standard</label>
+	  											</div>
+			  									<div class="col-md-5 col-md-offset-1">
+			  										<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='tismallgroup1M' name="tismallgroup1M" value="Model" />Instruction in the teacher-led groups address learning targets that align with the standard</label>
+										   		</div>
+		  									</div>
+	  									</div>
+	  										
+  										<div class="row">
+	  										<div>
+			  									<div class="col-md-5">
+												   	<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='tismallgroup2NY' name="tismallgroup2NY" value="Not Yet" />Teacher rarely uses strategies that differentiate for individual learning strengths and needs in the groups</label>
+	  											</div>
+			  									<div class="col-md-5 col-md-offset-1">
+			  										<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='tismallgroup2M' name="tismallgroup2M" value="Model" />All products are aligned to the learning target</label>
+										   		</div>
+											</div>
 										</div>
-									</div>
+										
+										<div class="row">
+	  										<div>
+			  									<div class="col-md-5">
+												   	<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='tismallgroup3NY' name="tismallgroup3NY" value="Not Yet" />Instruction in the teacher-led groups do not support the greatest area of need</label>
+	  											</div>
+			  									<div class="col-md-5 col-md-offset-1">
+			  										<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='tismallgroup3M' name="tismallgroup3M" value="Model" />Instruction in the teacher-led groups is provided in the area in which the students need the most support</label>
+										   		</div>
+											</div>
+										</div>
+										
+										<div class="row">
+	  										<div>
+			  									<div class="col-md-5">
+												   	<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='tiintentionalgrouping1NY' name="tiintentionalgrouping1NY" value="Not Yet" />Students are not in groups or groups are not formed based on the standard target</label>
+	  											</div>
+			  									<div class="col-md-5 col-md-offset-1">
+			  										<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='tiintentionalgrouping1M' name="tiintentionalgrouping1M" value="Model" />Student groups reflect the specific learning target</label>
+										   		</div>
+											</div>
+										</div>
+										
+										<div class="row">
+	  										<div>
+			  									<div class="col-md-5">
+												   	<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='tiintentionalgrouping2NY' name="tiintentionalgrouping2NY" value="Not Yet" />Data is not being used to group students</label>
+	  											</div>
+			  									<div class="col-md-5 col-md-offset-1">
+			  										<label class="radio-inline" style="width:300px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+			  										<input type="radio" id='tiintentionalgrouping2M' name="tiintentionalgrouping2M" value="Model" />Student groups are based on data</label>
+										   		</div>
+											</div>
+										</div>
+												
+										</div> <!--  end of container fluid div -->
+										   	
+	  									<br />
+	  									
+										</div> <!-- end of div class="content hokecontent hokecontainer" -->
+									</div> <!-- end of the div expandable -->	
+										
+									</div> <!-- end of main container -->
 										   
 										   
-										   
+										<!-- levelup to add later   
 
 										<div class="levelupclass" style="float: right; width: 25%;">
 											<a href="#" style="visibility: hidden"
@@ -335,7 +426,8 @@
 												data-content="Level up data not initialized"><img
 												src="images/levelup.png" height="33" width="45"></img> </a> <br />
 
-										</div>
+										</div>  -->
+										
 
 
 										<div class="row">

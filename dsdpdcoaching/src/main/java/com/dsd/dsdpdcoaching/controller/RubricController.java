@@ -140,5 +140,20 @@ public class RubricController {
 		return "redirect:/rubricReport.html";
 	
 	}
+	
+	@PostMapping("/hokeRubricReportUpdate")
+	public String postHokeRubricReportUpdate(HttpSession session, HttpServletRequest request, Model model) {
+		
+		String checked = request.getParameter("checkedValues");
+		String[] checkedarray = checked.split(",");
+
+		String unchecked = request.getParameter("unCheckedValues");
+		String[] uncheckedarray = unchecked.split(",");
+		
+		rubricDao.updateHokeRubricLevelupItems(checkedarray, uncheckedarray);
+		
+		return "redirect:/hokeRubricReport.html";
+	
+	}
 
 }

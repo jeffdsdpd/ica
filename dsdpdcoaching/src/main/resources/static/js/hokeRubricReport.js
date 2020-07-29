@@ -63,6 +63,7 @@
 		$('[data-toggle="popover"]').popover();
  
 		$("#schoolName").change(function(){
+				uncheckAll();
 				$("#levelupcheckboxes").html("");
 				document.getElementById("emailreport").style.display = "none";
 				document.getElementById("teachercheckbox").style.display = "none";
@@ -105,6 +106,7 @@
                 });
 		
 		$("#teacherName").change(function(){
+			uncheckAll();
 			$("#levelupcheckboxes").html("");
 			document.getElementById("nodatatodisplay").style.display = "none";
 			var selectedSchoolId = $("#schoolName :selected").val();
@@ -173,6 +175,7 @@
 		
 		
 		$("#date").change(function() {
+			uncheckAll();
 			$("#levelupcheckboxes").html("");
 			
 			if ( $("#teacherlabel").text() != "" ) {
@@ -262,7 +265,7 @@
 	                		 		$("#idccontentalignment1M").prop('checked',true);
 	                		 	}
 	                		 	
-	                		 	if (response.idccontentalignment1 == 'Not Yet') {
+	                		 	if (response.idccontentalignment2 == 'Not Yet') {
 	                		 		$("#idccontentalignment2NY").prop('checked',true);
 	                		 	} else {
 	                		 		$("#idccontentalignment2M").prop('checked',true);
@@ -270,15 +273,45 @@
 	                		 	
 	                		 	//TARGETED INSTRUCTION
 	                		 	if (response.tistandardalignment1 == 'Not Yet') {
-	                		 		$("#idccontentalignment1NY").prop('checked',true);
+	                		 		$("#tistandardalignment1NY").prop('checked',true);
 	                		 	} else {
-	                		 		$("#idccontentalignment1M").prop('checked',true);
+	                		 		$("#tistandardalignment1M").prop('checked',true);
 	                		 	}
 	                		 	
-	                		 	if (response.idccontentalignment1 == 'Not Yet') {
-	                		 		$("#idccontentalignment2NY").prop('checked',true);
+	                		 	if (response.idccontentalignment2 == 'Not Yet') {
+	                		 		$("#tistandardalignment2NY").prop('checked',true);
 	                		 	} else {
-	                		 		$("#idccontentalignment2M").prop('checked',true);
+	                		 		$("#tistandardalignment2M").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	if (response.tismallgroup1 == 'Not Yet') {
+	                		 		$("#tismallgroup1NY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#tismallgroup1M").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	if (response.tismallgroup2 == 'Not Yet') {
+	                		 		$("#tismallgroup2NY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#tismallgroup2M").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	if (response.tismallgroup3 == 'Not Yet') {
+	                		 		$("#tismallgroup3NY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#tismallgroup3M").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	if (response.tiintentionalgrouping1 == 'Not Yet') {
+	                		 		$("#tiintentionalgrouping1NY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#tiintentionalgrouping1M").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	if (response.tiintentionalgrouping2 == 'Not Yet') {
+	                		 		$("#tiintentionalgrouping2NY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#tiintentionalgrouping2M").prop('checked',true);
 	                		 	}
 	                		 	
 	                		 	
@@ -317,6 +350,30 @@
                 });
 			}
 		});
+		
+		function uncheckAll() {
+			//INTEGRATED DIGITAL CONTENT
+		 		$("#idccontentalignment1NY").prop('checked',false);
+		 		$("#idccontentalignment1M").prop('checked',false);
+		 		$("#idccontentalignment2NY").prop('checked',false);
+		 		$("#idccontentalignment2M").prop('checked',false);
+		 	
+		 	//TARGETED INSTRUCTION
+		 		$("#tistandardalignment1NY").prop('checked',false);
+		 		$("#tistandardalignment1M").prop('checked',false);
+		 		$("#tistandardalignment2NY").prop('checked',false);
+		 		$("#tistandardalignment2M").prop('checked',false);
+		 		$("#tismallgroup1NY").prop('checked',false);
+		 		$("#tismallgroup1M").prop('checked',false);
+		 		$("#tismallgroup2NY").prop('checked',false);
+		 		$("#tismallgroup2M").prop('checked',false);
+		 		$("#tismallgroup3NY").prop('checked',false);
+		 		$("#tismallgroup3M").prop('checked',false);
+		 		$("#tiintentionalgrouping1NY").prop('checked',false);
+		 		$("#tiintentionalgrouping1M").prop('checked',false);
+		 		$("#tiintentionalgrouping2NY").prop('checked',false);
+		 		$("#tiintentionalgrouping2M").prop('checked',false);
+		};
 		
 		function format12Hour(timeString) {
 			 var date = new Date(timeString);
