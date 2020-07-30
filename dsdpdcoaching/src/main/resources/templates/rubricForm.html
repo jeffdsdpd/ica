@@ -62,7 +62,7 @@
 		                            <div class="content">
 		                                <form id="frm" name="frm" action="#" th:action="@{/rubricForm}" th:object="${rubricData}" method="post">
 		                                    <div class="row">
-		                                        <div class="col-md-4">
+		                                        <div class="col-md-3" style="margin-right:25px;">
 		                                            <div class="form-group">
 		                                                <label>School</label>
 		                                                <select id="schoolId" class="form-control" th:field="*{schoolId}">
@@ -87,9 +87,9 @@
 													</div>
 												</div>
 												
-												<div class="col-md-2">
+												<div class="col-md-3">
 													<div class="form-group popup" id="nextsteppreview" style="display: none;">
-														<label>LevelUp Review</label>
+														<label>Existing Next Steps</label>
 														<input type="button" id="previewbutton" value="Show Existing Next Step Items"></input>
 														<div class="popuptext" id="myPopup"></div>
 													</div>
@@ -98,7 +98,7 @@
 		                                    </div>
 		
 		                                    <div class="row">
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-2">
 		                                            <div class="form-group">
 		                                                	<label>Date</label>
 		                                               	<input type="text" id="entryDate" class="form-control" placeholder="Date" th:field="*{date}"/>
