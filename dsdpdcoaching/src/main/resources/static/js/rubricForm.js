@@ -8,7 +8,7 @@ $(document).ready(
 			$("#schoolId").change(
 					function() {
 						var str = $("#schoolId :selected").val();
-						document.getElementById("levelupreview").style.display = "none";
+						document.getElementById("nextsteppreview").style.display = "none";
 						document.getElementById("teacherlabel").style.display = "none";
 						document.getElementById("teachercheckbox").style.display = "none";
 						$("#myPopup").html("");
@@ -34,7 +34,7 @@ $(document).ready(
 			
 			$("#teacherId").change(function() {
 						teacherId = $("#teacherId :selected").val();
-						document.getElementById("levelupreview").style.display = "inline";
+						document.getElementById("nextsteppreview").style.display = "inline";
 						document.getElementById("teachercheckbox").style.display = "inline";
 						document.getElementById("teacherlabel").style.display = "inline";
 						$("#myPopup").html("");
@@ -132,7 +132,7 @@ $(document).ready(
 			//add another input text line for additional tasks
 			$("#add-more").click(function(e) {
 				e.preventDefault();
-				var newAdd = '<div id=div-'+counter+'><input size="75" type="levelup" id="levelup[]" name="levelupList['+counter+'].levelup" placeholder="LevelUp Item"></input><a href="#" class="remove_field">Remove</a></div>';
+				var newAdd = '<div id=div-'+counter+'><input size="75" type="levelup" id="levelup[]" name="levelupList['+counter+'].levelup" placeholder="Next Step Item"></input><a href="#" class="remove_field">Remove</a></div>';
 				var el = $('.input_wrap div:last');
 			    $(el).after(newAdd);
 
@@ -170,8 +170,8 @@ $(document).ready(
 						
 						  popup.classList.toggle("show");
 						  
-						  if (popupbutton.value=="Show Existing LevelUp Items") popupbutton.value = "Close Existing LevelUp Items";
-						    else popupbutton.value = "Show Existing LevelUp Items";
+						  if (popupbutton.value=="Show Existing Next Step Items") popupbutton.value = "Close Existing Next Step Items";
+						    else popupbutton.value = "Show Existing Next Step Items";
 						
 						}});
 					});
