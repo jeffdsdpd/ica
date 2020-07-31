@@ -55,6 +55,9 @@ public class HokeRubric implements Serializable {
 	@Column(name="idccontentalignment2")
 	private String idccontentalignment2;
 	
+	@Column(name="idcnotes")
+	private String idcnotes;
+	
 	@Column(name="tistandardalignment1")
 	private String tistandardalignment1;
 	
@@ -76,6 +79,9 @@ public class HokeRubric implements Serializable {
 	@Column(name="tiintentionalgrouping2")
 	private String tiintentionalgrouping2;
 	
+	@Column(name="tinotes")
+	private String tinotes;
+	
 	@Column(name="engcollaboration")
 	private String engcollaboration;
 	
@@ -87,6 +93,9 @@ public class HokeRubric implements Serializable {
 	
 	@Column(name="engcriticalthinking")
 	private String engcriticalthinking;
+	
+	@Column(name="engnotes")
+	private String engnotes;
 	
 	@Column(name="engactiveparticipation")
 	private String engactiveparticipation;
@@ -106,14 +115,23 @@ public class HokeRubric implements Serializable {
 	@Column(name="envdigitalcitizenship")
 	private String envdigitalcitizenship;
 	
+	@Column(name="envnotes")
+	private String envnotes;
+	
 	@Column(name="srarticulate")
 	private String srarticulate;
 	
 	@Column(name="srteacherfeedback")
 	private String srteacherfeedback;
 	
+	@Column(name="srnotes")
+	private String srnotes;
+	
 	@Column(name="ddduseofdata")
 	private String ddduseofdata;
+	
+	@Column(name="dddnotes")
+	private String dddnotes;
 	
 	@Column(name="rubricnotes")
 	private String rubricNotes;
@@ -392,6 +410,54 @@ public class HokeRubric implements Serializable {
 
 	public void setQuestions(String questions) {
 		this.questions = questions;
+	}
+
+	public String getIdcnotes() {
+		return idcnotes;
+	}
+
+	public void setIdcnotes(String idcnotes) {
+		this.idcnotes = idcnotes;
+	}
+
+	public String getTinotes() {
+		return tinotes;
+	}
+
+	public void setTinotes(String tinotes) {
+		this.tinotes = tinotes;
+	}
+
+	public String getEngnotes() {
+		return engnotes;
+	}
+
+	public void setEngnotes(String engnotes) {
+		this.engnotes = engnotes;
+	}
+
+	public String getEnvnotes() {
+		return envnotes;
+	}
+
+	public void setEnvnotes(String envnotes) {
+		this.envnotes = envnotes;
+	}
+
+	public String getSrnotes() {
+		return srnotes;
+	}
+
+	public void setSrnotes(String srnotes) {
+		this.srnotes = srnotes;
+	}
+
+	public String getDddnotes() {
+		return dddnotes;
+	}
+
+	public void setDddnotes(String dddnotes) {
+		this.dddnotes = dddnotes;
 	}
 	
 	
