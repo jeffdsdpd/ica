@@ -76,7 +76,7 @@ hokeform .error {
     float: left;
 }
 #hokecolumn {
-    height: 30px;
+    width: 90%;
     opacity: 0.7;
     margin-right: 5px;
     margin-bottom: 5px;
@@ -142,14 +142,17 @@ hokeform .error {
 }
 
 #content {
-  float: left ;
-  width: 50% ;
+  	float: left ;
+  	width: 50% ;
 }
 
 #innercontent {
-  padding-left: 10px ;
-  padding-right: 10px ;
+  	padding-left: 10px ;
+  	padding-right: 10px ;
 }
-#i
-
-
+.hokelabel {
+	padding-top: 10px;
+  	padding-right: 0px;
+  	padding-bottom: 0px;
+  	padding-left: 10px;
+}

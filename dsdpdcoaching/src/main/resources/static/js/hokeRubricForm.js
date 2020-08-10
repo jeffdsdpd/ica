@@ -15,11 +15,52 @@ $(document).ready(
 			  });
 			}
 			
-			var $modal = $('.modal').modal({
+			//Integrated Digital Content Guiding Questions
+			var $idcmodal = $('.idcmodal').modal({
 			    show: false 
 			});
-			$('#heidchokecolumn').on('click', function() {
-			    $modal.modal('show');
+			$('#idcguidingquestions').on('click', function() {
+				$idcmodal.modal('show');
+			});
+			
+			//Target Instruction Guiding Questions
+			var $timodal = $('.timodal').modal({
+			    show: false 
+			});
+			$('#tiguidingquestions').on('click', function() {
+				$timodal.modal('show');
+			});
+			
+			//Engagement Guiding Questions
+			var $engmodal = $('.engmodal').modal({
+			    show: false 
+			});
+			$('#engguidingquestions').on('click', function() {
+				$engmodal.modal('show');
+			});
+			
+			//Environment Guiding Questions
+			var $envmodal = $('.envmodal').modal({
+			    show: false 
+			});
+			$('#envguidingquestions').on('click', function() {
+				$envmodal.modal('show');
+			});
+			
+			//Student Reflection Guiding Questions
+			var $srmodal = $('.srmodal').modal({
+			    show: false 
+			});
+			$('#srguidingquestions').on('click', function() {
+				$srmodal.modal('show');
+			});
+			
+			//Data Driven Decisions Guiding Questions
+			var $dddmodal = $('.dddmodal').modal({
+			    show: false 
+			});
+			$('#dddguidingquestions').on('click', function() {
+				$dddmodal.modal('show');
 			});
 			
 			
