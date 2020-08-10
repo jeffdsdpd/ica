@@ -316,7 +316,7 @@
 	                		 		$("#tiintentionalgrouping2M").prop('checked',true);
 	                		 	}
 	                		 	
-	                		 	$("#tinotes").val(response.idcnotes)
+	                		 	$("#tinotes").val(response.tinotes)
 	                		 	
 	                		 	
 	                		 	//ENGAGEMENT
@@ -350,8 +350,41 @@
 	                		 		$("#engactiveparticipationM").prop('checked',true);
 	                		 	}
 	                		 	
-	                		 	$("#engnotes").val(response.idcnotes)
+	                		 	$("#engnotes").val(response.engnotes)
 	                		 	
+	                		 	
+	                		 	//ENVIRONMENT
+	                		 	if (response.envclassroommanagement == 'Not Yet') {
+	                		 		$("#envclassroommanagementNY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#envclassroommanagementM").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	if (response.envphysicalenvironment == 'Not Yet') {
+	                		 		$("#envphysicalenvironmentNY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#envphysicalenvironmentM").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	if (response.envtimemanagement1 == 'Not Yet') {
+	                		 		$("#envtimemanagement1NY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#envtimemanagement1M").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	if (response.envtimemanagement2 == 'Not Yet') {
+	                		 		$("#envtimemanagement2NY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#envtimemanagement2M").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	if (response.envdigitalcitizenship == 'Not Yet') {
+	                		 		$("#envdigitalcitizenshipNY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#envdigitalcitizenshipM").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	$("#envnotes").val(response.envnotes)
 	                		 	
 	                		 	
 	                		 	
