@@ -270,6 +270,8 @@
 	                		 	} else {
 	                		 		$("#idccontentalignment2M").prop('checked',true);
 	                		 	}
+	                		 	$("#idcnotes").val(response.idcnotes)
+	                		 	
 	                		 	
 	                		 	//TARGETED INSTRUCTION
 	                		 	if (response.tistandardalignment1 == 'Not Yet') {
@@ -313,6 +315,44 @@
 	                		 	} else {
 	                		 		$("#tiintentionalgrouping2M").prop('checked',true);
 	                		 	}
+	                		 	
+	                		 	$("#tinotes").val(response.idcnotes)
+	                		 	
+	                		 	
+	                		 	//ENGAGEMENT
+	                		 	if (response.engcollaboration == 'Not Yet') {
+	                		 		$("#engcollaborationNY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#engcollaborationM").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	if (response.engchoice == 'Not Yet') {
+	                		 		$("#engchoiceNY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#engchoiceM").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	if (response.engcreation == 'Not Yet') {
+	                		 		$("#engcreationNY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#engcreationM").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	if (response.engcriticalthinking == 'Not Yet') {
+	                		 		$("#engcriticalthinkingNY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#engcriticalthinkingM").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	if (response.engactiveparticipation == 'Not Yet') {
+	                		 		$("#engactiveparticipationNY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#engactiveparticipationM").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	$("#engnotes").val(response.idcnotes)
+	                		 	
+	                		 	
 	                		 	
 	                		 	
 	                		 	/*COMMENT THIS OUT UNTIL FIGURE OUT WHAT TO DO FOR LEVELUP AND HOKE SCHOOLS
