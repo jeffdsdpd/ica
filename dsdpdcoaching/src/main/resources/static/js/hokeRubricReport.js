@@ -22,7 +22,7 @@
 		
 		var selectedSchoolId = null;
 
-		 $("emailbutton").click(function() {
+		 $("#emailbutton").click(function() {
 				var selectedSchoolId = $("#schoolName :selected").text();
 				var selectedTeacherId = $("#teacherName :selected").text();
 				var teacherEmail = null;
@@ -38,6 +38,152 @@
 				
 				var date = $("#date :selected").text();
 				
+				//Start setting the radio button selections
+				//INTEGRATED DIGITAL CONTENT RADIO SELECTIONS FOR EMAILING
+				if ( $("#idccontentalignment1NY").prop('checked') == true ) {
+					var idccontentalignment1 = $("input[name='idccontentalignment1NY']:checked").parent().text();
+				} else {
+					var idccontentalignment1 = $("input[name='idccontentalignment1M']:checked").parent().text();
+				}
+				
+				if ( $("#idccontentalignment2NY").prop('checked') == true ) {
+					var idccontentalignment2 = $("input[name='idccontentalignment2NY']:checked").parent().text();
+				} else {
+					var idccontentalignment2 = $("input[name='idccontentalignment2M']:checked").parent().text();
+				}
+				
+				
+				//TARGETED INSTRUCTION RADIO SELECTIONS FOR EMAILING
+				if ( $("#tistandardalignment1NY").prop('checked') == true ) {
+					var tistandardalignment1 = $("input[name='tistandardalignment1NY']:checked").parent().text();
+				} else {
+					var tistandardalignment1 = $("input[name='tistandardalignment1M']:checked").parent().text();
+				}
+				
+				if ( $("#tistandardalignment2NY").prop('checked') == true ) {
+					var tistandardalignment2 = $("input[name='tistandardalignment2NY']:checked").parent().text();
+				} else {
+					var tistandardalignment2 = $("input[name='tistandardalignment2M']:checked").parent().text();
+				}
+				
+				if ( $("#tismallgroup1NY").prop('checked') == true ) {
+					var tismallgroup1 = $("input[name='tismallgroup1NY']:checked").parent().text();
+				} else {
+					var tismallgroup1 = $("input[name='tismallgroup1M']:checked").parent().text();
+				}
+				
+				if ( $("#tismallgroup2NY").prop('checked') == true ) {
+					var tismallgroup2 = $("input[name='tismallgroup2NY']:checked").parent().text();
+				} else {
+					var tismallgroup2 = $("input[name='tismallgroup2M']:checked").parent().text();
+				}
+				
+				if ( $("#tismallgroup3NY").prop('checked') == true ) {
+					var tismallgroup3 = $("input[name='tismallgroup3NY']:checked").parent().text();
+				} else {
+					var tismallgroup3 = $("input[name='tismallgroup3M']:checked").parent().text();
+				}
+				
+				if ( $("#tiintentionalgrouping1NY").prop('checked') == true ) {
+					var tiintentionalgrouping1 = $("input[name='tiintentionalgrouping1NY']:checked").parent().text();
+				} else {
+					var tiintentionalgrouping1 = $("input[name='tiintentionalgrouping1M']:checked").parent().text();
+				}
+				
+				if ( $("#tiintentionalgrouping2NY").prop('checked') == true ) {
+					var tiintentionalgrouping2 = $("input[name='tiintentionalgrouping2NY']:checked").parent().text();
+				} else {
+					var tiintentionalgrouping2 = $("input[name='tiintentionalgrouping2M']:checked").parent().text();
+				}
+				
+				
+				//ENGAGEMENT RADIO SELECTIONS FOR EMAILING
+				if ( $("#engcollaborationNY").prop('checked') == true ) {
+					var engcollaboration = $("input[name='engcollaborationNY']:checked").parent().text();
+				} else {
+					var engcollaboration = $("input[name='engcollaborationM']:checked").parent().text();
+				}
+				
+				if ( $("#engchoiceNY").prop('checked') == true ) {
+					var engchoice = $("input[name='engchoiceNY']:checked").parent().text();
+				} else {
+					var engchoice = $("input[name='engchoiceM']:checked").parent().text();
+				}
+				
+				if ( $("#engcreationNY").prop('checked') == true ) {
+					var engcreation = $("input[name='engcreationNY']:checked").parent().text();
+				} else {
+					var engcreation = $("input[name='engcreationM']:checked").parent().text();
+				}
+				
+				if ( $("#engcriticalthinkingNY").prop('checked') == true ) {
+					var engcriticalthinking = $("input[name='engcriticalthinkingNY']:checked").parent().text();
+				} else {
+					var engcriticalthinking = $("input[name='engcriticalthinkingM']:checked").parent().text();
+				}
+				
+				if ( $("#engactiveparticipationNY").prop('checked') == true ) {
+					var engactiveparticipation = $("input[name='engactiveparticipationNY']:checked").parent().text();
+				} else {
+					var engactiveparticipation = $("input[name='engactiveparticipationM']:checked").parent().text();
+				}
+				
+				
+				//ENVIRONMENT RADIO SELECTIONS FOR EMAILING
+				if ( $("#envclassroommanagementNY").prop('checked') == true ) {
+					var envclassroommanagement = $("input[name='envclassroommanagementNY']:checked").parent().text();
+				} else {
+					var envclassroommanagement = $("input[name='envclassroommanagementM']:checked").parent().text();
+				}
+				
+				if ( $("#envphysicalenvironmentNY").prop('checked') == true ) {
+					var envphysicalenvironment = $("input[name='envphysicalenvironmentNY']:checked").parent().text();
+				} else {
+					var envphysicalenvironment = $("input[name='envphysicalenvironmentM']:checked").parent().text();
+				}
+				
+				if ( $("#envtimemanagement1NY").prop('checked') == true ) {
+					var envtimemanagement1 = $("input[name='envtimemanagement1NY']:checked").parent().text();
+				} else {
+					var envtimemanagement1 = $("input[name='envtimemanagement1M']:checked").parent().text();
+				}
+				
+				if ( $("#envtimemanagement2NY").prop('checked') == true ) {
+					var envtimemanagement2 = $("input[name='envtimemanagement2NY']:checked").parent().text();
+				} else {
+					var envtimemanagement2 = $("input[name='envtimemanagement2M']:checked").parent().text();
+				}
+				
+				if ( $("#envdigitalcitizenshipNY").prop('checked') == true ) {
+					var envdigitalcitizenship = $("input[name='envdigitalcitizenshipNY']:checked").parent().text();
+				} else {
+					var envdigitalcitizenship = $("input[name='envdigitalcitizenshipM']:checked").parent().text();
+				}
+				
+				
+				//STUDENT REFLECTION RADIO SELECTIONS FOR EMAILING
+				if ( $("#srarticulateNY").prop('checked') == true ) {
+					var srarticulate = $("input[name='srarticulateNY']:checked").parent().text();
+				} else {
+					var srarticulate = $("input[name='srarticulateM']:checked").parent().text();
+				}
+				
+				if ( $("#srteacherfeedbackNY").prop('checked') == true ) {
+					var srteacherfeedback = $("input[name='srteacherfeedbackNY']:checked").parent().text();
+				} else {
+					var srteacherfeedback = $("input[name='srteacherfeedbackM']:checked").parent().text();
+				}
+				
+				
+				//DATA DRIVEN DECISIONS RADIO SELECTIONS FOR EMAILING
+				if ( $("#ddduseofdataNY").prop('checked') == true ) {
+					var ddduseofdata = $("input[name='ddduseofdataNY']:checked").parent().text();
+				} else {
+					var ddduseofdata = $("input[name='ddduseofdataM']:checked").parent().text();
+				}
+				
+				
+				
 				var rubricnotes = document.getElementById("rubricnotes").innerText;
 				var levelup = document.getElementById("levelupcheckboxes").innerText;
 				var questions = document.getElementById("questions").value;
@@ -45,19 +191,25 @@
 			
 		            $.ajax({
 		                type: 'GET',
-		                url: 'sendRubricEmail',
-		                data:{date:date, schoolId:selectedSchoolId, teacherId:selectedTeacherId, teacherEmail:teacherEmail,
-		                	adminEmail:adminEmail, planning:planning, assessanddata:assessanddata, path:path, place:place, pace:pace, classmgmt:classmgmt, 
-		                	teacherrole:teacherrole, studentengage:studentengage, studentcollab:studentcollab, technology:technology, rubricnotes:rubricnotes,levelup:levelup, questions:questions,
-		                	planningLevelData:planningLevelData, assessLevelData:assessLevelData, pathLevelData:pathLevelData, placeLevelData:placeLevelData,
-		                	paceLevelData:paceLevelData, classmgmtLevelData:classmgmtLevelData, teachroleLevelData:teachroleLevelData, stengageLevelData:stengageLevelData,
-		                	stcollabLevelData:stcollabLevelData, technologyLevelData:technologyLevelData
+		                url: 'sendHokeRubricEmail',
+		                data:{date:date, schoolId:selectedSchoolId, teacherId:selectedTeacherId, teacherEmail:teacherEmail, adminEmail:adminEmail,
+		                	
+		                idccontentalignment1:idccontentalignment1, idccontentalignment2:idccontentalignment2,
+		                tistandardalignment1:tistandardalignment1, tistandardalignment2:tistandardalignment2, tismallgroup1:tismallgroup1, tismallgroup2:tismallgroup2, tismallgroup3:tismallgroup3, tiintentionalgrouping1:tiintentionalgrouping1, tiintentionalgrouping2:tiintentionalgrouping2,
+		                
+		                	
+		                	rubricnotes:rubricnotes,levelup:levelup, questions:questions
+		                
+		                	//planningLevelData:planningLevelData, assessLevelData:assessLevelData, pathLevelData:pathLevelData, placeLevelData:placeLevelData,
+		                	//paceLevelData:paceLevelData, classmgmtLevelData:classmgmtLevelData, teachroleLevelData:teachroleLevelData, stengageLevelData:stengageLevelData,
+		                	//stcollabLevelData:stcollabLevelData, technologyLevelData:technologyLevelData
 		             },
 		             	async: false,
 		                success: function(data) {
 		                	alert("Email has been sent!");
 		                }
 		            });
+		            
 			 });
 
 		$('[data-toggle="popover"]').popover();
@@ -178,6 +330,7 @@
 			uncheckAll();
 			$("#levelupcheckboxes").html("");
 			
+			
 			if ( $("#teacherlabel").text() != "" ) {
     				document.getElementById("teacherlabel").style.display = "inline";
     				document.getElementById("emailbutton").style.display = "inline";
@@ -208,11 +361,11 @@
 			$("#questions").val("");
 			
 			if (selectedId == 0){
-				 $(".emailbutton").fadeOut("slow");
+				 $(".emailelements").fadeOut("slow");
 				 $(".container").fadeOut("slow");
 				 $(".additionalRubricItems").fadeOut("slow");
 			} else {
-			$(".emailbutton").fadeIn("slow");
+			$(".emailelements").fadeIn("slow");
 			$(".container").fadeIn("slow");
 			
 			$(".levelupclass").fadeIn("slow");
@@ -387,6 +540,30 @@
 	                		 	$("#envnotes").val(response.envnotes)
 	                		 	
 	                		 	
+	                		 	//STUDENT REFLECTION
+	                		 	if (response.srarticulate == 'Not Yet') {
+	                		 		$("#srarticulateNY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#srarticulateM").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	if (response.srtecherfeedback == 'Not Yet') {
+	                		 		$("#srteacherfeedbackNY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#srteacherfeedbackM").prop('checked',true);
+	                		 	}
+	                		 	
+	                		 	$("#srnotes").val(response.srnotes)
+	                		 	
+	                		 	
+	                		 	//DATA DRIVEN DECISIONS
+	                		 	if (response.ddduseoffeedback == 'Not Yet') {
+	                		 		$("#srteacherfeedbackNY").prop('checked',true);
+	                		 	} else {
+	                		 		$("#srteacherfeedbackM").prop('checked',true);
+	                		 	}
+	                		 	$("#dddnotes").val(response.dddnotes)
+	                		 	
 	                		 	
 	                		 	/*COMMENT THIS OUT UNTIL FIGURE OUT WHAT TO DO FOR LEVELUP AND HOKE SCHOOLS
 	   	                		 $.ajax({
@@ -446,6 +623,41 @@
 		 		$("#tiintentionalgrouping1M").prop('checked',false);
 		 		$("#tiintentionalgrouping2NY").prop('checked',false);
 		 		$("#tiintentionalgrouping2M").prop('checked',false);
+		 		
+		 	//ENGAGEMENT
+		 		$("#engcollaborationNY").prop('checked',false);
+		 		$("#engchoiceNY").prop('checked',false);
+		 		$("#engcreationNY").prop('checked',false);
+		 		$("#engcriticalthinkingNY").prop('checked',false);
+		 		$("#engactiveparticipationNY").prop('checked',false);
+		 		$("#engcollaborationM").prop('checked',false);
+		 		$("#engchoiceM").prop('checked',false);
+		 		$("#engcreationM").prop('checked',false);
+		 		$("#engcriticalthinkingM").prop('checked',false);
+		 		$("#engactiveparticipationM").prop('checked',false);
+		 		
+		 	//ENVIRONMENT
+		 		$("#envclassroommanagementNY").prop('checked',false);
+		 		$("#envphysicalenvironmentNY").prop('checked',false);
+		 		$("#envtimemanagement1NY").prop('checked',false);
+		 		$("#envtimemanagement2NY").prop('checked',false);
+		 		$("#envdigitalcitizenshipNY").prop('checked',false);
+		 		$("#envclassroommanagementM").prop('checked',false);
+		 		$("#envphysicalenvironmentM").prop('checked',false);
+		 		$("#envtimemanagement1M").prop('checked',false);
+		 		$("#envtimemanagement2M").prop('checked',false);
+		 		$("#envdigitalcitizenshipM").prop('checked',false);
+		 	
+		 	//STUDENT REFLECTION
+		 		$("#srarticulateNY").prop('checked',false);
+		 		$("#srteacherfeedbackNY").prop('checked',false);
+		 		$("#srarticulateM").prop('checked',false);
+		 		$("#srteacherfeedbackM").prop('checked',false);
+		 		
+		 	//DATA DRIVEN DECISIONS
+		 		$("#ddduseofdataNY").prop('checked',false);
+		 		$("#ddduseofdataM").prop('checked',false);
+		 		
 		};
 		
 		function format12Hour(timeString) {

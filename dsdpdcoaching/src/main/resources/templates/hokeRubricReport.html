@@ -142,27 +142,24 @@
 											</div>
 
 											<div class="col-md-5">
-												<div class="form-group button" style="display: none">
+												<div class="form-group emailelements" style="display: none">
 													<label id="emailreport">Email Report</label><br />
 
 													<div class="checkboxes">
-														<input type="checkbox" id="teachercheckbox"
-															name="teachercheckbox" value="teachercheckbox"></input> <label
-															for="teachercheckbox" class="checkbox-inline"
-															id="teacherlabel"
-															style="margin-left: 2px; padding-left: 2px; padding-top: 4px; padding-right: 15px;"></label>
+														<input type="checkbox" id="teachercheckbox" name="teachercheckbox" value="teachercheckbox"></input> 
+														<label for="teachercheckbox" class="checkbox-inline" id="teacherlabel"
+															style="margin-left: 2px; padding-left: 2px; padding-top: 4px; padding-right: 15px;">
+														</label>
 														
-														<br /> <input type="checkbox" id="admincheckbox"
-															name="admincheckbox" value="admincheckbox"></input> <label
-															for="admincheckbox" class="checkbox-inline"
-															id="adminlabel"
-															style="margin-left: 2px; padding-left: 2px; padding-top: 4px;"></label>
+														<br /> <input type="checkbox" id="admincheckbox" name="admincheckbox" value="admincheckbox"></input> 
+														<label for="admincheckbox" class="checkbox-inline" id="adminlabel"
+															style="margin-left: 2px; padding-left: 2px; padding-top: 4px;">
+														</label>
 													</div>
 													
 													<br />
 													
-													<button type="emailButton" name="emailButton" class="btn btn-info"
-														id="emailbutton">Email Selected Person(s)</button>
+													<button type="emailButton" name="emailbutton" class="btn btn-info" id="emailbutton">Email Selected Person(s)</button>
 												</div>
 											</div>
 
@@ -191,13 +188,7 @@
 											</div>
 										</div>
 										
-										
 										<hr align="left" width="100%"></hr>
-										
-
-										<br /> <br />
-
-										
 										
 								<div class="container-fluid col-md-10">
 								
@@ -210,7 +201,7 @@
 											  				<div id="innercontent">
 											   					<div id="hokecolumn" class="heidc">NOT YET</div>
 											   					<label class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
-				  												<input type="radio" id='idccontentalignment1NY' name="idccontentalignmentNY" value="Not Yet" />Digital Content is not integrated to support student-centered learning</label>
+				  												<input type="radio" id='idccontentalignment1NY' name="idccontentalignment1NY" value="Not Yet" />Digital Content is not integrated to support student-centered learning</label>
 				  									
 						  										<label class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 						  										<input type="radio" id='idccontentalignment2NY' name="idccontentalignment2NY" value="Not Yet" />Digital Content is not aligned to the standards and/or learning targets</label>
@@ -221,7 +212,7 @@
 											  				<div id="innercontent">
 											  					<div id="hokecolumn" class="heidc">MODEL</div>
 										   							<label class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
-						  											<input type="radio" id='idccontentalignment1M' name="idccontentalignmentM" value="Model" />Teacher integrates aligned digital content to support student-centered learning</label>
+						  											<input type="radio" id='idccontentalignment1M' name="idccontentalignment1M" value="Model" />Teacher integrates aligned digital content to support student-centered learning</label>
 						  										
 						  											<label class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 						  											<input type="radio" id='idccontentalignment2M' name="idccontentalignment2M" value="Model" />Digital content consistently aligns to the standard and/or learning targets</label>
@@ -429,7 +420,89 @@
 	                                        		<div class="col-md-8">
 	                                            		<div class="form-group">
 	                                                		<label>Environment Notes</label>
-	                                                		<textarea rows="3" cols="50" class="form-control" placeholder="Notes for Engagement" name="envnotes" id="envnotes" wrap="hard" maxlength="250"></textarea><br />
+	                                                		<textarea rows="3" cols="50" class="form-control" placeholder="Notes for Environment" name="envnotes" id="envnotes" wrap="hard" maxlength="250"></textarea><br />
+													</div>
+	                                        		</div>
+                                    		</div>
+	  									
+										</div> <!-- end of div class="content hokecontent hokecontainer" -->
+									</div> <!-- end of the div expandable -->
+									
+									
+									
+									<div id="expandable">
+								   	<button type="button" class="hokeexpandable hesr">STUDENT REFLECTION</button>
+									<div class="content hokecontent hokecontainer">
+									   <div class="container-fluid">
+									   		<div id="container">
+												<div id="content">
+												  	<div id="innercontent">
+											   			<div id="hokecolumn" class="hesr">NOT YET</div>
+											   			<label class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+		  												<input type="radio" id='srarticulateNY' name="srarticulateNY" value="Not Yet" />Students are unable to articulate their learning goal</label>
+											   			
+											   			<label class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+		  												<input type="radio" id='srteacherfeedbackNY' name="srteacherfeedbackNY" value="Not Yet" />Teacher provides little or no feedback to students</label>
+		  											</div>
+		  										</div>
+				  										
+		  										<div id="content">
+												  	<div id="innercontent">
+											   			<div id="hokecolumn" class="hesr">MODEL</div>
+		  												<label class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+		  												<input type="radio" id='srarticulateM' name="srarticulateM" value="Model" />Students can articulate their learning goal</label>
+		  										
+		  												<label class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+		  												<input type="radio" id='srteacherfeedbackM' name="srteacherfeedbackM" value="Model" />Teacher provides constructive feedback that allows student reflection and revision</label>
+													</div>
+												</div>
+											</div> <!-- <label for="idccontentalignment1" class="error"></label> -->
+			  			 				</div> <!--  end of container-fluid div -->
+										   	
+	  									<br />
+	  									
+	  									<div class="row">
+	                                        		<div class="col-md-8">
+	                                            		<div class="form-group">
+	                                                		<label>Student Reflection Notes</label>
+	                                                		<textarea rows="3" cols="50" class="form-control" placeholder="Notes for Student Reflection" name="srnotes" id="srnotes" wrap="hard" maxlength="250"></textarea><br />
+													</div>
+	                                        		</div>
+                                    		</div>
+	  									
+										</div> <!-- end of div class="content hokecontent hokecontainer" -->
+									</div> <!-- end of the div expandable -->
+									
+									
+									<div id="expandable">
+								   	<button type="button" class="hokeexpandable heddd">DATA DRIVEN DECISIONS</button>
+									<div class="content hokecontent hokecontainer">
+									   <div class="container-fluid">
+									   		<div id="container">
+												<div id="content">
+									  				<div id="innercontent">
+									  					<div id="hokecolumn" class="heddd">NOT YET</div>
+									  						<label class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+ 															<input type="radio" id='ddduseofdataNY' name="ddduseofdataNY" value="Not Yet" />Data is not used to drive instruction</label>
+ 													</div>
+ 												</div>
+								  				<div id="content">
+								  					<div id="innercontent">
+								  						<div id="hokecolumn" class="heddd">MODEL</div>
+								  							<label class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+															<input type="radio" id='ddduseofdataM' name="ddduseofdataM" value="Model" />Teacher uses multiple forms of qualitative and quantitative data to drive instruction</label>
+													</div>
+												</div>
+											</div> <!-- <label for="idccontentalignment1" class="error"></label> -->
+			  			 				</div> <!--  end of container-fluid div -->
+										   	
+	  									<br />
+	  									
+	  									<div class="row">
+	                                        		<div class="col-md-8">
+	                                            		<div class="form-group">
+	                                                		<label>Data Driven Decisions Notes</label>
+	                                                		<textarea rows="3" cols="50" class="form-control" placeholder="Notes for Data Driven Decisions" name="dddnotes" id="dddnotes" wrap="hard" maxlength="250"></textarea><br />
 													</div>
 	                                        		</div>
                                     		</div>

@@ -22,6 +22,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.dsd.dsdpdcoaching.dto.HTMLCoachingEmail;
 import com.dsd.dsdpdcoaching.dto.HTMLDailyInteractionEmail;
+import com.dsd.dsdpdcoaching.dto.HTMLHokeRubricEmail;
 import com.dsd.dsdpdcoaching.dto.HTMLRubricEmail;
 import com.dsd.dsdpdcoaching.dto.HTMLRubricEmailFromForm;
 import com.dsd.dsdpdcoaching.dto.Rubric;
@@ -340,6 +341,100 @@ public class EmailService {
 		
 				
 				
+	}
+	
+	
+	//HOKE RUBRIC EMAIL
+	public void sendHokeRubricEmail(HttpServletRequest request, HttpServletResponse response) {
+		HTMLHokeRubricEmail emailString = new HTMLHokeRubricEmail();
+		List<String> levelUpItemsToEmail = new ArrayList<String>();
+
+		//Get the school id passed via ajax from the coachingReport.jsp
+		String date = request.getParameter("date");
+		String schoolId = request.getParameter("schoolId");
+		String teacherId = request.getParameter("teacherId");
+		String teacherEmail = request.getParameter("teacherEmail");
+		String adminEmail = request.getParameter("adminEmail");
+		
+		String idccontentalignment1 = request.getParameter("idccontentalignment1");
+		String idccontentalignment2 = request.getParameter("idccontentalignment2");
+		String tistandardalignment1 = request.getParameter("tistandardalignment1");
+		String tistandardalignment2 = request.getParameter("tistandardalignment2");
+		String tismallgroup1 = request.getParameter("tismallgroup1");
+		String tismallgroup2 = request.getParameter("tismallgroup2");
+		String tismallgroup3 = request.getParameter("tismallgroup3");
+		String tiintentionalgrouping1 = request.getParameter("tiintentionalgrouping1");
+		String tiintentionalgrouping2 = request.getParameter("tiintentionalgrouping2");
+		String engcollaboration = request.getParameter("engcollaboration");
+		String engchoice = request.getParameter("engchoice");
+		String engcreation = request.getParameter("engcreation");
+		String engcriticalthinking = request.getParameter("engcriticalthinking");
+		String engactiveparticipation = request.getParameter("engactiveparticipation");
+		String envclassroommanagement = request.getParameter("envclassroommanagement");
+		String envphysicalenvironment = request.getParameter("envphysicalenvironment");
+		String envtimemanagement1 = request.getParameter("envtimemanagement1");
+		String envtimemanagement2 = request.getParameter("envtimemanagement2");
+		String envdigitalcitizenship = request.getParameter("envdigitalcitizenship");
+		String srarticulate = request.getParameter("srarticulate");
+		String srteacherfeedback = request.getParameter("srteacherfeedback");
+		String ddduseofdata = request.getParameter("ddduseofdata");
+		
+		
+		String rubricnotes = request.getParameter("rubricnotes");
+		String questions = request.getParameter("questions");
+	
+
+		//Check which three of the levelup suggestions we need to email out
+//		if (!checkIfNull(request.getParameter("planningLevelData"))) {
+//			levelUpItemsToEmail.add(request.getParameter("planningLevelData"));
+//		}
+		
+		final String username = "dsdpdemail";
+		final String password = "8’Wm6f$-dP<#3,BU3^Df@#";
+		
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "mail.smtp2go.com");
+		props.put("mail.smtp.port", "587"); // 2525, 8025 and 25 can also be used.
+ 
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		  });
+		
+		if (teacherEmail.equalsIgnoreCase("not selected")) {
+			teacherEmail = "";
+		}
+		if (adminEmail.equalsIgnoreCase("not selected")) {
+			adminEmail = "";
+		}
+		
+		try { 
+			Message message = new MimeMessage(session);
+			Multipart mp = new MimeMultipart("alternative");
+			BodyPart textmessage = new MimeBodyPart();
+			textmessage.setText("It is a text message \n");
+			BodyPart htmlmessage = new MimeBodyPart();
+
+			htmlmessage.setContent(emailString.getHokeHtmlString(teacherId, schoolId, date, idccontentalignment1, idccontentalignment2, tistandardalignment1, tistandardalignment2,  tismallgroup1,
+												tismallgroup2, tismallgroup3, tiintentionalgrouping1, tiintentionalgrouping2, engcollaboration, engchoice, engcreation, engcriticalthinking, 
+												engactiveparticipation, envclassroommanagement, envphysicalenvironment, envtimemanagement1, envtimemanagement2, envdigitalcitizenship, srarticulate, 
+												srteacherfeedback, ddduseofdata, rubricnotes, questions), "text/html");	
+			
+			mp.addBodyPart(textmessage);
+			mp.addBodyPart(htmlmessage);
+			message.setFrom(new InternetAddress("DSDPD@DSDPDCoaching.com"));
+			//message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(teacherEmail +","+ adminEmail));
+			message.setRecipients(Message.RecipientType.BCC, InternetAddress.parse("jeff@dsdpdcoaching.com"));
+			message.setSubject("Instructional Coaching Application - Rubric Report For: "+teacherId);
+			message.setContent(mp); 
+			Transport.send(message);
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
+		
 	}
 
 }
