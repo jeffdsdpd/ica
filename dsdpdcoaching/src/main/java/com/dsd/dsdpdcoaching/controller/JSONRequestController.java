@@ -203,6 +203,13 @@ public class JSONRequestController extends HttpServlet {
 		return levelUpDao.getLevelUpData(request, response);
 	}
 	
+	//Called from hokeRubricReport.js to get the appropriate levelup data to display
+	@GetMapping(value="/getHokeLevelUpData")
+	@ResponseBody
+	public String[][] getHokeLevelUpData(HttpServletRequest request, HttpServletResponse response) {	
+		return levelUpDao.getLevelUpData(request, response);
+	}
+	
 	//Called from actionPlanReport.js
 	@GetMapping(value="/getActionPlanBySchoolGradeSubject")
 	@ResponseBody

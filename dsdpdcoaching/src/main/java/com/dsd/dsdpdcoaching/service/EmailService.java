@@ -1,6 +1,7 @@
 package com.dsd.dsdpdcoaching.service;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
 
@@ -338,9 +339,7 @@ public class EmailService {
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
 		}
-		
-				
-				
+			
 	}
 	
 	
@@ -379,10 +378,11 @@ public class EmailService {
 		String srteacherfeedback = request.getParameter("srteacherfeedback");
 		String ddduseofdata = request.getParameter("ddduseofdata");
 		
-		
 		String rubricnotes = request.getParameter("rubricnotes");
 		String questions = request.getParameter("questions");
-	
+		
+		//Enumeration<String> params = request.getParameterNames();
+		
 
 		//Check which three of the levelup suggestions we need to email out
 //		if (!checkIfNull(request.getParameter("planningLevelData"))) {
@@ -390,13 +390,13 @@ public class EmailService {
 //		}
 		
 		final String username = "dsdpdemail";
-		final String password = "8’Wm6f$-dP<#3,BU3^Df@#";
+		final String password = "8?Wm6f$-dP<#3,BU3^Df@#";
 		
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
 		props.put("mail.smtp.host", "mail.smtp2go.com");
-		props.put("mail.smtp.port", "587"); // 2525, 8025 and 25 can also be used.
+		props.put("mail.smtp.port", "80"); // 2525, 8025 and 25 can also be used.
  
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {

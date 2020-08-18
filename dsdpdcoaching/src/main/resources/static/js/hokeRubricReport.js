@@ -184,7 +184,7 @@
 				
 				
 				
-				var rubricnotes = document.getElementById("rubricnotes").innerText;
+				var rubricnotes = $("#rubricnotes").val();
 				var levelup = document.getElementById("levelupcheckboxes").innerText;
 				var questions = document.getElementById("questions").value;
 				
@@ -196,7 +196,9 @@
 		                	
 		                idccontentalignment1:idccontentalignment1, idccontentalignment2:idccontentalignment2,
 		                tistandardalignment1:tistandardalignment1, tistandardalignment2:tistandardalignment2, tismallgroup1:tismallgroup1, tismallgroup2:tismallgroup2, tismallgroup3:tismallgroup3, tiintentionalgrouping1:tiintentionalgrouping1, tiintentionalgrouping2:tiintentionalgrouping2,
-		                
+		                engcollaboration:engcollaboration, engchoice:engchoice, engcreation:engcreation, engcriticalthinking:engcriticalthinking, engactiveparticipation:engactiveparticipation,
+		                envclassroommanagement:envclassroommanagement, envphysicalenvironment:envphysicalenvironment, envtimemanagement1:envtimemanagement1, envtimemanagement2:envtimemanagement2, envdigitalcitizenship:envdigitalcitizenship,
+		                srarticulate:srarticulate, srteacherfeedback:srteacherfeedback, ddduseofdata:ddduseofdata,
 		                	
 		                	rubricnotes:rubricnotes,levelup:levelup, questions:questions
 		                
@@ -557,39 +559,59 @@
 	                		 	
 	                		 	
 	                		 	//DATA DRIVEN DECISIONS
-	                		 	if (response.ddduseoffeedback == 'Not Yet') {
-	                		 		$("#srteacherfeedbackNY").prop('checked',true);
+	                		 	if (response.ddduseofdata == 'Not Yet') {
+	                		 		$("#ddduseofdataNY").prop('checked',true);
 	                		 	} else {
-	                		 		$("#srteacherfeedbackM").prop('checked',true);
+	                		 		$("#ddduseofdataM").prop('checked',true);
 	                		 	}
 	                		 	$("#dddnotes").val(response.dddnotes)
 	                		 	
 	                		 	
-	                		 	/*COMMENT THIS OUT UNTIL FIGURE OUT WHAT TO DO FOR LEVELUP AND HOKE SCHOOLS
+
+	                		 	//GET THE RADIO SELECTIONS THAT ARE NOT CHECKED TO GET LEVELUP DATA
+						    var radioResults = 'Radio buttons: ';
+	                		 	var out = ''
+						
+	                		 	for (var i = 0; i < document.frm.elements.length; i++ ) {
+						        if (document.frm.elements[i].type == 'radio') {
+						            if (document.frm.elements[i].checked == true && document.frm.elements[i].getAttribute("id").endsWith("NY")) {
+						                var input = document.frm.elements[i];
+						                var id = input.getAttribute("id");
+						                var selector = 'label[for=' + id + ']'
+						                var label = document.querySelector(selector);
+						                out += label.innerHTML + '\n';
+						                //radioResults += document.frm.elements[i].prop("labels").text(),  + ' ';
+						            }
+						        }
+	                		 	}
+						    //document.getElementById("radioResults").innerHTML = radioResults;
+						    alert(out);
+	                		 	
+	                		 	
+	                		 	//GET THE RANDOM LEVELUP DATA FROM THE DB
 	   	                		 $.ajax({
-	   	         	                type: "GET",
-	   	         	                url:"getLevelUpData",
-	   	         	                data:{
-	   	         	                	rubricItemName1:rubricValuesArray[0].name, rubricItemValue1:rubricValuesArray[0].value,
-	   	         	                	rubricItemName2:rubricValuesArray[1].name, rubricItemValue2:rubricValuesArray[1].value,
-	   	         	                	rubricItemName3:rubricValuesArray[2].name, rubricItemValue3:rubricValuesArray[2].value
-	   	         	                },
-	   	         	                dataType: "json",
-	   	         	                success: function (response) {
-	   	         	                	
-	   	         	                	<!-- result = result[randomNumber] ;  -->
-	   	         	                	
-	   	         	                $.each(response, function(key, value) {
-	   	         	                	var result= (value[1]).split(/\n/g);
-	   	         	                	var randomNumber = Math.floor(Math.random()*result.length);
-	   	         	                	
-	   	         	                	document.getElementById(value[0]+'LevelUpData').style.visibility = "visible";
-	   	         	                
-	   	         	                	$('#'+value[0]+'LevelUpData').attr("data-content", result[randomNumber] );
-	   	         	                });
-	   	         	                }
+   	         	                type: "GET",
+   	         	                url:"getHokeLevelUpData",
+   	         	                data:{
+   	         	                	rubricItemName1:rubricValuesArray[0].name, rubricItemValue1:rubricValuesArray[0].value,
+   	         	                	rubricItemName2:rubricValuesArray[1].name, rubricItemValue2:rubricValuesArray[1].value,
+   	         	                	rubricItemName3:rubricValuesArray[2].name, rubricItemValue3:rubricValuesArray[2].value
+   	         	                },
+   	         	                dataType: "json",
+   	         	                success: function (response) {
+   	         	                	
+   	         	                	<!-- result = result[randomNumber] ;  -->
+   	         	                	
+   	         	                $.each(response, function(key, value) {
+   	         	                	var result= (value[1]).split(/\n/g);
+   	         	                	var randomNumber = Math.floor(Math.random()*result.length);
+   	         	                	
+   	         	                	document.getElementById(value[0]+'LevelUpData').style.visibility = "visible";
+   	         	                
+   	         	                	$('#'+value[0]+'LevelUpData').attr("data-content", result[randomNumber] );
+   	         	                });
+   	         	                }
 	   	                		 });
-	   	                		 */
 
 	                		 document.getElementById("rubricnotes").value = response.rubricNotes;
 	                		 //document.getElementById("levelup").value = response.levelUp;

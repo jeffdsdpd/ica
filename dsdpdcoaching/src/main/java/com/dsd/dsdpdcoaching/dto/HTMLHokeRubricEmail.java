@@ -125,7 +125,7 @@ public class HTMLHokeRubricEmail implements Serializable {
 			     "   color: #3498db; \r\n" +
 			     "   text-decoration: underline; } \r\n" +
 				"		</style> \r\n" +
-				"	</head> \r\n" +
+				"	</head> \r\n" + 
 				
 				
 				"	<body class='' style='background-color: #f6f6f6; font-family: sans-serif; -webkit-font-smoothing: antialiased; font-size: 14px; line-height: 1.4; margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;'> \r\n" + 
@@ -133,7 +133,6 @@ public class HTMLHokeRubricEmail implements Serializable {
 				"	<P align=center><IMG border=0 hspace=0 alt='' style='float:left; max-height: 200px; max-width: 200px;' align=baseline src='http://dsdprofessionaldevelopment.com/uploads/2/7/0/5/2705842/dsd-logo-without-background_orig.png'></P> \r\n" +
 				
 				"		<h3 style=\"text-align:left; color: #00b100; font-weight: bold;\"><center>\r\n" + "Instructional Coaching Application From DSD Professional Development</center></h3>\r\n" +
-				"		<h3 style=\"text-align:left;\"><center> \r\n" + "Congratulations! You are currently working at a Phase</center></h3>\r\n" +
 				
 				"		<h3 style=\"text-align:left;\"><strong> \r\n" + schoolId + "</strong> </h3>\r\n" +
 				"		<hr> \r\n" +
@@ -143,31 +142,98 @@ public class HTMLHokeRubricEmail implements Serializable {
 				"		<table border='2px' cellpadding='0' cellspacing='0' class='body' style='border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background-color: #f6f6f6;'>  \r\n" +
 				"			<tbody> \r\n" +
                 "				<tr>  \r\n" +
-                "					<td align='left' style='font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;'><strong>INTEGRATED DIGITAL CONTENT:</strong>&nbsp;&nbsp; \r\n" +
+                "					<td align='left' style='border-bottom: none; font-family: sans-serif; color: white; font-size: 18px; background-color:coral; vertical-align: top; padding-bottom: 15px;'><strong>INTEGRATED DIGITAL CONTENT:</strong>&nbsp;&nbsp; \r\n" +
                 "				</tr> \r\n" +
-                	"				<tr>  \r\n" +
-                "					<td align='left' style='font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;'>" + idccontentalignment1 +  "\r\n" +
+                "				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: white; font-size: 16px; background-color:coral; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + idccontentalignment1 +  "\r\n" +
+                "				</tr> \r\n" +
+                "				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: white; font-size: 16px; background-color:coral; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + idccontentalignment2 +  "\r\n" +
                 "				</tr> \r\n" +
                 
                 "				<tr>  \r\n" +
-                "					<td align='left' style='font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;'><strong>TARGETED INSTRUCTION:</strong>&nbsp;&nbsp; \r\n" +
+                "					<td align='left' style='border-bottom: none; font-family: sans-serif; color: black; font-size: 18px; background-color:#A9DFBF; vertical-align: top; padding-bottom: 15px;'><strong>TARGETED INSTRUCTION:</strong>&nbsp;&nbsp; \r\n" +
+                "				</tr> \r\n" +
+                "				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: black; font-size: 16px; background-color:#A9DFBF; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + tistandardalignment1 +  "\r\n" +
+                "				</tr> \r\n" +
+                "				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: black; font-size: 16px; background-color:#A9DFBF; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + tistandardalignment2 +  "\r\n" +
+                "				</tr> \r\n" +
+                "				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: black; font-size: 16px; background-color:#A9DFBF; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + tismallgroup1 +  "\r\n" +
+                "				</tr> \r\n" +
+                "				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: black; font-size: 16px; background-color:#A9DFBF; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + tismallgroup2 +  "\r\n" +
+                "				</tr> \r\n" +
+                "				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: black; font-size: 16px; background-color:#A9DFBF; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + tismallgroup3 +  "\r\n" +
+                "				</tr> \r\n" +
+                "				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: black; font-size: 16px; background-color:#A9DFBF; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + tiintentionalgrouping1 +  "\r\n" +
+                "				</tr> \r\n" +
+                "				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: black; font-size: 16px; background-color:#A9DFBF; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + tiintentionalgrouping2 +  "\r\n" +
                 "				</tr> \r\n" +
                 
 				"				<tr>  \r\n" +
-				"					<td align='left' style='font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;'><strong>ENGAGEMENT:</strong>&nbsp;&nbsp; \r\n" +
+				"					<td align='left' style='border-bottom: none; font-family: sans-serif; color: black; font-size: 18px; background-color:#F7DC6F; vertical-align: top; padding-bottom: 15px;'><strong>ENGAGEMENT:</strong>&nbsp;&nbsp; \r\n" +
 				"				</tr> \r\n" +
+				"				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: black; font-size: 16px; background-color:#F7DC6F; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + engcollaboration +  "\r\n" +
+                "				</tr> \r\n" +
+                "				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: black; font-size: 16px; background-color:#F7DC6F; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + engchoice +  "\r\n" +
+                "				</tr> \r\n" +
+                "				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: black; font-size: 16px; background-color:#F7DC6F; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + engcreation +  "\r\n" +
+                "				</tr> \r\n" +
+                "				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: black; font-size: 16px; background-color:#F7DC6F; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + engcriticalthinking +  "\r\n" +
+                "				</tr> \r\n" +
+                "				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: black; font-size: 16px; background-color:#F7DC6F; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + engactiveparticipation +  "\r\n" +
+                "				</tr> \r\n" +
+				
 				
 				"				<tr>  \r\n" +
-				"					<td align='left' style='font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;'><strong>ENVIRONMENT:</strong>&nbsp;&nbsp; \r\n" +
+				"					<td align='left' style='border-bottom: none; font-family: sans-serif; color: black; font-size: 18px; background-color:#f5cba7; vertical-align: top; padding-bottom: 15px;'><strong>ENVIRONMENT:</strong>&nbsp;&nbsp; \r\n" +
 				"				</tr> \r\n" +
+				"				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: black; font-size: 16px; background-color:#f5cba7; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + envclassroommanagement +  "\r\n" +
+                "				</tr> \r\n" +
+                "				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: black; font-size: 16px; background-color:#f5cba7; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + envphysicalenvironment +  "\r\n" +
+                "				</tr> \r\n" +
+                "				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: black; font-size: 16px; background-color:#f5cba7; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + envtimemanagement1 +  "\r\n" +
+                "				</tr> \r\n" +
+                "				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: black; font-size: 16px; background-color:#f5cba7; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + envtimemanagement2 +  "\r\n" +
+                "				</tr> \r\n" +
+                "				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: black; font-size: 16px; background-color:#f5cba7; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + envdigitalcitizenship +  "\r\n" +
+                "				</tr> \r\n" +
+				
 				
 				"				<tr>  \r\n" +
-				"					<td align='left' style='font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;'><strong>STUDENT REFLECTION:</strong>&nbsp;&nbsp; \r\n" +
+				"					<td align='left' style='border-bottom: none; font-family: sans-serif; color: white; font-size: 18px; background-color:#85c1e9; vertical-align: top; padding-bottom: 15px;'><strong>STUDENT REFLECTION:</strong>&nbsp;&nbsp; \r\n" +
 				"				</tr> \r\n" +
+				"				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: white; font-size: 16px; background-color:#85c1e9; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + srarticulate +  "\r\n" +
+                "				</tr> \r\n" +
+                "				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: white; font-size: 16px; background-color:#85c1e9; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + srteacherfeedback +  "\r\n" +
+                "				</tr> \r\n" +
+				
+				
 				
 				"				<tr>  \r\n" +
-				"					<td align='left' style='font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;'><strong>DATA DRIVEN DECISIONS:</strong>&nbsp;&nbsp; \r\n" +
+				"					<td align='left' style='border-bottom: none; font-family: sans-serif; color: black; font-size: 18px; background-color:#d2b4de; vertical-align: top; padding-bottom: 15px;'><strong>DATA DRIVEN DECISIONS:</strong>&nbsp;&nbsp; \r\n" +
 				"				</tr> \r\n" +
+				"				<tr>  \r\n" +
+                "					<td align='left' style='border-top: none; font-family: sans-serif; color: white; font-size: 16px; background-color:#d2b4de; vertical-align: top; padding-left: 10px; padding-bottom: 5px;'>" + ddduseofdata +  "\r\n" +
+                "				</tr> \r\n" +
 
                 "			</tbody> \r\n" +
 
