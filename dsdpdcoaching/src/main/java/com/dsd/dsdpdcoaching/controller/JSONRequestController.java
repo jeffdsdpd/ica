@@ -207,7 +207,7 @@ public class JSONRequestController extends HttpServlet {
 	@GetMapping(value="/getHokeLevelUpData")
 	@ResponseBody
 	public String[][] getHokeLevelUpData(HttpServletRequest request, HttpServletResponse response) {	
-		return levelUpDao.getLevelUpData(request, response);
+		return levelUpDao.getHokeLevelUpData(request, response);
 	}
 	
 	//Called from actionPlanReport.js

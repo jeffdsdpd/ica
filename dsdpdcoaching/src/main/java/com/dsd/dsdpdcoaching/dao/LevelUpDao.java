@@ -1,5 +1,9 @@
 package com.dsd.dsdpdcoaching.dao;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -55,6 +59,35 @@ public class LevelUpDao {
 	levelUpPageDisplay[2][1]=result3;
 		
 	return levelUpPageDisplay;
+	}
+	
+	
+	public String[][] getHokeLevelUpData(HttpServletRequest request, HttpServletResponse response) {
+		
+		String levelUpPageDisplay[][] = new String[3][2];
+		Random randomGenerator = new Random();
+		String result1 = null;
+		
+		String notYetRubricItems = request.getParameter("notYetRubricItems");
+		List<String> notYetRubricItemsList = Arrays.asList(notYetRubricItems.split("\n"));
+		int listLength = notYetRubricItemsList.size();
+		int randomInt = randomGenerator.nextInt(listLength);
+		
+		String rubricItemValue = notYetRubricItemsList.get(randomInt);
+		String trimmedRubricItemValue = null;
+		   if ((rubricItemValue != null) && (rubricItemValue.length() > 0)) {
+			   trimmedRubricItemValue = rubricItemValue.substring(0, rubricItemValue.length() - 2);
+		   }
+		
+		String sql = "SELECT LEVELUP FROM HOKE_LEVEL_UP WHERE RUBRICITEM = ?";
+		Query query = entityManager.createNativeQuery(sql);
+		
+		query.setParameter(1, trimmedRubricItemValue);
+		result1 = (String) query.getSingleResult();
+		levelUpPageDisplay[0][0]=rubricItemValue;
+		levelUpPageDisplay[0][1]=result1;
+		
+		return levelUpPageDisplay;
 	}
 
 }

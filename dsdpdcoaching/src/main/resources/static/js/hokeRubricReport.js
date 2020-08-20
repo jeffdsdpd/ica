@@ -570,7 +570,7 @@
 
 	                		 	//GET THE RADIO SELECTIONS THAT ARE NOT CHECKED TO GET LEVELUP DATA
 						    var radioResults = 'Radio buttons: ';
-	                		 	var out = ''
+	                		 	var notYetRubricItems = ''
 						
 	                		 	for (var i = 0; i < document.frm.elements.length; i++ ) {
 						        if (document.frm.elements[i].type == 'radio') {
@@ -579,24 +579,18 @@
 						                var id = input.getAttribute("id");
 						                var selector = 'label[for=' + id + ']'
 						                var label = document.querySelector(selector);
-						                out += label.innerHTML + '\n';
-						                //radioResults += document.frm.elements[i].prop("labels").text(),  + ' ';
+						                notYetRubricItems += id + '\n';
+						                //notYetRubricItems += label.textContent + '\n';
 						            }
 						        }
 	                		 	}
-						    //document.getElementById("radioResults").innerHTML = radioResults;
-						    alert(out);
 	                		 	
 	                		 	
 	                		 	//GET THE RANDOM LEVELUP DATA FROM THE DB
 	   	                		 $.ajax({
    	         	                type: "GET",
    	         	                url:"getHokeLevelUpData",
-   	         	                data:{
-   	         	                	rubricItemName1:rubricValuesArray[0].name, rubricItemValue1:rubricValuesArray[0].value,
-   	         	                	rubricItemName2:rubricValuesArray[1].name, rubricItemValue2:rubricValuesArray[1].value,
-   	         	                	rubricItemName3:rubricValuesArray[2].name, rubricItemValue3:rubricValuesArray[2].value
-   	         	                },
+   	         	                data:{notYetRubricItems:notYetRubricItems},
    	         	                dataType: "json",
    	         	                success: function (response) {
    	         	                	

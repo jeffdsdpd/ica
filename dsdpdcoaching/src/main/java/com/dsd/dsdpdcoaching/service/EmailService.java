@@ -181,8 +181,7 @@ public class EmailService {
 			phase = "2";
 		} else phase = "3";
 		
-		final String username = "dsdpdemail";
-		final String password = "GgsjDF3984i()";
+		//emailandpwforsmtpgohere
 		
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -389,8 +388,7 @@ public class EmailService {
 //			levelUpItemsToEmail.add(request.getParameter("planningLevelData"));
 //		}
 		
-		final String username = "dsdpdemail";
-		final String password = "8?Wm6f$-dP<#3,BU3^Df@#";
+		//emailandpwforsmtpgohere
 		
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
