@@ -74,13 +74,26 @@
   		display: flex;
 	}
 	
-	#left {
-	  	flex: 0 0 35%;
-	}
-	
-	#chart_div{
-	  	flex: 1;
-	}
+	* {
+  box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column12 {
+  float: left;
+  width: 48%;
+}
+.column3 {
+  float: left;
+  width: 4%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 </style>
 </head>
 <body>
@@ -195,53 +208,65 @@
                                     <div id="expandable">
 								   	<button type="button" class="hokeexpandable heidc">INTEGRATED DIGITAL CONTENT</button>
 									   <div class="content hokecontent hokecontainer" style="padding: 5px 5px 5px 5px">
-									   		<div class="container-fluid">
-									   			<div id="container">
-											   			<div id="content">
-											  				<div id="innercontent">
-											   					<div id="hokecolumn" class="heidc">NOT YET</div>
-											   					<label for='idccontentalignment1NY' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
-				  												<input type="radio" id='idccontentalignment1NY' name="idccontentalignment1NY" value="Not Yet" />Digital Content is not integrated to support student-centered learning</label>
+									   <div class="container-fluid">
+										   	<div id="container" style="display: flex;">
+				                                <div id="content" style="width:100%">
+													<div class="column12">
+													    <h4 style="margin:5px 5px 5px; font-weight:bold; border-right:1px solid darkgray;">NOT YET</h4>
+													   	<label for='idccontentalignment1NY' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858;">
+				  										<input type="radio" id='idccontentalignment1NY' name="idccontentalignment1NY" value="Not Yet" />Digital Content is not integrated to support student-centered learning</label>
 				  									
-						  										<label for='idccontentalignment2NY' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
-						  										<input type="radio" id='idccontentalignment2NY' name="idccontentalignment2NY" value="Not Yet" />Digital Content is not aligned to the standards and/or learning targets</label>
-						  									</div>
-														</div>
-										   			
-										   				<div id="content">
-											  				<div id="innercontent">
-											  					<div id="hokecolumn" class="heidc">MODEL</div>
-										   							<label for='idccontentalignment1M' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
-						  											<input type="radio" id='idccontentalignment1M' name="idccontentalignment1M" value="Model" />Teacher integrates aligned digital content to support student-centered learning</label>
+						  								<label for='idccontentalignment2NY' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858;">
+						  								<input type="radio" id='idccontentalignment2NY' name="idccontentalignment2NY" value="Not Yet" />Digital Content is not aligned to the standards and/or learning targets</label>
+  													</div>
+													<div class="column12">
+													    <h4 style="margin:5px 5px 5px; font-weight:bold;">MODEL</h4>
+													    <label for='idccontentalignment1M' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+						  								<input type="radio" id='idccontentalignment1M' name="idccontentalignment1M" value="Model" />Teacher integrates aligned digital content to support student-centered learning</label>
 						  										
-						  											<label for='idccontentalignment2M' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
-						  											<input type="radio" id='idccontentalignment2M' name="idccontentalignment2M" value="Model" />Digital content consistently aligns to the standard and/or learning targets</label>
-																</div>
+						  								<label for='idccontentalignment2M' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+						  								<input type="radio" id='idccontentalignment2M' name="idccontentalignment2M" value="Model" />Digital content consistently aligns to the standard and/or learning targets</label>
+													</div>
+													<div class="column3">
+														<h6>Level Up</h6>
+													    <div>
+															<div class="levelupclass" style="float: right;">
+																<a href="#" style="visibility: hidden" id="idccontentalignment1NYLevelUpData" title="Level Up"
+																	data-toggle="popover" data-html="true" data-trigger="hover" 
+																	data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																</a>
+															</div>
+															<div class="levelupclass" style="float: right;">
+																<a href="#" style="visibility: hidden" id="idccontentalignment2NYLevelUpData" title="Level Up"
+																	data-toggle="popover" data-html="true" data-trigger="hover" 
+																	data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																</a>
 															</div>
 														</div>
-										   	
-			  										<!-- <label for="idccontentalignment1" class="error"></label> -->
-										    </div> <!--  end of container-fluid div --> <!--  end of container fluid div -->
-	  										<br />
-	  										<div class="row">
-	                                 			<div class="col-md-8">
-	                                     			<div class="form-group">
-	                                         		<label>Integrated Digital Content Notes</label>
-	                                             	<textarea rows="3" cols="50" class="form-control" placeholder="Notes for Integrated Digital Content" name="idcnotes" id="idcnotes" wrap="hard" maxlength="250"></textarea><br />
 													</div>
-	                                      		</div>
-                                    			</div>
-										</div> <!-- end of div class="content hokecontent hokecontainer" -->
-									</div> <!-- end of the div expandable -->
+												</div><!-- end of class="div id content" -->
+											</div><!-- end of class="container" -->
+										</div><!-- end of class="container-fluid" -->
+  										<br />
+  										<div class="row">
+                                 			<div class="col-md-8">
+                                     			<div class="form-group">
+                                         		<label>Integrated Digital Content Notes</label>
+                                             	<textarea rows="3" cols="50" class="form-control" placeholder="Notes for Integrated Digital Content" name="idcnotes" id="idcnotes" wrap="hard" maxlength="250"></textarea><br />
+												</div>
+                                      		</div>
+                                   		</div>
+									</div> <!-- end of div class="content hokecontent hokecontainer" -->
+								</div> <!-- end of the div expandable -->
 									
 									<div id="expandable">
 								   	<button type="button" class="hokeexpandable heti">TARGETED INSTRUCTION</button>
 									    <div class="content hokecontent hokecontainer" style="padding: 5px 5px 5px 5px">
 									   		<div class="container-fluid">
 										   		<div id="container" style="display: flex;">
-											   			<div id="content">
-											  				<div id="innercontent">
-											  					<div id="hokecolumn" class="heti">NOT YET</div>
+											   			 <div id="content" style="width:100%">
+															<div class="column12">
+											  					<h4 style="margin:5px 5px 5px; font-weight:bold; border-right:1px solid darkgray;">NOT YET</h4>
 											  					<label for='tistandardalignment1NY' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 							  									<input type="radio" id='tistandardalignment1NY' name="tistandardalignment1NY" value="Not Yet" />Instruction is not aligned to the standard of learning targets</label>
 							  										
@@ -263,11 +288,9 @@
 	  															<label for='tiintentionalgrouping2NY' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 	  															<input type="radio" id='tiintentionalgrouping2NY' name="tiintentionalgrouping2NY" value="Not Yet" />Data is not being used to group students</label>
 							  								</div>
-	  													</div>
-	  														
-  														<div id="content">
-										  					<div id="innercontent">
-  																<div id="hokecolumn" class="heti">MODEL</div>
+	  												
+  															<div class="column12">
+													    			<h4 style="margin:5px 5px 5px; font-weight:bold;">MODEL</h4>
 																<label for='tistandardalignment1M' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 						  										<input type="radio" id='tistandardalignment1M' name="tistandardalignment1M" value="Model" />Teacher is using the standard and learning targets to design instruction</label>
   														
@@ -289,9 +312,57 @@
 							  									<label for='tiintentionalgrouping2M' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 							  									<input type="radio" id='tiintentionalgrouping2M' name="tiintentionalgrouping2M" value="Model" />Student groups are based on data</label>
 															</div>
-														</div>
+														
+															<div class="column3">
+														    		<h6>Level Up</h6>
+														    		<div>
+																	<div class="levelupclass" style="float: right;">
+																		<a href="#" style="visibility: hidden" id="tistandardalignment1NYLevelUpData" title="Level Up"
+																			data-toggle="popover" data-html="true" data-trigger="hover" 
+																			data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																		</a>
+																	</div>
+																	<div class="levelupclass" style="float: right;">
+																		<a href="#" style="visibility: hidden" id="tistandardalignment2NYLevelUpData" title="Level Up"
+																			data-toggle="popover" data-html="true" data-trigger="hover" 
+																			data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																		</a>
+																	</div>
+																	<div class="levelupclass" style="float: right;">
+																		<a href="#" style="visibility: hidden" id="tismallgroup1NYLevelUpData" title="Level Up"
+																			data-toggle="popover" data-html="true" data-trigger="hover" 
+																			data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																		</a>
+																	</div>
+																	<div class="levelupclass" style="float: right;">
+																		<a href="#" style="visibility: hidden" id="tismallgroup2NYLevelUpData" title="Level Up"
+																			data-toggle="popover" data-html="true" data-trigger="hover" 
+																			data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																		</a>
+																	</div>
+																	<div class="levelupclass" style="float: right;">
+																		<a href="#" style="visibility: hidden" id="tismallgroup3NYLevelUpData" title="Level Up"
+																			data-toggle="popover" data-html="true" data-trigger="hover" 
+																			data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																		</a>
+																	</div>
+																	<div class="levelupclass" style="float: right;">
+																		<a href="#" style="visibility: hidden" id="tiintentionalgrouping1NYLevelUpData" title="Level Up"
+																			data-toggle="popover" data-html="true" data-trigger="hover" 
+																			data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																		</a>
+																	</div>
+																	<div class="levelupclass" style="float: right;">
+																		<a href="#" style="visibility: hidden" id="tiintentionalgrouping2NYLevelUpData" title="Level Up"
+																			data-toggle="popover" data-html="true" data-trigger="hover" 
+																			data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																		</a>
+																	</div>
+																</div>
+															</div>
+														</div> <!-- <div id="content" -->
 												</div> <!-- container -->
-											</div> <!--  end of container-fluid div -->
+											</div> <!-- end of container-fluid div -->
 	  										<br />
 	  										<div class="row">
 	                                        		<div class="col-md-8">
@@ -309,10 +380,10 @@
 								   	<button type="button" class="hokeexpandable hee">ENGAGEMENT</button>
 									<div class="content hokecontent hokecontainer">
 									   <div class="container-fluid">
-									   		<div id="container">
-												<div id="content">
-											  		<div id="innercontent">
-											  			<div id="hokecolumn" class="hee">NOT YET</div>
+									   		<div id="container" style="display: flex;">
+				                                <div id="content" style="width:100%">
+													<div class="column12">
+											  			<h4 style="margin:5px 5px 5px; font-weight:bold; border-right:1px solid darkgray;">NOT YET</h4>
 											  			<label for='engcollaborationNY' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 	  													<input type="radio" id='engcollaborationNY' name="engcollaborationNY" value="Not Yet" />Teacher has not created group activities that require interaction</label>
 	  														
@@ -328,11 +399,9 @@
 									   					<label for='engactiveparticipationNY' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 	  													<input type="radio" id='engactiveparticipationNY' name="engactiveparticipationNY" value="Not Yet" />The majority of students are disengaged from the classroom activities</label>
 	  												</div>
-	  											</div>
 	  											
-	  											<div id="content">
-											  		<div id="innercontent">
-		  												<div id="hokecolumn" class="hee">MODEL</div>
+		  											<div class="column12">
+													    <h4 style="margin:5px 5px 5px; font-weight:bold;">MODEL</h4>
 		  												<label for='engcollaborationM' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 					  									<input type="radio" id='engcollaborationM' name="engcollaborationM" value="Model" />Teacher creates group activities that requires student interaction with feedback</label>
 					  										
@@ -348,20 +417,54 @@
 					  									<label for='engactiveparticipationM' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 					  									<input type="radio" id='engactiveparticipationM' name="engactiveparticipationM" value="Model" />The majority of students are attentive, find the activity meaningful, and persist through difficulty with the goal of completing it correctly</label>
 					  								</div>
-												</div>
-											</div> <!-- <label for="idccontentalignment1" class="error"></label> -->
-			  			 				</div> <!--  end of container-fluid div -->
-										   	
-	  									<br />
+					  								<div class="column3">
+													    <h6>Level Up</h6>
+													    		<div>
+																<div class="levelupclass" style="float: right;">
+																	<a href="#" style="visibility: hidden" id="engcollaborationNYLevelUpData" title="Level Up"
+																		data-toggle="popover" data-html="true" data-trigger="hover" 
+																		data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																	</a>
+																</div>
+																<div class="levelupclass" style="float: right;">
+																	<a href="#" style="visibility: hidden" id="engchoiceNYLevelUpData" title="Level Up"
+																		data-toggle="popover" data-html="true" data-trigger="hover" 
+																		data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																	</a>
+																</div>
+																<div class="levelupclass" style="float: right;">
+																	<a href="#" style="visibility: hidden" id="engcreationNYLevelUpData" title="Level Up"
+																		data-toggle="popover" data-html="true" data-trigger="hover" 
+																		data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																	</a>
+																</div>
+																<div class="levelupclass" style="float: right;">
+																	<a href="#" style="visibility: hidden" id="engcriticalthinkingNYLevelUpData" title="Level Up"
+																		data-toggle="popover" data-html="true" data-trigger="hover" 
+																		data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																	</a>
+																</div>
+																<div class="levelupclass" style="float: right;">
+																	<a href="#" style="visibility: hidden" id="engactiveparticipationNYLevelUpData" title="Level Up"
+																		data-toggle="popover" data-html="true" data-trigger="hover" 
+																		data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																	</a>
+																</div>
+															</div>
+														</div>
+													</div> <!-- <div id="content" -->
+												</div> <!-- container -->
+											</div> <!-- end of container-fluid div -->
+	  										<br />
 	  									
-	  									<div class="row">
-	                                        		<div class="col-md-8">
-	                                            		<div class="form-group">
-	                                                		<label>Engagement Notes</label>
-	                                                		<textarea rows="3" cols="50" class="form-control" placeholder="Notes for Engagement" name="engnotes" id="engnotes" wrap="hard" maxlength="250"></textarea><br />
-													</div>
-	                                        		</div>
-                                    		</div>
+		  									<div class="row">
+		                                        		<div class="col-md-8">
+		                                            		<div class="form-group">
+		                                                		<label>Engagement Notes</label>
+		                                                		<textarea rows="3" cols="50" class="form-control" placeholder="Notes for Engagement" name="engnotes" id="engnotes" wrap="hard" maxlength="250"></textarea><br />
+														</div>
+		                                        		</div>
+	                                    		</div>
 	  									
 										</div> <!-- end of div class="content hokecontent hokecontainer" -->
 									</div> <!-- end of the div expandable -->
@@ -371,10 +474,10 @@
 								   	<button type="button" class="hokeexpandable heenv">ENVIRONMENT</button>
 									<div class="content hokecontent hokecontainer">
 									   <div class="container-fluid">
-									   		<div id="container">
-												<div id="content">
-											  		<div id="innercontent">
-										   				<div id="hokecolumn" class="heenv">NOT YET</div>
+									   		<div id="container" style="display: flex;">
+				                                <div id="content" style="width:100%">
+													<div class="column12">
+										   				<h4 style="margin:5px 5px 5px; font-weight:bold; border-right:1px solid darkgray;">NOT YET</h4>
 										   				<label for='envclassroommanagementNY' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 	  													<input type="radio" id='envclassroommanagementNY' name="envclassroommanagementNY" value="Not Yet" />Multiple students are not engaged in station tasks and exhibiting disruptive behaviors that interrupt the class</label>
 	  										
@@ -390,11 +493,9 @@
 	  													<label for='envdigitalcitizenshipNY' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 	  													<input type="radio" id='envdigitalcitizenshipNY' name="envdigitalcitizenshipNY" value="Not Yet" />Teacher does not model respect and responsibility when using technology and students have not been taught the basics of good citizenship</label>
 	  												</div>
-	  											</div>
 	  											
-	  											<div id="content">
-											  		<div id="innercontent">
-										   				<div id="hokecolumn" class="heenv">MODEL</div>
+		  											<div class="column12">
+										   				<h4 style="margin:5px 5px 5px; font-weight:bold;">MODEL</h4>
 										   				<label for='envclassroommanagementM' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 	  													<input type="radio" id='envclassroommanagementM' name="envclassroommanagementM" value="Model" />Teacher maintains a positive classroom environment that engages all learners and addresses disruptive behaviors</label>
 	  									
@@ -410,11 +511,46 @@
 	  													<label for='envdigitalcitizenshipM' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 	  													<input type="radio" id='envdigitalcitizenshipM' name="envdigitalcitizenshipM" value="Model" />Teacher models respect and responsibility when using technology and intentionally teaches digital citizenship skills to students</label>
 	  												</div>
-	  											</div>
-											</div> <!-- <label for="idccontentalignment1" class="error"></label> -->
-			  			 				</div> <!--  end of container-fluid div -->
-										   	
-	  									<br />
+	  												
+	  												<div class="column3">
+													    <h6>Level Up</h6>
+													    <div>
+															<div class="levelupclass" style="float: right;">
+																<a href="#" style="visibility: hidden" id="envclassroommanagementNYLevelUpData" title="Level Up"
+																	data-toggle="popover" data-html="true" data-trigger="hover" 
+																	data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																</a>
+															</div>
+															<div class="levelupclass" style="float: right;">
+																<a href="#" style="visibility: hidden" id="envphysicalenvironmentNYLevelUpData" title="Level Up"
+																	data-toggle="popover" data-html="true" data-trigger="hover" 
+																	data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																</a>
+															</div>
+															<div class="levelupclass" style="float: right;">
+																<a href="#" style="visibility: hidden" id="envtimemanagement1NYLevelUpData" title="Level Up"
+																	data-toggle="popover" data-html="true" data-trigger="hover" 
+																	data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																</a>
+															</div>
+															<div class="levelupclass" style="float: right;">
+																<a href="#" style="visibility: hidden" id="envtimemanagement2NYLevelUpData" title="Level Up"
+																	data-toggle="popover" data-html="true" data-trigger="hover" 
+																	data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																</a>
+															</div>
+															<div class="levelupclass" style="float: right;">
+																<a href="#" style="visibility: hidden" id="envdigitalcitizenshipNYLevelUpData" title="Level Up"
+																	data-toggle="popover" data-html="true" data-trigger="hover" 
+																	data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																</a>
+															</div>
+														</div>
+													</div>
+												</div> <!-- <div id="content" -->
+											</div> <!-- container -->
+										</div> <!-- end of container-fluid div -->
+  										<br />
 	  									
 	  									<div class="row">
 	                                        		<div class="col-md-8">
@@ -434,32 +570,45 @@
 								   	<button type="button" class="hokeexpandable hesr">STUDENT REFLECTION</button>
 									<div class="content hokecontent hokecontainer">
 									   <div class="container-fluid">
-									   		<div id="container">
-												<div id="content">
-												  	<div id="innercontent">
-											   			<div id="hokecolumn" class="hesr">NOT YET</div>
+									   		<div id="container" style="display: flex;">
+				                                <div id="content" style="width:100%">
+													<div class="column12">
+											   			<h4 style="margin:5px 5px 5px; font-weight:bold;">NOT YET</h4>
 											   			<label for='srarticulateNY' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 		  												<input type="radio" id='srarticulateNY' name="srarticulateNY" value="Not Yet" />Students are unable to articulate their learning goal</label>
 											   			
 											   			<label for='srteacherfeedbackNY' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 		  												<input type="radio" id='srteacherfeedbackNY' name="srteacherfeedbackNY" value="Not Yet" />Teacher provides little or no feedback to students</label>
 		  											</div>
-		  										</div>
-				  										
-		  										<div id="content">
-												  	<div id="innercontent">
-											   			<div id="hokecolumn" class="hesr">MODEL</div>
+		  											<div class="column12">
+													    <h4 style="margin:5px 5px 5px; font-weight:bold;">MODEL</h4>
 		  												<label for='srarticulateM' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 		  												<input type="radio" id='srarticulateM' name="srarticulateM" value="Model" />Students can articulate their learning goal</label>
 		  										
 		  												<label for='srteacherfeedbackM' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
 		  												<input type="radio" id='srteacherfeedbackM' name="srteacherfeedbackM" value="Model" />Teacher provides constructive feedback that allows student reflection and revision</label>
 													</div>
-												</div>
-											</div> <!-- <label for="idccontentalignment1" class="error"></label> -->
-			  			 				</div> <!--  end of container-fluid div -->
-										   	
-	  									<br />
+													<div class="column3">
+													    <h6>Level Up</h6>
+													    <div>
+															<div class="levelupclass" style="float: right">
+																<a href="#" style="visibility: hidden" id="srarticulateNYLevelUpData" title="Level Up"
+																	data-toggle="popover" data-html="true" data-trigger="hover" 
+																	data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																</a>
+															</div>
+															<div class="levelupclass" style="float: right">
+																<a href="#" style="visibility: hidden" id="srarticulateNYLevelUpData" title="Level Up"
+																	data-toggle="popover" data-html="true" data-trigger="hover" 
+																	data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																</a>
+															</div>
+														</div>
+													</div>
+												</div> <!-- <div id="content" -->
+											</div> <!-- container -->
+										</div> <!-- end of container-fluid div -->
+  										<br />
 	  									
 	  									<div class="row">
 	                                        		<div class="col-md-8">
@@ -478,25 +627,33 @@
 								   	<button type="button" class="hokeexpandable heddd">DATA DRIVEN DECISIONS</button>
 									<div class="content hokecontent hokecontainer">
 									   <div class="container-fluid">
-									   		<div id="container">
-												<div id="content">
-									  				<div id="innercontent">
-									  					<div id="hokecolumn" class="heddd">NOT YET</div>
-									  						<label for='ddduseofdataNY' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
- 															<input type="radio" id='ddduseofdataNY' name="ddduseofdataNY" value="Not Yet" />Data is not used to drive instruction</label>
+									   		<div id="container" style="display: flex;">
+				                                <div id="content" style="width:100%">
+													<div class="column12">
+									  					<h4 style="margin:5px 5px 5px; font-weight:bold;">NOT YET</h4>
+								  						<label for='ddduseofdataNY' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+														<input type="radio" id='ddduseofdataNY' name="ddduseofdataNY" value="Not Yet" />Data is not used to drive instruction</label>
  													</div>
- 												</div>
-								  				<div id="content">
-								  					<div id="innercontent">
-								  						<div id="hokecolumn" class="heddd">MODEL</div>
-								  							<label for='ddduseofdataM' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
-															<input type="radio" id='ddduseofdataM' name="ddduseofdataM" value="Model" />Teacher uses multiple forms of qualitative and quantitative data to drive instruction</label>
+									  				<div class="column12">
+													    <h4 style="margin:5px 5px 5px; font-weight:bold;">MODEL</h4>
+							  							<label for='ddduseofdataM' class="radio-inline" style="margin-left: 0px; font-family:arial; font-weight:normal; font-size:12px; color:#585858">
+														<input type="radio" id='ddduseofdataM' name="ddduseofdataM" value="Model" />Teacher uses multiple forms of qualitative and quantitative data to drive instruction</label>
 													</div>
-												</div>
-											</div> <!-- <label for="idccontentalignment1" class="error"></label> -->
-			  			 				</div> <!--  end of container-fluid div -->
-										   	
-	  									<br />
+													<div class="column3">
+													    <h6>Level Up</h6>
+													    <div>
+															<div class="levelupclass" style="float: right; width: 1%;">
+																<a href="#" style="visibility: hidden" id="ddduseofdataNYLevelUpData" title="Level Up"
+																	data-toggle="popover" data-html="true" data-trigger="hover" 
+																	data-content="Level up data not initialized"><img src="images/levelup.png" height="25" width="35"></img> 
+																</a>
+															</div>
+														</div>
+													</div>
+												</div> <!-- <div id="content" -->
+											</div> <!-- container -->
+										</div> <!-- end of container-fluid div -->
+  										<br />
 	  									
 	  									<div class="row">
 	                                        		<div class="col-md-8">
@@ -510,20 +667,11 @@
 										</div> <!-- end of div class="content hokecontent hokecontainer" -->
 									</div> <!-- end of the div expandable -->
 									
-									
-										
-									</div> <!-- end of main container -->
-										   
-										   
-										<!-- levelup to add later   
-
-										<div class="levelupclass" style="float: right; width: 25%;">
-											<a href="#" style="visibility: hidden"
-												id="planningLevelUpData" title="Level Up for Planning"
-												data-toggle="popover" data-html="true" data-trigger="hover"
-												data-content="Level up data not initialized"><img
-												src="images/levelup.png" height="33" width="45"></img> </a> <br />
-
+								</div> <!-- end of main container -->
+								
+								
+								
+								<!-- levelup to add later 
 											<a href="#" style="visibility: hidden"
 												id="assessanddataLevelUpData"
 												title="Level Up for Assessment And Data"

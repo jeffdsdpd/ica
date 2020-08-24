@@ -66,26 +66,53 @@ public class LevelUpDao {
 		
 		String levelUpPageDisplay[][] = new String[3][2];
 		Random randomGenerator = new Random();
-		String result1 = null;
+		String result1;
+		String result2;
+		String result3;
 		
 		String notYetRubricItems = request.getParameter("notYetRubricItems");
 		List<String> notYetRubricItemsList = Arrays.asList(notYetRubricItems.split("\n"));
 		int listLength = notYetRubricItemsList.size();
-		int randomInt = randomGenerator.nextInt(listLength);
+		int randomInt1 = randomGenerator.nextInt(listLength);
+		int randomInt2 = randomGenerator.nextInt(listLength);
+		int randomInt3 = randomGenerator.nextInt(listLength);
 		
-		String rubricItemValue = notYetRubricItemsList.get(randomInt);
-		String trimmedRubricItemValue = null;
-		   if ((rubricItemValue != null) && (rubricItemValue.length() > 0)) {
-			   trimmedRubricItemValue = rubricItemValue.substring(0, rubricItemValue.length() - 2);
+		String rubricItemValue1 = notYetRubricItemsList.get(randomInt1);
+		String trimmedRubricItemValue1 = null;
+		   if ((rubricItemValue1 != null) && (rubricItemValue1.length() > 0)) {
+			   trimmedRubricItemValue1 = rubricItemValue1.substring(0, rubricItemValue1.length() - 2);
 		   }
+		   
+		String rubricItemValue2 = notYetRubricItemsList.get(randomInt2);
+		String trimmedRubricItemValue2 = null;
+		   if ((rubricItemValue2 != null) && (rubricItemValue2.length() > 0)) {
+			   trimmedRubricItemValue2 = rubricItemValue2.substring(0, rubricItemValue2.length() - 2);
+		   }
+		   
+		String rubricItemValue3 = notYetRubricItemsList.get(randomInt3);
+		String trimmedRubricItemValue3 = null;
+		   if ((rubricItemValue3 != null) && (rubricItemValue3.length() > 0)) {
+			   trimmedRubricItemValue3 = rubricItemValue3.substring(0, rubricItemValue3.length() - 2);
+		   }
+		   
 		
 		String sql = "SELECT LEVELUP FROM HOKE_LEVEL_UP WHERE RUBRICITEM = ?";
 		Query query = entityManager.createNativeQuery(sql);
 		
-		query.setParameter(1, trimmedRubricItemValue);
+		query.setParameter(1, trimmedRubricItemValue1);
 		result1 = (String) query.getSingleResult();
-		levelUpPageDisplay[0][0]=rubricItemValue;
+		levelUpPageDisplay[0][0]=rubricItemValue1;
 		levelUpPageDisplay[0][1]=result1;
+		
+		query.setParameter(1, trimmedRubricItemValue2);
+		result2 = (String) query.getSingleResult();
+		levelUpPageDisplay[1][0]=rubricItemValue2;
+		levelUpPageDisplay[1][1]=result2;
+		
+		query.setParameter(1, trimmedRubricItemValue3);
+		result3 = (String) query.getSingleResult();
+		levelUpPageDisplay[2][0]=rubricItemValue3;
+		levelUpPageDisplay[2][1]=result3;
 		
 		return levelUpPageDisplay;
 	}
