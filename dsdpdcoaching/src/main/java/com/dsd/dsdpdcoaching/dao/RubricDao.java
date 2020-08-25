@@ -258,6 +258,29 @@ public class RubricDao {
 		}};
 	return rubricLevelUpList;
 	}
+	
+	//Called by the JSONRequestController to select all the HOKE RUBRIC levelup items for a teacher to display on a popup window on the HOKE RUBRIC Form
+	public List<RubricLevelUp> getHokeLevelUpsByTeacher(String teacherId) {
+	String sql = "SELECT * from HOKE_RUBRIC_LEVELUP WHERE completed = 'false' and rubricid in (SELECT id FROM HOKE_RUBRIC WHERE teacherId = ?)";
+	Query query = entityManager.createNativeQuery(sql);
+	query.setParameter(1, teacherId);
+	List<String[]> rubricLevelUpItems = (ArrayList)query.getResultList();
+	
+	List<RubricLevelUp> rubricLevelUpList = new ArrayList<RubricLevelUp>();
+	
+	//loop through the results
+	if (!rubricLevelUpItems.isEmpty()) {
+		for (int i=0; i<rubricLevelUpItems.size(); i++) {
+			RubricLevelUp rlu = new RubricLevelUp();
+			Object[] rubricLevelUpItem = rubricLevelUpItems.get(i);
+			rlu.setLevelupid((int) rubricLevelUpItem[0]);
+			rlu.setLevelup((String) rubricLevelUpItem[2]);
+			rlu.setCompleted((String) rubricLevelUpItem[3]);
+
+			rubricLevelUpList.add(rlu);
+		}};
+	return rubricLevelUpList;
+	}
 
 	//Called by the JSONRequestController to select the rubric dates by school to display on the schoolRubricReport.html triggered from dropdown school list
 	@SuppressWarnings("unchecked")
@@ -430,31 +453,34 @@ public class RubricDao {
 	}
 	
 public void updateHokeRubricLevelupItems(String[] checked, String[] unchecked) {
-		
-		String sql = "Update HOKE_RUBRIC_LEVELUP set completed = ? where levelupid = ? AND rubricid = ?";
-		Query query = entityManager.createNativeQuery(sql);
-		
-		if (!checked[0].isEmpty()) {
-			for( int i = 0; i < checked.length; i++) {
-				String recordstring = checked[i];
-				String[] splitrecordstring = recordstring.split(" ");
-					query.setParameter(1, "true");
-					query.setParameter(2, splitrecordstring[1]);
-					query.setParameter(3, splitrecordstring[0]);
-					query.executeUpdate();
-			}
+	
+	String updateTrueSql = "Update HOKE_RUBRIC_LEVELUP set completed = ?, datecompleted = CURDATE() where levelupid = ? AND rubricid = ?";
+	String updateFalseSql = "Update HOKE_RUBRIC_LEVELUP set completed = ?, datecompleted = NULL where levelupid = ? AND rubricid = ?";
+	
+	Query updateTrueQuery = entityManager.createNativeQuery(updateTrueSql);
+	Query updateFalseQuery = entityManager.createNativeQuery(updateFalseSql);
+	
+	if (!checked[0].isEmpty()) {
+		for( int i = 0; i < checked.length; i++) {
+			String recordstring = checked[i];
+			String[] splitrecordstring = recordstring.split(" ");
+			updateTrueQuery.setParameter(1, "true");
+			updateTrueQuery.setParameter(2, splitrecordstring[1]);
+			updateTrueQuery.setParameter(3, splitrecordstring[0]);
+			updateTrueQuery.executeUpdate();
 		}
-		
-		if (!unchecked[0].isEmpty()) {
-			for( int i = 0; i < unchecked.length; i++) {
-				String recordstring = unchecked[i];
-				String[] splitrecordstring = recordstring.split(" ");
-					query.setParameter(1, "false");
-					query.setParameter(2, splitrecordstring[1]);
-					query.setParameter(3, splitrecordstring[0]);
-					query.executeUpdate();
-			}
+	}
+	
+	if (!unchecked[0].isEmpty()) {
+		for( int i = 0; i < unchecked.length; i++) {
+			String recordstring = unchecked[i];
+			String[] splitrecordstring = recordstring.split(" ");
+			updateFalseQuery.setParameter(1, "false");
+			updateFalseQuery.setParameter(2, splitrecordstring[1]);
+			updateFalseQuery.setParameter(3, splitrecordstring[0]);
+			updateFalseQuery.executeUpdate();
 		}
+	}
 	}
 
 	@SuppressWarnings("unchecked")

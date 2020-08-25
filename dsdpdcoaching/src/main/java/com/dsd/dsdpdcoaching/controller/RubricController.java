@@ -72,8 +72,13 @@ public class RubricController {
 		
 		//set the 'completed' field for all records in the levelup list to 'false'
 		for (int i = 0; i<rubricData.getLevelupList().size(); i++) {
-			rubricData.getLevelupList().get(i).setCompleted("false");
+			if (rubricData.getLevelupList().get(i).getLevelup() == null || rubricData.getLevelupList().get(i).getLevelup().isEmpty()) {
+				rubricData.getLevelupList().remove(i);
+				i--;
+			} else {
+				rubricData.getLevelupList().get(i).setCompleted("false");
 			}
+		}
 		
 		//call the class to get the rubric total value
 		int rubricScore = rubricTotalCalculator.getRubricTotal(rubricData.getPlanning(), rubricData.getAssessmentAndData(), rubricData.getPath(),
@@ -97,6 +102,7 @@ public class RubricController {
 		return "redirect:/rubricForm.html";
 	}
 	
+	
 	@PostMapping("/hokeRubricForm")
 	public String postHokeRubricForm(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute HokeRubric hokeRubricData, @ModelAttribute HokeRubricLevelUp hokeRubricLevelUp) {
 
@@ -104,22 +110,25 @@ public class RubricController {
 		
 		//set the 'completed' field for all records in the levelup list to 'false'
 		for (int i = 0; i<hokeRubricData.getLevelupList().size(); i++) {
-			hokeRubricData.getLevelupList().get(i).setCompleted("false");
+			if (hokeRubricData.getLevelupList().get(i).getLevelup() == null || hokeRubricData.getLevelupList().get(i).getLevelup().isEmpty()) {
+				hokeRubricData.getLevelupList().remove(i);
+				i--;
+			} else {
+				hokeRubricData.getLevelupList().get(i).setCompleted("false");
+			}
 		}
-		
-		int hokeRubricScore = 0;
 		
 		Integer teacherId = hokeRubricData.getTeacherId();
 		HokeRubric hokeData = ((HokeRubric) SerializationUtils.clone(hokeRubricData));
 		hokeData.setTeacherId(teacherId);
-		hokeData.setRubricScore(hokeRubricScore);
+		hokeData.setRubricScore(0);
 		
 		rubricDao.saveHokeRubricData(hokeData);
 		
 		//check if the email checkbox was checked to email the report to the teacher
-		if(request.getParameter("teachercheckbox")!=null) {
-			//emailService.sendRubricEmail(hokeRubricData, request.getParameter("teachercheckbox"));
-		}
+		//if(request.getParameter("teachercheckbox")!=null) {
+		//	emailService.sendHokeRubricEmail(hokeRubricData, request.getParameter("teachercheckbox"));
+		//}
 		
 		//redirect user back to blank form so they can enter more data
 		return "redirect:/hokeRubricForm.html";

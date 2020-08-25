@@ -1,6 +1,7 @@
 package com.dsd.dsdpdcoaching.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Embeddable;
 
@@ -11,15 +12,25 @@ public class HokeRubricLevelUp implements Serializable {
 	private Integer levelupid;
 	private String levelup;
 	private String completed;
+	private Date datecompleted;
 	
 	public HokeRubricLevelUp() {
     }
 
-    public HokeRubricLevelUp(Integer levelupid, String levelup, String completed) {
+    public HokeRubricLevelUp(Integer levelupid, String levelup, String completed, Date datecompleted) {
     		this.levelupid = levelupid;
         this.levelup = levelup;
         this.completed = completed;
+        this.datecompleted = datecompleted;
      }
+
+	public Date getDatecompleted() {
+		return datecompleted;
+	}
+
+	public void setDatecompleted(Date datecompleted) {
+		this.datecompleted = datecompleted;
+	}
 
 	public Integer getLevelupid() {
 		return levelupid;

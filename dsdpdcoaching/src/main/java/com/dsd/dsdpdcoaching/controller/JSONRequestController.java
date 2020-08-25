@@ -232,5 +232,13 @@ public class JSONRequestController extends HttpServlet {
 		return rubricDao.getLevelUpsByTeacher(teacherId);
 		//return teacherDao.getInteractionTeacherListBySchool(teacherId);
 	}
+	
+	//Called from rubricForm.js
+	@GetMapping(value="/getHokeLevelUpsByTeacher")
+	@ResponseBody
+	public List<RubricLevelUp> getHokeLevelUpsByTeacher(@RequestParam String teacherId) {
+		return rubricDao.getHokeLevelUpsByTeacher(teacherId);
+		//return teacherDao.getInteractionTeacherListBySchool(teacherId);
+	}
 
 }

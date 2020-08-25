@@ -182,6 +182,71 @@ $(document).ready(
 				},
 			});
 			
+			$("#hokepreviewbutton").on("click", function(event) {
+				var teacherId = $("#teacherId :selected").val();
+				$.ajax({
+					type : "GET",
+					url : "getHokeLevelUpsByTeacher",
+					data : {teacherId : teacherId},
+					dataType : "json",
+					success : function(response) {
+						//var popup = window.open("");
+						var popup = document.getElementById("myPopup");
+						var popupbutton = document.getElementById("hokepreviewbutton");
+						var levelupListHtml = "<ul>";
+						
+						if (response.length>0) {
+						$.each(response, function(key, value) {
+							levelupListHtml=levelupListHtml.concat('<li>' +value.levelup+ '</li>');
+						});
+						}else{
+							levelupListHtml=('<li>NO DATA TO DISPLAY</li>');
+						}
+						
+						//popup.document.write("<html><body><div class='popupwindow'><span class='popuptext' id='mypopup'"+ levelupListHtml +'</ul></span></div></body></html>');
+						$("#myPopup").html(levelupListHtml);
+						
+						  popup.classList.toggle("show");
+						  
+						  if (popupbutton.value=="Show Existing Next Step Items") popupbutton.value = "Close Existing Next Step Items";
+						    else popupbutton.value = "Show Existing Next Step Items";
+						
+						}});
+					});
+			/*
+			$("#hokepreviewbutton").on("click", function(event) {
+				$.ajax({
+					type : "GET",
+					url : "getHokeLevelUpsByTeacher",
+					data : {teacherId : teacherId},
+					dataType : "json",
+					success : function(response) {
+						//var popup = window.open("");
+						var popup = document.getElementById("myPopup");
+						var popupbutton = document.getElementById("hokepreviewbutton");
+						var levelupListHtml = "<ul>";
+						
+						if (response.length>0) {
+						$.each(response, function(key, value) {
+							levelupListHtml=levelupListHtml.concat('<li>' +value.levelup+ '</li>');
+						});
+						}else{
+							levelupListHtml=('<li>NO DATA TO DISPLAY</li>');
+						}
+						
+						//popup.document.write("<html><body><div class='popupwindow'><span class='popuptext' id='mypopup'"+ levelupListHtml +'</ul></span></div></body></html>');
+						$("#myPopup").html(levelupListHtml);
+						
+						  popup.classList.toggle("show");
+						  
+						  if (popupbutton.value=="Show Existing Next Step Items") popupbutton.value = "Close Existing Next Step Items";
+						    else popupbutton.value = "Show Existing Next Step Items";
+						
+						}});
+					});
+					*/
+			
+			
 		});
 
 		
