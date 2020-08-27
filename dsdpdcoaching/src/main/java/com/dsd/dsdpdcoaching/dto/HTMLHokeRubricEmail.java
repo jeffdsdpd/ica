@@ -14,7 +14,7 @@ public class HTMLHokeRubricEmail implements Serializable {
 			String tiintentionalgrouping1, String tiintentionalgrouping2, String engcollaboration, String engchoice, String engcreation, 
 			String engcriticalthinking, String engactiveparticipation, String envclassroommanagement, String envphysicalenvironment, String envtimemanagement1, 
 			String envtimemanagement2, String envdigitalcitizenship, String srarticulate, String srteacherfeedback, String ddduseofdata, 
-			String rubricnotes, String questions) {
+			String rubricnotes, String questions, String hokeRubricLevelUps, String[] levelUpValuesToEmail) {
 		
 		htmlString = "<!DOCTYPE html> \r\n" + 
 				"<html> \r\n" +
@@ -257,16 +257,28 @@ public class HTMLHokeRubricEmail implements Serializable {
 				"			</tr> \r\n" +
 				
 				"			<tr> \r\n" +
+				"		    	<th style=\"text-align:center; color: #00b100; font-weight: bold;\">TASK ITEMS:</th> \r\n" +
+				"			</tr> \r\n" +
+				"			<tr> \r\n" +
+				"		    	<td style=\"text-align:center; font-weight:normal;\"> \r\n" + hokeRubricLevelUps + "</td>" +
+				"			</tr> \r\n" +
+				
+				"			<tr> \r\n" +
+				"		    	<td> &nbsp; </td> \r\n" +
+				"			</tr> \r\n" +
+
+
+				"			<tr> \r\n" +
 				"		    	<th style=\"text-align:center; color: #00b100; font-weight: bold;\">LEVEL UP DATA:</th> \r\n" +
 				"			</tr> \r\n" +
 				"			<tr> \r\n" +
-				"		    	<td style=\"text-align:center; font-weight:normal;\"> \r\n" + "levelUpItemsToEmail.get(0)" + "</td>" +
+				"		    	<td style=\"text-align:center; font-weight:normal;\"> \r\n" + levelUpValuesToEmail[0]+ "</td>" +
 				"			</tr> \r\n" +
 				"			<tr> \r\n" +
-				"		    	<td style=\"text-align:center; font-weight:normal;\"> \r\n" + "levelUpItemsToEmail.get(1)" + "</td>" +
+				"		    	<td style=\"text-align:center; font-weight:normal;\"> \r\n" + levelUpValuesToEmail[1] + "</td>" +
 				"			</tr> \r\n" +
 				"			<tr> \r\n" +
-				"		    	<td style=\"text-align:center; font-weight:normal;\"> \r\n" + "levelUpItemsToEmail.get(2)"+ "</td>" +
+				"		    	<td style=\"text-align:center; font-weight:normal;\"> \r\n" + levelUpValuesToEmail[2] + "</td>" +
 				"			</tr> \r\n" +
 				
 				"			<tr> \r\n" +

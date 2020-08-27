@@ -1,4 +1,5 @@
 	$(document).ready(function() {
+		var levelUpValuesToEmail = [];
 		
 		var coll = document.getElementsByClassName("hokeexpandable");
 		var i;
@@ -15,14 +16,14 @@
 		  });
 		}
 		
-		//document.getElementById("classPhoto").src = "";
 	 	$('#rubricnotes').addClass('input-disabled');
 	 	$('#levelup').addClass('input-disabled');
 	 	$('#questions').addClass('input-disabled');
 		
 		var selectedSchoolId = null;
 
-		 $("#emailbutton").click(function() {
+		 $("#emailbutton").click(function(e) {
+			 e.preventDefault();
 				var selectedSchoolId = $("#schoolName :selected").text();
 				var selectedTeacherId = $("#teacherName :selected").text();
 				var teacherEmail = null;
@@ -182,11 +183,14 @@
 					var ddduseofdata = $("input[name='ddduseofdataM']:checked").parent().text();
 				}
 				
-				
-				
 				var rubricnotes = $("#rubricnotes").val();
-				var levelup = document.getElementById("levelupcheckboxes").innerText;
+				var levelup = document.getElementById("hokelevelupcheckboxes").outerHTML;
 				var questions = document.getElementById("questions").value;
+				
+				
+				//GET THE LEVEL UP SELECTIONS FOR THE EMAIL
+				//var idccontentalignment1NYLevelUpData = $('#idccontentalignment1NYLevelUpData').attr("data-content");
+				//var idccontentalignment2NYLevelUpData = $('#idccontentalignment2NYLevelUpData').attr("data-content");
 				
 			
 		            $.ajax({
@@ -200,11 +204,8 @@
 		                envclassroommanagement:envclassroommanagement, envphysicalenvironment:envphysicalenvironment, envtimemanagement1:envtimemanagement1, envtimemanagement2:envtimemanagement2, envdigitalcitizenship:envdigitalcitizenship,
 		                srarticulate:srarticulate, srteacherfeedback:srteacherfeedback, ddduseofdata:ddduseofdata,
 		                	
-		                	rubricnotes:rubricnotes,levelup:levelup, questions:questions
+		                	rubricnotes:rubricnotes,levelup:levelup, questions:questions, levelUpValuesToEmail:levelUpValuesToEmail
 		                
-		                	//planningLevelData:planningLevelData, assessLevelData:assessLevelData, pathLevelData:pathLevelData, placeLevelData:placeLevelData,
-		                	//paceLevelData:paceLevelData, classmgmtLevelData:classmgmtLevelData, teachroleLevelData:teachroleLevelData, stengageLevelData:stengageLevelData,
-		                	//stcollabLevelData:stcollabLevelData, technologyLevelData:technologyLevelData
 		             },
 		             	async: false,
 		                success: function(data) {
@@ -218,6 +219,7 @@
  
 		$("#schoolName").change(function(){
 				uncheckAll();
+				levelUpValuesToEmail = [];
 				$("#levelupcheckboxes").html("");
 				document.getElementById("emailreport").style.display = "none";
 				document.getElementById("teachercheckbox").style.display = "none";
@@ -261,6 +263,7 @@
 		
 		$("#teacherName").change(function(){
 			uncheckAll();
+			levelUpValuesToEmail = [];
 			$("#levelupcheckboxes").html("");
 			document.getElementById("nodatatodisplay").style.display = "none";
 			var selectedSchoolId = $("#schoolName :selected").val();
@@ -330,7 +333,8 @@
 		
 		$("#date").change(function() {
 			uncheckAll();
-			$("#levelupcheckboxes").html("");
+			levelUpValuesToEmail = [];
+			$("#hokelevelupcheckboxes").html("");
 			
 			
 			if ( $("#teacherlabel").text() != "" ) {
@@ -387,29 +391,43 @@
 	                			 $(".timeTaken").html(format12Hour(response.timeObserved));
 	                			 }
 	                		 
-	                		 $("#levelupcheckboxes").append( $("<label>").attr('id', 'levelupheader').text("Next Steps"));
-	                		 $("#levelupcheckboxes").append( $("<br />"));
-	                		 $("#levelupcheckboxes").append( $("<br />"));
+	                		 
+	                		 $("#hokelevelupcheckboxes").append( $("<label>").attr('id', 'levelupheader').text("Next Steps"));
+	                		 $("#hokelevelupcheckboxes").append( $("<br />"));
+	                		 $("#hokelevelupcheckboxes").append( $('<label style="font-size:11px; font-weight:bold; text-decoration:underline;">').attr('id', 'levelupheaderdate').text("Date Completed"));
+	                		 $("#hokelevelupcheckboxes").append( $("<br />"));
+	                		 
+	                		 $("#hokelevelupcheckboxes").append( $("<div id='taskcontainer'>"))
 	                				 
 	                		 //loop through the levelup list and build the html
 	                		 for (i = 0; i < response.levelupList.length; i++) {
 	                		 		if (response.levelupList[i].completed == 'true') {
-	                		 			$("#levelupcheckboxes").append( $("<input>")
+	                		 			//add the date the task was completed
+	                		 			var date = new Date(response.levelupList[i].datecompleted);
+	                		 			$("#taskcontainer").append( $('<div id=itemrow'+i+'>'))
+	                		 			$('#itemrow'+i).append( $('<label style="margin-right:10px; font-size:16px;">').text(date.toLocaleDateString()+' '));
+	                		 			$('#itemrow'+i).append( $("<input>")
 	                   	   						.attr('type', 'checkbox')
 	                   	   						.attr('id', 'checkbox')
 	                   	   						.attr('name','checkbox')
 	                   	   						.attr('checked','checked')
 	                   	   						.val(response.id + ' ' + response.levelupList[i].levelupid));
+	                		 			$('#itemrow'+i).append( $("<label>").text(response.levelupList[i].levelup));
+	                		 			$('#itemrow'+i).append("<br/>");
 	                		 	} else {
-	                		 		$("#levelupcheckboxes").append( $("<input>")
+	                		 		$("#taskcontainer").append( $('<div id=itemrow'+i+'>'))
+	                		 		$('#itemrow'+i).append( $('<label style="margin-right:10px; font-size:10px;">').text('Not Completed '));
+	                		 		$('#itemrow'+i).append( $("<input>")
 	               	   						.attr('type', 'checkbox')
 	               	   						.attr('id', 'checkbox')
 	               	   						.attr('name','checkbox')
 	               	   						.val(response.id + ' ' + response.levelupList[i].levelupid) );
+	                		 		$('#itemrow'+i).append( $("<label>").text(response.levelupList[i].levelup));
+	                		 		$('#itemrow'+i).append("<br/>");
 	                		 		}
-	                		 		$("#levelupcheckboxes").append( $("<label>").text(response.levelupList[i].levelup));
-	        	        	   			$("#levelupcheckboxes").append("<br/>");
+	                		 		
 	                		 	};
+	                		 	
 	                			 
 	                		 	
 	                		 	//start placing check marks in the rubric categories
@@ -603,6 +621,7 @@
    	         	                	document.getElementById(value[0]+'LevelUpData').style.visibility = "visible";
    	         	                
    	         	                	$('#'+value[0]+'LevelUpData').attr("data-content", result[randomNumber] );
+   	         	                levelUpValuesToEmail.push(result[randomNumber]);
    	         	                });
    	         	                }
 	   	                		 });

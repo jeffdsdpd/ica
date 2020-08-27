@@ -1,13 +1,13 @@
 	$(document).ready(function() {
 		
-		//document.getElementById("classPhoto").src = "";
 	 	$('#rubricnotes').addClass('input-disabled');
 	 	$('#levelup').addClass('input-disabled');
 	 	$('#questions').addClass('input-disabled');
 		
 		var selectedSchoolId = null;
 
-		 $("button").click(function() {
+		 $("button").click(function(e) {
+			 e.preventDefault();
 				var selectedSchoolId = $("#schoolName :selected").text();
 				var selectedTeacherId = $("#teacherName :selected").text();
 				var teacherEmail = null;

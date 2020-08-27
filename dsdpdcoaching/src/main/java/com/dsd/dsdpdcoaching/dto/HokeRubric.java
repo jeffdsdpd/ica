@@ -142,7 +142,7 @@ public class HokeRubric implements Serializable {
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name="HOKE_RUBRIC_LEVELUP", joinColumns=@JoinColumn(name = "rubricid", referencedColumnName = "id"))
 	@Column(name="levelup")
-    private List<RubricLevelUp> levelupList;
+    private List<HokeRubricLevelUp> levelupList;
 	
 	@Column(name="questions")
 	private String questions;
@@ -396,11 +396,11 @@ public class HokeRubric implements Serializable {
 		this.rubricScore = rubricScore;
 	}
 
-	public List<RubricLevelUp> getLevelupList() {
+	public List<HokeRubricLevelUp> getLevelupList() {
 		return levelupList;
 	}
 
-	public void setLevelupList(List<RubricLevelUp> levelupList) {
+	public void setLevelupList(List<HokeRubricLevelUp> levelupList) {
 		this.levelupList = levelupList;
 	}
 

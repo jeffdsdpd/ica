@@ -99,7 +99,7 @@ public class EmailService {
 		}
 		
 		final String username = "dsdpdemail";
-		final String password = "GgsjDF3984i()";
+		final String password = "8?Wm6f$-dP<#3,BU3^Df@#";
 		
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -182,7 +182,7 @@ public class EmailService {
 		} else phase = "3";
 		
 		final String username = "dsdpdemail";
-		final String password = "GgsjDF3984i()";
+		final String password = "8?Wm6f$-dP<#3,BU3^Df@#";
 		
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -239,8 +239,7 @@ public class EmailService {
 		String tools = request.getParameter("tools");
 		
 		final String username = "dsdpdemail";
-		final String password = "GgsjDF3984i()";
-		//final String password = "Flight00!";
+		final String password = "8?Wm6f$-dP<#3,BU3^Df@#";
 		
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -303,20 +302,20 @@ public class EmailService {
 		String userid = teacherInteractionForDailyReport.getUserid();
 		int rubricScore = teacherInteractionForDailyReport.getRubricscore();
 		
-				final String username = "dsdpdemail";
-				final String password = "GgsjDF3984i()";
+		final String username = "dsdpdemail";
+		final String password = "8?Wm6f$-dP<#3,BU3^Df@#";
 				
-				Properties props = new Properties();
-				props.put("mail.smtp.auth", "true");
-				props.put("mail.smtp.starttls.enable", "true");
-				props.put("mail.smtp.host", "mail.smtp2go.com");
-				props.put("mail.smtp.port", "587"); // 2525, 8025 and 25 can also be used.
-				
-				Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication(username, password);
-					}
-				  });
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "mail.smtp2go.com");
+		props.put("mail.smtp.port", "587"); // 2525, 8025 and 25 can also be used.
+		
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		  });
 		
 		try { 
 			Message message = new MimeMessage(session);
@@ -380,15 +379,11 @@ public class EmailService {
 		
 		String rubricnotes = request.getParameter("rubricnotes");
 		String questions = request.getParameter("questions");
+		String hrlu = request.getParameter("levelup");
+		String hokeRubricLevelUps = hrlu.replace("Date Completed","");
 		
-		//Enumeration<String> params = request.getParameterNames();
-		
-
-		//Check which three of the levelup suggestions we need to email out
-//		if (!checkIfNull(request.getParameter("planningLevelData"))) {
-//			levelUpItemsToEmail.add(request.getParameter("planningLevelData"));
-//		}
-		
+		String levelUpValuesToEmail[] = request.getParameterValues("levelUpValuesToEmail[]");
+	
 		final String username = "dsdpdemail";
 		final String password = "8?Wm6f$-dP<#3,BU3^Df@#";
 		
@@ -421,7 +416,7 @@ public class EmailService {
 			htmlmessage.setContent(emailString.getHokeHtmlString(teacherId, schoolId, date, idccontentalignment1, idccontentalignment2, tistandardalignment1, tistandardalignment2,  tismallgroup1,
 												tismallgroup2, tismallgroup3, tiintentionalgrouping1, tiintentionalgrouping2, engcollaboration, engchoice, engcreation, engcriticalthinking, 
 												engactiveparticipation, envclassroommanagement, envphysicalenvironment, envtimemanagement1, envtimemanagement2, envdigitalcitizenship, srarticulate, 
-												srteacherfeedback, ddduseofdata, rubricnotes, questions), "text/html");	
+												srteacherfeedback, ddduseofdata, rubricnotes, questions, hokeRubricLevelUps, levelUpValuesToEmail), "text/html");	
 			
 			mp.addBodyPart(textmessage);
 			mp.addBodyPart(htmlmessage);
