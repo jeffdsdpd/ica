@@ -179,7 +179,7 @@ $(document).ready(
 		});//end of document ready function
 
 $(function() {
-    $("#entryDate").datepicker();
+    $("#entryDate").datepicker({maxDate: new Date});
   });
 
 $(function() {

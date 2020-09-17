@@ -54,10 +54,10 @@
 									<form id="frm" name="frm" action="#" th:action="@{/coachingForm}" th:object="${coachingData}"
 										method="post" enctype="multipart/form-data">
 										<div class="row">
-											<div class="col-md-5">
-												<div class="form-group">
-													<label>School</label> <select id="schoolId"
-														class="form-control" th:field="*{schoolId}">
+											 <div class="col-md-3" style="margin-right:25px;">
+		                                            <div class="form-group">
+		                                                <label>School</label>
+														<select id="schoolId" class="form-control" th:field="*{schoolId}">
 														<option value="">Please Select</option>
 														<option th:each="school: ${schoolList}"
 															th:value="${school.id}" th:text="${school.name}"></option>
@@ -65,10 +65,10 @@
 												</div>
 											</div>
 
-											<div class="col-md-5">
+											<div class="col-md-2" style="margin-right:20px;">
 												<div class="form-group">
 													<label>Teacher</label> <br></br>
-													<select style="display: none;" th:field="*{teacherIds}">
+													<select style="display: none;" multiple="multiple" th:field="*{teacherIds}">
 														<option value=""> Please Select </option>
 														<option th:each="teacher : ${teachers}"
 															th:value="${teacher.teacherIds}"
@@ -78,9 +78,9 @@
 											</div>
 										</div>
 
-										<div class="row">
-											<div class="col-md-3">
-												<div class="form-group">
+									  <div class="row">
+	                                        <div class="col-md-2">
+	                                            <div class="form-group">
 													<label>Date</label> 
 													<input type="text" id="entryDate"
 														class="form-control" placeholder="Date" th:field="*{entryDate}" />

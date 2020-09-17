@@ -295,7 +295,7 @@ $(document).ready(
 		});
 
 $(function() {
-    $("#entryDate").datepicker();
+	$("#entryDate").datepicker({maxDate: new Date});
   });
 
 $(function() {

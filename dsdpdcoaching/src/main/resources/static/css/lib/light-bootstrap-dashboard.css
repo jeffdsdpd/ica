@@ -299,7 +299,7 @@ input:focus {
   line-height: 13px;
   font-size: 13px;
   font-weight: 600;
-  font-family: lato;
+  font-family: "Open Sans", sans-serif;
   text-transform: uppercase;
 }
 .sidebar .nav i {

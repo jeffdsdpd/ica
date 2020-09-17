@@ -1,11 +1,11 @@
 $(document).ready(
 		function() {
-
+			
 			$("#schoolId").change(
 					function() {
 						var str = $("#schoolId :selected").val();
 						$("#teacherIds").multiselect('destroy');
-
+						
 						$.ajax({
 							type : "GET",
 							url : "getTeachersBySchool",
@@ -62,7 +62,7 @@ $(document).ready(
 		});
 
 $(function() {
-	$("#entryDate").datepicker();
+	$("#entryDate").datepicker({maxDate: new Date});
 });
 
 $(function() {
