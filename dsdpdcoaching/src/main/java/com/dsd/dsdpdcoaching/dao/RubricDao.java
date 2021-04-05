@@ -24,7 +24,7 @@ import com.dsd.dsdpdcoaching.dto.TeacherProgressionReportData;
 
 @Repository
 @Transactional
-public class RubricDao {
+public class RubricDao { 
 	
 	@PersistenceContext
 	private EntityManager entityManager;
