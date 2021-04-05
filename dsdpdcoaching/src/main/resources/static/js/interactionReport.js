@@ -74,7 +74,7 @@ $(document).ready(function(){
             type: "GET",
             url:"getInteractionDataByTypeAndId",
             data:{interaction: interaction, id: id},
-            dataType: "text",
+            dataType: "text", 
             success: function (response) {
 
 	            	if ( !response.length == 0 ) {
