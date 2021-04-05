@@ -42,4 +42,5 @@ public class CoachingDataDao {
 	public void saveCoachingData(CoachingData coachingData) {
 		entityManager.persist(coachingData);		
 	}
+
 }

@@ -45,4 +45,11 @@ public class RubricLevelUp implements Serializable {
 	public void setCompleted(String completed) {
 		this.completed = completed;
 	}
+
+	@Override
+	public String toString() {
+		return "RubricLevelUp [levelup=" + levelup + ", completed=" + completed + "]";
+	}
+	
+	
 }

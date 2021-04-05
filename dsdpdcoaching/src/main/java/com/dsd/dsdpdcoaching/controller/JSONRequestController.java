@@ -1,5 +1,8 @@
 package com.dsd.dsdpdcoaching.controller;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +33,10 @@ import com.dsd.dsdpdcoaching.dto.Teacher;
 import com.dsd.dsdpdcoaching.dto.TeacherInteraction;
 import com.dsd.dsdpdcoaching.dto.TeacherProgressionReportData;
 import com.dsd.dsdpdcoaching.dto.User;
+import com.dsd.dsdpdcoaching.service.ClassroomQuickstart;
 import com.dsd.dsdpdcoaching.service.EmailService;
+import com.google.api.services.classroom.model.Course;
+import com.google.api.services.classroom.model.CourseWork;
 
 @RestController
 public class JSONRequestController extends HttpServlet { 
@@ -51,6 +57,8 @@ public class JSONRequestController extends HttpServlet {
 	private EmailService emailService;
 	@Autowired
 	private ActionPlanDao actionPlanDao;
+	@Autowired
+	private ClassroomQuickstart classroomQuickstart;
 
 	//Called from coachingForm.js, coachingReport.js,rubricForm.js, and rubricReport.js
 	@GetMapping(value="/getTeachersBySchool")
@@ -225,6 +233,24 @@ public class JSONRequestController extends HttpServlet {
 		return teacherDao.getInteractionTeacherListBySchool(schoolId);
 	}
 	
+	//Called from interactionReport.js
+	@GetMapping(value="/getInteractionDataByTypeAndId")
+	@ResponseBody
+	public String getInteractionDataByTypeAndId(@RequestParam String interaction, @RequestParam String id) {
+		String result = null;
+		if (interaction.equalsIgnoreCase("Rubric")) {
+			Rubric rubric = rubricDao.getRubricById(Integer.parseInt(id));
+			result = "Rubric Notes: " + rubric.getRubricNotes() + "Rubric Questions: " + rubric.getQuestions()  + "LevelUp List: " + rubric.getLevelupList().toString();
+		} else {
+			coachingDataDao.getCoachingDataById(Integer.parseInt(id));
+		}
+		return result;
+	}
+	
+	
+	
+	
+	
 	//Called from rubricForm.js
 	@GetMapping(value="/getLevelUpsByTeacher")
 	@ResponseBody
@@ -240,5 +266,45 @@ public class JSONRequestController extends HttpServlet {
 		return rubricDao.getHokeLevelUpsByTeacher(teacherId);
 		//return teacherDao.getInteractionTeacherListBySchool(teacherId);
 	}
+	
+	//Called from classroomChecklist.js
+	@GetMapping(value="/getTeacherChecklist")
+	@ResponseBody
+	public List<Course> getTeacherChecklist(@RequestParam Integer schoolId, @RequestParam Integer teacherId) {
+		
+		List<Course> coursesList = new ArrayList<Course>();
+		
+		try {
+			coursesList =  classroomQuickstart.getCourses(schoolId, teacherId);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (GeneralSecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return coursesList;
+	}
+	
+	//Called from classroomChecklist.js
+	@GetMapping(value="/getCoursework")
+	@ResponseBody
+	public List<CourseWork> getCourseWork(@RequestParam String courseId, @RequestParam Integer teacherId) {
+
+		List<CourseWork> courseWorkList = new ArrayList<CourseWork>();
+		
+		try {
+			return classroomQuickstart.getCourseWork(courseId, teacherId);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (GeneralSecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return courseWorkList;
+
+	}
+	
 
 }
