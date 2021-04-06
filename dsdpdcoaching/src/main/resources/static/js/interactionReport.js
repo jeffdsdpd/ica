@@ -78,26 +78,55 @@ $(document).ready(function(){
             success: function (response) {
 
 	            	if ( !response.length == 0 ) {
-	            		var rubricNotes = response.substring(response.indexOf(':') + 1, response.lastIndexOf("Rubric Questions:"));
-	            		var rubricQuestions = response.substring(response.lastIndexOf("Rubric Questions:") + 17, response.lastIndexOf("LevelUp List:"));
-	            		var rubricLevelUp = response.substring(response.lastIndexOf("LevelUp List:") + 13);
-	            		var modalnotes3text = rubricLevelUp.toString().replace(/\], RubricLevelUp \[levelup=/g, "<br />");
-	            		modalnotes3text = modalnotes3text.replace(/\[RubricLevelUp \[levelup=/g, "");
-	            		modalnotes3text = modalnotes3text.replace(/\]]/g, "");
-	            	
-	        			var $timodal = $('.timodal').modal({
-	        			    show: false 
-	        			});
-	        			$timodal.modal('show');
-	        			$('.modalnotes1').html("<b>Rubric Notes:</b>");
-	        			$('.modalnotes1text').html(rubricNotes);
-	        			
-	        			$('.modalnotes2').html("<b>Rubric Questions:</b>");
-	        			$('.modalnotes2text').html(rubricQuestions);
-	        			
-	        			$('.modalnotes3').html("<b>LevelUp List:</b>");
-	        			$('.modalnotes3text').html(modalnotes3text);
-	        			
+	            		
+	            		//reset the fields before populating
+	        			$('.modalnotes1text').html("");
+	        			$('.modalnotes2text').html("");
+	        			$('.modalnotes3text').html("");
+	        			$('.modalnotes4').html("");
+	        			$('.modalnotes4text').html("");
+	            		
+	            		//check if we are displaying Rubric Notes or Coaching Notes
+	            		if (response.substring(0,6) == "Rubric") {
+		            		var rubricNotes = response.substring(response.indexOf(':') + 1, response.lastIndexOf("Rubric Questions:"));
+		            		var rubricQuestions = response.substring(response.lastIndexOf("Rubric Questions:") + 17, response.lastIndexOf("LevelUp List:"));
+		            		var rubricLevelUp = response.substring(response.lastIndexOf("LevelUp List:") + 13);
+		            		var modalnotes3text = rubricLevelUp.toString().replace(/\], RubricLevelUp \[levelup=/g, "<br />");
+		            		modalnotes3text = modalnotes3text.replace(/\[RubricLevelUp \[levelup=/g, "");
+		            		modalnotes3text = modalnotes3text.replace(/\]]/g, "");
+		            	
+		        			//var $timodal = $('.timodal').modal({
+		        			//    show: false 
+		        			//});
+		        			
+		            		$('.timodal').modal('show');
+		        			$('.modalnotes1').html("<b>Rubric Notes:</b>");
+		        			$('.modalnotes1text').html(rubricNotes);
+		        			
+		        			$('.modalnotes2').html("<b>Rubric Questions:</b>");
+		        			$('.modalnotes2text').html(rubricQuestions);
+		        			
+		        			$('.modalnotes3').html("<b>LevelUp List:</b>");
+		        			$('.modalnotes3text').html(modalnotes3text);
+	            		} else {
+	            			var coachingNotes = response.substring(response.indexOf(':') + 1, response.lastIndexOf("Coaching Strategies:"));
+		            		var coachingStrategies = response.substring(response.lastIndexOf("Coaching Strategies:") + 20, response.lastIndexOf("Coaching Next Steps:"));
+		            		var coachingNextSteps = response.substring(response.lastIndexOf("Coaching Next Steps:") + 20, response.lastIndexOf("Coaching Tools:"));
+		            		var coachingTools = response.substring(response.lastIndexOf("Coaching Tools:") + 15);
+		            		
+		            		$('.timodal').modal('show');
+		        			$('.modalnotes1').html("<b>Coaching Notes:</b>");
+		        			$('.modalnotes1text').html(coachingNotes);
+		        			
+		        			$('.modalnotes2').html("<b>Coaching Strategies:</b>");
+		        			$('.modalnotes2text').html(coachingStrategies);
+		        			
+		        			$('.modalnotes3').html("<b>Coaching Next Steps:</b>");
+		        			$('.modalnotes3text').html(coachingNextSteps);
+		        			
+		        			$('.modalnotes4').html("<b>Coaching Tools:</b>");
+		        			$('.modalnotes4text').html(coachingTools);
+	            		}
 	        			
 	        			
 	            	}

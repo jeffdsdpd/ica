@@ -242,7 +242,9 @@ public class JSONRequestController extends HttpServlet {
 			Rubric rubric = rubricDao.getRubricById(Integer.parseInt(id));
 			result = "Rubric Notes: " + rubric.getRubricNotes() + "Rubric Questions: " + rubric.getQuestions()  + "LevelUp List: " + rubric.getLevelupList().toString();
 		} else {
-			coachingDataDao.getCoachingDataById(Integer.parseInt(id));
+			CoachingData coachingData = coachingDataDao.getCoachingDataById(Integer.parseInt(id));
+			result = "Coaching Notes: " + coachingData.getNotes() + "Coaching Strategies: " + coachingData.getStrategies()  + 
+					"Coaching Next Steps: " + coachingData.getGoals() + "Coaching Tools: " + coachingData.getTools();
 		}
 		return result;
 	}
