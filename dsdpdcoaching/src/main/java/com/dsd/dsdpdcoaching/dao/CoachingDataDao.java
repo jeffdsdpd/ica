@@ -27,7 +27,7 @@ public class CoachingDataDao {
 	@SuppressWarnings("unchecked")
 	public List<Map<Integer, Date>> getCoachingDatesBySchoolAndTeacher(Integer schoolId, Integer teacherId) {
 	    return (List<Map<Integer, Date>>)entityManager
-	    		.createQuery("select new map(ci.id as id, ci.entryDate as entryDate) from COACHING_INTERACTIONS ci where schoolid = :schoolid and teacherid = :teacherid order by entryDate desc")
+	    		.createQuery("select new map(ci.id as id, ci.entryDate as entryDate, ci.userId as userId) from COACHING_INTERACTIONS ci where schoolid = :schoolid and teacherid = :teacherid order by entryDate desc")
     			.setParameter("schoolid", schoolId)
     			.setParameter("teacherid", teacherId)
     			.getResultList();

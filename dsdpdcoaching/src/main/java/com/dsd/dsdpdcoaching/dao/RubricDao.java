@@ -292,7 +292,7 @@ public class RubricDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Rubric> getRubricDatesAndId(Integer schoolId, Integer teacherId) {
+	public List<Rubric> getRubricDatesIDUserid(Integer schoolId, Integer teacherId) {
 		return entityManager.createQuery(
 				"from RUBRIC where schoolid = :schoolId and teacherid = :teacherId ORDER BY date DESC")
 				.setParameter("schoolId", schoolId)

@@ -283,7 +283,7 @@
 				
 	            $.ajax({
 	                type: "GET",
-	                url:"getHokeRubricDatesAndId",
+	                url:"getHokeRubricDatesIdUserid",
 	                data:{schoolId: selectedSchoolId, teacherId: selectedTeacherId},
 	                dataType: "json",
 	                success: function (response) {
@@ -296,7 +296,7 @@
 		                    	$dropdownList.empty();
 		                    	$dropdownList.append($("<option></option>").attr("value", '').text('Please Select'));
 		                    	$.each(response, function(value, key) {
-		                             $dropdownList.append($("<option></option>").attr("value", key.id).text((key.date)));	                    
+		                             $dropdownList.append($("<option></option>").attr("value", key.id).text(key.date+" - "+key.userId));                    
 	                     });
 	                    }
 	                });

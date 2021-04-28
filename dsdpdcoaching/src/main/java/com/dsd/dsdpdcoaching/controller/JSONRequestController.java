@@ -89,14 +89,14 @@ public class JSONRequestController extends HttpServlet {
 	}
 	
 	//Called from rubricReport.js
-	@GetMapping(value="/getRubricDatesAndId")
+	@GetMapping(value="/getRubricDatesIDUserid")
 	@ResponseBody
-	public List<Rubric> getRubricDatesAndId(@RequestParam Integer schoolId, @RequestParam Integer teacherId) {	
-		return rubricDao.getRubricDatesAndId(schoolId, teacherId);
+	public List<Rubric> getRubricDatesIDUserid(@RequestParam Integer schoolId, @RequestParam Integer teacherId) {	
+		return rubricDao.getRubricDatesIDUserid(schoolId, teacherId);
 	}
 	
 	//Called from hokeRubricReport.js
-	@GetMapping(value="/getHokeRubricDatesAndId")
+	@GetMapping(value="/getHokeRubricDatesIdUserid")
 	@ResponseBody
 	public List<Rubric> getHokeRubricDatesAndId(@RequestParam Integer schoolId, @RequestParam Integer teacherId) {	
 		return rubricDao.getHokeRubricDatesAndId(schoolId, teacherId);

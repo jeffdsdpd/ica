@@ -1,6 +1,7 @@
 $(document)
 		.ready(
 				function() {
+					
 					var school = 0;
 					var selectedSchoolId = 0;
 					var rubricDate = "";
@@ -547,6 +548,15 @@ $(document)
 					        return false;
 					    }
 					});
+					
+					//Check if this is a Hoke User and display the hoke nav
+					$("#schoolId option").each(function() {
+						if ($(this).text().indexOf("Hoke") != -1) {
+							console.log("hoke schools-"+$(this).text());
+							$('.hokemenu').css('display', 'inline');
+						} else {
+						console.log("non hoke schools-"+$(this).text());
+						}});
 
 				}); // end of the Ready Function
 

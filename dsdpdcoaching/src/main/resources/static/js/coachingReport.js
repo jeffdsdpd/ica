@@ -115,7 +115,7 @@ $(document).ready(function(){
                    	$dropdownList.empty();
                    	$dropdownList.append($("<option></option>").attr("value", '').text('Please Select'));
                    	$.each(response, function(value, key) {
-                            $dropdownList.append($("<option></option>").attr("value", key.id).text((key.entryDate)));	                    
+                            $dropdownList.append($("<option></option>").attr("value", key.id).text(key.entryDate+" - "+key.userId));	                    
                 });
                }
             });
