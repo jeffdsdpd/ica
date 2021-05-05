@@ -538,27 +538,14 @@ $(document)
 					}); // end of $("#schoolId").change(function()
 					
 					
-					//Check if the user is associated to Hoke County - Display their RUBRIC nav
-					var userIsHokeCounty = false;
-					$('#schoolId option').each(function(){
-
-					    if (this.text == 'Hoke County') {
-					    		userIsHokeCounty = true;
-					    		$("li.hoke").show();
-					        return false;
-					    }
-					});
-					
 					//Check if this is a Hoke User and display the hoke nav
 					$("#schoolId option").each(function() {
 						if ($(this).text().indexOf("Hoke") != -1) {
-							console.log("hoke schools-"+$(this).text());
 							$('.hokemenu').css('display', 'inline');
-						} else {
-						console.log("non hoke schools-"+$(this).text());
 						}});
 
 				}); // end of the Ready Function
+
 
 // start of building the google pie chart
 google.charts.load("current", {
