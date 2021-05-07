@@ -24,12 +24,12 @@ $(document).ready(function() {
 	
 	
 	//SCHOOL field has changed
-	$("#schoolName").change(function() {
+	$("#schoolId").change(function() {
 		clearRubricValues();
 		$("#container").fadeOut("slow");
 		$("#nodatacontainer").fadeOut("slow");
 		
-		var selectedSchoolId =  $("#schoolName :selected").val();
+		var selectedSchoolId =  $("#schoolId :selected").val();
 		
 		$.ajax({
             type: "GET",
@@ -45,11 +45,11 @@ $(document).ready(function() {
                  });
                 }
             });
-	}); //end of the 'schoolName' change function
+	}); //end of the 'schoolId' change function
 	
 	$("#teacherName").change(function(){
 		$(".result").html("");
-		var selectedSchoolId = $("#schoolName :selected").val();
+		var selectedSchoolId = $("#schoolId :selected").val();
 		var selectedTeacherId = $("#teacherName :selected").val();
 		clearRubricValues();
 		

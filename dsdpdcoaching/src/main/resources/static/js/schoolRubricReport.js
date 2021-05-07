@@ -3,12 +3,12 @@ $(document).ready(function() {
 	var selectedDate = null;
 
 	//SCHOOL field has changed
-	$("#schoolName").change(function() {
+	$("#schoolId").change(function() {
 		clearRubricFields();
 		$("#container").fadeOut("slow");
 		$("#date").empty();
 		
-		selectedSchoolId =  $("#schoolName :selected").val();
+		selectedSchoolId =  $("#schoolId :selected").val();
 		$.ajax({
             type: "GET",
             url:"getRubricDatesBySchool",
@@ -24,13 +24,13 @@ $(document).ready(function() {
                  });		
                 } //end of the 'success' function
             }); //end of the ajax function
-	}); //end of the 'schoolName' change function
+	}); //end of the 'schoolId' change function
 	
 	//DATE field has changed
 	$("#date").change(function(){
 		clearRubricFields();
 		$("#container").fadeOut("slow");
-		selectedSchoolId =  $("#schoolName :selected").val();
+		selectedSchoolId =  $("#schoolId :selected").val();
 		selectedDate =   $("#date :selected").val();	
 		$("#container").fadeIn("slow");
 				

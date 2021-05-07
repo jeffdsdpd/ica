@@ -8,7 +8,7 @@
 
 		 $("button").click(function(e) {
 			 e.preventDefault();
-				var selectedSchoolId = $("#schoolName :selected").text();
+				var selectedSchoolId = $("#schoolId :selected").text();
 				var selectedTeacherId = $("#teacherName :selected").text();
 				var teacherEmail = null;
 				var adminEmail = null;
@@ -66,7 +66,7 @@
 
 		$('[data-toggle="popover"]').popover();
  
-		$("#schoolName").change(function(){
+		$("#schoolId").change(function(){
 				rubricTotal = 0;
 				$("#levelupcheckboxes").html("");
 				document.getElementById("emailreport").style.display = "none";
@@ -134,7 +134,7 @@
 				
 				$(".container").fadeOut("slow");
 				
-			selectedSchoolId =  $("#schoolName :selected").val();
+			selectedSchoolId =  $("#schoolId :selected").val();
 	            $.ajax({
                     type: "GET",
                     url:"getTeachersBySchool",
@@ -155,7 +155,7 @@
 			$("#levelupcheckboxes").html("");
 			document.getElementById('chart_div').style.display = "none";
 			document.getElementById("nodatatodisplay").style.display = "none";
-			var selectedSchoolId = $("#schoolName :selected").val();
+			var selectedSchoolId = $("#schoolId :selected").val();
 			var selectedTeacherId = $("#teacherName :selected").val();
 			
 			$("#levelupcheckboxes").html("");

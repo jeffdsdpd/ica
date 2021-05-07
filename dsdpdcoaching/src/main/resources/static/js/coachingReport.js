@@ -8,7 +8,7 @@ $(document).ready(function(){
 	
 	//executed when the email button is clicked
 	$("button").click(function() {
-		var selectedSchoolId = $("#schoolName :selected").text();
+		var selectedSchoolId = $("#schoolId :selected").text();
 		var selectedTeacherId = $("#teacherName :selected").text();
 		var teacherEmail = null;
 		var adminEmail = null;
@@ -41,8 +41,8 @@ $(document).ready(function(){
 	
 		
 	//start of changing school function
-	 	$("#schoolName").change(function(){
-		var selectedSchoolId =  $("#schoolName :selected").val();
+	 	$("#schoolId").change(function(){
+		var selectedSchoolId =  $("#schoolId :selected").val();
 		//document.getElementById("classPhoto").src = "";
 		
 		document.getElementById("emailreport").style.display = "none";
@@ -84,7 +84,7 @@ $(document).ready(function(){
     });
 		
 	$("#teacherName").change(function(){
-		var selectedSchoolId = $("#schoolName :selected").val();
+		var selectedSchoolId = $("#schoolId :selected").val();
 		var selectedTeacherId = $("#teacherName :selected").val();
 		$("#teacherlabel").text("");
 		$("#teachercheckbox").prop("checked", false);

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$("#schoolName").change(function(){
+	$("#schoolId").change(function(){
 		$("#checkboxes").html("");
 		document.getElementById("nodatatodisplay").style.display = "none";
 		$("#grade").prop('selectedIndex',0);
@@ -23,7 +23,7 @@ $(document).ready(function(){
 		document.getElementById("nodatatodisplay").style.display = "none";
 		$("#gradeheading h2").html("");
         $("#gradeheading h3").html("");
-		var selectedSchoolId =  $("#schoolName :selected").val();
+		var selectedSchoolId =  $("#schoolId :selected").val();
 		var selectedGrade =  $("#grade :selected").val();
 		var selectedSubject =  $("#subject :selected").val();
 		$.ajax({
