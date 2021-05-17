@@ -11,6 +11,7 @@
 
 #frm .error {
     color: red;
+    font-weight: normal;
 }
 hokeform .error {
     color: red;

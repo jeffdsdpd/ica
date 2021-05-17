@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.dsd.dsdpdcoaching.dao.RubricDao;
+import com.dsd.dsdpdcoaching.dto.HokeModelTeacherRubric;
 import com.dsd.dsdpdcoaching.dto.HokeRubric;
 import com.dsd.dsdpdcoaching.dto.HokeRubricLevelUp;
 import com.dsd.dsdpdcoaching.dto.Rubric;
 import com.dsd.dsdpdcoaching.dto.RubricLevelUp;
 import com.dsd.dsdpdcoaching.service.EmailService;
+import com.dsd.dsdpdcoaching.service.HokeRubricPhaseCalculator;
 import com.dsd.dsdpdcoaching.service.RubricTotalCalculator;
 
 @Controller
@@ -28,6 +30,8 @@ public class RubricController {
 	private RubricDao rubricDao;
 	@Autowired
 	private RubricTotalCalculator rubricTotalCalculator;
+	@Autowired
+	private HokeRubricPhaseCalculator hokeRubricPhaseCalculator;
 	@Autowired
 	private EmailService emailService;
 
@@ -41,8 +45,15 @@ public class RubricController {
 	@GetMapping("/hokeRubricForm.html")
 	public String getHokeRubricForm(Model model) {
 		model.addAttribute("hokeRubricData", new HokeRubric());
-		model.addAttribute("hokeRubricLevelUp", new HokeRubricLevelUp());
+		model.addAttribute("rubricLevelUp", new RubricLevelUp());
 		return "hokeRubricForm";
+	}
+	
+	@GetMapping("/hokeModelTeacherRubricForm.html")
+	public String getHokeModelTeacherRubricForm(Model model) {
+		model.addAttribute("hokeModelTeacherRubricData", new HokeModelTeacherRubric());
+		model.addAttribute("hokeRubricLevelUp", new HokeRubricLevelUp());
+		return "hokeModelTeacherRubricForm";
 	}
 	
 	@GetMapping("/rubricReport.html")
@@ -50,9 +61,9 @@ public class RubricController {
 		return "rubricReport";
 	}
 	
-	@GetMapping("/hokeRubricReport.html")
-	public String getHokeRubricReport(Model model) {
-		return "hokeRubricReport";
+	@GetMapping("/hokeModelTeacherRubricReport.html")
+	public String getHokeModelTeacherRubricReport(Model model) {
+		return "hokeModelTeacherRubricReport";
 	}
 	
 	@GetMapping("/teacherProgressionReport.html")
@@ -104,26 +115,51 @@ public class RubricController {
 	
 	
 	@PostMapping("/hokeRubricForm")
-	public String postHokeRubricForm(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute HokeRubric hokeRubricData, @ModelAttribute HokeRubricLevelUp hokeRubricLevelUp) {
+	public String postHokeRubricForm(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute HokeRubric hokeRubricData, @ModelAttribute RubricLevelUp rubricLevelUp) {
 
 		hokeRubricData.setUserId(request.getUserPrincipal().getName());
 		
+		Integer teacherId = hokeRubricData.getTeacherId();
+		HokeRubric hokeRubicData = ((HokeRubric) SerializationUtils.clone(hokeRubricData));
+		hokeRubicData.setTeacherId(teacherId);
+		
+		//call the class to get the rubric total value
+		int rubricPhase = hokeRubricPhaseCalculator.getHokeRubricPhase(hokeRubicData);
+				
+		hokeRubicData.setPhase(rubricPhase);
+
+		rubricDao.saveHokeRubricData(hokeRubicData);
+		
+		//check if the email checkbox was checked to email the report to the teacher
+		//if(request.getParameter("teachercheckbox")!=null) {
+		//	emailService.sendRubricEmail(hokeRubricData, request.getParameter("teachercheckbox"));
+		//}
+
+		//redirect user back to blank form so they can enter more data
+		return "redirect:/hokeRubricForm.html";
+	}
+	
+	@PostMapping("/hokeModelTeacherRubricForm")
+	public String postHokeModelTeacherRubricForm(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute HokeModelTeacherRubric hokeModelTeacherRubricData, @ModelAttribute HokeRubricLevelUp hokeRubricLevelUp) {
+
+		hokeModelTeacherRubricData.setUserId(request.getUserPrincipal().getName());
+		
 		//set the 'completed' field for all records in the levelup list to 'false'
-		for (int i = 0; i<hokeRubricData.getLevelupList().size(); i++) {
-			if (hokeRubricData.getLevelupList().get(i).getLevelup() == null || hokeRubricData.getLevelupList().get(i).getLevelup().isEmpty()) {
-				hokeRubricData.getLevelupList().remove(i);
+		for (int i = 0; i<hokeModelTeacherRubricData.getLevelupList().size(); i++) {
+			if (hokeModelTeacherRubricData.getLevelupList().get(i).getLevelup() == null || hokeModelTeacherRubricData.getLevelupList().get(i).getLevelup().isEmpty()) {
+				hokeModelTeacherRubricData.getLevelupList().remove(i);
 				i--;
 			} else {
-				hokeRubricData.getLevelupList().get(i).setCompleted("false");
+				hokeModelTeacherRubricData.getLevelupList().get(i).setCompleted("false");
 			}
 		}
 		
-		Integer teacherId = hokeRubricData.getTeacherId();
-		HokeRubric hokeData = ((HokeRubric) SerializationUtils.clone(hokeRubricData));
-		hokeData.setTeacherId(teacherId);
-		hokeData.setRubricScore(0);
+		Integer teacherId = hokeModelTeacherRubricData.getTeacherId();
+		HokeModelTeacherRubric hokeModelTeacherRubric = ((HokeModelTeacherRubric) SerializationUtils.clone(hokeModelTeacherRubricData));
+		hokeModelTeacherRubric.setTeacherId(teacherId);
+		hokeModelTeacherRubric.setRubricScore(0);
 		
-		rubricDao.saveHokeRubricData(hokeData);
+		rubricDao.saveHokeModelTeacherRubricData(hokeModelTeacherRubricData);
 		
 		//check if the email checkbox was checked to email the report to the teacher
 		//if(request.getParameter("teachercheckbox")!=null) {
@@ -131,7 +167,7 @@ public class RubricController {
 		//}
 		
 		//redirect user back to blank form so they can enter more data
-		return "redirect:/hokeRubricForm.html";
+		return "redirect:/hokeModelTeacherRubricForm.html";
 		
 	}
 	
@@ -150,8 +186,8 @@ public class RubricController {
 	
 	}
 	
-	@PostMapping("/hokeRubricReportUpdate")
-	public String postHokeRubricReportUpdate(HttpSession session, HttpServletRequest request, Model model) {
+	@PostMapping("/hokeModelTeacherRubricReportUpdate")
+	public String postHokeModelTeacherRubricReportUpdate(HttpSession session, HttpServletRequest request, Model model) {
 		
 		String checked = request.getParameter("checkedValues");
 		String[] checkedarray = checked.split(",");
@@ -161,7 +197,7 @@ public class RubricController {
 		
 		rubricDao.updateHokeRubricLevelupItems(checkedarray, uncheckedarray);
 		
-		return "redirect:/hokeRubricReport.html";
+		return "redirect:/hokeModelTeacherRubricReport.html";
 	
 	}
 

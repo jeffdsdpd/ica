@@ -16,6 +16,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.dsd.dsdpdcoaching.dto.HokeModelTeacherRubric;
 import com.dsd.dsdpdcoaching.dto.HokeRubric;
 import com.dsd.dsdpdcoaching.dto.PhaseValues;
 import com.dsd.dsdpdcoaching.dto.Rubric;
@@ -37,9 +38,14 @@ public class RubricDao {
 		entityManager.persist(data);		
 	}
 	
-	//Called by the JSONRequestController to save hoke rubric data on hokeRubricForm.html
+	//Called by the JSONRequestController to save rubric data on rubricForm.html
 	public void saveHokeRubricData(HokeRubric hokeData) {
 		entityManager.persist(hokeData);		
+	}
+	
+	//Called by the JSONRequestController to save hoke model teacher rubric data on hokeModelTeacherRubricForm.html
+	public void saveHokeModelTeacherRubricData(HokeModelTeacherRubric hokeModelTeacherData) {
+		entityManager.persist(hokeModelTeacherData);		
 	}
 
 	//Called by the JSONRequestController to select the rubric to display on the rubricReport.html
@@ -49,9 +55,9 @@ public class RubricDao {
     			.getSingleResult();
 	}
 	
-	//Called by the JSONRequestController to select the rubric to display on the hokeRubricReport.html
-	public HokeRubric getHokeRubricById(Integer rubricId) {
-	    return entityManager.createQuery("from HOKE_RUBRIC where id = :rubricId", HokeRubric.class)
+	//Called by the JSONRequestController to select the rubric to display on the hokeModelTeacherRubricReport.html
+	public HokeModelTeacherRubric getHokeModelTeacherRubricById(Integer rubricId) {
+	    return entityManager.createQuery("from HOKE_RUBRIC where id = :rubricId", HokeModelTeacherRubric.class)
     			.setParameter("rubricId", rubricId)
     			.getSingleResult();
 	}
@@ -302,7 +308,7 @@ public class RubricDao {
 	
 	//Called by JSONRequestController to get the Rubrics for the Hoke County School
 	@SuppressWarnings("unchecked")
-	public List<Rubric> getHokeRubricDatesAndId(Integer schoolId, Integer teacherId) {
+	public List<Rubric> getHokeModelTeacherRubricDatesAndId(Integer schoolId, Integer teacherId) {
 		return entityManager.createQuery(
 				"from HOKE_RUBRIC where schoolid = :schoolId and teacherid = :teacherId ORDER BY date DESC")
 				.setParameter("schoolId", schoolId)

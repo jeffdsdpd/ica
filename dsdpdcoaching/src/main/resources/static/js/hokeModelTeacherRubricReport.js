@@ -195,7 +195,7 @@
 			
 		            $.ajax({
 		                type: 'GET',
-		                url: 'sendHokeRubricEmail',
+		                url: 'sendHokeModelTeacherRubricEmail',
 		                data:{date:date, schoolId:selectedSchoolId, teacherId:selectedTeacherId, teacherEmail:teacherEmail, adminEmail:adminEmail,
 		                	
 		                idccontentalignment1:idccontentalignment1, idccontentalignment2:idccontentalignment2,
@@ -283,7 +283,7 @@
 				
 	            $.ajax({
 	                type: "GET",
-	                url:"getHokeRubricDatesIdUserid",
+	                url:"getHokeModelTeacherRubricDatesIdUserid",
 	                data:{schoolId: selectedSchoolId, teacherId: selectedTeacherId},
 	                dataType: "json",
 	                success: function (response) {
@@ -377,7 +377,7 @@
 			$(".levelupclass").fadeIn("slow");
 	            $.ajax({
 	                type: "GET",
-	                url:"getHokeRubricById",
+	                url:"getHokeModelTeacherRubricById",
 	                data:{recordId: selectedId},
 	                dataType: "json",
 	                success: function (response) {

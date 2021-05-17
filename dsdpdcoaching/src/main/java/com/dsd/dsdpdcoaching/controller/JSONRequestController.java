@@ -25,7 +25,7 @@ import com.dsd.dsdpdcoaching.dao.TeacherDao;
 import com.dsd.dsdpdcoaching.dao.UserDao;
 import com.dsd.dsdpdcoaching.dto.ActionPlanData;
 import com.dsd.dsdpdcoaching.dto.CoachingData;
-import com.dsd.dsdpdcoaching.dto.HokeRubric;
+import com.dsd.dsdpdcoaching.dto.HokeModelTeacherRubric;
 import com.dsd.dsdpdcoaching.dto.PhaseValues;
 import com.dsd.dsdpdcoaching.dto.Rubric;
 import com.dsd.dsdpdcoaching.dto.RubricLevelUp;
@@ -95,11 +95,11 @@ public class JSONRequestController extends HttpServlet {
 		return rubricDao.getRubricDatesIDUserid(schoolId, teacherId);
 	}
 	
-	//Called from hokeRubricReport.js
-	@GetMapping(value="/getHokeRubricDatesIdUserid")
+	//Called from hokeModelTeacherRubricReport.js
+	@GetMapping(value="/getHokeModelTeacherRubricDatesIdUserid")
 	@ResponseBody
-	public List<Rubric> getHokeRubricDatesAndId(@RequestParam Integer schoolId, @RequestParam Integer teacherId) {	
-		return rubricDao.getHokeRubricDatesAndId(schoolId, teacherId);
+	public List<Rubric> getHokeModelTeacherRubricDatesIdUserid(@RequestParam Integer schoolId, @RequestParam Integer teacherId) {	
+		return rubricDao.getHokeModelTeacherRubricDatesAndId(schoolId, teacherId);
 	}
 	
 	//Called from rubricReport.js
@@ -111,12 +111,12 @@ public class JSONRequestController extends HttpServlet {
 		return r;
 	}
 	
-	//Called from hokeRubricReport.js
-	@GetMapping(value="/getHokeRubricById")
+	//Called from hokeModelTeacherRubricReport.js
+	@GetMapping(value="/getHokeModelTeacherRubricById")
 	@ResponseBody
-	public HokeRubric getHokeRubricById(@RequestParam Integer recordId) {
-		HokeRubric r = new HokeRubric();
-		r = rubricDao.getHokeRubricById(recordId);
+	public HokeModelTeacherRubric getHokeModelTeacherRubricById(@RequestParam Integer recordId) {
+		HokeModelTeacherRubric r = new HokeModelTeacherRubric();
+		r = rubricDao.getHokeModelTeacherRubricById(recordId);
 		return r;
 	}
 	
@@ -156,11 +156,11 @@ public class JSONRequestController extends HttpServlet {
 		return "success";
 	}
 	
-	//Called from hokeRubricReport.js to send the Hoke rubric report email
-	@GetMapping(value="/sendHokeRubricEmail")
+	//Called from hokeModelTeacherRubricReport.js to send the Hoke rubric report email
+	@GetMapping(value="/sendHokeModelTeacherRubricEmail")
 	@ResponseBody
-	public String sendHokeRubricEmail(HttpServletRequest request, HttpServletResponse response) {
-		emailService.sendHokeRubricEmail(request, response);
+	public String sendHokeModelTeacherRubricEmail(HttpServletRequest request, HttpServletResponse response) {
+		emailService.sendHokeModelTeacherRubricEmail(request, response);
 		return "success";
 	}
 	
@@ -211,7 +211,7 @@ public class JSONRequestController extends HttpServlet {
 		return levelUpDao.getLevelUpData(request, response);
 	}
 	
-	//Called from hokeRubricReport.js to get the appropriate levelup data to display
+	//Called from hokeModelTeacherRubricReport.js to get the appropriate levelup data to display
 	@GetMapping(value="/getHokeLevelUpData")
 	@ResponseBody
 	public String[][] getHokeLevelUpData(HttpServletRequest request, HttpServletResponse response) {	
