@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>DSD-PD Coaching Application | Teacher Rubric Report</title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+<link rel="icon" type="image/png" href="img/favicon.ico" />
+
+<!--   JS Files   -->
+<script src="js/lib/jquery.js"></script>
+<script src="js/lib/jquery-ui.min.js"></script>
+<script src="js/lib/bootstrap.min.js"></script>
+<script src="js/lib/light-bootstrap-dashboard.js"></script>
+<script src="js/gstatic.js"></script>
+<script src="js/hokeRubricReport.js"></script>
+<script src="js/master.js"></script>
+
+<!--   CSS Files   -->
+<link href="css/lib/jquery-ui.css" rel="stylesheet" />
+<link href="css/lib/bootstrap.min.css" rel="stylesheet" />
+<link href="css/lib/light-bootstrap-dashboard.css" rel="stylesheet" />
+<link href="css/misc.css" rel="stylesheet" />
+
+<!--   Fonts and icons     -->
+<link href="css/lib/pe-icon-7-stroke.css" rel="stylesheet" />
+<link href='//fonts.googleapis.com/css?family=Roboto:400,700,300'
+	rel='stylesheet' type='text/css' />
+<link
+	href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'
+	rel='stylesheet' type='text/css' />
+
+<style>
+	.blue {
+		color: #3A55A5;
+	}
+	
+	.red {
+		color: #CF5300;
+	}
+	
+	.yellow {
+		color: #cccc00;
+	}
+	
+	.green {
+		color: #A2AB58;
+	}
+	
+	.black {
+		color: #000000;
+	}
+
+	.levelupcheckboxes input{
+    		margin: 0px 0px 0px 0px;
+   	}
+
+	.levelupcheckboxes label{
+		font-weight: normal;
+		font-size: 14px;
+  		margin: 0px 0px 5px 5px;
+   	}
+   	
+   	#levelupheader{
+		font-weight: bold;
+		font-size: 16px;
+		color: #666;
+  		margin: 0px 0px 0px 0px;
+  		text-transform: uppercase;
+  		}
+  		
+  	#wrapper {
+  		display: flex;
+	}
+	
+	#left {
+	  	flex: 0 0 35%;
+	}
+	
+	#chart_div{
+	  	flex: 1;
+	}
+</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div th:replace="fragments/nav :: nav"></div>
+
+		<div class="main-panel">
+			<div th:replace="fragments/header :: header"></div>
+
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-10">
+							<div class="card">
+								<div class="header">
+									<h2 class="title">Hoke Teacher Rubric Report</h2>
+								</div>
+								<div class="content">
+
+									<form id="frm" name="frm" method="post" action="#" th:action="@{/rubricReportUpdate}" th:object="${levelupdata}">
+										<div class="row">
+											<div class="col-md-4">
+												<div class="form-group">
+													<label>School</label> 
+													<select name="schoolName" id="schoolId" class="form-control">
+														<option value="0">Please Select</option>
+														<option th:each="school: ${schoolList}"
+															th:value="${school.id}" th:text="${school.name}"></option>
+													</select>
+												</div>
+											</div>
+
+											<div class="col-md-4">
+												<div class="form-group">
+													<label>Teacher</label>
+													<select name="teacherName" id="teacherName" class="form-control">
+														<option value="0">Please Select</option>
+													</select>
+												</div>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>Date</label> 
+													<select name="date" id="date" class="form-control">
+														<option value="0">Please Select</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-2 col-md-offset-1">
+												<div class="form-group">
+													<label>Time</label>
+													<h5>
+														<b> </b><span class="timeTaken"></span>
+													</h5>
+												</div>
+											</div>
+
+											<div class="col-md-5">
+												<div class="form-group button" style="display: none">
+													<label id="emailreport">Email Report</label><br />
+
+													<div class="checkboxes">
+														<input type="checkbox" id="teachercheckbox"
+															name="teachercheckbox" value="teachercheckbox"></input> <label
+															for="teachercheckbox" class="checkbox-inline"
+															id="teacherlabel"
+															style="margin-left: 2px; padding-left: 2px; padding-top: 4px; padding-right: 15px;"></label>
+														
+														<br /> <input type="checkbox" id="admincheckbox"
+															name="admincheckbox" value="admincheckbox"></input> <label
+															for="admincheckbox" class="checkbox-inline"
+															id="adminlabel"
+															style="margin-left: 2px; padding-left: 2px; padding-top: 4px;"></label>
+													</div>
+													
+													<br />
+													
+													<button type="emailButton" name="emailButton" class="btn btn-info" id="button">Email Selected Person(s)</button>
+												</div>
+											</div>
+
+										</div>
+
+										<div class="container" style="display: none"></div>
+
+										<div id="wrapper">
+											<div id="left" class="floating-box">
+												<h5>
+													<b>Recorded By: </b><span class="user" name="user" id="user"></span>
+												</h5>
+												<h5>
+													<b>Rubric Total: </b><span class="rubricTotal"></span> Out
+													of possible 30
+												</h5>
+												<h5>
+													<b>Observed: </b><span class="observed" style="color: red"></span>
+												</h5>
+											</div>
+											
+											<div class="floating-box" id="chart_div" style="width: 400px; height: 120px;"></div>
+											
+											
+											<div class="row">
+												<div class="col-md-9">
+													<div class="form-group">
+														<div class="nodatatodisplay" id="nodatatodisplay" style="display: none;">
+															<h3 style="text-align:center;">NO RUBRIC Data To Display!</h3>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										
+										<hr align="left" width="50%"></hr>
+										<div style="float: left; width: 65%">
+											<ul class="legend">
+												<li><span class="phaseone"></span>Phase 1</li>
+												<li><span class="phasetwo"></span>Phase 2</li>
+												<li><span class="phasethree"></span>Phase 3</li>
+												<li><span class="empty"></span>Not Observed</li>
+											</ul>
+										</div>
+										<div style="float: right; width: 25%; color: green">
+											<b>Level Up</b>
+										</div>
+
+										<br /> <br />
+
+										<div style="float: left; width: 65%">
+											<h5>
+												<b>Planning: </b><span id="planning" class="planning"></span>
+											</h5>
+											<h5>
+												<b>Assessment And Data: </b><span id="assessanddata"
+													class="assessanddata"></span>
+											</h5>
+											<h5>
+												<b>Path: </b><span id="path" class="path"></span>
+											</h5>
+											<h5>
+												<b>Place: </b><span id="place" class="place"></span>
+											</h5>
+											<h5>
+												<b>Pace: </b><span id="pace" class="pace"></span>
+											</h5>
+											<h5>
+												<b>Classroom Mgmt.: </b><span id="classmgmt"
+													class="classmgmt"></span>
+											</h5>
+											<h5>
+												<b>Teacher Role: </b><span id="teacherrole"
+													class="teacherrole"></span>
+											</h5>
+											<h5>
+												<b>Student Engagement: </b><span id="studentengage"
+													class="studentengage"></span>
+											</h5>
+											<h5>
+												<b>Student Collaboration: </b><span id="studentcollab"
+													class="studentcollab"></span>
+											</h5>
+											<h5>
+												<b>Technology: </b><span id="technology" class="technology"></span>
+											</h5>
+										</div>
+
+										<div class="levelupclass" style="float: right; width: 25%;">
+											<a href="#" style="visibility: hidden"
+												id="planningLevelUpData" title="Level Up for Planning"
+												data-toggle="popover" data-html="true" data-trigger="hover"
+												data-content="Level up data not initialized"><img
+												src="images/levelup.png" height="33" width="45"></img> </a> <br />
+
+											<a href="#" style="visibility: hidden"
+												id="assessanddataLevelUpData"
+												title="Level Up for Assessment And Data"
+												data-toggle="popover" data-html="true" data-trigger="hover"
+												data-content="Level up data not initialized"><img
+												src="images/levelup.png" height="33" width="45"></img> </a> <br />
+
+											<a href="#" style="visibility: hidden" id="pathLevelUpData"
+												title="Level Up for Path" data-toggle="popover"
+												data-html="true" data-trigger="hover"
+												data-content="Level up data not initialized"><img
+												src="images/levelup.png" height="33" width="45"></img> </a> <br />
+
+											<a href="#" style="visibility: hidden" id="placeLevelUpData"
+												title="Level Up for Place" data-toggle="popover"
+												data-html="true" data-trigger="hover"
+												data-content="Level up data not initialized"><img
+												src="images/levelup.png" height="33" width="45"></img> </a> <br />
+
+											<a href="#" style="visibility: hidden" id="paceLevelUpData"
+												title="Level Up for Pace" data-toggle="popover"
+												data-html="true" data-trigger="hover"
+												data-content="Level up data not initialized"><img
+												src="images/levelup.png" height="33" width="45"></img> </a> <br />
+
+											<a href="#" style="visibility: hidden"
+												id="classroommgmtLevelUpData"
+												title="Level Up for Classroom Managment"
+												data-toggle="popover" data-html="true" data-trigger="hover"
+												data-content="Level up data not initialized"><img
+												src="images/levelup.png" height="33" width="45"></img> </a> <br />
+
+											<a href="#" style="visibility: hidden"
+												id="teacherroleLevelUpData"
+												title="Level Up for Teacher Role" data-toggle="popover"
+												data-html="true" data-trigger="hover"
+												data-content="Level up data not initialized"><img
+												src="images/levelup.png" height="33" width="45"></img> </a> <br />
+
+											<a href="#" style="visibility: hidden"
+												id="studentengagementLevelUpData"
+												title="Level Up for Student Engagement"
+												data-toggle="popover" data-html="true" data-trigger="hover"
+												data-content="Level up data not initialized"><img
+												src="images/levelup.png" height="33" width="45"></img> </a> <br />
+
+											<a href="#" style="visibility: hidden"
+												id="studentcollabLevelUpData"
+												title="Level Up for Student Collaboration"
+												data-toggle="popover" data-html="true" data-trigger="hover"
+												data-content="Level up data not initialized"><img
+												src="images/levelup.png" height="33" width="45"></img> </a> <br />
+
+											<a href="#" style="visibility: hidden"
+												id="technologyLevelUpData" title="Level Up for Technology"
+												data-toggle="popover" data-html="true" data-trigger="hover"
+												data-content="Level up data not initialized"><img
+												src="images/levelup.png" height="33" width="45"></img> </a> <br />
+
+										</div>
+
+
+										<div class="row">
+											<div class="col-md-9">
+												<div class="form-group">
+													<label>Rubric Notes</label>
+													<textarea rows="5" cols="50" class="form-control" placeholder="Notes from Rubric" name="rubricnotes"
+														id="rubricnotes" wrap="hard" maxlength="500" readonly="readonly"></textarea>
+													<br />
+												</div>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-md-9">
+												<div class="form-group">
+													<label>Questions</label>
+													<textarea rows="5" cols="50" class="form-control" placeholder="Questions" name="questions" id="questions"
+														wrap="hard" maxlength="500" readonly="readonly"></textarea>
+													<br />
+												</div>
+											</div>
+										</div>
+										
+										<div class="row">
+											<div class="col-md-11">
+												<div class="levelupcheckboxes">
+													<div id="levelupcheckboxes" class="custom-control-input"></div>
+												</div>
+											</div>
+										</div>
+										
+										<div id="cbResults">
+											<input type="hidden" id="checkedValues" name="checkedValues" ></input>
+										  	<input type="hidden" id="unCheckedValues" name="unCheckedValues"></input>
+										</div>
+										
+										<button type="submit" class="btn btn-info btn-fill" style="margin:auto; display:block;" 
+											name="Submit" value="Submit" onclick="loopForm(document.frm);">Update LevelUp Items
+										</button>
+										
+										
+									</form>
+
+								</div>
+							</div>
+
+							<div th:replace="fragments/footer :: footer"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

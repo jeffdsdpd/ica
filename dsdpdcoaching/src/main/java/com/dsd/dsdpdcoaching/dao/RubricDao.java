@@ -55,9 +55,16 @@ public class RubricDao {
     			.getSingleResult();
 	}
 	
+	//Called by the JSONRequestController to select the hoke rubric to display on the hokeRubricReport.html
+	public HokeRubric getHokeRubricById(Integer rubricId) {
+	    return entityManager.createQuery("from HOKE_RUBRIC where id = :rubricId", HokeRubric.class)
+    			.setParameter("rubricId", rubricId)
+    			.getSingleResult();
+	}
+	
 	//Called by the JSONRequestController to select the rubric to display on the hokeModelTeacherRubricReport.html
 	public HokeModelTeacherRubric getHokeModelTeacherRubricById(Integer rubricId) {
-	    return entityManager.createQuery("from HOKE_RUBRIC where id = :rubricId", HokeModelTeacherRubric.class)
+	    return entityManager.createQuery("from HOKE_MODEL_TEACHER_RUBRIC where id = :rubricId", HokeModelTeacherRubric.class)
     			.setParameter("rubricId", rubricId)
     			.getSingleResult();
 	}
@@ -306,11 +313,20 @@ public class RubricDao {
     			.getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Rubric> getHokeRubricDatesIDUserid(Integer schoolId, Integer teacherId) {
+		return entityManager.createQuery(
+				"from HOKE_RUBRIC where schoolid = :schoolId and teacherid = :teacherId ORDER BY date DESC")
+				.setParameter("schoolId", schoolId)
+    				.setParameter("teacherId", teacherId)
+    			.getResultList();
+	}
+	
 	//Called by JSONRequestController to get the Rubrics for the Hoke County School
 	@SuppressWarnings("unchecked")
 	public List<Rubric> getHokeModelTeacherRubricDatesAndId(Integer schoolId, Integer teacherId) {
 		return entityManager.createQuery(
-				"from HOKE_RUBRIC where schoolid = :schoolId and teacherid = :teacherId ORDER BY date DESC")
+				"from HOKE_MODEL_TEACHER_RUBRIC where schoolid = :schoolId and teacherid = :teacherId ORDER BY date DESC")
 				.setParameter("schoolId", schoolId)
     				.setParameter("teacherId", teacherId)
     			.getResultList();

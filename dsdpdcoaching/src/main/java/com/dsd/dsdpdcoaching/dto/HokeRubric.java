@@ -141,11 +141,11 @@ public class HokeRubric implements Serializable {
 		this.checklists = checklists;
 	}
 
-	public int getDigitalcontent() {
+	public int getDigitalContent() {
 		return digitalcontent;
 	}
 
-	public void setDigitalcontent(int digitalcontent) {
+	public void setDigitalContent(int digitalcontent) {
 		this.digitalcontent = digitalcontent;
 	}
 
@@ -173,11 +173,11 @@ public class HokeRubric implements Serializable {
 		this.differentiation = differentiation;
 	}
 
-	public int getStudentgroups() {
+	public int getStudentGroups() {
 		return studentgroups;
 	}
 
-	public void setStudentgroups(int studentgroups) {
+	public void setStudentGroups(int studentgroups) {
 		this.studentgroups = studentgroups;
 	}
 
@@ -197,11 +197,11 @@ public class HokeRubric implements Serializable {
 		this.reflection = reflection;
 	}
 
-	public int getStudentlearning() {
+	public int getStudentLearning() {
 		return studentlearning;
 	}
 
-	public void setStudentlearning(int studentlearning) {
+	public void setStudentLearning(int studentlearning) {
 		this.studentlearning = studentlearning;
 	}
 
@@ -221,6 +221,5 @@ public class HokeRubric implements Serializable {
 		this.phase = phase;
 	}
 
-	
 	
 }

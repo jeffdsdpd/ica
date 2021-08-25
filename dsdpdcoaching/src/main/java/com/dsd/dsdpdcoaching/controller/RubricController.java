@@ -66,6 +66,11 @@ public class RubricController {
 		return "hokeModelTeacherRubricReport";
 	}
 	
+	@GetMapping("/hokeRubricReport.html")
+	public String getHokeRubricReport(Model model) {
+		return "hokeRubricReport";
+	}
+	
 	@GetMapping("/teacherProgressionReport.html")
 	public String getTeacherProgressionReport(Model model) {
 		return "teacherProgressionReport";
