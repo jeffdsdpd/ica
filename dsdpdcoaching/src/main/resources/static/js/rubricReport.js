@@ -602,7 +602,7 @@
 	   	         	                dataType: "json",
 	   	         	                success: function (response) {
 	   	         	                	
-	   	         	                	<!-- result = result[randomNumber] ;  -->
+	   	         	                	//result = result[randomNumber] ;
 	   	         	                	
 	   	         	                $.each(response, function(key, value) {
 	   	         	                	var result= (value[1]).split(/\n/g);

@@ -2,7 +2,6 @@
 		
 	 	$('#rubricnotes').addClass('input-disabled');
 	 	$('#levelup').addClass('input-disabled');
-	 	$('#questions').addClass('input-disabled');
 		
 		var selectedSchoolId = null;
 
@@ -22,30 +21,29 @@
 				} else adminEmail = "not selected";
 				
 				var date = $("#date :selected").text();
-				var planning = $("#planning").text();
-				var assessanddata = $("#assessanddata").text();
-				var path = $("#path").text();
-				var place = $("#place").text();
-				var pace = $("#pace").text();
-				var classmgmt = $("#classmgmt").text();
-				var teacherrole = $("#teacherrole").text();
-				var studentengage = $("#studentengage").text();
-				var studentcollab = $("#studentcollab").text();
-				var technology = $("#technology").text();
+				var checklists = $("#checklists").text();
+				var digitalContent = $("#digitalContent").text();
+				var seating = $("#seating").text();
+				var timing = $("#timing").text();
+				var differentiation = $("#differentiation").text();
+				var studentGroups = $("#studentGroups").text();
+				var data = $("#data").text();
+				var reflection = $("#reflection").text();
+				var studentLearning = $("#studentLearning").text();
 				var rubricnotes = document.getElementById("rubricnotes").innerText;
 				var levelup = document.getElementById("levelupcheckboxes").innerText;
-				var questions = document.getElementById("questions").value;
 				
-				var planningLevelData = $('#planningLevelUpData').attr("data-content");
-				var assessLevelData = $('#assessanddataLevelUpData').attr("data-content");
-				var pathLevelData = $('#pathLevelUpData').attr("data-content");
-				var placeLevelData = $('#placeLevelUpData').attr("data-content");
-				var paceLevelData = $('#paceLevelUpData').attr("data-content");
-				var classmgmtLevelData = $('#classroommgmtLevelUpData').attr("data-content");
-				var teachroleLevelData = $('#teacherroleLevelUpData').attr("data-content");
-				var stengageLevelData = $('#studentengagementLevelUpData').attr("data-content");
-				var stcollabLevelData = $('#studentcollabLevelUpData').attr("data-content");
-				var technologyLevelData = $('#technologyLevelUpData').attr("data-content");
+				
+				//var planningLevelData = $('#planningLevelUpData').attr("data-content");
+				//var assessLevelData = $('#assessanddataLevelUpData').attr("data-content");
+				//var pathLevelData = $('#pathLevelUpData').attr("data-content");
+				//var placeLevelData = $('#placeLevelUpData').attr("data-content");
+				//var paceLevelData = $('#paceLevelUpData').attr("data-content");
+				//var classmgmtLevelData = $('#classroommgmtLevelUpData').attr("data-content");
+				//var teachroleLevelData = $('#teacherroleLevelUpData').attr("data-content");
+				//var stengageLevelData = $('#studentengagementLevelUpData').attr("data-content");
+				//var stcollabLevelData = $('#studentcollabLevelUpData').attr("data-content");
+				//var technologyLevelData = $('#technologyLevelUpData').attr("data-content");
 			
 		            $.ajax({
 		                type: 'GET',
@@ -76,37 +74,35 @@
 				document.getElementById("adminlabel").style.display = "none";
 				document.getElementById("button").style.display = "none";
 				document.getElementById("nodatatodisplay").style.display = "none";
-				document.getElementById('chart_div').style.display = "none";
 				
-				planningLevel = 0;
-				document.getElementById("planningLevelUpData").style.visibility = "hidden";
+				/*
+				checklistLevel = 0;
+				document.getElementById("checklistLevelUpData").style.visibility = "hidden";
 						
-				assessanddataLevel = 0;
-				document.getElementById("assessanddataLevelUpData").style.visibility = "hidden";
+				digitalContentLevel = 0;
+				document.getElementById("digitalContentLevelUpData").style.visibility = "hidden";
 				
-				pathLevel = 0;
-				document.getElementById("pathLevelUpData").style.visibility = "hidden";
+				seatingLevel = 0;
+				document.getElementById("seatingLevelUpData").style.visibility = "hidden";
 				
-				placeLevel = 0;
-				document.getElementById("placeLevelUpData").style.visibility = "hidden";
+				timingLevel = 0;
+				document.getElementById("timingLevelUpData").style.visibility = "hidden";
 				
-				paceLevel = 0;
-				document.getElementById("paceLevelUpData").style.visibility = "hidden";
+				differentiationLevel = 0;
+				document.getElementById("differentiationLevelUpData").style.visibility = "hidden";
 				
-				classmgmtLevel = 0;
-				document.getElementById("classroommgmtLevelUpData").style.visibility = "hidden";
+				studentGroupsLevel = 0;
+				document.getElementById("studentGroupsLevelUpData").style.visibility = "hidden";
 				
-				teacherroleLevel = 0;
-				document.getElementById("teacherroleLevelUpData").style.visibility = "hidden";
+				dataLevel = 0;
+				document.getElementById("dataLevelUpData").style.visibility = "hidden";
 				
-				studentengageLevel = 0;
-				document.getElementById("studentengagementLevelUpData").style.visibility = "hidden";
+				reflectionLevel = 0;
+				document.getElementById("reflectionLevelUpData").style.visibility = "hidden";
 				
-				studentcollabLevel = 0;
-				document.getElementById("studentcollabLevelUpData").style.visibility = "hidden";
-				
-				technologyLevel = 0;
-				document.getElementById("technologyLevelUpData").style.visibility = "hidden";
+				studentLearningLevel = 0;
+				document.getElementById("studentLearningLevelUpData").style.visibility = "hidden";
+				*/
 				
 				$(".levelupclass").fadeOut("slow");
 				
@@ -120,17 +116,15 @@
 				$(".timeTaken").html("");
 				$("#rubricnotes").val("");
 				$("#levelup").val("");
-				$("#questions").val("");
-				$(".planning").html("");
-				$(".assessanddata").html("");
-				$(".path").html("");
-				$(".place").html("");
-				$(".pace").html("");
-				$(".classmgmt").html("");
-				$(".teacherrole").html("");
-				$(".studentengage").html("");
-				$(".studentcollab").html("");
-				$(".technology").html("");
+				$("#checklists").text("");
+				$("#digitalContent").text("");
+				$("#seating").text("");
+				$("#timing").text("");
+				$("#differentiation").text("");
+				$("#studentGroups").text("");
+				$("#data").text("");
+				$("#reflection").text("");
+				$("#studentLearning").text("");
 				
 				$(".container").fadeOut("slow");
 				
@@ -153,7 +147,6 @@
 		
 		$("#teacherName").change(function(){
 			$("#levelupcheckboxes").html("");
-			document.getElementById('chart_div').style.display = "none";
 			document.getElementById("nodatatodisplay").style.display = "none";
 			var selectedSchoolId = $("#schoolId :selected").val();
 			var selectedTeacherId = $("#teacherName :selected").val();
@@ -161,35 +154,34 @@
 			$("#levelupcheckboxes").html("");
 				rubricTotal = 0;
 
-				planningLevel = 0;
-				document.getElementById("planningLevelUpData").style.visibility = "hidden";
+				/*
+				checklistLevel = 0;
+				document.getElementById("checklistLevelUpData").style.visibility = "hidden";
 						
-				assessanddataLevel = 0;
-				document.getElementById("assessanddataLevelUpData").style.visibility = "hidden";
+				digitalContentLevel = 0;
+				document.getElementById("digitalContentLevelUpData").style.visibility = "hidden";
 				
-				pathLevel = 0;
-				document.getElementById("pathLevelUpData").style.visibility = "hidden";
+				seatingLevel = 0;
+				document.getElementById("seatingLevelUpData").style.visibility = "hidden";
 				
-				placeLevel = 0;
-				document.getElementById("placeLevelUpData").style.visibility = "hidden";
+				timingLevel = 0;
+				document.getElementById("timingLevelUpData").style.visibility = "hidden";
 				
-				paceLevel = 0;
-				document.getElementById("paceLevelUpData").style.visibility = "hidden";
+				differentiationLevel = 0;
+				document.getElementById("differentiationLevelUpData").style.visibility = "hidden";
 				
-				classmgmtLevel = 0;
-				document.getElementById("classroommgmtLevelUpData").style.visibility = "hidden";
+				studentGroupsLevel = 0;
+				document.getElementById("studentGroupsLevelUpData").style.visibility = "hidden";
 				
-				teacherroleLevel = 0;
-				document.getElementById("teacherroleLevelUpData").style.visibility = "hidden";
+				dataLevel = 0;
+				document.getElementById("dataLevelUpData").style.visibility = "hidden";
 				
-				studentengageLevel = 0;
-				document.getElementById("studentengagementLevelUpData").style.visibility = "hidden";
+				reflectionLevel = 0;
+				document.getElementById("reflectionLevelUpData").style.visibility = "hidden";
 				
-				studentcollabLevel = 0;
-				document.getElementById("studentcollabLevelUpData").style.visibility = "hidden";
-				
-				technologyLevel = 0;
-				document.getElementById("technologyLevelUpData").style.visibility = "hidden";
+				studentLearningLevel = 0;
+				document.getElementById("studentLearningLevelUpData").style.visibility = "hidden";
+				*/
 				
 				$(".levelupclass").fadeOut("slow");
 				
@@ -200,17 +192,15 @@
 				$(".timeTaken").html("");
 				$("#rubricnotes").val("");
 				$("#levelup").val("");
-				$("#questions").val("");
-				$(".planning").html("");
-				$(".assessanddata").html("");
-				$(".path").html("");
-				$(".place").html("");
-				$(".pace").html("");
-				$(".classmgmt").html("");
-				$(".teacherrole").html("");
-				$(".studentengage").html("");
-				$(".studentcollab").html("");
-				$(".technology").html("");
+				$("#checklists").text("");
+				$("#digitalContent").text("");
+				$("#seating").text("");
+				$("#timing").text("");
+				$("#differentiation").text("");
+				$("#studentGroups").text("");
+				$("#data").text("");
+				$("#reflection").text("");
+				$("#studentLearning").text("");
 				
 	            $.ajax({
 	                type: "GET",
@@ -264,7 +254,6 @@
 		
 		$("#date").change(function() {
 			$("#levelupcheckboxes").html("");
-			document.getElementById('chart_div').style.display = "none";
 			
 			if ( $("#teacherlabel").text() != "" ) {
     				document.getElementById("teacherlabel").style.display = "inline";
@@ -282,35 +271,34 @@
 			
 			rubricTotal = 0;
 			
-			planningLevel = 0;
-			document.getElementById("planningLevelUpData").style.visibility = "hidden";
-					
-			assessanddataLevel = 0;
-			document.getElementById("assessanddataLevelUpData").style.visibility = "hidden";
-			
-			pathLevel = 0;
-			document.getElementById("pathLevelUpData").style.visibility = "hidden";
-			
-			placeLevel = 0;
-			document.getElementById("placeLevelUpData").style.visibility = "hidden";
-			
-			paceLevel = 0;
-			document.getElementById("paceLevelUpData").style.visibility = "hidden";
-			
-			classmgmtLevel = 0;
-			document.getElementById("classroommgmtLevelUpData").style.visibility = "hidden";
-			
-			teacherroleLevel = 0;
-			document.getElementById("teacherroleLevelUpData").style.visibility = "hidden";
-			
-			studentengageLevel = 0;
-			document.getElementById("studentengagementLevelUpData").style.visibility = "hidden";
-			
-			studentcollabLevel = 0;
-			document.getElementById("studentcollabLevelUpData").style.visibility = "hidden";
-			
-			technologyLevel = 0;
-			document.getElementById("technologyLevelUpData").style.visibility = "hidden";
+			/*
+				checklistLevel = 0;
+				document.getElementById("checklistLevelUpData").style.visibility = "hidden";
+						
+				digitalContentLevel = 0;
+				document.getElementById("digitalContentLevelUpData").style.visibility = "hidden";
+				
+				seatingLevel = 0;
+				document.getElementById("seatingLevelUpData").style.visibility = "hidden";
+				
+				timingLevel = 0;
+				document.getElementById("timingLevelUpData").style.visibility = "hidden";
+				
+				differentiationLevel = 0;
+				document.getElementById("differentiationLevelUpData").style.visibility = "hidden";
+				
+				studentGroupsLevel = 0;
+				document.getElementById("studentGroupsLevelUpData").style.visibility = "hidden";
+				
+				dataLevel = 0;
+				document.getElementById("dataLevelUpData").style.visibility = "hidden";
+				
+				reflectionLevel = 0;
+				document.getElementById("reflectionLevelUpData").style.visibility = "hidden";
+				
+				studentLearningLevel = 0;
+				document.getElementById("studentLearningLevelUpData").style.visibility = "hidden";
+				*/
 			
 			var selectedId = $("#date :selected").val();
 
@@ -325,17 +313,15 @@
 			$(".timeTaken").html("");
 			$("#rubricnotes").val("");
 			$("#levelup").val("");
-			$("#questions").val("");
-			$(".planning").html("");
-			$(".assessanddata").html("");
-			$(".path").html("");
-			$(".place").html("");
-			$(".pace").html("");
-			$(".classmgmt").html("");
-			$(".teacherrole").html("");
-			$(".studentengage").html("");
-			$(".studentcollab").html("");
-			$(".technology").html("");
+			$("#checklists").text("");
+			$("#digitalContent").text("");
+			$("#seating").text("");
+			$("#timing").text("");
+			$("#differentiation").text("");
+			$("#studentGroups").text("");
+			$("#data").text("");
+			$("#reflection").text("");
+			$("#studentLearning").text("");
 			
 			if (selectedId == 0){
 				 $(".button").fadeOut("slow");
@@ -361,188 +347,93 @@
 	                		 } else {
 	                			 $(".timeTaken").html(format12Hour(response.timeObserved));
 	                			 }
-	                		 
-	                		 $(".planning").html(response.planning);
-	                		 if ((response.planning) == ("Whole group timer")) {
+							
+							//Checklist
+	                		 if ((response.checklists) == (1)) {
 	                			 	rubricTotal += 1;
-	                			 	planningLevel = 1;
-	                			 	$(".planning").css("color",low); }
-	                		 	else  if ((response.planning).includes("implements checklist")) {
+	                			 	checklistLevel = 1;
+	                			 	$("#checklists").css("color",low);
+									$("#checklists").text("Defined activities/products and progression"); }
+	                		 	else if ((response.checklists) == (2)) {
 	                		 		rubricTotal += 2;
-	                		 		planningLevel = 2;
-	                		 		$(".planning").css("color",med); }
-	                		 	else if ((response.planning).includes("differentiated")) {
+	                		 		checklistLevel = 2;
+	                		 		$("#checklists").css("color",med); 
+									$("#checklists").text("Student choice in activities/products OR progression"); }
+	                		 	else if ((response.checklists) == (3)) {
 	                		 		rubricTotal += 3;
-	                		 		planningLevel = 3;
-	                		 		$(".planning").css("color",high); }
+	                		 		checklistLevel = 3;
+	                		 		$("#checklists").css("color",high); 
+									$("#checklists").text("Student choice in activities/products AND progression"); }
 	                		 	else {
-	                		 		planningLevel = 0;
-	                		 		$(".planning").removeAttr('style');
+	                		 		checklistLevel= 0;
+	                		 		$("#checklists").removeAttr('style');
+	                		 	}
+
+							//digitalContent
+	                		 if ((response.digitalContent) == (1)) {
+	                			 	rubricTotal += 1;
+	                			 	digitalContentLevel = 1;
+	                			 	$("#digitalContent").css("color",low);
+									$("#digitalContent").text("Station Rotation"); }
+	                		 	else if ((response.digitalContent) == (2)) {
+	                		 		rubricTotal += 2;
+	                		 		digitalContentLevel = 2;
+	                		 		$("#digitalContent").css("color",med); 
+									$("#digitalContent").text("Individual Rotation (more teacher driven)"); }
+	                		 	else if ((response.digitalContent) == (3)) {
+	                		 		rubricTotal += 3;
+	                		 		digitalContentLevel = 3;
+	                		 		$("#digitalContent").css("color",high); 
+									$("#digitalContent").text("Individual Rotation (student driven progression)"); }
+	                		 	else {
+	                		 		digitalContentLevel= 0;
+	                		 		$("#digitalContent").removeAttr('style');
+	                		 	}
+
+							//seating
+	                		 if ((response.seating) == (1)) {
+	                			 	rubricTotal += 1;
+	                			 	seatingLevel = 1;
+	                			 	$("#seating").css("color",low);
+									$("#seating").text("Fixed Seating: prescribed by the teacher"); }
+	                		 	else if ((response.seating) == (2)) {
+	                		 		rubricTotal += 2;
+	                		 		seatingLevel = 2;
+	                		 		$("#seating").css("color",med); 
+									$("#seating").text("Flexible Seating Periods"); }
+	                		 	else if ((response.seating) == (3)) {
+	                		 		rubricTotal += 3;
+	                		 		seatingLevel = 3;
+	                		 		$("#seating").css("color",high); 
+									$("#seating").text("Flexible Seating"); }
+	                		 	else {
+	                		 		seatingLevel= 0;
+	                		 		$("#seating").removeAttr('style');
+	                		 	}
+
+							//timing
+	                		 if ((response.timing) == (1)) {
+	                			 	rubricTotal += 1;
+	                			 	timingLevel = 1;
+	                			 	$("#timing").css("color",low);
+									$("#timing").text("Whole Group Timer"); }
+	                		 	else if ((response.timing) == (2)) {
+	                		 		rubricTotal += 2;
+	                		 		timingLevel = 2;
+	                		 		$("#timing").css("color",med); 
+									$("#timing").text("Fluid Timing Periods"); }
+	                		 	else if ((response.timing) == (3)) {
+	                		 		rubricTotal += 3;
+	                		 		timingLevel = 3;
+	                		 		$("#timing").css("color",high); 
+									$("#timing").text("Fluid Timing"); }
+	                		 	else {
+	                		 		timingLevel= 0;
+	                		 		$("#timing").removeAttr('style');
 	                		 	}
 	                	           		 
 	                		 
-	                		 $(".assessanddata").html(response.assessmentAndData);
-	                		 if ((response.assessmentAndData).includes("Collecting")) {
-	                			 rubricTotal += 1;
-	                			 assessanddataLevel = 1;
-	                			 $(".assessanddata").css("color",low); }
-	                		 	else  if ((response.assessmentAndData).includes("Using")) {
-	                		 		rubricTotal += 2;
-	                		 		assessanddataLevel = 2;
-	                		 		$(".assessanddata").css("color",med); }
-	                		 	else if ((response.assessmentAndData).includes("advance")) {
-	                		 		rubricTotal += 3;
-	                		 		assessanddataLevel = 3;
-	                		 		$(".assessanddata").css("color",high); } 
-	                		 	else {
-	                		 		assessanddataLevel = 0;
-	                		 		$(".assessanddata").removeAttr('style');
-	                		 	}
-	                		 
-	                		 $(".path").html(response.path);
-	                		 if ((response.path).includes("Same")) {
-	                			 rubricTotal += 1;
-	                			 pathLevel = 1;
-	                			 $(".path").css("color",low); }
-	                		 	else  if ((response.path).includes("Differentiated")) {
-	                		 		rubricTotal += 2;
-	                		 		pathLevel = 2;
-	                		 		$(".path").css("color",med); }
-	                		 	else if ((response.path).includes("Individual")) {
-	                		 		rubricTotal += 3;
-	                		 		pathLevel = 3;
-	                		 		$(".path").css("color",high); }
-	                		 	else {
-	                		 		pathLevel = 0;
-	                		 		$(".path").removeAttr('style');
-	                		 	}
-
-	                		 $(".place").html(response.place);
-	                		 if ((response.place).includes("Move")) {
-	                			 rubricTotal += 1;
-	                			 placeLevel = 1;
-	                			 $(".place").css("color",low); }
-	                		 	else  if ((response.place).includes("Flexible")) {
-	                		 		rubricTotal += 2;
-	                		 		placeLevel = 2;
-	                		 		$(".place").css("color",med); }
-	                		 	else if ((response.place).includes("Pick")) {
-	                		 		rubricTotal += 3;
-	                		 		placeLevel = 3;
-	                		 		$(".place").css("color",high); }
-	                		 	else {
-	                		 		placeLevel = 0;
-	                		 		$(".place").removeAttr('style');
-	                		 	}
-	                		    		 
-	                		 $(".pace").html(response.pace);
-	                		 if ((response.pace).includes("timer")) {
-	                			 rubricTotal += 1;
-	                			 paceLevel = 1;
-	                			 $(".pace").css("color",low); }
-	                		 	else  if ((response.pace).includes("move")) {
-	                		 		rubricTotal += 2;
-	                		 		paceLevel = 2;
-	                		 		$(".pace").css("color",med); }
-	                		 	else if ((response.pace).includes("mastery")) {
-	                		 		rubricTotal += 3;
-	                		 		paceLevel = 3;
-	                		 		$(".pace").css("color",high); }
-	                		 	else {
-	                		 		paceLevel = 0;
-	                		 		$(".pace").removeAttr('style');
-	                		 	}
-	                		 
-	                		 $(".classmgmt").html(response.classroommgmt);
-	                		 if ((response.classroommgmt).includes("Restating")) {
-	                			 rubricTotal += 1;
-	                			 classmgmtLevel = 1;
-	                			 $(".classmgmt").css("color",low); }
-	                		 	else  if ((response.classroommgmt).includes("Self")) {
-	                		 		rubricTotal += 2;
-	                		 		classmgmtLevel = 2;
-	                		 		$(".classmgmt").css("color",med); }
-	                		 	else if ((response.classroommgmt).includes("Automatic")) {
-	                		 		rubricTotal += 3;
-	                		 		classmgmtLevel = 3;
-	                		 		$(".classmgmt").css("color",high); }
-	                		 	else {
-	                		 		classmgmtLevel = 0;
-	                		 		$(".classmgmt").removeAttr('style');
-	                		 	}
-	                		 
-	                		 $(".teacherrole").html(response.teacherrole);
-	                		 if ((response.teacherrole).includes("facilitator")) {
-	                			 rubricTotal += 1;
-	                			 teacherroleLevel = 1;
-	                			 $(".teacherrole").css("color",low); }
-	                		 	else  if ((response.teacherrole).includes("distractions")) {
-	                		 		rubricTotal += 2;
-	                		 		teacherroleLevel = 2;
-	                		 		$(".teacherrole").css("color",med); }
-	                		 	else if ((response.teacherrole).includes("99%")) {
-	                		 		rubricTotal += 3;
-	                		 		teacherroleLevel = 3;
-	                		 		$(".teacherrole").css("color",high); }
-	                		 	else {
-	                		 		teacherroleLevel = 0;
-	                		 		$(".teacherrole").removeAttr('style');
-	                		 	}
-	                		 
-	                		 $(".studentengage").html(response.studentegmt);
-	                		 if ((response.studentegmt).includes("Following")) {
-	                			 rubricTotal += 1;
-	                			 studentengageLevel = 1;
-	                			 $(".studentengage").css("color",low); }
-	                		 	else  if ((response.studentegmt).includes("Engaged")) {
-	                		 		rubricTotal += 2;
-	                		 		studentengageLevel = 2;
-	                		 		$(".studentengage").css("color",med); }
-	                		 	else if ((response.studentegmt).includes("Deeply")) {
-	                		 		rubricTotal += 3;
-	                		 		studentengageLevel = 3;
-	                		 		$(".studentengage").css("color",high); }
-	                		 	else {
-	                		 		studentengageLevel = 0;
-	                		 		$(".studentengage").removeAttr('style');
-	                		 	}
-
-	                		 $(".studentcollab").html(response.studentcolab);
-	                		 if ((response.studentcolab).includes("Teacher")) {
-	                			 rubricTotal += 1;
-	                			 studentcollabLevel = 1;
-	                			 $(".studentcollab").css("color",low); }
-	                		 	else  if ((response.studentcolab).includes("Choice")) {
-	                		 		rubricTotal += 2;
-	                		 		studentcollabLevel = 2;
-	                		 		$(".studentcollab").css("color",med); }
-	                		 	else if ((response.studentcolab).includes("PBL")) {
-	                		 		rubricTotal += 3;
-	                		 		studentcollabLevel = 3;
-	                		 		$(".studentcollab").css("color",high); }
-	                		 	else {
-	                		 		studentcollabLevel = 0;
-	                		 		$(".studentcollab").removeAttr('style');
-	                		 	}
-
-	                		 $(".technology").html(response.technology);
-	                		 if ((response.technology).includes("Technology")) {
-	                			 rubricTotal += 1;
-	                			 technologyLevel = 1;
-	                			 $(".technology").css("color",low); }
-	                		 	else  if ((response.technology).includes("Using")) {
-	                		 		rubricTotal += 2;
-	                		 		technologyLevel = 2;
-	                		 		$(".technology").css("color",med); }
-	                		 	else if ((response.technology).includes("Students")) {
-	                		 		rubricTotal += 3;
-	                		 		technologyLevel = 3;
-	                		 		$(".technology").css("color",high); }
-	                		 	else {
-	                		 		technologyLevel = 0;
-	                		 		$(".technology").removeAttr('style');
-	                		 	}
-	                		 
+	                		 /*
 	                		 $("#levelupcheckboxes").append( $("<label>").attr('id', 'levelupheader').text("Next Steps"));
 	                		 $("#levelupcheckboxes").append( $("<br />"));
 	                		 $("#levelupcheckboxes").append( $("<br />"));
@@ -620,32 +511,8 @@
 	                		 document.getElementById("questions").value = response.questions;
 	                		 
 	                	 $(".rubricTotal").html(rubricTotal);
+							*/
 	               
-	               
-		google.charts.load('current', {'packages':['gauge']});
-	      google.charts.setOnLoadCallback(drawChart);
-	      function drawChart() {
-	        var data = google.visualization.arrayToDataTable([
-	          ['Label', 'Value'],
-	          ['Rubric Score', rubricTotal],
-	        ]);
-
-	        var options = {
-	          max: 30,
-	          width: 400, height: 120,
-	          redFrom: 0, redTo: 5,
-	          yellowFrom:6, yellowTo: 19,
-	          greenFrom:20, greenTo: 30,
-	          majorTicks: 10,
-	          minorTicks: 2
-	        };
-
-	        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
-	        document.getElementById('chart_div').style.display = "inline";
-
-	        chart.draw(data, options);
-	        
-	        }
 	                }
                 });
 			}
