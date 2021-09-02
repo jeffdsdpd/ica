@@ -30,8 +30,7 @@
 				var data = $("#data").text();
 				var reflection = $("#reflection").text();
 				var studentLearning = $("#studentLearning").text();
-				var rubricnotes = document.getElementById("rubricnotes").innerText;
-				var levelup = document.getElementById("levelupcheckboxes").innerText;
+				var rubricnotes = $("#rubricNotes").val();
 				
 				
 				//var planningLevelData = $('#planningLevelUpData').attr("data-content");
@@ -47,13 +46,11 @@
 			
 		            $.ajax({
 		                type: 'GET',
-		                url: 'sendRubricEmail',
+		                url: 'sendHokeRubricEmail',
 		                data:{date:date, schoolId:selectedSchoolId, teacherId:selectedTeacherId, teacherEmail:teacherEmail,
-		                	adminEmail:adminEmail, planning:planning, assessanddata:assessanddata, path:path, place:place, pace:pace, classmgmt:classmgmt, 
-		                	teacherrole:teacherrole, studentengage:studentengage, studentcollab:studentcollab, technology:technology, rubricnotes:rubricnotes,levelup:levelup, questions:questions,
-		                	planningLevelData:planningLevelData, assessLevelData:assessLevelData, pathLevelData:pathLevelData, placeLevelData:placeLevelData,
-		                	paceLevelData:paceLevelData, classmgmtLevelData:classmgmtLevelData, teachroleLevelData:teachroleLevelData, stengageLevelData:stengageLevelData,
-		                	stcollabLevelData:stcollabLevelData, technologyLevelData:technologyLevelData, rubricTotal:rubricTotal
+		                	adminEmail:adminEmail, checklists:checklists, digitalContent:digitalContent, seating:seating, 
+							timing:timing, differentiation:differentiation, studentGroups:studentGroups, data:data, reflection:reflection, 
+							studentLearning:studentLearning, rubricnotes:rubricnotes, rubricTotal:rubricTotal
 		             },
 		             	async: false,
 		                success: function(data) {
@@ -107,12 +104,13 @@
 				$(".levelupclass").fadeOut("slow");
 				
 				$("#teacherlabel").text("");
-	        		$("#adminlabel").text("");
+	        	$("#adminlabel").text("");
 				$("#teacherName").empty();
 				$("#date").empty();
-				$(".rubricTotal").html("");
-				$(".user").html("");
-				$(".observed").html("");
+				$("#phase").text("");
+				$("#totalPoints").text("");
+				$("#user").text("");
+				$("#observed").text("");
 				$(".timeTaken").html("");
 				$("#rubricnotes").val("");
 				$("#levelup").val("");
@@ -186,9 +184,10 @@
 				$(".levelupclass").fadeOut("slow");
 				
 				$("#date").empty();
-				$(".rubricTotal").html("");
-				$(".user").html("");
-				$(".observed").html("");
+				$("#phase").text("");
+				$("#totalPoints").text("");
+				$("#user").text("");
+				$("#observed").text("");
 				$(".timeTaken").html("");
 				$("#rubricnotes").val("");
 				$("#levelup").val("");
@@ -233,7 +232,8 @@
 					    
 	                $.each(response, function(key, value) {
 	                		if (value[0] != null) {
-	                			$("#teacherlabel").text(value[0]);
+	                			//$("#teacherlabel").text(value[0]);
+								$("#teacherlabel").text('jeffwk@yahoo.com');
 	                		} else {
 	                			document.getElementById("teachercheckbox").style.display = "none";
 	                		}
@@ -307,9 +307,10 @@
 			var high = '#0FAD00';
 			
 			$(".timeTaken").html("");
-			$(".rubricTotal").html("");
-			$(".user").html("");
-			$(".observed").html("");
+			$("#phase").text("");
+			$("#totalPoints").text("");
+			$("#user").text("");
+			$("#observed").text("");
 			$(".timeTaken").html("");
 			$("#rubricnotes").val("");
 			$("#levelup").val("");
@@ -339,8 +340,8 @@
 	                dataType: "json",
 	                success: function (response) {
 	                		 
-	                		 $(".user").html(response.userId);
-	                		 $(".observed").html(response.observed);
+	                		 $("#user").html(response.userId);
+	                		 $("#observed").html(response.observed);
 	                		 
 	                		 if (!$.trim(response.timeObserved)) {
 	                			 $(".timeTaken").html("Not Recorded");
@@ -431,6 +432,119 @@
 	                		 		timingLevel= 0;
 	                		 		$("#timing").removeAttr('style');
 	                		 	}
+
+							//differentiation
+	                		 if ((response.differentiation) == (1)) {
+	                			 	rubricTotal += 1;
+	                			 	differentiationLevel = 1;
+	                			 	$("#differentiation").css("color",low);
+									$("#differentiation").text("Occurs at the teacher-led station/small group, at a minimum"); }
+	                		 	else if ((response.differentiation) == (2)) {
+	                		 		rubricTotal += 2;
+	                		 		differentiationLevel = 2;
+	                		 		$("#differentiation").css("color",med); 
+									$("#differentiation").text("Occurs at the teacher-led station/small group time, and at least one other"); }
+	                		 	else if ((response.differentiation) == (3)) {
+	                		 		rubricTotal += 3;
+	                		 		differentiationLevel = 3;
+	                		 		$("#differentiation").css("color",high); 
+									$("#differentiation").text("Occurs at the teacher-led station/small group time, and at least one other"); }
+	                		 	else {
+	                		 		differentiationLevel= 0;
+	                		 		$("#differentiation").removeAttr('style');
+	                		 	}
+
+							//studentGroups
+	                		 if ((response.studentGroups) == (1)) {
+	                			 	rubricTotal += 1;
+	                			 	studentGroupsLevel = 1;
+	                			 	$("#studentGroups").css("color",low);
+									$("#studentGroups").text("Fixed Student Groups; determined by the teacher"); }
+	                		 	else if ((response.studentGroups) == (2)) {
+	                		 		rubricTotal += 2;
+	                		 		studentGroupsLevel = 2;
+	                		 		$("#studentGroups").css("color",med); 
+									$("#studentGroups").text("Fluid Student Groups"); }
+	                		 	else if ((response.studentGroups) == (3)) {
+	                		 		rubricTotal += 3;
+	                		 		studentGroupsLevel = 3;
+	                		 		$("#studentGroups").css("color",high); 
+									$("#studentGroups").text("Fluid Student Groups: changing with often relevant learning target data (not BM)"); }
+	                		 	else {
+	                		 		studentGroupsLevel= 0;
+	                		 		$("#studentGroups").removeAttr('style');
+	                		 	}
+
+							//data
+	                		 if ((response.data) == (1)) {
+	                			 	rubricTotal += 1;
+	                			 	dataLevel = 1;
+	                			 	$("#data").css("color",low);
+									$("#data").text("Collected from Benchmarks"); }
+	                		 	else if ((response.data) == (2)) {
+	                		 		rubricTotal += 2;
+	                		 		dataLevel = 2;
+	                		 		$("#data").css("color",med); 
+									$("#data").text("Collected from Multiple Sources"); }
+	                		 	else if ((response.data) == (3)) {
+	                		 		rubricTotal += 3;
+	                		 		dataLevel = 3;
+	                		 		$("#data").css("color",high); 
+									$("#data").text("Collected from Multiple Sources, including student profile data"); }
+	                		 	else {
+	                		 		dataLevel= 0;
+	                		 		$("#data").removeAttr('style');
+	                		 	}
+
+							//reflection
+	                		 if ((response.reflection) == (1)) {
+	                			 	rubricTotal += 1;
+	                			 	reflectionLevel = 1;
+	                			 	$("#reflection").css("color",low);
+									$("#reflection").text("Collected from Benchmarks"); }
+	                		 	else if ((response.reflection) == (2)) {
+	                		 		rubricTotal += 2;
+	                		 		reflectionLevel = 2;
+	                		 		$("#reflection").css("color",med); 
+									$("#reflection").text("Collected from Multiple Sources"); }
+	                		 	else if ((response.reflection) == (3)) {
+	                		 		rubricTotal += 3;
+	                		 		reflectionLevel = 3;
+	                		 		$("#reflection").css("color",high); 
+									$("#reflection").text("Collected from Multiple Sources, including student profile data"); }
+	                		 	else {
+	                		 		reflectionLevel= 0;
+	                		 		$("#reflection").removeAttr('style');
+	                		 	}
+
+							//studentLearning
+	                		 if ((response.studentLearning) == (1)) {
+	                			 	rubricTotal += 1;
+	                			 	studentLearningLevel = 1;
+	                			 	$("#studentLearning").css("color",low);
+									$("#studentLearning").text("Collected from Benchmarks"); }
+	                		 	else if ((response.studentLearning) == (2)) {
+	                		 		rubricTotal += 2;
+	                		 		studentLearningLevel = 2;
+	                		 		$("#studentLearning").css("color",med); 
+									$("#studentLearning").text("Collected from Multiple Sources"); }
+	                		 	else if ((response.studentLearning) == (3)) {
+	                		 		rubricTotal += 3;
+	                		 		studentLearningLevel = 3;
+	                		 		$("#studentLearning").css("color",high); 
+									$("#studentLearning").text("Collected from Multiple Sources, including student profile data"); }
+	                		 	else {
+	                		 		studentLearningLevel= 0;
+	                		 		$("#data").removeAttr('style');
+	                		 	}
+							
+								$("#phase").text(response.phase);
+								
+								$("#totalpoints").text(rubricTotal);
+							
+							
+							//rubricNotes
+							document.getElementById("rubricNotes").value = response.rubricNotes;
 	                	           		 
 	                		 
 	                		 /*
@@ -506,11 +620,11 @@
 	   	         	                }
 	   	                		 });
 
-	                		 document.getElementById("rubricnotes").value = response.rubricNotes;
+	                		 
 	                		 //document.getElementById("levelup").value = response.levelUp;
 	                		 document.getElementById("questions").value = response.questions;
 	                		 
-	                	 $(".rubricTotal").html(rubricTotal);
+	                
 							*/
 	               
 	                }

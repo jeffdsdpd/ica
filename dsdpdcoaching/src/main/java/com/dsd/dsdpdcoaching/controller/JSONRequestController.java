@@ -173,6 +173,14 @@ public class JSONRequestController extends HttpServlet {
 		return "success";
 	}
 	
+	//Called from hokeRubricReport.js to send the rubric report email
+	@GetMapping(value="/sendHokeRubricEmail")
+	@ResponseBody
+	public String sendHokeRubricEmail(HttpServletRequest request, HttpServletResponse response) {
+		emailService.sendHokeRubricEmail(request, response);
+		return "success";
+	}
+	
 	//Called from hokeModelTeacherRubricReport.js to send the Hoke rubric report email
 	@GetMapping(value="/sendHokeModelTeacherRubricEmail")
 	@ResponseBody

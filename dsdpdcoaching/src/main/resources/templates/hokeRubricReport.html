@@ -172,10 +172,16 @@
 										<div id="wrapper">
 											<div id="left" class="floating-box">
 												<h5>
-													<b>Recorded By: </b><span class="user" name="user" id="user"></span>
+													<b>Phase: </b><span id="phase"></span>
 												</h5>
 												<h5>
-													<b>Observed: </b><span class="observed" style="color: red"></span>
+													<b>Total Points: </b><span id="totalPoints"></span>
+												</h5>
+												<h5>
+													<b>Recorded By: </b><span id="user"></span>
+												</h5>
+												<h5>
+													<b>Observed: </b><span id="observed" style="color: red"></span>
 												</h5>
 											</div>
 											
@@ -209,81 +215,40 @@
 
 										<div class="container">
 										
-	  										<label style="font-family:arial; font-weight:normal; font-size:18px; color:#4e86ae">Checklists</label><br />
-	  										<span id="checklists"></span>
-											<br /><br />
-										
-											<label style="font-family:arial; font-weight:normal; font-size:18px; color:#4e86ae">Digital Content, Independent Practice, Teacher-Led, 4 Cs</label><br />
-	  										<span id="digitalContent"></span>
-										  	<br /><br />
+	  										<label style="font-family:arial; font-weight:normal; font-size:18px; color:#3E6B8B ">Checklists</label>
+	  										<p id="checklists"></p>
+	  										<hr style="width:40%;text-align:left;margin-left:0"></hr>
 											
-											<label style="font-family:arial; font-weight:normal; font-size:18px; color:#4e86ae">Seating</label><br />
-											<span id="seating"></span>
-	  										<br /><br />
+											<label style="font-family:arial; font-weight:normal; font-size:18px; color:#3E6B8B ">Digital Content, Independent Practice, Teacher-Led, 4 Cs</label>
+	  										<p id="digitalContent"></p>
+										  	<hr style="width:40%;text-align:left;margin-left:0"></hr>
+											
+											<label style="font-family:arial; font-weight:normal; font-size:18px; color:#3E6B8B ">Seating</label>
+											<p id="seating"></p>
+	  										<hr style="width:40%;text-align:left;margin-left:0"></hr>
 	  									
-	  									<label style="font-family:arial; font-weight:normal; font-size:18px; color:#4e86ae">Timing</label><br />
-	  									<select id="timing" name="timing" class="mdb-select md-form">
-										  <option value="">Please Select</option>
-										  <option value="1">Whole Group Timer</option>
-										  <option value="2">Fluid Timing Periods</option>
-										  <option value="3">Fluid Timing</option>
-										  <option value="0">Not Observed</option>
-										</select>
+	  										<label style="font-family:arial; font-weight:normal; font-size:18px; color:#3E6B8B ">Timing</label>
+	  										<p id="timing"></p>
+	  										<hr style="width:40%;text-align:left;margin-left:0"></hr>
+								
+											<label style="font-family:arial; font-weight:normal; font-size:18px; color:#3E6B8B ">Differentiation</label>
+											<p id="differentiation"></p>
+											<hr style="width:40%;text-align:left;margin-left:0"></hr>
 										
-										<br /><br /><br />
+											<label style="font-family:arial; font-weight:normal; font-size:18px; color:#3E6B8B ">Student Groups for Teacher Led/Small Group Time</label>
+											<p id="studentGroups"></p>
+											<hr style="width:40%;text-align:left;margin-left:0"></hr>
 										
-										<label style="font-family:arial; font-weight:normal; font-size:18px; color:#4e86ae">Differentiation</label><br />
-										<select id="differentiation" name="differentiation" class="mdb-select md-form">
-										  <option value="">Please Select</option>
-										  <option value="1">Occurs at the teacher-led station/small group, at a minimum</option>
-										  <option value="2">Occurs at the teacher-led station/small group time, and at least one other</option>
-										  <option value="3">Occurs at the teacher-led station/small group time, and at least one other</option>
-										  <option value="0">Not Observed</option>
-										</select>
+											<label style="font-family:arial; font-weight:normal; font-size:18px; color:#3E6B8B ">Data and Assessment</label>
+											<p id="data"></p>
+											<hr style="width:40%;text-align:left;margin-left:0"></hr>
+											
+											<label style="font-family:arial; font-weight:normal; font-size:18px; color:#3E6B8B ">Reflection and Goal Setting</label>
+											<p id="reflection"></p>
+											<hr style="width:40%;text-align:left;margin-left:0"></hr>
 										
-										<br /><br /><br />
-										
-										<label style="font-family:arial; font-weight:normal; font-size:18px; color:#4e86ae">Student Groups for Teacher Led/Small Group Time</label><br />
-										<select id="studentGroups" name="studentGroups" class="mdb-select md-form">
-										  <option value="">Please Select</option>
-										  <option value="1">Fixed Student Groups; determined by the teacher</option>
-										  <option value="2">Fluid Student Groups</option>
-										  <option value="3">Fluid Student Groups: changing with often relevent learning target data (not BM)</option>
-										  <option value="0">Not Observed</option>
-										</select>
-										
-										<br /><br /><br />
-										
-										<label style="font-family:arial; font-weight:normal; font-size:18px; color:#4e86ae">Data and Assessment</label><br />
-										<select id="data" name="data" class="mdb-select md-form">
-										  <option value="">Please Select</option>
-										  <option value="1">Collected from Benchmarks</option>
-										  <option value="2">Collected from Multiple Sources</option>
-										  <option value="3">Collected from Multiple Sources, including student profile data</option>
-										  <option value="0">Not Observed</option>
-										</select>
-										
-										<br /><br /><br />
-										
-										<label style="font-family:arial; font-weight:normal; font-size:18px; color:#4e86ae">Reflection and Goal Setting</label><br />
-										<select id="reflection" name="reflection" class="mdb-select md-form">
-										  <option value="">Please Select</option>
-										  <option value="1">Informal and Guided by the teacher</option>
-										  <option value="2">Formal and Guided by the teacher</option>
-										  <option value="3">Formal, student generated, and based on preassessment</option>
-										  <option value="0">Not Observed</option>
-										</select>
-										
-										<br /><br /><br />
-										
-										<label style="font-family:arial; font-weight:normal; font-size:18px; color:#4e86ae">Student Learning Paths</label><br />
-										<select id="studentLearning" name="studentLearning" class="mdb-select md-form">
-										  <option value="">Please Select</option>
-										  <option value="1">All students on same path</option>
-										  <option value="2">Student paths differ based on small group, 1:1 time</option>
-										  <option value="3">Students path is based on Learning Target preassessment data</option>
-										  <option value="0">Not Observed</option>
-										</select>
+											<label style="font-family:arial; font-weight:normal; font-size:18px; color:#3E6B8B ">Student Learning Paths</label>
+											<p id="studentLearning"></p>
 										
 										<br />
 	  									
@@ -313,12 +278,6 @@
 										  	<input type="hidden" id="unCheckedValues" name="unCheckedValues"></input>
 										</div>
 										
-										<button type="submit" class="btn btn-info btn-fill" style="margin:auto; display:block;" 
-											name="Submit" value="Submit" onclick="loopForm(document.frm);">Update LevelUp Items
-										</button>
-										
-										
-
 								</div>
 							</div>
 
