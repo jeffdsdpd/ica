@@ -232,8 +232,7 @@
 					    
 	                $.each(response, function(key, value) {
 	                		if (value[0] != null) {
-	                			//$("#teacherlabel").text(value[0]);
-								$("#teacherlabel").text('jeffwk@yahoo.com');
+	                			$("#teacherlabel").text(value[0]);
 	                		} else {
 	                			document.getElementById("teachercheckbox").style.display = "none";
 	                		}
