@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.dsd.dsdpdcoaching.dao.RubricDao;
+import com.dsd.dsdpdcoaching.dto.HokeIntervention;
 import com.dsd.dsdpdcoaching.dto.HokeModelTeacherRubric;
 import com.dsd.dsdpdcoaching.dto.HokeRubric;
 import com.dsd.dsdpdcoaching.dto.HokeRubricLevelUp;
@@ -24,7 +25,7 @@ import com.dsd.dsdpdcoaching.service.RubricTotalCalculator;
 
 @Controller
 @SessionAttributes("schoolList")
-public class RubricController {
+public class FrontController {
 
 	@Autowired
 	private RubricDao rubricDao;
@@ -54,6 +55,13 @@ public class RubricController {
 		model.addAttribute("hokeModelTeacherRubricData", new HokeModelTeacherRubric());
 		model.addAttribute("hokeRubricLevelUp", new HokeRubricLevelUp());
 		return "hokeModelTeacherRubricForm";
+	}
+	
+	@GetMapping("/hokeInterventionForm.html")
+	public String getHokeInterventionForm(Model model) {
+		model.addAttribute("hokeInterventionData", new HokeIntervention());
+		//model.addAttribute("hokeRubricLevelUp", new HokeRubricLevelUp());
+		return "hokeInterventionForm";
 	}
 	
 	@GetMapping("/rubricReport.html")
@@ -204,6 +212,26 @@ public class RubricController {
 		
 		return "redirect:/hokeModelTeacherRubricReport.html";
 	
+	}
+	
+	@PostMapping("/hokeInterventionForm")
+	public String postHokeInterventionForm(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute HokeIntervention hokeInterventionData) {
+
+		hokeInterventionData.setUserId(request.getUserPrincipal().getName());
+		
+		Integer teacherId = hokeInterventionData.getTeacherId();
+		//HokeRubric hokeRubicData = ((HokeRubric) SerializationUtils.clone(hokeInterventionData));
+		//hokeInterventionData.setTeacherId(teacherId);
+		
+		//rubricDao.saveHokeRubricData(hokeRubicData);
+		
+		//check if the email checkbox was checked to email the report to the teacher
+		//if(request.getParameter("teachercheckbox")!=null) {
+		//	emailService.sendRubricEmail(hokeRubricData, request.getParameter("teachercheckbox"));
+		//}
+
+		//redirect user back to blank form so they can enter more data
+		return "redirect:/hokeInterventionForm.html";
 	}
 
 }
