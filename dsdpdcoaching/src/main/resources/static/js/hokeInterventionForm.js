@@ -1,5 +1,11 @@
 $(document).ready(
 		function() {
+
+        $('.multiple').multiselect({
+            buttonWidth: '250px'
+        });
+
+
 			var wrapper = $(".input_wrap>div");
 			var teacherId;
 
@@ -68,17 +74,13 @@ $(document).ready(
 					},
 					timeObserved : {
 						required : true
-					},
-					observed : {
-						required : true
 					}
 				},
 				messages : {
 					schoolId : "Required",
 					teacherId : "Required",
 					entryDate : "Required",
-					timeObserved : "Required",
-					observed : "Required"
+					timeObserved : "Required"
 				},
 				highlight : function(element) {
 					$(element).addClass('error')
@@ -89,7 +91,6 @@ $(document).ready(
     $('.selectpicker').multiselect();
 });
 		});//end of document ready function
-		
 
 
 $(function() {

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.dsd.dsdpdcoaching.dao.InterventionDao;
 import com.dsd.dsdpdcoaching.dao.RubricDao;
 import com.dsd.dsdpdcoaching.dto.HokeIntervention;
 import com.dsd.dsdpdcoaching.dto.HokeModelTeacherRubric;
@@ -29,6 +30,8 @@ public class FrontController {
 
 	@Autowired
 	private RubricDao rubricDao;
+	@Autowired
+	private InterventionDao interventionDao;
 	@Autowired
 	private RubricTotalCalculator rubricTotalCalculator;
 	@Autowired
@@ -223,7 +226,7 @@ public class FrontController {
 		//HokeRubric hokeRubicData = ((HokeRubric) SerializationUtils.clone(hokeInterventionData));
 		//hokeInterventionData.setTeacherId(teacherId);
 		
-		//rubricDao.saveHokeRubricData(hokeRubicData);
+		interventionDao.saveInterventionData(hokeInterventionData);
 		
 		//check if the email checkbox was checked to email the report to the teacher
 		//if(request.getParameter("teachercheckbox")!=null) {

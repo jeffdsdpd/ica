@@ -10,7 +10,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TemporalType;
-import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,17 +32,17 @@ public class RubricDao {
 	@Autowired
 	TeacherProgressionReportData teacherProgressionReportData;
 
-	//Called by the JSONRequestController to save rubric data on rubricForm.html
+	//Called by the FrontController to save rubric data on rubricForm.html
 	public void saveRubricData(Rubric data) {
 		entityManager.persist(data);		
 	}
 	
-	//Called by the JSONRequestController to save rubric data on rubricForm.html
+	//Called by the FrontController to save rubric data on rubricForm.html
 	public void saveHokeRubricData(HokeRubric hokeData) {
 		entityManager.persist(hokeData);		
 	}
 	
-	//Called by the JSONRequestController to save hoke model teacher rubric data on hokeModelTeacherRubricForm.html
+	//Called by the FrontController to save hoke model teacher rubric data on hokeModelTeacherRubricForm.html
 	public void saveHokeModelTeacherRubricData(HokeModelTeacherRubric hokeModelTeacherData) {
 		entityManager.persist(hokeModelTeacherData);		
 	}
