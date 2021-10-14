@@ -144,6 +144,14 @@ public class JSONRequestController extends HttpServlet {
 		return rubricDao.getRubricDatesBySchool(schoolId);
 	}
 	
+	//Called from hookeSchoolRubricReport.js to get all the Hoke rubric dates by the school
+	@GetMapping(value="/getHokeRubricDatesBySchool")
+	@ResponseBody
+	public List<Date> getHokeRubricDatesBySchool(@RequestParam Integer schoolId) {	
+		return rubricDao.getHokeRubricDatesBySchool(schoolId);
+	}
+	
+	
 	//Called from schoolRubricReport.js to get the data for the graph
 	@GetMapping(value="/getRubricValuesBySchoolDateObserved")
 	@ResponseBody
@@ -273,10 +281,6 @@ public class JSONRequestController extends HttpServlet {
 		}
 		return result;
 	}
-	
-	
-	
-	
 	
 	//Called from rubricForm.js
 	@GetMapping(value="/getLevelUpsByTeacher")

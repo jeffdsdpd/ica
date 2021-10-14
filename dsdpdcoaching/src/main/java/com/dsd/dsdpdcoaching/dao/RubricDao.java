@@ -296,10 +296,18 @@ public class RubricDao {
 	return rubricLevelUpList;
 	}
 
-	//Called by the JSONRequestController to select the rubric dates by school to display on the schoolRubricReport.html triggered from dropdown school list
+	//Called by the JSONRequestController to select the rubric dates by school to display on the schoolRubricReport.html triggered from drop down school list
 	@SuppressWarnings("unchecked")
 	public List<Date> getRubricDatesBySchool(Integer schoolId) {
 		return (List<Date>) entityManager.createQuery("select distinct date from RUBRIC where schoolid = :schoolId and observed = 'Observed Classroom' order by date desc")
+    			.setParameter("schoolId", schoolId)
+    			.getResultList();
+	}
+	
+	//Called by the JSONRequestController to select the hoke rubric dates by school to display on the hokeSchoolRubricReport.html triggered from drop down school list
+	@SuppressWarnings("unchecked")
+	public List<Date> getHokeRubricDatesBySchool(Integer schoolId) {
+		return (List<Date>) entityManager.createQuery("select distinct date from HOKE_RUBRIC where schoolid = :schoolId and observed = 'Observed Classroom' order by date desc")
     			.setParameter("schoolId", schoolId)
     			.getResultList();
 	}
@@ -362,6 +370,27 @@ public class RubricDao {
 		return (List<Rubric>) entityManager.createQuery("from RUBRIC where schoolid = :schoolId and date = :date and observed = 'Observed Classroom'")
 	    			.setParameter("schoolId", schoolId)
 	    			.setParameter("date", date1, TemporalType.DATE)
+	    			.getResultList();
+	}
+	
+	//Called by the JSONRequestController to get the Hoke rubic data to create the graph on the hokeSchoolRubricReport.html
+	@SuppressWarnings("unchecked")
+	public List<HokeRubric> getHokeRubricValuesBySchoolDateObserved(Integer schoolId, String startDate, String endDate) {
+		SimpleDateFormat formatter1=new SimpleDateFormat("MM/dd/yyyy");
+		Date startDateFormatted = null;
+		Date endDateFormatted = null;
+		
+		try {
+			startDateFormatted = (Date)formatter1.parse(startDate);
+			endDateFormatted = (Date)formatter1.parse(endDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return (List<HokeRubric>) entityManager.createQuery("from HOKE_RUBRIC where schoolid = :schoolId and date > :startDate and date < :endDate")
+	    			.setParameter("schoolId", schoolId)
+	    			.setParameter("startDate", startDateFormatted, TemporalType.DATE)
+	    			.setParameter("endDate", endDateFormatted, TemporalType.DATE)
 	    			.getResultList();
 	}
 

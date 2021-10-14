@@ -1,5 +1,7 @@
 package com.dsd.dsdpdcoaching.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.dsd.dsdpdcoaching.dao.RubricDao;
@@ -87,6 +91,11 @@ public class FrontController {
 	@GetMapping("/schoolRubricReport.html")
 	public String getSchoolRubricReport(Model model) {
 		return "schoolRubricReport";
+	}
+	
+	@GetMapping("/hokeSchoolRubricReport.html")
+	public String getHokeSchoolRubricReport(Model model) {
+		return "hokeSchoolRubricReport";
 	}
 	
 	@PostMapping("/rubricForm")
@@ -213,13 +222,20 @@ public class FrontController {
 		return "redirect:/hokeModelTeacherRubricReport.html";
 	
 	}
+
+	//Called from hokeSchoolRubricReport.js to get the data for the graph
+	@GetMapping(value="/getHokeRubricValuesBySchoolDatesObserved")
+	@ResponseBody
+	public List<HokeRubric> getHokeRubricValuesBySchoolDateObserved(@RequestParam Integer schoolId, @RequestParam String startDate, @RequestParam String endDate) {	
+		return rubricDao.getHokeRubricValuesBySchoolDateObserved(schoolId, startDate, endDate);
+	}
 	
 	@PostMapping("/hokeInterventionForm")
 	public String postHokeInterventionForm(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute HokeIntervention hokeInterventionData) {
 
 		hokeInterventionData.setUserId(request.getUserPrincipal().getName());
 		
-		Integer teacherId = hokeInterventionData.getTeacherId();
+		//Integer teacherId = hokeInterventionData.getTeacherId();
 		//HokeRubric hokeRubicData = ((HokeRubric) SerializationUtils.clone(hokeInterventionData));
 		//hokeInterventionData.setTeacherId(teacherId);
 		
