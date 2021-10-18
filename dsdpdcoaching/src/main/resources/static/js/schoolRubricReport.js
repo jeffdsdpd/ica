@@ -1,48 +1,64 @@
 $(document).ready(function() {
-	var selectedSchoolId = null;
-	var selectedDate = null;
-
+	
 	//SCHOOL field has changed
 	$("#schoolId").change(function() {
 		clearRubricFields();
 		$("#container").fadeOut("slow");
-		$("#date").empty();
-		
-		selectedSchoolId =  $("#schoolId :selected").val();
-		$.ajax({
-            type: "GET",
-            url:"getRubricDatesBySchool",
-            data:{schoolId: selectedSchoolId},
-            dataType: "json",
-            success: function (response) {
-            	var $dateDropdownList = $("#date");
-            	$dateDropdownList.empty();
-            	
-            	$dateDropdownList.append($("<option></option>").attr("value", '').text('Please Select'));
-            	 $.each(response, function(value, key) {
-                     $dateDropdownList.append($("<option></option>").attr("value", key).text((key)));
-                 });		
-                } //end of the 'success' function
-            }); //end of the ajax function
-	}); //end of the 'schoolId' change function
+		$("#startDate").empty();
+		$("#endDate").empty();
+	});
+
 	
-	//DATE field has changed
-	$("#date").change(function(){
-		clearRubricFields();
-		$("#container").fadeOut("slow");
-		selectedSchoolId =  $("#schoolId :selected").val();
-		selectedDate =   $("#date :selected").val();	
-		$("#container").fadeIn("slow");
-				
-		$.ajax({
-            type: "GET",
-            url:"getRubricValuesBySchoolDateObserved",
-            data:{schoolId:selectedSchoolId, date:selectedDate},
-            dataType: "json",
-            success: function (response) {
-            	var nbrOfRecords = 0;
+	//date functions for displaying a calendar with start date < end date
+	$(function () {
+            $("#startDate").datepicker({
+                onSelect: function (selected) {
+					clearRubricFields();
+					$("#container").fadeOut("slow");
+	                var dt = new Date(selected);
+	                $("#endDate").datepicker("option", "minDate", dt);
+               	}
+            });
+            $("#endDate").datepicker({
+                onSelect: function (selected) {
+					clearRubricFields();
+					$("#container").fadeOut("slow");
+                    var dt = new Date(selected);
+                    $("#startDate").datepicker("option", "maxDate", dt);
+                }
+            });
+        });
+	}); //end of the 'document' ready function
+
+	//Display Report Button clicked
+	function validateForm() {
+		if($("#frm").valid()) {
+			var school = $("#schoolId :selected").val();
+			var sd =  $("#startDate").datepicker({ dateFormat: 'dd,MM,yyyy' }).val();
+			var ed =  $("#endDate").datepicker({ dateFormat: 'dd,MM,yyyy' }).val();
+			displayChart();
+		};
+	};
+	
+	
+	//function called after validateForm is successful
+		function displayChart() {
+			nbrOfRecords = 0;
+			clearRubricFields();
+			selectedSchoolId =  $("#schoolId :selected").val();
+			$("#container").fadeOut("slow");
+			var selectedSchoolId =  $("#schoolId :selected").val();
+			startDate =  $("#startDate").datepicker({ dateFormat: 'dd,MM,yyyy' }).val();
+			endDate =  $("#endDate").datepicker({ dateFormat: 'dd,MM,yyyy' }).val();
+			$("#container").fadeIn("slow");
+		    $.ajax({
+		        type: "GET",
+		        url:"getRubricValuesBySchoolDatesObserved",
+		        data:{schoolId:selectedSchoolId, startDate:startDate, endDate:endDate},
+		        dataType: "json",
+		        success: function (response) {
             	
-            	$.each(response, function(value, interactionObject) {
+            	$.each(response, function(index, interactionObject) {
             		nbrOfRecords += 1 ;
 
             		if ((interactionObject.planning) != null) {
@@ -215,10 +231,10 @@ $(document).ready(function() {
                         '#778899'
                     ],
             		    title: {
-            		        text: 'Rubric Values For ' + $("#date :selected").val()
+            		        text: 'Rubric Values From ' + startDate + ' To ' + endDate
             		    },
             		    subtitle: {
-            		        text: nbrOfRecords + ' RUBRIC(S) entered on ' + $("#date :selected").val()
+            		        text: nbrOfRecords + ' RUBRIC(S) Recorded'
             		    },
             		    xAxis: {
             		        categories: [
@@ -237,11 +253,10 @@ $(document).ready(function() {
             		        data: [planningPhaseThree, assessanddataPhaseThree, pathPhaseThree, placePhaseThree, pacePhaseThree, classmgmtPhaseThree, teacherrolePhaseThree, studentengagePhaseThree, studentcollabPhaseThree, technologyPhaseThree],
             		    }]
             		});
-            } //end of success for 'dataentered' field changed ajax function
-        }); //end of the ajax function
-	}); //end of the 'date change' change function
+				}
+		})
 	
-}); //end of the 'document' ready function
+	};
 		
 function clearRubricFields() {
 		planningPhaseOne = 0;

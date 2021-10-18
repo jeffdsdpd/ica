@@ -1,24 +1,5 @@
 $(document).ready(function() {
 	
-	//date functions for displaying a calendar with start date < end date
-	$(function() {
-	$("#startDate").datepicker({
-		maxDate: new Date,
-		onSelect: function(selected) {
-	      $("#endDate").datepicker("option","minDate", selected)
-			}
-		});	    
-	});
-	
-	$(function() {
-	$("#endDate").datepicker({
-		maxDate: new Date,
-		onSelect: function(selected) {
-	      $("#startDate").datepicker("option","maxDate", selected)
-			}
-		});	    
-	});
-	
 	//SCHOOL field has changed
 	$("#schoolId").change(function() {
 		clearRubricFields();
@@ -26,23 +7,28 @@ $(document).ready(function() {
 		$("#startDate").empty();
 		$("#endDate").empty();
 	});
+
 	
-	//START DATE field has changed
-	$("#startDate").datepicker({
-    	onSelect: function() {
-      	clearRubricFields();
-		$("#container").fadeOut("slow");
-    	}
-	});
-	
-	//END DATE field has changed
-	$("#endDate").datepicker({
-    	onSelect: function() {
-      	clearRubricFields();
-		$("#container").fadeOut("slow");
-    	}
-	});
-}); //end of the 'document' ready function
+	//date functions for displaying a calendar with start date < end date
+	$(function () {
+            $("#startDate").datepicker({
+                onSelect: function (selected) {
+					clearRubricFields();
+					$("#container").fadeOut("slow");
+	                var dt = new Date(selected);
+	                $("#endDate").datepicker("option", "minDate", dt);
+               	}
+            });
+            $("#endDate").datepicker({
+                onSelect: function (selected) {
+					clearRubricFields();
+					$("#container").fadeOut("slow");
+                    var dt = new Date(selected);
+                    $("#startDate").datepicker("option", "maxDate", dt);
+                }
+            });
+        });
+	}); //end of the 'document' ready function
 
 
 	//Display Report Button clicked
@@ -63,7 +49,6 @@ $(document).ready(function() {
 		clearRubricFields();
 		selectedSchoolId =  $("#schoolId :selected").val();
 		$("#container").fadeOut("slow");
-		var selectedSchoolId =  $("#schoolId :selected").val();
 		startDate =  $("#startDate").datepicker({ dateFormat: 'dd,MM,yyyy' }).val();
 		endDate =  $("#endDate").datepicker({ dateFormat: 'dd,MM,yyyy' }).val();
 		$("#container").fadeIn("slow");
@@ -74,7 +59,8 @@ $(document).ready(function() {
 	        dataType: "json",
 	        success: function (response) {
 				
-            	$.each(response, function(value, interactionObject) {
+            	$.each(response, function(index, interactionObject){
+       
             		nbrOfRecords += 1;
 
 					if ((interactionObject.checklists) != null) {
@@ -300,5 +286,4 @@ $(document).ready(function() {
 		studentLearningPhaseThree = 0;
 		studentLearningNE = 0;
 	};
-	
 

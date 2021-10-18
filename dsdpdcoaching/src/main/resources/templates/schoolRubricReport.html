@@ -12,8 +12,10 @@
 <!--   JS Files   -->
 <script src="js/lib/jquery.js"></script>
 <script src="js/lib/jquery-ui.min.js"></script>
+<script src="js/lib/timepicker.js"></script>
 <script src="js/lib/bootstrap.min.js"></script>
 <script src="js/lib/light-bootstrap-dashboard.js"></script>
+<script src="js/lib/jquery.validate.min.js"></script>
 <script src="js/lib/highcharts.js"></script>
 <script src="js/lib/highcharts-3d.js"></script>
 <script src="js/lib/cylinder.js"></script>
@@ -26,6 +28,7 @@
 <link href="css/lib/jquery-ui.css" rel="stylesheet" />
 <link href="css/lib/bootstrap.min.css" rel="stylesheet" />
 <link href="css/lib/light-bootstrap-dashboard.css" rel="stylesheet" />
+<link href="css/lib/timepicker.css" rel="stylesheet" />
 <link href="css/misc.css" rel="stylesheet" />
 
 <!--   Fonts and icons     -->
@@ -52,13 +55,13 @@
 									<h2 class="title">School Rubric Report</h2>
 								</div>
 								<div class="content">
-									<form>
+									<form id="frm" name="frm">
 										<div class="row">
 											<div class="col-md-4">
 												<div class="form-group">
 													<label>School</label> 
-													<select name="schoolName" id="schoolId" class="form-control">
-														<option value="0">Please Select</option>
+													<select th:required="true" name="schoolName" id="schoolId" class="form-control">
+														<option value="">Please Select</option>
 														<option th:each="school: ${schoolList}"
 															th:value="${school.id}" th:text="${school.name}"></option>
 													</select>
@@ -67,13 +70,29 @@
 											
 											<div class="col-md-3">
 												<div class="form-group">
-													<label>Date</label>
-													<select name="date" id="date" class="form-control">
-														<option value="0">Please Select</option>
-													</select>
+													<label>Start Date</label>
+													<input th:required="true" type="text" id="startDate" name="startDate" class="form-control" placeholder="Start Date" />
+												</div>
+											</div>
+											
+											<div class="col-md-3">
+												<div class="form-group">
+													<label>End Date</label>
+													<input th:required="true" type="text" id="endDate" name="endDtate" class="form-control" placeholder="End Date" />
 												</div>
 											</div>
 										</div>
+											
+											<div class="container">
+												<div class="row">
+													<div class="col-md-2 text-center"></div>
+	   												<div class="col-md-4 text-center">
+														<button type="button" class="btn btn-primary btn-md btn-block" onclick="validateForm()">Display Report</button>
+													</div>
+												<div class="col-md-2 text-center"></div>
+												</div>
+											</div>
+											
 										
 										<div class="panel-body">
 

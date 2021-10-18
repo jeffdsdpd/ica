@@ -373,9 +373,9 @@ public class RubricDao {
 	    			.getResultList();
 	}
 	
-	//Called by the JSONRequestController to get the Hoke rubic data to create the graph on the hokeSchoolRubricReport.html
+	//Called by the JSONRequestController to get the Hoke rubric data to create the graph on the hokeSchoolRubricReport.html
 	@SuppressWarnings("unchecked")
-	public List<HokeRubric> getHokeRubricValuesBySchoolDateObserved(Integer schoolId, String startDate, String endDate) {
+	public List<HokeRubric> getHokeRubricValuesBySchoolDatesObserved(Integer schoolId, String startDate, String endDate) {
 		SimpleDateFormat formatter1=new SimpleDateFormat("MM/dd/yyyy");
 		Date startDateFormatted = null;
 		Date endDateFormatted = null;
@@ -388,6 +388,27 @@ public class RubricDao {
 		}
 		
 		return (List<HokeRubric>) entityManager.createQuery("from HOKE_RUBRIC where schoolid = :schoolId and date > :startDate and date < :endDate")
+	    			.setParameter("schoolId", schoolId)
+	    			.setParameter("startDate", startDateFormatted, TemporalType.DATE)
+	    			.setParameter("endDate", endDateFormatted, TemporalType.DATE)
+	    			.getResultList();
+	}
+	
+	//Called by the JSONRequestController to get the rubric data to create the graph on the schoolRubricReport.html
+	@SuppressWarnings("unchecked")
+	public List<HokeRubric> getRubricValuesBySchoolDatesObserved(Integer schoolId, String startDate, String endDate) {
+		SimpleDateFormat formatter1=new SimpleDateFormat("MM/dd/yyyy");
+		Date startDateFormatted = null;
+		Date endDateFormatted = null;
+		
+		try {
+			startDateFormatted = (Date)formatter1.parse(startDate);
+			endDateFormatted = (Date)formatter1.parse(endDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return (List<HokeRubric>) entityManager.createQuery("from RUBRIC where schoolid = :schoolId and date > :startDate and date < :endDate")
 	    			.setParameter("schoolId", schoolId)
 	    			.setParameter("startDate", startDateFormatted, TemporalType.DATE)
 	    			.setParameter("endDate", endDateFormatted, TemporalType.DATE)

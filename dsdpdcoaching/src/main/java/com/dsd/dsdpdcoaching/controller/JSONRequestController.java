@@ -144,13 +144,19 @@ public class JSONRequestController extends HttpServlet {
 		return rubricDao.getRubricDatesBySchool(schoolId);
 	}
 	
-	//Called from hookeSchoolRubricReport.js to get all the Hoke rubric dates by the school
-	@GetMapping(value="/getHokeRubricDatesBySchool")
+	//Called from schoolRubricReport.js to get the data for the graph
+	@GetMapping(value="/getRubricValuesBySchoolDatesObserved")
 	@ResponseBody
-	public List<Date> getHokeRubricDatesBySchool(@RequestParam Integer schoolId) {	
-		return rubricDao.getHokeRubricDatesBySchool(schoolId);
+	public List<HokeRubric> getRubricValuesBySchoolDatesObserved(@RequestParam Integer schoolId, @RequestParam String startDate, @RequestParam String endDate) {	
+		return rubricDao.getRubricValuesBySchoolDatesObserved(schoolId, startDate, endDate);
 	}
 	
+	//Called from hokeSchoolRubricReport.js to get the data for the graph
+	@GetMapping(value="/getHokeRubricValuesBySchoolDatesObserved")
+	@ResponseBody
+	public List<HokeRubric> getHokeRubricValuesBySchoolDatesObserved(@RequestParam Integer schoolId, @RequestParam String startDate, @RequestParam String endDate) {	
+		return rubricDao.getHokeRubricValuesBySchoolDatesObserved(schoolId, startDate, endDate);
+	}
 	
 	//Called from schoolRubricReport.js to get the data for the graph
 	@GetMapping(value="/getRubricValuesBySchoolDateObserved")

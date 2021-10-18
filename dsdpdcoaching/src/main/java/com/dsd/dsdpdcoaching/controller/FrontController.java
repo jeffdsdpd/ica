@@ -222,13 +222,6 @@ public class FrontController {
 		return "redirect:/hokeModelTeacherRubricReport.html";
 	
 	}
-
-	//Called from hokeSchoolRubricReport.js to get the data for the graph
-	@GetMapping(value="/getHokeRubricValuesBySchoolDatesObserved")
-	@ResponseBody
-	public List<HokeRubric> getHokeRubricValuesBySchoolDateObserved(@RequestParam Integer schoolId, @RequestParam String startDate, @RequestParam String endDate) {	
-		return rubricDao.getHokeRubricValuesBySchoolDateObserved(schoolId, startDate, endDate);
-	}
 	
 	@PostMapping("/hokeInterventionForm")
 	public String postHokeInterventionForm(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute HokeIntervention hokeInterventionData) {
