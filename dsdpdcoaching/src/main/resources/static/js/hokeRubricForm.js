@@ -57,48 +57,20 @@ $(document).ready(
 
 			$("#frm").validate({
 				rules : {
-					schoolId : {
-						required : true
-					},
-					teacherId : {
-						required : true
-					},
-					entryDate : {
-						required : true
-					},
-					timeObserved : {
-						required : true
-					},
-					observed : {
-						required : true
-					},
-					checklists : {
-						required : true
-					},
-					digitalcontent : {
-						required : true
-					},
-					seating : {
-						required : true
-					},
-					timing : {
-						required : true
-					},
-					differentiation : {
-						required : true
-					},
-					studentgroups : {
-						required : true
-					},
-					data : {
-						required : true
-					},
-					reflection : {
-						required : true
-					},
-					studentlearning : {
-						required : true
-					}
+					schoolId : { required : true },
+					teacherId : { required : true },
+					entryDate : { required : true },
+					timeObserved : { required : true },
+					observed : { required : true },
+					checklists : { required : true },
+					digitalcontent : { required : true },
+					seating : { required : true },
+					timing : { required : true },
+					differentiation : { required : true },
+					studentgroups : { required : true },
+					data : { required : true },
+					reflection : { required : true },
+					studentlearning : { required : true }
 				},
 				messages : {
 					schoolId : "Required",
@@ -115,9 +87,6 @@ $(document).ready(
 					data : "Required",
 					reflection : "Required",
 					studentlearning : "Required"
-				},
-				highlight : function(element) {
-					$(element).addClass('error')
 				},
 			});
 			

@@ -57,21 +57,11 @@ $(document).ready(
 
 			$("#frm").validate({
 				rules : {
-					schoolId : {
-						required : true
-					},
-					teacherId : {
-						required : true
-					},
-					entryDate : {
-						required : true
-					},
-					timeObserved : {
-						required : true
-					},
-					observed : {
-						required : true
-					}
+					schoolId : { required : true },
+					teacherId : { required : true },
+					entryDate : { required : true },
+					timeObserved : { required : true },
+					observed : { required : true }
 				},
 				messages : {
 					schoolId : "Required",
@@ -79,9 +69,6 @@ $(document).ready(
 					entryDate : "Required",
 					timeObserved : "Required",
 					observed : "Required"
-				},
-				highlight : function(element) {
-					$(element).addClass('error')
 				},
 			});
 			

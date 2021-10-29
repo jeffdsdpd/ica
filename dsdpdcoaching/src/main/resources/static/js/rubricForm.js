@@ -61,72 +61,40 @@ $(document).ready(
 
 			$("#frm").validate({
 				rules : {
-					schoolId : {
-						required : true
-					},
-					teacherId : {
-						required : true
-					},
-					entryDate : {
-						required : true
-					},
-					timeObserved : {
-						required : true
-					},
-					observed : {
-						required : true
-					},
-					planning : {
-						required : true
-					},
-					assessmentAndData : {
-						required : true
-					},
-					path : {
-						required : true
-					},
-					place : {
-						required : true
-					},
-					pace : {
-						required : true
-					},
-					classroommgmt : {
-						required : true
-					},
-					teacherrole : {
-						required : true
-					},
-					studentegmt : {
-						required : true
-					},
-					studentcolab : {
-						required : true
-					},
-					technology : {
-						required : true
-					}
+					schoolId : { required : true },
+					teacherId : { required : true },
+					entryDate : { required : true },
+					timeObserved : { required : true },
+					observed : { required : true },
+					planning : { required : true },
+					assessmentAndData : { required : true },
+					path : { required : true },
+					place : { required : true },
+					pace : { required : true },
+					classroommgmt : { required : true },
+					teacherrole : { required : true },
+					studentegmt : { required : true },
+					studentcolab : { required : true },
+					technology : { required : true }
 				},
 				messages : {
-					schoolId : "School is required",
-					teacherId : "Teacher(s) is required",
-					entryDate : "Date is required",
-					timeObserved : "Time is required",
-					observed : "Data Entered is required",
-					planning : "Planning is required",
-					assessmentAndData : "Assessment And Data is required",
-					path : "Path is required",
-					place : "Place is required",
-					pace : "Pace is required",
-					classroommgmt : "Classroom Mgmt. is required",
-					teacherrole : "Teacher Role is required",
-					studentegmt : "Student Engagement is required",
-					studentcolab : "Student Collaboration is required",
-					technology : "Technology is required"
+					schoolId : "Required",
+					teacherId : "Required",
+					entryDate : "Required",
+					timeObserved : "Required",
+					observed : "Required",
+					planning : "Required",
+					assessmentAndData : "Required",
+					path : "Required",
+					place : "Required",
+					pace : "Required",
+					classroommgmt : "Required",
+					teacherrole : "Required",
+					studentegmt : "Required",
+					studentcolab : "Required",
+					technology : "Required"
 				},
-				highlight : function(element) {
-					$(element).parent().addClass('error')
-				},
+				
 			});
 			
 			//add another input text line for additional tasks

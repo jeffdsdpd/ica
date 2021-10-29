@@ -42,18 +42,15 @@ $(document).ready(
 					tools: { required: true }
 		         },
 		         messages: {
-			        	 schoolId: "School is required",
-			        	 teacherIds: "Teacher(s) is required",
-			        	 entryDate: "Date is required",
-			        	 startTime: "Start time is required",
-			        	 endTime: "End time is required",
-			        	 notes: "Notes are required",
-			        	 strategies: "Strategies are required",
-			        	 goals: "Goals are required",
-			        	 tools: "Tools are required"
-		         },
-		         highlight: function (element) {
-		             $(element).parent().addClass('error')
+			        	 schoolId: "Required",
+			        	 teacherIds: "Required",
+			        	 entryDate: "Required",
+			        	 startTime: "Required",
+			        	 endTime: "Required",
+			        	 notes: "Required",
+			        	 strategies: "Required",
+			        	 goals: "Required",
+			        	 tools: "Required"
 		         },
 		         unhighlight: function (element) {
 		             $(element).parent().removeClass('error')
