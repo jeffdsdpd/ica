@@ -298,9 +298,8 @@ input:focus {
   margin: 0;
   line-height: 13px;
   font-size: 13px;
-  font-weight: 600;
-  font-family: "Open Sans", sans-serif;
-  text-transform: uppercase;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .sidebar .nav i {
   font-size: 28px;
