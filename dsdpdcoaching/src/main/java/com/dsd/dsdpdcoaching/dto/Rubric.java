@@ -79,6 +79,12 @@ public class Rubric implements Serializable {
 	@Column(name="technology")
 	private String technology;
 	
+	@Column(name="smallgroup")
+	private String smallgroup;
+	
+	@Column(name="checklists")
+	private String checklists;
+	
 	@Column(name="rubricnotes")
 	private String rubricNotes;
 	
@@ -228,6 +234,23 @@ public class Rubric implements Serializable {
 
 	public void setTechnology(String technology) {
 		this.technology = technology;
+	}
+	
+
+	public String getSmallgroup() {
+		return smallgroup;
+	}
+
+	public void setSmallgroup(String smallgroup) {
+		this.smallgroup = smallgroup;
+	}
+
+	public String getChecklists() {
+		return checklists;
+	}
+
+	public void setChecklists(String checklists) {
+		this.checklists = checklists;
 	}
 
 	public String getRubricNotes() {
