@@ -117,6 +117,8 @@
 				$(".rubricTotal").html("");
 				$(".user").html("");
 				$(".observed").html("");
+				$(".smallgroup").html("");
+				$(".checklists").html("");
 				$(".timeTaken").html("");
 				$("#rubricnotes").val("");
 				$("#levelup").val("");
@@ -197,6 +199,8 @@
 				$(".rubricTotal").html("");
 				$(".user").html("");
 				$(".observed").html("");
+				$(".smallgroup").html("");
+				$(".checklists").html("");
 				$(".timeTaken").html("");
 				$("#rubricnotes").val("");
 				$("#levelup").val("");
@@ -322,6 +326,8 @@
 			$(".rubricTotal").html("");
 			$(".user").html("");
 			$(".observed").html("");
+			$(".smallgroup").html("");
+			$(".checklists").html("");
 			$(".timeTaken").html("");
 			$("#rubricnotes").val("");
 			$("#levelup").val("");
@@ -353,9 +359,21 @@
 	                dataType: "json",
 	                success: function (response) {
 	                		 
-	                		 $(".user").html(response.userId);
-	                		 $(".observed").html(response.observed);
-	                		 
+	                		$(".user").html(response.userId);
+	                		$(".observed").html(response.observed);
+
+							if (!$.trim(response.smallgroup)) {
+								$(".smallgroup").html("Not Recorded");
+							} else {
+								$(".smallgroup").html(response.smallgroup);
+							}
+							
+							if (!$.trim(response.checklists)) {
+								$(".checklists").html("Not Recorded");
+							} else {
+								$(".checklists").html(response.checklists);
+							}
+							
 	                		 if (!$.trim(response.timeObserved)) {
 	                			 $(".timeTaken").html("Not Recorded");
 	                		 } else {
@@ -620,36 +638,49 @@
 	                		 document.getElementById("questions").value = response.questions;
 	                		 
 	                	 $(".rubricTotal").html(rubricTotal);
-	               
-	               
-		google.charts.load('current', {'packages':['gauge']});
-	      google.charts.setOnLoadCallback(drawChart);
-	      function drawChart() {
-	        var data = google.visualization.arrayToDataTable([
-	          ['Label', 'Value'],
-	          ['Rubric Score', rubricTotal],
-	        ]);
+	           
 
-	        var options = {
-	          max: 30,
-	          width: 400, height: 120,
-	          redFrom: 0, redTo: 5,
-	          yellowFrom:6, yellowTo: 19,
-	          greenFrom:20, greenTo: 30,
-	          majorTicks: 10,
-	          minorTicks: 2
-	        };
+			//check if smallgroup or checklists have a 'NO' which means they are not doing Blended Learning  
+			   if ( (response.smallgroup == "Yes" && response.checklists == "Yes") || (response.smallgroup == null && response.checklists == null)) {
+					google.charts.load('current', {'packages':['gauge']});
+				      google.charts.setOnLoadCallback(drawChart);
+				} else {
+					document.getElementById("chart_div").style.margin = "10px 30px";
+					document.getElementById("chart_div").style.font = "16px arial,serif"; 
+					document.getElementById('chart_div').innerHTML = "<span style='color: #4682B4;'>Thank you for your hard work and dedication to take that first step to" +
+					" implement Blended Learning. In order to Level Up to Phase One or Phase Two, try to implement meaningful Small Group Instruction" +
+					" and a Checklist</span>";
+					
+					document.getElementById('chart_div').style.display = "inline";
+				}
 
-	        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
-	        document.getElementById('chart_div').style.display = "inline";
 
-	        chart.draw(data, options);
-	        
-	        }
-	                }
-                });
-			}
-		});
+		      function drawChart() {
+		        var data = google.visualization.arrayToDataTable([
+		          ['Label', 'Value'],
+		          ['Rubric Score', rubricTotal],
+		        ]);
+	
+		        var options = {
+		          max: 30,
+		          width: 400, height: 120,
+		          redFrom: 0, redTo: 5,
+		          yellowFrom:6, yellowTo: 19,
+		          greenFrom:20, greenTo: 30,
+		          majorTicks: 10,
+		          minorTicks: 2
+		        };
+	
+		        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+		        document.getElementById('chart_div').style.display = "inline";
+	
+		        chart.draw(data, options);
+		        
+		        }
+		                }
+	                });
+				}
+			});
 		
 		function format12Hour(timeString) {
 			 var date = new Date(timeString);
