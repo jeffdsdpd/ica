@@ -112,6 +112,7 @@ $(document)
 
 									};
 
+								/*
 									var chart = new google.visualization.PieChart(
 											document
 													.getElementById('pieContainer'));
@@ -119,8 +120,10 @@ $(document)
 											.draw(
 													data,
 													options);
-								}
+													*/
 								// end of building the google pie chart
+								
+								}
 								
 								// Place values in the teacher count fields
 								$("#nbrTeachers").val(rubricSum)
@@ -128,6 +131,17 @@ $(document)
 								$("#phase2Teachers").val(response.phase2)
 								$("#phase3Teachers").val(response.phase3)
 								$("#notObserved").val(response.notObserved)
+								
+								
+								// create the percentages for each phase to display
+								$("#phaseonepercent").html(Math.floor((response.phase1/rubricSum) * 100)+"%")
+								$("#phaseonepercent").css({ 'font-size': '50px' });
+								
+								$("#phasetwopercent").html(Math.floor((response.phase2/rubricSum) * 100)+"%")
+								$("#phasetwopercent").css({ 'font-size': '50px' });
+								
+								$("#phasethreepercent").html(Math.floor((response.phase3/rubricSum) * 100)+"%")
+								$("#phasethreepercent").css({ 'font-size': '50px' });
 								
 							
 						}
@@ -260,15 +274,19 @@ $(document)
 
 												};
 
-												var chart = new google.visualization.PieChart(
-														document
-																.getElementById('pieContainer'));
-												chart
-														.draw(
-																data,
-																options);
-											}
-											// end of building the google pie chart
+												/*
+									var chart = new google.visualization.PieChart(
+											document
+													.getElementById('pieContainer'));
+									chart
+											.draw(
+													data,
+													options);
+													*/
+								// end of building the google pie chart
+								
+								}
+								
 											
 											// Place values in the teacher count fields
 											$("#nbrTeachers").val(rubricSum)
@@ -276,7 +294,19 @@ $(document)
 											$("#phase2Teachers").val(response.phase2)
 											$("#phase3Teachers").val(response.phase3)
 											$("#notObserved").val(response.notObserved)
-
+											
+											
+											// create the percentages for each phase to display
+											$("#phaseonepercent").html(Math.floor((response.phase1/rubricSum) * 100)+"%")
+											$("#phaseonepercent").css({ 'font-size': '50px' });
+											
+											$("#phasetwopercent").html(Math.floor((response.phase2/rubricSum) * 100)+"%")
+											$("#phasetwopercent").css({ 'font-size': '50px' });
+											
+											$("#phasethreepercent").html(Math.floor((response.phase3/rubricSum) * 100)+"%")
+											$("#phasethreepercent").css({ 'font-size': '50px' });
+								
+								
 									}
 								}); // end of ajax getDashboardPhaseValuesBySchool
 
@@ -627,11 +657,18 @@ function drawChart() {
 
 	};
 
-	var chart = new google.visualization.PieChart(document
-			.getElementById('pieContainer'));
-	chart.draw(data, options);
-}
-// end of building the google pie chart
+	/*
+									var chart = new google.visualization.PieChart(
+											document
+													.getElementById('pieContainer'));
+									chart
+											.draw(
+													data,
+													options);
+													*/
+								// end of building the google pie chart
+								}
+								
 
 
 
