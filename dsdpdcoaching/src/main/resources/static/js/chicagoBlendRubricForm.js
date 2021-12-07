@@ -1,13 +1,14 @@
 $(document).ready(
 		function() {
 			var wrapper = $(".input_wrap>div");
+			var add_button = $(".add-more");
+			var counter = 1;
 			var teacherId;
 
 			$("#schoolId").change(
 					function() {
 						var str = $("#schoolId :selected").val();
 						document.getElementById("teacherlabel").style.display = "none";
-						document.getElementById("teachercheckbox").style.display = "none";
 						$("#myPopup").html("");
 						$("#myPopup").hide(100);
 						
@@ -31,7 +32,6 @@ $(document).ready(
 			
 			$("#teacherId").change(function() {
 						teacherId = $("#teacherId :selected").val();
-						document.getElementById("teachercheckbox").style.display = "inline";
 						document.getElementById("teacherlabel").style.display = "inline";
 						$("#myPopup").html("");
 						$("#myPopup").hide(100);
@@ -62,15 +62,11 @@ $(document).ready(
 					entryDate : { required : true },
 					timeObserved : { required : true },
 					observed : { required : true },
-					checklists : { required : true },
-					digitalcontent : { required : true },
-					seating : { required : true },
-					timing : { required : true },
-					differentiation : { required : true },
-					studentgroups : { required : true },
-					data : { required : true },
-					reflection : { required : true },
-					studentlearning : { required : true }
+					path : { required : true },
+					place : { required : true },
+					pace : { required : true },
+					classroommgmt : { required : true }
+					
 				},
 				messages : {
 					schoolId : "Required",
@@ -78,18 +74,15 @@ $(document).ready(
 					entryDate : "Required",
 					timeObserved : "Required",
 					observed : "Required",
-					checklists : "Required",
-					digitalcontent : "Required",
-					seating : "Required",
-					timing : "Required",
-					differentiation : "Required",
-					studentgroups : "Required",
-					data : "Required",
-					reflection : "Required",
-					studentlearning : "Required"
+					path : "Required",
+					place : "Required",
+					pace : "Required",
+					classroommgmt : "Required"
 				},
+				
 			});
 			
+
 			
 		});//end of document ready function
 

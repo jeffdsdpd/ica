@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>DSD-PD Coaching Application | Rubric Form</title>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+<link rel="icon" type="image/png" href="img/favicon.ico" />
+
+<!--   JS Files   -->
+<script src="js/lib/jquery.js"></script>
+<script src="js/lib/jquery-ui.min.js"></script>
+<script src="js/lib/timepicker.js"></script>
+<script src="js/lib/bootstrap.min.js"></script>
+<script src="js/lib/bootstrap-select.js"></script>
+<script src="js/lib/bootstrap-multiselect.js"></script>
+<script src="js/lib/jquery.validate.min.js"></script>
+<script src="js/lib/light-bootstrap-dashboard.js"></script>
+<script src="js/chicagoBlendRubricForm.js"></script>
+<script src="js/master.js"></script>
+
+<!--   CSS Files   -->
+<link href="css/lib/jquery-ui.css" rel="stylesheet" />
+<link href="css/lib/bootstrap.min.css" rel="stylesheet" />
+<link href="css/lib/light-bootstrap-dashboard.css" rel="stylesheet" />
+<link href="css/lib/timepicker.css" rel="stylesheet" />
+<link href="css/lib/bootstrap-multiselect.css" rel="stylesheet" />
+<link href="css/misc.css" rel="stylesheet" />
+<link href="css/popup.css" rel="stylesheet" />
+
+<!--   Fonts and icons     -->
+<link href="css/lib/pe-icon-7-stroke.css" rel="stylesheet" />
+<link href='//fonts.googleapis.com/css?family=Roboto:400,700,300'
+	rel='stylesheet' type='text/css' />
+<link
+	href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'
+	rel='stylesheet' type='text/css' />
+
+<style>
+.radio-inline {
+	font-family: arial, Times, serif;
+	font-size: 14px;
+	color: yellow;
+}
+</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div th:replace="fragments/nav :: nav"></div>
+
+		<div class="main-panel">
+			<div th:replace="fragments/header :: header"></div>
+
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-11">
+							<div class="card">
+								<div class="header">
+									<h2 class="title">Chicago Blend RUBRIC Form</h2>
+								</div>
+								<div class="content">
+									<form id="frm" name="frm" action="#" th:action="@{/chicagoBlendRubricForm}"
+										th:object="${rubricData}" method="post">
+										<div class="row">
+											<div class="col-md-3" style="margin-right: 25px;">
+												<div class="form-group">
+													<label>School</label> <select id="schoolId"
+														class="form-control" th:field="*{schoolId}">
+														<option value="">Please Select</option>
+														<option th:each="school: ${schoolList}"
+															th:value="${school.id}" th:text="${school.name}">
+														</option>
+													</select>
+												</div>
+											</div>
+
+											<div class="col-md-2" style="margin-right: 20px;">
+												<div class="form-group">
+													<label>Teacher</label> <br></br> <select id="teacherId"
+														th:field="*{teacherId}">
+														<option value="">Please Select</option>
+														<option th:each="teacher : ${teachers}"
+															th:value="${teacher.teacherId}"
+															th:utext="${teacher.teacherId" />
+													</select>
+												</div>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-md-2">
+												<div class="form-group">
+													<label>Date</label> <input type="text" id="entryDate"
+														class="form-control" placeholder="Date" th:field="*{date}" />
+												</div>
+											</div>
+											<div class="col-md-2">
+												<div class="form-group">
+													<label>Time Observed</label> <input type="text"
+														id="timeObserved" class="time form-control"
+														placeholder="Time Observed" th:field="*{timeObserved}" />
+												</div>
+											</div>
+
+											<div class="col-md-5">
+												<div class="form-group">
+													<label id="emailreport">Email Report</label><br />
+													<div class="checkboxes" id="teachercheckboxdiv">
+														<input type="checkbox" id="teachercheckbox"
+															style="display: none;" name="teachercheckbox"></input> <label
+															for="teachercheckbox" class="checkbox-inline"
+															id="teacherlabel"
+															style="margin-left: 2px; padding-left: 2px; padding-top: 4px; padding-right: 15px;">
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="container">
+											<h5 style="font-weight: bold">Data Entered</h5>
+											<label class="radio-inline"
+												style="width: 250px; font-family: arial; font-weight: normal; font-size: 12px; color: #585858">
+												<input type="radio" id="observed" name="observed"
+												value="Observed Classroom" />Coach's View of the Classroom
+											</label><br></br> <label class="radio-inline"
+												style="width: 250px; font-family: arial; font-weight: normal; font-size: 12px; color: #585858">
+												<input type="radio" id="observed" name="observed"
+												value="Teacher Completed" />Teacher's View of the Classroom
+											</label><br></br><label for="observed" class="error"></label>
+										</div>
+
+										<hr></hr>
+
+										<div class="container">
+
+											<label style="font-family: arial; font-weight: normal; font-size: 18px; color: #3E6B8B">Student Collaboration</label><br />
+											<select id="studentCollaboration" name="studentCollaboration" class="mdb-select md-form">
+												<option value="">Please Select</option>
+												<option value="Teacher provides a Future Ready activity">Teacher provides a Future Ready activity</option>
+												<option value="Teacher provides a choice in activities">Teacher provides a choice in activities</option>
+												<option value="Not Observed">Not Observed</option>
+											</select> <br />
+											<label for="studentCollaboration" class="error"></label> <br />
+											<br />
+											
+											<label style="font-family: arial; font-weight: normal; font-size: 18px; color: #3E6B8B">Pace</label><br />
+											<select id="pace" name="pace" class="mdb-select md-form">
+												<option value="">Please Select</option>
+												<option value="Students moved with a timer">Students moved with a timer between studios</option>
+												<option value="Students move when ready">Students moved when they are ready</option>
+												<option value="Not Observed">Not Observed</option>
+											</select> <br />
+											<label for="pace" class="error"></label> <br />
+											<br /> 
+											
+											<label style="font-family: arial; font-weight: normal; font-size: 18px; color: #3E6B8B">Place</label><br />
+											<select id="place" name="place" class="mdb-select md-form">
+												<option value="">Please Select</option>
+												<option value="Students moved together as a group">Students moved together as a group</option>
+												<option value="Students worked in studios with flex seating">Students worked in studios with flex seating</option>
+												<option value="Not Observed">Not Observed</option>
+											</select> <br />
+											<label for="place" class="error"></label> <br />
+											<br />
+											
+											<label style="font-family: arial; font-weight: normal; font-size: 18px; color: #3E6B8B">Path</label><br />
+											<select id="path" name="path" class="mdb-select md-form">
+												<option value="">Please Select</option>
+												<option value="Students were directed to certain studio">Students were directed to certain studio</option>
+												<option value="Students had choice in studio selection">Students had choice in studio selection</option>
+												<option value="Not Observed">Not Observed</option>
+											</select> <br />
+											<label for="path" class="error"></label> <br />
+											<br />
+											
+											<label style="font-family: arial; font-weight: normal; font-size: 18px; color: #3E6B8B">Classroom Management</label><br />
+											<select id="classroommgmt" name="classroommgmt" class="mdb-select md-form">
+												<option value="">Please Select</option>
+												<option value="Teacher restates the directions">Teacher restates the directions</option>
+												<option value="Students understand what needs to be completed">Students understand what needs to be completed</option>
+												<option value="Not Observed">Not Observed</option>
+											</select> <br />
+											<label for="classroommgmt" class="error"></label> <br />
+											<br />
+											
+											<label style="font-family: arial; font-weight: normal; font-size: 18px; color: #3E6B8B">Using Devices</label><br />
+											<select id="devices" name="devices" class="mdb-select md-form">
+												<option value="">Please Select</option>
+												<option value="Teacher is integrating technology">Teacher is integrating technology into the lesson</option>
+												<option value="Not Observed">Not Observed</option>
+											</select> <br />
+											<label for="devices" class="error"></label> <br />
+											<br />
+											
+											<label style="font-family: arial; font-weight: normal; font-size: 18px; color: #3E6B8B">Data</label><br />
+											<select id="data" name="data" class="mdb-select md-form">
+												<option value="">Please Select</option>
+												<option value="Using data to drive small group instruction">Using data to drive small group instruction</option>
+												<option value="Not Observed">Not Observed</option>
+											</select> <br />
+											<label for="devices" class="error"></label> <br />
+											<br /> 
+								
+											<hr></hr>
+											
+											<div class="row">
+												<div class="col-md-3">
+													<label>Using Small Group Instruction</label>
+												</div>
+												<div class="col-md-1">
+													<input type="radio" id="smallgroup" name="smallgroup" value="Yes" />Yes
+												</div>
+												<div class="col-md-1">
+													<input type="radio" id="smallgroup" name="smallgroup" value="No" />No
+												</div>
+											</div>
+											
+											<div class="row">
+												<div class="col-md-3">
+													<label>Using Checklists in Class</label>
+												</div>
+												<div class="col-md-1">
+													<input type="radio" id="checklists" name="checklists" value="Yes" />Yes
+												</div>
+												<div class="col-md-1">
+													<input type="radio" id="checklists" name="checklists" value="No" />No
+												</div>
+											</div>
+						
+											<hr></hr>
+
+											<div class="row">
+												<div class="col-md-8">
+													<div class="form-group">
+														<label>Rubric Notes</label>
+														<textarea rows="5" cols="50" class="form-control"
+															placeholder="Notes from Rubric" name="rubricNotes"
+															id="rubricNotes" wrap="hard" maxlength="700"></textarea>
+														<br />
+													</div>
+												</div>
+											</div>
+
+
+										</div>
+										<button type="submit" class="btn btn-info btn-fill pull-right"
+											name="Submit" value="Submit">Submit</button>
+										<div class="clearfix"></div>
+									</form>
+								</div>
+							</div>
+
+							<div th:replace="fragments/footer :: footer"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -16,8 +16,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.dsd.dsdpdcoaching.dto.HokeModelTeacherRubric;
-import com.dsd.dsdpdcoaching.dto.HokeRubric;
+import com.dsd.dsdpdcoaching.dto.ChicagoBlendRubric;
 import com.dsd.dsdpdcoaching.dto.PhaseValues;
 import com.dsd.dsdpdcoaching.dto.Rubric;
 import com.dsd.dsdpdcoaching.dto.RubricLevelUp;
@@ -37,34 +36,10 @@ public class RubricDao {
 	public void saveRubricData(Rubric data) {
 		entityManager.persist(data);		
 	}
-	
-	//Called by the JSONRequestController to save rubric data on rubricForm.html
-	public void saveHokeRubricData(HokeRubric hokeData) {
-		entityManager.persist(hokeData);		
-	}
-	
-	//Called by the JSONRequestController to save hoke model teacher rubric data on hokeModelTeacherRubricForm.html
-	public void saveHokeModelTeacherRubricData(HokeModelTeacherRubric hokeModelTeacherData) {
-		entityManager.persist(hokeModelTeacherData);		
-	}
 
 	//Called by the JSONRequestController to select the rubric to display on the rubricReport.html
 	public Rubric getRubricById(Integer rubricId) {
 	    return entityManager.createQuery("from RUBRIC where id = :rubricId", Rubric.class)
-    			.setParameter("rubricId", rubricId)
-    			.getSingleResult();
-	}
-	
-	//Called by the JSONRequestController to select the hoke rubric to display on the hokeRubricReport.html
-	public HokeRubric getHokeRubricById(Integer rubricId) {
-	    return entityManager.createQuery("from HOKE_RUBRIC where id = :rubricId", HokeRubric.class)
-    			.setParameter("rubricId", rubricId)
-    			.getSingleResult();
-	}
-	
-	//Called by the JSONRequestController to select the rubric to display on the hokeModelTeacherRubricReport.html
-	public HokeModelTeacherRubric getHokeModelTeacherRubricById(Integer rubricId) {
-	    return entityManager.createQuery("from HOKE_MODEL_TEACHER_RUBRIC where id = :rubricId", HokeModelTeacherRubric.class)
     			.setParameter("rubricId", rubricId)
     			.getSingleResult();
 	}
@@ -273,28 +248,6 @@ public class RubricDao {
 	return rubricLevelUpList;
 	}
 	
-	//Called by the JSONRequestController to select all the HOKE RUBRIC levelup items for a teacher to display on a popup window on the HOKE RUBRIC Form
-	public List<RubricLevelUp> getHokeLevelUpsByTeacher(String teacherId) {
-	String sql = "SELECT * from HOKE_RUBRIC_LEVELUP WHERE completed = 'false' and rubricid in (SELECT id FROM HOKE_RUBRIC WHERE teacherId = ?)";
-	Query query = entityManager.createNativeQuery(sql);
-	query.setParameter(1, teacherId);
-	List<String[]> rubricLevelUpItems = (ArrayList)query.getResultList();
-	
-	List<RubricLevelUp> rubricLevelUpList = new ArrayList<RubricLevelUp>();
-	
-	//loop through the results
-	if (!rubricLevelUpItems.isEmpty()) {
-		for (int i=0; i<rubricLevelUpItems.size(); i++) {
-			RubricLevelUp rlu = new RubricLevelUp();
-			Object[] rubricLevelUpItem = rubricLevelUpItems.get(i);
-			rlu.setLevelupid((int) rubricLevelUpItem[0]);
-			rlu.setLevelup((String) rubricLevelUpItem[2]);
-			rlu.setCompleted((String) rubricLevelUpItem[3]);
-
-			rubricLevelUpList.add(rlu);
-		}};
-	return rubricLevelUpList;
-	}
 
 	//Called by the JSONRequestController to select the rubric dates by school to display on the schoolRubricReport.html triggered from drop down school list
 	@SuppressWarnings("unchecked")
@@ -304,37 +257,10 @@ public class RubricDao {
     			.getResultList();
 	}
 	
-	//Called by the JSONRequestController to select the hoke rubric dates by school to display on the hokeSchoolRubricReport.html triggered from drop down school list
-	@SuppressWarnings("unchecked")
-	public List<Date> getHokeRubricDatesBySchool(Integer schoolId) {
-		return (List<Date>) entityManager.createQuery("select distinct date from HOKE_RUBRIC where schoolid = :schoolId and observed = 'Observed Classroom' order by date desc")
-    			.setParameter("schoolId", schoolId)
-    			.getResultList();
-	}
-	
 	@SuppressWarnings("unchecked")
 	public List<Rubric> getRubricDatesIDUserid(Integer schoolId, Integer teacherId) {
 		return entityManager.createQuery(
 				"from RUBRIC where schoolid = :schoolId and teacherid = :teacherId ORDER BY date DESC")
-				.setParameter("schoolId", schoolId)
-    				.setParameter("teacherId", teacherId)
-    			.getResultList();
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Rubric> getHokeRubricDatesIDUserid(Integer schoolId, Integer teacherId) {
-		return entityManager.createQuery(
-				"from HOKE_RUBRIC where schoolid = :schoolId and teacherid = :teacherId ORDER BY date DESC")
-				.setParameter("schoolId", schoolId)
-    				.setParameter("teacherId", teacherId)
-    			.getResultList();
-	}
-	
-	//Called by JSONRequestController to get the Rubrics for the Hoke County School
-	@SuppressWarnings("unchecked")
-	public List<Rubric> getHokeModelTeacherRubricDatesAndId(Integer schoolId, Integer teacherId) {
-		return entityManager.createQuery(
-				"from HOKE_MODEL_TEACHER_RUBRIC where schoolid = :schoolId and teacherid = :teacherId ORDER BY date DESC")
 				.setParameter("schoolId", schoolId)
     				.setParameter("teacherId", teacherId)
     			.getResultList();
@@ -370,48 +296,6 @@ public class RubricDao {
 		return (List<Rubric>) entityManager.createQuery("from RUBRIC where schoolid = :schoolId and date = :date and observed = 'Observed Classroom'")
 	    			.setParameter("schoolId", schoolId)
 	    			.setParameter("date", date1, TemporalType.DATE)
-	    			.getResultList();
-	}
-	
-	//Called by the JSONRequestController to get the Hoke rubric data to create the graph on the hokeSchoolRubricReport.html
-	@SuppressWarnings("unchecked")
-	public List<HokeRubric> getHokeRubricValuesBySchoolDatesObserved(Integer schoolId, String startDate, String endDate) {
-		SimpleDateFormat formatter1=new SimpleDateFormat("MM/dd/yyyy");
-		Date startDateFormatted = null;
-		Date endDateFormatted = null;
-		
-		try {
-			startDateFormatted = (Date)formatter1.parse(startDate);
-			endDateFormatted = (Date)formatter1.parse(endDate);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		return (List<HokeRubric>) entityManager.createQuery("from HOKE_RUBRIC where schoolid = :schoolId and date > :startDate and date < :endDate")
-	    			.setParameter("schoolId", schoolId)
-	    			.setParameter("startDate", startDateFormatted, TemporalType.DATE)
-	    			.setParameter("endDate", endDateFormatted, TemporalType.DATE)
-	    			.getResultList();
-	}
-	
-	//Called by the JSONRequestController to get the rubric data to create the graph on the schoolRubricReport.html
-	@SuppressWarnings("unchecked")
-	public List<HokeRubric> getRubricValuesBySchoolDatesObserved(Integer schoolId, String startDate, String endDate) {
-		SimpleDateFormat formatter1=new SimpleDateFormat("MM/dd/yyyy");
-		Date startDateFormatted = null;
-		Date endDateFormatted = null;
-		
-		try {
-			startDateFormatted = (Date)formatter1.parse(startDate);
-			endDateFormatted = (Date)formatter1.parse(endDate);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		return (List<HokeRubric>) entityManager.createQuery("from RUBRIC where schoolid = :schoolId and date > :startDate and date < :endDate")
-	    			.setParameter("schoolId", schoolId)
-	    			.setParameter("startDate", startDateFormatted, TemporalType.DATE)
-	    			.setParameter("endDate", endDateFormatted, TemporalType.DATE)
 	    			.getResultList();
 	}
 
@@ -524,37 +408,6 @@ public class RubricDao {
 			}
 		}
 	}
-	
-public void updateHokeRubricLevelupItems(String[] checked, String[] unchecked) {
-	
-	String updateTrueSql = "Update HOKE_RUBRIC_LEVELUP set completed = ?, datecompleted = CURDATE() where levelupid = ? AND rubricid = ?";
-	String updateFalseSql = "Update HOKE_RUBRIC_LEVELUP set completed = ?, datecompleted = NULL where levelupid = ? AND rubricid = ?";
-	
-	Query updateTrueQuery = entityManager.createNativeQuery(updateTrueSql);
-	Query updateFalseQuery = entityManager.createNativeQuery(updateFalseSql);
-	
-	if (!checked[0].isEmpty()) {
-		for( int i = 0; i < checked.length; i++) {
-			String recordstring = checked[i];
-			String[] splitrecordstring = recordstring.split(" ");
-			updateTrueQuery.setParameter(1, "true");
-			updateTrueQuery.setParameter(2, splitrecordstring[1]);
-			updateTrueQuery.setParameter(3, splitrecordstring[0]);
-			updateTrueQuery.executeUpdate();
-		}
-	}
-	
-	if (!unchecked[0].isEmpty()) {
-		for( int i = 0; i < unchecked.length; i++) {
-			String recordstring = unchecked[i];
-			String[] splitrecordstring = recordstring.split(" ");
-			updateFalseQuery.setParameter(1, "false");
-			updateFalseQuery.setParameter(2, splitrecordstring[1]);
-			updateFalseQuery.setParameter(3, splitrecordstring[0]);
-			updateFalseQuery.executeUpdate();
-		}
-	}
-	}
 
 	@SuppressWarnings("unchecked")
 	public List<Rubric> getRubricValuesBySchoolForDashboard(Integer schoolId) {
@@ -566,6 +419,11 @@ public void updateHokeRubricLevelupItems(String[] checked, String[] unchecked) {
 	    			.getResultList();
 		return rubricList;
 	}
+	
+	
 
-
-}
+	public void saveChicagoBlendRubricData(ChicagoBlendRubric data) {
+			entityManager.persist(data);		
+		}
+		
+	}
