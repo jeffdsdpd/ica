@@ -131,35 +131,35 @@
 												        <div class="row">
 													        <div class="form-group col-md-6">
 														        <label class="control-label" style="margin:5px; font-size:20px; padding-top:0px; float:left;">Total RUBRIC Items:</label>
-														        <input class="col-md-3" type="text" readonly="readonly" style="border:0px; font-size:20px; margin-top:2px;" id="nbrTeachers"/>									  
+														        <input class="col-md-3" type="text" readonly="readonly" style="width: 50px; border:0px; font-size:20px; margin-top:2px;" id="nbrTeachers"/>									  
 														    </div>
 														</div>
 														
 														<div class="row">
 														   	<div class="form-group col-md-6">
 														        <label class="control-label" style="margin:5px; padding-top:0px; float:left;">Phase 1 RUBRIC Items:</label>
-														        <input type="text" readonly="readonly" style="border: 0px; font-size:medium; margin-top:2px;" id="phase1Teachers"/>
+														        <input type="text" readonly="readonly" style="width: 50px; border: 0px; font-size:medium; margin-top:2px;" id="phase1Teachers"/>
 														    </div>
 														</div>
 														
 														<div class="row">
 														    <div class="form-group col-md-6">
 														        <label class="control-label" style="margin:5px; padding-top:0px; float:left;">Phase 2 RUBRIC Items:</label>
-														        <input type="text" readonly="readonly" style="border: 0px; font-size:medium; margin-top:2px;" id="phase2Teachers"/>
+														        <input type="text" readonly="readonly" style="width: 50px; border: 0px; font-size:medium; margin-top:2px;" id="phase2Teachers"/>
 														    </div>
 														</div>
 														    
 														<div class="row">
 														    <div class="form-group col-md-6">
 														        <label class="control-label" style="margin:5px; padding-top:0px; float:left;">Phase 3 RUBRIC Items:</label>
-																<input type="text" readonly="readonly" style="border: 0px; font-size:medium; margin-top:2px;" id="phase3Teachers"/>
+																<input type="text" readonly="readonly" style="width: 50px; border: 0px; font-size:medium; margin-top:2px;" id="phase3Teachers"/>
 														    </div>
 														</div>
 														
 													    <div class="row">
 														    <div class="form-group col-md-7">
 														        <label class="control-label" style="margin:5px; padding-top:0px; float:left;">RUBRIC Items Not Observed:</label>
-													            <input type="text" readonly="readonly" style="border: 0px; font-size:medium; margin-top:2px;" id="notObserved"/>
+													            <input type="text" readonly="readonly" style="width: 50px; border: 0px; font-size:medium; margin-top:2px;" id="notObserved"/>
 														    </div>
 											    		</div>
 											</div>
@@ -178,7 +178,7 @@
 												</div>
 												<div class="form-group col-md-3" id="schoolIdGraph" style="margin-top: 25px;">
 													<label><b>School</b></label>
-	                                                	<select id="schoolsGraph" class="form-control" th:field="*{schoolList}">
+	                                                	<select id="schoolIdGraph" class="form-control" th:field="*{schoolList}">
 		                                                	<option value="">Please Select</option>
 		                                                	<option th:each="school: ${schoolList}" 
 		                                                			th:value="${school.id}" 

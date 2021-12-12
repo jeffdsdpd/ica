@@ -433,21 +433,30 @@ public class RubricDao {
 			entityManager.persist(data);		
 		}
 
-	public List<Rubric> getRubricValuesForAssignedSchoolsForDashboard(Collection<? extends String> schools) {
+	public List<Rubric> getRubricValuesForAssignedSchoolsForDashboard(Integer school) {
 		//Called by the JSONRequestController to get the rubic data to create the 3d bar graph on the dashboard
-		List<String> schoolNames = new ArrayList<String>();
-		schoolNames.addAll(schools);
-		//schoolNames.addAll("Cypress Andre", "Cypress Kirk");
+		//List<String> schoolNames = new ArrayList<String>();
+		//schoolNames.addAll(school);
 		
 		@SuppressWarnings("unchecked")
-		
+		/*
 		List<Rubric> rubricList =  entityManager.createQuery("from RUBRIC r WHERE timeObserved = (SELECT MAX(timeObserved) FROM RUBRIC "
-				+ "where schoolid in (select id FROM SCHOOLS where name in (:schoolList)) and observed = 'Observed Classroom' and teacherId = r.teacherId group by teacherId) "
-				+ "and schoolid in (select id FROM SCHOOLS where name in (:schoolList)) and observed = 'Observed Classroom' group by teacherId")
+				+ "where schoolid in (select id FROM SCHOOLS where name in (:school)) and observed = 'Observed Classroom' and teacherId = r.teacherId group by teacherId) "
+				+ "and schoolid in (select id FROM SCHOOLS where name in (:school)) and observed = 'Observed Classroom' group by teacherId")
 	    			//.setParameter("schoolList", Arrays.asList("Cypress Andre", "Cypress Kirk"))
 	    			//.setParameter("schoolList", Arrays.asList(schools))
-	    			.setParameter("schoolList", schoolNames)
+	    			.setParameter("school", school)
 	    			.getResultList();
+		*/
+		
+		List<Rubric> rubricList =  entityManager.createQuery("from RUBRIC r WHERE timeObserved = (SELECT MAX(timeObserved) FROM RUBRIC "
+				+ "where schoolid = :school) and observed = 'Observed Classroom' and teacherId = r.teacherId group by teacherId) "
+				+ "and schoolid = :school) and observed = 'Observed Classroom' group by teacherId")
+	    			//.setParameter("schoolList", Arrays.asList("Cypress Andre", "Cypress Kirk"))
+	    			//.setParameter("schoolList", Arrays.asList(schools))
+	    			.setParameter("school", school)
+	    			.getResultList();
+		
 		return rubricList;
 				
 	}

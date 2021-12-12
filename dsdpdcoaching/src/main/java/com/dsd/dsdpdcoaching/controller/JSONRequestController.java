@@ -128,8 +128,8 @@ public class JSONRequestController extends HttpServlet {
 	//Called from dashboard.js to get the data for the 3d bar graph for the schools assigned to the user
 	@GetMapping(value="/getRubricValuesForAssignedSchoolsForDashboard")
 	//@ResponseBody
-	public List<Rubric> getRubricValuesForAssignedSchoolsForDashboard(@RequestParam Collection<? extends String> schools) {	
-		return rubricDao.getRubricValuesForAssignedSchoolsForDashboard(schools);
+	public List<Rubric> getRubricValuesForAssignedSchoolsForDashboard(@RequestParam Integer schoolId) {	
+		return rubricDao.getRubricValuesForAssignedSchoolsForDashboard(schoolId);
 	}
 	
 	//Called from teacherProgressionReport.js to get the data for the graph
