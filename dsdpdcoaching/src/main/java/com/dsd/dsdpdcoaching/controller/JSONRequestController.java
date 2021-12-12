@@ -111,10 +111,10 @@ public class JSONRequestController extends HttpServlet {
 	}
 	
 	//Called from schoolRubricReport.js to get the data for the graph
-	@GetMapping(value="/getRubricValuesBySchoolDateObserved")
+	@GetMapping(value="/getRubricValuesBySchoolDatesObserved")
 	@ResponseBody
-	public List<Rubric> getRubricValuesBySchoolDateObserved(@RequestParam Integer schoolId, @RequestParam String date) {	
-		return rubricDao.getRubricValuesBySchoolDateObserved(schoolId, date);
+	public List<Rubric> getRubricValuesBySchoolDatesObserved(@RequestParam Integer schoolId, @RequestParam String startDate, @RequestParam String endDate) {	
+		return rubricDao.getRubricValuesBySchoolDatesObserved(schoolId, startDate, endDate);
 	}
 	
 	//Called from dashboard.js to get the data for the 3d bar graph
@@ -122,6 +122,13 @@ public class JSONRequestController extends HttpServlet {
 	@ResponseBody
 	public List<Rubric> getRubricValuesBySchoolForDashboard(@RequestParam Integer schoolId) {	
 		return rubricDao.getRubricValuesBySchoolForDashboard(schoolId);
+	}
+	
+	//Called from dashboard.js to get the data for the 3d bar graph for the schools assigned to the user
+	@GetMapping(value="/getRubricValuesForAssignedSchoolsForDashboard")
+	//@ResponseBody
+	public List<Rubric> getRubricValuesForAssignedSchoolsForDashboard(@RequestParam String schools) {	
+		return rubricDao.getRubricValuesForAssignedSchoolsForDashboard(schools);
 	}
 	
 	//Called from teacherProgressionReport.js to get the data for the graph

@@ -285,17 +285,21 @@ public class RubricDao {
 
 	//Called by the JSONRequestController to get the rubic data to create the graph on the schoolRubricReport.html
 	@SuppressWarnings("unchecked")
-	public List<Rubric> getRubricValuesBySchoolDateObserved(Integer schoolId, String date) {
-		SimpleDateFormat formatter1=new SimpleDateFormat("yyyy-MM-dd");
-		Date date1 = null;
+	public List<Rubric> getRubricValuesBySchoolDatesObserved(Integer schoolId, String startDate, String endDate) {
+		SimpleDateFormat formatter1=new SimpleDateFormat("MM/dd/yyyy");
+		Date startDateFormatted = null;
+		Date endDateFormatted = null;
+		
 		try {
-			date1=formatter1.parse(date);
+			startDateFormatted = (Date)formatter1.parse(startDate);
+			endDateFormatted = (Date)formatter1.parse(endDate);
 		} catch (ParseException e) {
 			e.printStackTrace();
-		} 
-		return (List<Rubric>) entityManager.createQuery("from RUBRIC where schoolid = :schoolId and date = :date and observed = 'Observed Classroom'")
+		}
+		return (List<Rubric>) entityManager.createQuery("from RUBRIC where schoolid = :schoolId and (date > :startDate and date < :endDate) and observed = 'Observed Classroom'")
 	    			.setParameter("schoolId", schoolId)
-	    			.setParameter("date", date1, TemporalType.DATE)
+	    			.setParameter("startDate", startDateFormatted, TemporalType.DATE)
+	    			.setParameter("endDate", endDateFormatted, TemporalType.DATE)
 	    			.getResultList();
 	}
 
@@ -410,20 +414,30 @@ public class RubricDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Rubric> getRubricValuesBySchoolForDashboard(Integer schoolId) {
+	public List<Rubric> getRubricValuesBySchoolForDashboard(Integer schoolid) {
 		//Called by the JSONRequestController to get the rubic data to create the 3d bar graph on the dashboard
 		List<Rubric> rubricList =  entityManager.createQuery("from RUBRIC r WHERE timeObserved = (SELECT MAX(timeObserved) FROM RUBRIC "
 				+ "where schoolid = :schoolId and observed = 'Observed Classroom' and teacherId = r.teacherId group by teacherId) "
 				+ "and schoolid = :schoolId and observed = 'Observed Classroom' group by teacherId")
-	    			.setParameter("schoolId", schoolId)
+	    			.setParameter("schoolId", schoolid)
 	    			.getResultList();
 		return rubricList;
 	}
-	
 	
 
 	public void saveChicagoBlendRubricData(ChicagoBlendRubric data) {
 			entityManager.persist(data);		
 		}
+
+	public List<Rubric> getRubricValuesForAssignedSchoolsForDashboard(String schools) {
+		//Called by the JSONRequestController to get the rubic data to create the 3d bar graph on the dashboard
+				@SuppressWarnings("unchecked")
+				List<Rubric> rubricList =  entityManager.createQuery("from RUBRIC r WHERE timeObserved = (SELECT MAX(timeObserved) FROM RUBRIC "
+						+ "where schoolid in (select id FROM SCHOOLS where name in (" + " ' " + " :schoolList " + " ' " + " ) ) and observed = 'Observed Classroom' and teacherId = r.teacherId group by teacherId) "
+						+ "and schoolid in (select id FROM SCHOOLS where name in (" + " ' " + " :schoolList " + " ' " + ") ) and observed = 'Observed Classroom' group by teacherId")
+			    			.setParameter("schoolList", schools)
+			    			.getResultList();
+				return rubricList;
+	}
 		
 	}
