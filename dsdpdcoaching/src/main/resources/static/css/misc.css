@@ -68,3 +68,11 @@
   	float: left ;
   	width: 2% ;
 }
+
+.dot-spinner-48x48 { animation: dot-spinner-48x48 1s steps(12) infinite; 
+	display: block; 
+	width: 48px; 
+	height: 48px; 
+	background-image:url(/img/loading.png); }
+@keyframes dot-spinner-48x48 { from { background-position: 0px 0px; } to { background-position: 0px -576px; } }
+

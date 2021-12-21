@@ -3,6 +3,7 @@ package com.dsd.dsdpdcoaching.controller;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -127,7 +128,7 @@ public class JSONRequestController extends HttpServlet {
 	//Called from dashboard.js to get the data for the 3d bar graph for the schools assigned to the user
 	@GetMapping(value="/getRubricValuesForAssignedSchoolsForDashboard")
 	//@ResponseBody
-	public List<Rubric> getRubricValuesForAssignedSchoolsForDashboard(@RequestParam String schools) {	
+	public List<Rubric> getRubricValuesForAssignedSchoolsForDashboard(@RequestParam Collection<? extends String> schools) {	
 		return rubricDao.getRubricValuesForAssignedSchoolsForDashboard(schools);
 	}
 	

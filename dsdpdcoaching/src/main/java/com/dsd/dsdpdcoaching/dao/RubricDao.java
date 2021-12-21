@@ -10,7 +10,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TemporalType;
-import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +20,9 @@ import com.dsd.dsdpdcoaching.dto.PhaseValues;
 import com.dsd.dsdpdcoaching.dto.Rubric;
 import com.dsd.dsdpdcoaching.dto.RubricLevelUp;
 import com.dsd.dsdpdcoaching.dto.TeacherProgressionReportData;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 @Repository
 @Transactional
@@ -154,6 +156,7 @@ public class RubricDao {
 				+ " CASE WHEN technology like 'Not Observed%' THEN 1 else 0 END) AS notObserved "
 				+ " FROM RUBRIC R1 "
 				+ " WHERE R1.observed = 'Observed Classroom' "
+				//+ " AND schoolId NOT IN (24)"  //This is the Demo School
 				+ " AND EXISTS (Select null "
 				+ " FROM RUBRIC R2 "
 				+ " WHERE R2.schoolId = R1.schoolId "
@@ -210,7 +213,8 @@ public class RubricDao {
 				+ " CASE WHEN studentcollaboration like 'Not Observed%' THEN 1 else 0 END + "
 				+ " CASE WHEN technology like 'Not Observed%' THEN 1 else 0 END) AS notObserved "
 				+ " FROM RUBRIC R1 "
-				+ " WHERE schoolId in (SELECT schoolid FROM USER_SCHOOL WHERE userid = ?)"
+				+ " WHERE schoolId IN (SELECT schoolid FROM USER_SCHOOL WHERE userid = ?)"
+				//+ " AND schoolId NOT IN (24)"  //This is the Demo School
 				+ " AND R1.observed = 'Observed Classroom' "
 				+ " AND EXISTS (Select null "
 				+ " FROM RUBRIC R2 "
@@ -429,15 +433,23 @@ public class RubricDao {
 			entityManager.persist(data);		
 		}
 
-	public List<Rubric> getRubricValuesForAssignedSchoolsForDashboard(String schools) {
+	public List<Rubric> getRubricValuesForAssignedSchoolsForDashboard(Collection<? extends String> schools) {
 		//Called by the JSONRequestController to get the rubic data to create the 3d bar graph on the dashboard
-				@SuppressWarnings("unchecked")
-				List<Rubric> rubricList =  entityManager.createQuery("from RUBRIC r WHERE timeObserved = (SELECT MAX(timeObserved) FROM RUBRIC "
-						+ "where schoolid in (select id FROM SCHOOLS where name in (" + " ' " + " :schoolList " + " ' " + " ) ) and observed = 'Observed Classroom' and teacherId = r.teacherId group by teacherId) "
-						+ "and schoolid in (select id FROM SCHOOLS where name in (" + " ' " + " :schoolList " + " ' " + ") ) and observed = 'Observed Classroom' group by teacherId")
-			    			.setParameter("schoolList", schools)
-			    			.getResultList();
-				return rubricList;
+		List<String> schoolNames = new ArrayList<String>();
+		schoolNames.addAll(schools);
+		//schoolNames.addAll("Cypress Andre", "Cypress Kirk");
+		
+		@SuppressWarnings("unchecked")
+		
+		List<Rubric> rubricList =  entityManager.createQuery("from RUBRIC r WHERE timeObserved = (SELECT MAX(timeObserved) FROM RUBRIC "
+				+ "where schoolid in (select id FROM SCHOOLS where name in (:schoolList)) and observed = 'Observed Classroom' and teacherId = r.teacherId group by teacherId) "
+				+ "and schoolid in (select id FROM SCHOOLS where name in (:schoolList)) and observed = 'Observed Classroom' group by teacherId")
+	    			//.setParameter("schoolList", Arrays.asList("Cypress Andre", "Cypress Kirk"))
+	    			//.setParameter("schoolList", Arrays.asList(schools))
+	    			.setParameter("schoolList", schoolNames)
+	    			.getResultList();
+		return rubricList;
+				
 	}
 		
 	}
