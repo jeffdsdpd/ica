@@ -6,16 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 		<meta name="google-site-verification" content="LDl41i-yzgl7BoyhVlS47B_tvMXIrLY1bpSUGUzRCN8" />
     
-		<title>DSD Professional Development - Coaching Application</title>
+		<title>Growing Hoke - Instructional Coaching Application</title>
 		<style>
-			body {
-			 background: url('/images/abstractbluebackground.jpg') no-repeat center center fixed; 
-			 -webkit-background-size: cover;
-			 -moz-background-size: cover;
-			 -o-background-size: cover;
-			 background-size: cover;
-			}
-
 			.panel-default {
 			 opacity: 0.9;
 			 margin-top:30px;
@@ -33,7 +25,7 @@
     <body>
 	    <div class="main-panel">
 		    	<div class="container text-center">
-		        	<img src="images/oie_png.png" th:src="@{/images/oie_png.png}" class="center-block"/>
+		        	<img src="images/growinghoke.png" th:src="@{/images/growinghoke.png}" class="center-block" style="margin-top:50px; margin-bottom:50px;"/>
 		        	<div class="login">
 					<form th:action="@{/login.html}" method="post">
 			    			<input type="text" class="form-control" id="userid" name="username" placeholder="ID"/>
@@ -45,17 +37,12 @@
 						    You have been logged out.
 						</div>
 			    			
-						<input class="btn btn-block btn-lg btn-success submit" type="submit" value="Login"/>
+						<input class="btn btn-block btn-lg btn-success submit" style="background-color:#ad0000; margin-bottom:50px; border-color:black;"  type="submit" value="Login"/>
 					</form>
+					<img src="images/hokelogo.png" th:src="@{/images/hokelogo.png}" class="center-block" style="margin-top:25px; width:175px;height:175px;"/>
+		        	
 				</div>
 				
-				<br />
-				<br />
-				
-				<div>
-					<span style="color:#FF9200;" th:inline="text">&copy; [[${#dates.year(#dates.createNow())}]]</span>
-					<a href="http://dsdprofessionaldevelopment.com" style="color:#FF9200;">DSDProfessionalDevelopment</a>
-				</div>
 			</div>
 	    </div>
 	    	<br/>
