@@ -3,7 +3,6 @@ package com.dsd.dsdpdcoaching.controller;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -185,6 +184,30 @@ public class JSONRequestController extends HttpServlet {
 			 pv.setPhase3(0);
 		 }
 		 return pv;
+	}
+	
+	//Called from dashboard.js
+	@GetMapping(value="/getDashboardRubricValuesForAllSchools")
+	@ResponseBody
+	public List<Rubric> getDashboardRubricValuesForAllSchools(HttpServletRequest request) {	
+		User user = new User();
+		user = userDao.getUserByUsername(request.getUserPrincipal().getName());
+		List<Rubric> lr;
+		
+		if(request.isUserInRole("admin")) {
+			lr =  rubricDao.getDashboardRubricValuesForAllSchools();
+		} else {
+			lr =  rubricDao.getDashboardRubricValuesForRequiredSchools(user.getId().toString());
+		}
+		return lr;
+	}
+	
+	//Called from dashboard.js
+	@GetMapping(value="/getDashboardRubricValuesBySchool")
+	@ResponseBody
+	public List<Rubric> getDashboardRubricValuesBySchool(@RequestParam Integer schoolId) {	
+		List<Rubric> lr =  rubricDao.getDashboardRubricValuesBySchool(schoolId);
+		return lr;
 	}
 	
 	//Called from rubricReport.js to get the appropriate levelup data to display

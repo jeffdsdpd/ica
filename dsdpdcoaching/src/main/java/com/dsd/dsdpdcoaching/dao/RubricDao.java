@@ -170,6 +170,31 @@ public class RubricDao {
 		return phaseValues;
 }
 	
+	
+	//Called by the JSONRequestController to select the rubrics to display on the rubricReport.html by school selected
+	public List<Rubric> getDashboardRubricValuesBySchool(Integer schoolId) {
+		Query query = entityManager.createQuery("from RUBRIC where schoolid = :schoolId", Rubric.class);
+		query.setParameter("schoolId", schoolId);
+		List<Rubric> rubrics = query.getResultList();
+	    return rubrics;
+	}
+	
+	//Called by the JSONRequestController to select the rubrics to display on the rubricReport.html by school selected
+	public List<Rubric> getDashboardRubricValuesForAllSchools() {
+		Query query = entityManager.createQuery("from RUBRIC", Rubric.class);
+		List<Rubric> rubrics = query.getResultList();
+	    return rubrics;
+	}
+	
+	//Called by the JSONRequestController to select the rubrics to display on the rubricReport.html by school selected
+	public List<Rubric> getDashboardRubricValuesForRequiredSchools(String userid) {
+		Query query = entityManager.createQuery("from RUBRIC where userid = :userid", Rubric.class);
+		query.setParameter("userid", userid);
+		List<Rubric> rubrics = query.getResultList();
+	    return rubrics;
+	}
+	
+	
 	//Called by the JSONRequestController to select the rubric data to display on the dashboard.html triggered from dropdown school list
 	public PhaseValues getDashboardPhaseValuesForRequiredSchools(Integer userid) {
 		String sql =  "SELECT 1 as id, SUM(CASE WHEN planning = 'Whole group timer' THEN 1 ELSE 0 END + "
