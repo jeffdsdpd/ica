@@ -10,7 +10,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TemporalType;
-import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,20 +50,6 @@ public class RubricDao {
 	//Called by the JSONRequestController to select the rubric to display on the rubricReport.html
 	public Rubric getRubricById(Integer rubricId) {
 	    return entityManager.createQuery("from RUBRIC where id = :rubricId", Rubric.class)
-    			.setParameter("rubricId", rubricId)
-    			.getSingleResult();
-	}
-	
-	//Called by the JSONRequestController to select the hoke rubric to display on the hokeRubricReport.html
-	public HokeRubric getHokeRubricById(Integer rubricId) {
-	    return entityManager.createQuery("from HOKE_RUBRIC where id = :rubricId", HokeRubric.class)
-    			.setParameter("rubricId", rubricId)
-    			.getSingleResult();
-	}
-	
-	//Called by the JSONRequestController to select the rubric to display on the hokeModelTeacherRubricReport.html
-	public HokeModelTeacherRubric getHokeModelTeacherRubricById(Integer rubricId) {
-	    return entityManager.createQuery("from HOKE_MODEL_TEACHER_RUBRIC where id = :rubricId", HokeModelTeacherRubric.class)
     			.setParameter("rubricId", rubricId)
     			.getSingleResult();
 	}
@@ -179,6 +164,7 @@ public class RubricDao {
 				+ " CASE WHEN technology like 'Not Observed%' THEN 1 else 0 END) AS notObserved "
 				+ " FROM RUBRIC R1 "
 				+ " WHERE R1.observed = 'Observed Classroom' "
+				//+ " AND schoolId NOT IN (24)"  //This is the Demo School
 				+ " AND EXISTS (Select null "
 				+ " FROM RUBRIC R2 "
 				+ " WHERE R2.schoolId = R1.schoolId "
@@ -191,6 +177,31 @@ public class RubricDao {
 		PhaseValues phaseValues = (PhaseValues) query.getSingleResult();
 		return phaseValues;
 }
+	
+	
+	//Called by the JSONRequestController to select the rubrics to display on the rubricReport.html by school selected
+	public List<Rubric> getDashboardRubricValuesBySchool(Integer schoolId) {
+		Query query = entityManager.createQuery("from RUBRIC where schoolid = :schoolId", Rubric.class);
+		query.setParameter("schoolId", schoolId);
+		List<Rubric> rubrics = query.getResultList();
+	    return rubrics;
+	}
+	
+	//Called by the JSONRequestController to select the rubrics to display on the rubricReport.html by school selected
+	public List<Rubric> getDashboardRubricValuesForAllSchools() {
+		Query query = entityManager.createQuery("from RUBRIC", Rubric.class);
+		List<Rubric> rubrics = query.getResultList();
+	    return rubrics;
+	}
+	
+	//Called by the JSONRequestController to select the rubrics to display on the rubricReport.html by school selected
+	public List<Rubric> getDashboardRubricValuesForRequiredSchools(String userid) {
+		Query query = entityManager.createQuery("from RUBRIC where userid = :userid", Rubric.class);
+		query.setParameter("userid", userid);
+		List<Rubric> rubrics = query.getResultList();
+	    return rubrics;
+	}
+	
 	
 	//Called by the JSONRequestController to select the rubric data to display on the dashboard.html triggered from dropdown school list
 	public PhaseValues getDashboardPhaseValuesForRequiredSchools(Integer userid) {
@@ -235,7 +246,8 @@ public class RubricDao {
 				+ " CASE WHEN studentcollaboration like 'Not Observed%' THEN 1 else 0 END + "
 				+ " CASE WHEN technology like 'Not Observed%' THEN 1 else 0 END) AS notObserved "
 				+ " FROM RUBRIC R1 "
-				+ " WHERE schoolId in (SELECT schoolid FROM USER_SCHOOL WHERE userid = ?)"
+				+ " WHERE schoolId IN (SELECT schoolid FROM USER_SCHOOL WHERE userid = ?)"
+				//+ " AND schoolId NOT IN (24)"  //This is the Demo School
 				+ " AND R1.observed = 'Observed Classroom' "
 				+ " AND EXISTS (Select null "
 				+ " FROM RUBRIC R2 "
@@ -273,28 +285,6 @@ public class RubricDao {
 	return rubricLevelUpList;
 	}
 	
-	//Called by the JSONRequestController to select all the HOKE RUBRIC levelup items for a teacher to display on a popup window on the HOKE RUBRIC Form
-	public List<RubricLevelUp> getHokeLevelUpsByTeacher(String teacherId) {
-	String sql = "SELECT * from HOKE_RUBRIC_LEVELUP WHERE completed = 'false' and rubricid in (SELECT id FROM HOKE_RUBRIC WHERE teacherId = ?)";
-	Query query = entityManager.createNativeQuery(sql);
-	query.setParameter(1, teacherId);
-	List<String[]> rubricLevelUpItems = (ArrayList)query.getResultList();
-	
-	List<RubricLevelUp> rubricLevelUpList = new ArrayList<RubricLevelUp>();
-	
-	//loop through the results
-	if (!rubricLevelUpItems.isEmpty()) {
-		for (int i=0; i<rubricLevelUpItems.size(); i++) {
-			RubricLevelUp rlu = new RubricLevelUp();
-			Object[] rubricLevelUpItem = rubricLevelUpItems.get(i);
-			rlu.setLevelupid((int) rubricLevelUpItem[0]);
-			rlu.setLevelup((String) rubricLevelUpItem[2]);
-			rlu.setCompleted((String) rubricLevelUpItem[3]);
-
-			rubricLevelUpList.add(rlu);
-		}};
-	return rubricLevelUpList;
-	}
 
 	//Called by the JSONRequestController to select the rubric dates by school to display on the schoolRubricReport.html triggered from drop down school list
 	@SuppressWarnings("unchecked")
@@ -304,37 +294,10 @@ public class RubricDao {
     			.getResultList();
 	}
 	
-	//Called by the JSONRequestController to select the hoke rubric dates by school to display on the hokeSchoolRubricReport.html triggered from drop down school list
-	@SuppressWarnings("unchecked")
-	public List<Date> getHokeRubricDatesBySchool(Integer schoolId) {
-		return (List<Date>) entityManager.createQuery("select distinct date from HOKE_RUBRIC where schoolid = :schoolId and observed = 'Observed Classroom' order by date desc")
-    			.setParameter("schoolId", schoolId)
-    			.getResultList();
-	}
-	
 	@SuppressWarnings("unchecked")
 	public List<Rubric> getRubricDatesIDUserid(Integer schoolId, Integer teacherId) {
 		return entityManager.createQuery(
 				"from RUBRIC where schoolid = :schoolId and teacherid = :teacherId ORDER BY date DESC")
-				.setParameter("schoolId", schoolId)
-    				.setParameter("teacherId", teacherId)
-    			.getResultList();
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Rubric> getHokeRubricDatesIDUserid(Integer schoolId, Integer teacherId) {
-		return entityManager.createQuery(
-				"from HOKE_RUBRIC where schoolid = :schoolId and teacherid = :teacherId ORDER BY date DESC")
-				.setParameter("schoolId", schoolId)
-    				.setParameter("teacherId", teacherId)
-    			.getResultList();
-	}
-	
-	//Called by JSONRequestController to get the Rubrics for the Hoke County School
-	@SuppressWarnings("unchecked")
-	public List<Rubric> getHokeModelTeacherRubricDatesAndId(Integer schoolId, Integer teacherId) {
-		return entityManager.createQuery(
-				"from HOKE_MODEL_TEACHER_RUBRIC where schoolid = :schoolId and teacherid = :teacherId ORDER BY date DESC")
 				.setParameter("schoolId", schoolId)
     				.setParameter("teacherId", teacherId)
     			.getResultList();
@@ -359,23 +322,7 @@ public class RubricDao {
 
 	//Called by the JSONRequestController to get the rubic data to create the graph on the schoolRubricReport.html
 	@SuppressWarnings("unchecked")
-	public List<Rubric> getRubricValuesBySchoolDateObserved(Integer schoolId, String date) {
-		SimpleDateFormat formatter1=new SimpleDateFormat("yyyy-MM-dd");
-		Date date1 = null;
-		try {
-			date1=formatter1.parse(date);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		} 
-		return (List<Rubric>) entityManager.createQuery("from RUBRIC where schoolid = :schoolId and date = :date and observed = 'Observed Classroom'")
-	    			.setParameter("schoolId", schoolId)
-	    			.setParameter("date", date1, TemporalType.DATE)
-	    			.getResultList();
-	}
-	
-	//Called by the JSONRequestController to get the Hoke rubric data to create the graph on the hokeSchoolRubricReport.html
-	@SuppressWarnings("unchecked")
-	public List<HokeRubric> getHokeRubricValuesBySchoolDatesObserved(Integer schoolId, String startDate, String endDate) {
+	public List<Rubric> getRubricValuesBySchoolDatesObserved(Integer schoolId, String startDate, String endDate) {
 		SimpleDateFormat formatter1=new SimpleDateFormat("MM/dd/yyyy");
 		Date startDateFormatted = null;
 		Date endDateFormatted = null;
@@ -386,29 +333,7 @@ public class RubricDao {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
-		return (List<HokeRubric>) entityManager.createQuery("from HOKE_RUBRIC where schoolid = :schoolId and date > :startDate and date < :endDate")
-	    			.setParameter("schoolId", schoolId)
-	    			.setParameter("startDate", startDateFormatted, TemporalType.DATE)
-	    			.setParameter("endDate", endDateFormatted, TemporalType.DATE)
-	    			.getResultList();
-	}
-	
-	//Called by the JSONRequestController to get the rubric data to create the graph on the schoolRubricReport.html
-	@SuppressWarnings("unchecked")
-	public List<HokeRubric> getRubricValuesBySchoolDatesObserved(Integer schoolId, String startDate, String endDate) {
-		SimpleDateFormat formatter1=new SimpleDateFormat("MM/dd/yyyy");
-		Date startDateFormatted = null;
-		Date endDateFormatted = null;
-		
-		try {
-			startDateFormatted = (Date)formatter1.parse(startDate);
-			endDateFormatted = (Date)formatter1.parse(endDate);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		return (List<HokeRubric>) entityManager.createQuery("from RUBRIC where schoolid = :schoolId and date > :startDate and date < :endDate")
+		return (List<Rubric>) entityManager.createQuery("from RUBRIC where schoolid = :schoolId and (date > :startDate and date < :endDate) and observed = 'Observed Classroom'")
 	    			.setParameter("schoolId", schoolId)
 	    			.setParameter("startDate", startDateFormatted, TemporalType.DATE)
 	    			.setParameter("endDate", endDateFormatted, TemporalType.DATE)
@@ -425,7 +350,7 @@ public class RubricDao {
 
 		String sqlMin = "SELECT R.ID, R.LEVELUP, R.DATE, R.OBSERVED, R.QUESTIONS, R.RUBRICNOTES, R.SCHOOLID, R.TEACHERID, R.TIMEOBSERVED, " +
 				" R.USERID, R.PLANNING, R.ASSESSMENTANDDATA, R.PATH, R.PLACE, R.PACE, R.CLASSROOMMANAGEMENT, R.TEACHERROLE, " +
-				" R.STUDENTENGAGEMENT, R.STUDENTCOLLABORATION, R.TECHNOLOGY, R.RUBRICSCORE " +
+				" R.STUDENTENGAGEMENT, R.STUDENTCOLLABORATION, R.TECHNOLOGY, R.SMALLGROUP, R.CHECKLISTS, R.RUBRICSCORE " +
 				" FROM RUBRIC R " +
 				" WHERE R.SCHOOLID = ?" + 
 				" AND R.TEACHERID = ?" + 
@@ -436,7 +361,7 @@ public class RubricDao {
 
 		String sqlMax = "SELECT R.ID, R.LEVELUP, R.DATE, R.OBSERVED, R.QUESTIONS, R.RUBRICNOTES, R.SCHOOLID, R.TEACHERID, R.TIMEOBSERVED, " +
 				" R.USERID, R.PLANNING, R.ASSESSMENTANDDATA, R.PATH, R.PLACE, R.PACE, R.CLASSROOMMANAGEMENT, R.TEACHERROLE, " +
-				" R.STUDENTENGAGEMENT, R.STUDENTCOLLABORATION, R.TECHNOLOGY, R.RUBRICSCORE " +
+				" R.STUDENTENGAGEMENT, R.STUDENTCOLLABORATION, R.TECHNOLOGY, R.SMALLGROUP, R.CHECKLISTS, R.RUBRICSCORE " +
 				" FROM RUBRIC R " +
 				" WHERE R.SCHOOLID = ?" + 
 				" AND R.TEACHERID = ?" + 
@@ -525,47 +450,75 @@ public class RubricDao {
 		}
 	}
 	
-public void updateHokeRubricLevelupItems(String[] checked, String[] unchecked) {
-	
-	String updateTrueSql = "Update HOKE_RUBRIC_LEVELUP set completed = ?, datecompleted = CURDATE() where levelupid = ? AND rubricid = ?";
-	String updateFalseSql = "Update HOKE_RUBRIC_LEVELUP set completed = ?, datecompleted = NULL where levelupid = ? AND rubricid = ?";
-	
-	Query updateTrueQuery = entityManager.createNativeQuery(updateTrueSql);
-	Query updateFalseQuery = entityManager.createNativeQuery(updateFalseSql);
-	
-	if (!checked[0].isEmpty()) {
-		for( int i = 0; i < checked.length; i++) {
-			String recordstring = checked[i];
-			String[] splitrecordstring = recordstring.split(" ");
-			updateTrueQuery.setParameter(1, "true");
-			updateTrueQuery.setParameter(2, splitrecordstring[1]);
-			updateTrueQuery.setParameter(3, splitrecordstring[0]);
-			updateTrueQuery.executeUpdate();
+	public void updateHokeRubricLevelupItems(String[] checked, String[] unchecked) {
+		
+		String updateTrueSql = "Update HOKE_RUBRIC_LEVELUP set completed = ?, datecompleted = CURDATE() where levelupid = ? AND rubricid = ?";
+		String updateFalseSql = "Update HOKE_RUBRIC_LEVELUP set completed = ?, datecompleted = NULL where levelupid = ? AND rubricid = ?";
+		
+		Query updateTrueQuery = entityManager.createNativeQuery(updateTrueSql);
+		Query updateFalseQuery = entityManager.createNativeQuery(updateFalseSql);
+		
+		if (!checked[0].isEmpty()) {
+			for( int i = 0; i < checked.length; i++) {
+				String recordstring = checked[i];
+				String[] splitrecordstring = recordstring.split(" ");
+				updateTrueQuery.setParameter(1, "true");
+				updateTrueQuery.setParameter(2, splitrecordstring[1]);
+				updateTrueQuery.setParameter(3, splitrecordstring[0]);
+				updateTrueQuery.executeUpdate();
+			}
 		}
-	}
-	
-	if (!unchecked[0].isEmpty()) {
-		for( int i = 0; i < unchecked.length; i++) {
-			String recordstring = unchecked[i];
-			String[] splitrecordstring = recordstring.split(" ");
-			updateFalseQuery.setParameter(1, "false");
-			updateFalseQuery.setParameter(2, splitrecordstring[1]);
-			updateFalseQuery.setParameter(3, splitrecordstring[0]);
-			updateFalseQuery.executeUpdate();
+		
+		if (!unchecked[0].isEmpty()) {
+			for( int i = 0; i < unchecked.length; i++) {
+				String recordstring = unchecked[i];
+				String[] splitrecordstring = recordstring.split(" ");
+				updateFalseQuery.setParameter(1, "false");
+				updateFalseQuery.setParameter(2, splitrecordstring[1]);
+				updateFalseQuery.setParameter(3, splitrecordstring[0]);
+				updateFalseQuery.executeUpdate();
+			}
 		}
-	}
-	}
+		}
 
 	@SuppressWarnings("unchecked")
-	public List<Rubric> getRubricValuesBySchoolForDashboard(Integer schoolId) {
+	public List<Rubric> getRubricValuesBySchoolForDashboard(Integer schoolid) {
 		//Called by the JSONRequestController to get the rubic data to create the 3d bar graph on the dashboard
 		List<Rubric> rubricList =  entityManager.createQuery("from RUBRIC r WHERE timeObserved = (SELECT MAX(timeObserved) FROM RUBRIC "
 				+ "where schoolid = :schoolId and observed = 'Observed Classroom' and teacherId = r.teacherId group by teacherId) "
 				+ "and schoolid = :schoolId and observed = 'Observed Classroom' group by teacherId")
-	    			.setParameter("schoolId", schoolId)
+	    			.setParameter("schoolId", schoolid)
 	    			.getResultList();
 		return rubricList;
 	}
+	
 
-
-}
+	public List<Rubric> getRubricValuesForAssignedSchoolsForDashboard(Integer school) {
+		//Called by the JSONRequestController to get the rubic data to create the 3d bar graph on the dashboard
+		//List<String> schoolNames = new ArrayList<String>();
+		//schoolNames.addAll(school);
+		
+		@SuppressWarnings("unchecked")
+		/*
+		List<Rubric> rubricList =  entityManager.createQuery("from RUBRIC r WHERE timeObserved = (SELECT MAX(timeObserved) FROM RUBRIC "
+				+ "where schoolid in (select id FROM SCHOOLS where name in (:school)) and observed = 'Observed Classroom' and teacherId = r.teacherId group by teacherId) "
+				+ "and schoolid in (select id FROM SCHOOLS where name in (:school)) and observed = 'Observed Classroom' group by teacherId")
+	    			//.setParameter("schoolList", Arrays.asList("Cypress Andre", "Cypress Kirk"))
+	    			//.setParameter("schoolList", Arrays.asList(schools))
+	    			.setParameter("school", school)
+	    			.getResultList();
+		*/
+		
+		List<Rubric> rubricList =  entityManager.createQuery("from RUBRIC r WHERE timeObserved = (SELECT MAX(timeObserved) FROM RUBRIC "
+				+ "where schoolid = :school) and observed = 'Observed Classroom' and teacherId = r.teacherId group by teacherId) "
+				+ "and schoolid = :school) and observed = 'Observed Classroom' group by teacherId")
+	    			//.setParameter("schoolList", Arrays.asList("Cypress Andre", "Cypress Kirk"))
+	    			//.setParameter("schoolList", Arrays.asList(schools))
+	    			.setParameter("school", school)
+	    			.getResultList();
+		
+		return rubricList;
+				
+	}
+		
+	}

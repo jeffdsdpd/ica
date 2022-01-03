@@ -33,6 +33,7 @@
 <link href="css/misc.css" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
 
+
 <!--   Fonts and icons     -->
 <link href="css/lib/pe-icon-7-stroke.css" rel="stylesheet" />
 <link href='//fonts.googleapis.com/css?family=Roboto:400,700,300'
@@ -48,7 +49,7 @@
 			<div class="content">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-md-10">
+						<div class="col-md-11">
 							<div class="card">
 								<div class="header">
 									<h2 class="title">Dashboard</h2>
@@ -68,7 +69,7 @@
 												<br />
 
 												<div class="col-md-12">
-													<div class="form-group col-md-3" id="schoolIdGroup" style="padding-top: 10px;">
+													<div class="form-group col-md-4" id="schoolIdGroup" style="padding-top: 10px;">
 														<label><b>School</b></label>
 		                                                	<select id="schoolId" class="form-control" th:field="*{schoolList}">
 			                                                	<option value="">Please Select</option>
@@ -76,60 +77,153 @@
 			                                                			th:value="${school.id}" 
 			                                                			th:text="${school.name}">
 			                                                	</option>
-														</select>
+															</select>
 													</div>
-													<div id="pieContainer" class="col-md-9" style="float: right; padding-top: 10px;"></div>
+													
+													<!-- phase one value percentages -->
+													<div>
+												    	<div class="col-md-3">
+												          <img src="images/phaseone.png" width="150" height="175" style="float:right;" />
+												        </div>
+												        <div class="col-md-2" style="margin-left:-10px">
+												            <h4 id="phaseonepercent" class="card-title">Phase1%</h4>
+												            <p class="card-text">Working at a Phase 1</p>
+												    	</div>
+													</div>
 												</div>
+												
+												
+												 	<!-- phase two value percentages -->
+											     	<div class="row">
+											        	<div class="col-md-2">
+											          		<div style="margin-left:10px">
+											            		<h4 id="phasetwopercent" class="card-title">Phase2%</h4>
+											            		<p class="card-text">Working at a Phase 2</p>
+											          		</div>
+											        	</div>
+												         <div class="col-md-3" style="margin-left:-25px">
+												          <img src="images/phasetwo.png" width="150" height="175" />
+												        </div>
+												        
+												        
+												        <!-- spacer -->
+												        <div class="col-md-1"></div>
+												        
+												        
+												        <!-- phase three value percentages -->
+												        <div class="col-md-3">
+												          <img src="images/phasethree.png" width="150" height="175" style="float:right;" />
+												        </div>
+												        <div class="col-md-2" style="margin-left:-25px">
+												            <h4 id="phasethreepercent" class="card-title">Phase3%</h4>
+												            <p class="card-text">Working at a Phase 3</p>
+												    	</div>
+												    </div>
+												        
+												        
+												     <hr />
+												     
+												        <div class="row">
+													        <div class="form-group col-md-6">
+														        <label class="control-label" style="margin:5px; font-size:20px; padding-top:0px; float:left;">Total RUBRICS:</label>
+														        <input class="col-md-3" type="text" readonly="readonly" style="width: 75px; border:0px; font-size:20px; margin-top:2px;" id="nbrTeachers"/>									  
+														    </div>
+														</div>
+														
+														<div class="row">
+														   	<div class="form-group col-md-6">
+														        <label class="control-label" style="margin:5px; padding-top:0px; float:left;">Working At Phase 1:</label>
+														        <input type="text" readonly="readonly" style="width: 50px; border: 0px; font-size:medium; margin-top:2px;" id="phase1Teachers"/>
+														    </div>
+														</div>
+														
+														<div class="row">
+														    <div class="form-group col-md-6">
+														        <label class="control-label" style="margin:5px; padding-top:0px; float:left;">Working at Phase 2:</label>
+														        <input type="text" readonly="readonly" style="width: 50px; border: 0px; font-size:medium; margin-top:2px;" id="phase2Teachers"/>
+														    </div>
+														</div>
+														    
+														<div class="row">
+														    <div class="form-group col-md-6">
+														        <label class="control-label" style="margin:5px; padding-top:0px; float:left;">Working at Phase 3:</label>
+																<input type="text" readonly="readonly" style="width: 50px; border: 0px; font-size:medium; margin-top:2px;" id="phase3Teachers"/>
+														    </div>
+														</div>
 											</div>
 										</div>
 									</div>
 									
 						
-									
-									    <div class="form-group">
-									        <label class="control-label" style="margin:5px; padding-top:0px; float:left; margin-right:15px;">Total RUBRIC items:</label>
-									        <input type="text" readonly="readonly" style="border: 0px; font-size:medium; background-color:transparent;" id="nbrTeachers"/>									  
-									    </div>
-								
-									    <div class="form-group">
-									        <label class="control-label" style="margin:5px; padding-top:0px; float:left; margin-right:15px;">RUBRIC categories in Phase 1:</label>
-									        <input type="text" readonly="readonly" style="border: 0px; font-size:medium; background-color:transparent;" id="phase1Teachers"/>
-									    </div>
-									    
-									    <div class="form-group">
-									        <label class="control-label" style="margin:5px; padding-top:0px; float:left; margin-right:15px;">RUBRIC categories in Phase 2:</label>
-									        <input type="text" readonly="readonly" style="border: 0px; font-size:medium; background-color:transparent;" id="phase2Teachers"/>
-									    </div>
-									    
-									    <div class="form-group">
-									        <label class="control-label" style="margin:5px; padding-top:0px; float:left; margin-right:15px;">RUBRIC categories in Phase 3:</label>
-											<input type="text" readonly="readonly" style="border: 0px; font-size:medium; background-color:transparent;" id="phase3Teachers"/>
-									    </div>
-									    
-									    <div class="form-group">
-									        <label class="control-label" style="margin:5px; padding-top:0px; float:left; margin-right:15px;">RUBRIC categories in Not Observed:</label>
-								            <input type="text" readonly="readonly" style="border: 0px; font-size:medium; background-color:transparent;" id="notObserved"/>
-									    </div>
-									
-
 
 									<div class="row">
 										<div class="col-md-11">
-											<div class="panel panel-default" id="rubricGraph" style="display: none;">
+											<div class="panel panel-default">
 												<div class="panel-heading">
-													<div id="icons"></div>
 													<h3 class="panel-title">
-														<i class="fa fa-bar-chart-o fa-fw"></i><b>School Rubric Values</b>
+														<i class="fa fa-chart-pie"></i><b> School Rubric Statistics - Select Date Range to View Graph</b>
 													</h3>
 												</div>
-												<div class="panel-body">
-													<div id="container" style="width: 100%; height: 500px;"></div>
+												<div class="form-group col-md-3" id="schoolIdGraph" style="margin-top: 25px;">
+													<label><b>School</b></label>
+	                                                	<select id="schoolIdGraph" class="form-control" th:field="*{schoolList}">
+		                                                	<option value="">Please Select</option>
+		                                                	<option th:each="school: ${schoolList}" 
+		                                                			th:value="${school.id}" 
+		                                                			th:text="${school.name}">
+		                                                	</option>
+														</select>
+												</div>
+											
+												<div class="col-md-3">
+													<div class="form-group" style="margin-top: 25px;">
+														<label>Start Date</label>
+														<input th:required="true" type="text" id="startDate" name="startDate" class="form-control" placeholder="Start Date" />
+													</div>
+												</div>
+											
+												<div class="col-md-3">
+													<div class="form-group" style="margin-top: 25px;">
+														<label>End Date</label>
+														<input th:required="true" type="text" id="endDate" name="endDtate" class="form-control" placeholder="End Date" />
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 									
+									<div class="row">
+										<div class="col-md-11">
+											<div class="col-md-3"></div>
+											<div class="col-md-3">
+												<button name="button" type="button" class="btn btn-primary btn-md btn-block">Display Report</button>
+											</div>
+											<div class="col-md-3"></div>
+										</div>
+									</div>
 									
+									<hr />
+									
+									<div class="row">
+										<div class="col-md-11">
+											<div class="col-md-3"></div>
+											<div class="col-md-3" id='loadingmessage' align="center" style="display:none">
+												<i class="dot-spinner-48x48"></i>
+											</div>
+											<div class="col-md-3"></div>
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-11">
+											<div class="panel panel-default">
+												<div class="panel-body col-md-11" id="rubricGraph" style="display: none;">
+													<div id="container" style="width: 100%; height: 500px;"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+										
 								</div>
 							</div>
 							<div th:replace="fragments/footer :: footer"></div>
