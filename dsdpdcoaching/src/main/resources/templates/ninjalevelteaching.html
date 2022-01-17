@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+		<title>DSD-PD Coaching Application | Ninja Level Form</title>
+		
+		<meta charset="utf-8" />	
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		
+		<link rel="icon" type="image/png" href="img/favicon.ico"/>
+		
+		<!--   JS Files   -->
+		<script src="js/lib/jquery.js"></script>
+		<script src="js/lib/jquery-ui.min.js"></script>
+		<script src="js/lib/timepicker.js"></script>
+		<script src="js/lib/bootstrap.min.js"></script>
+		<script src="js/lib/bootstrap-select.js"></script>
+		<script src="js/lib/bootstrap-multiselect.js"></script>
+		<script src="js/lib/jquery.validate.min.js"></script>
+		<script src="js/lib/light-bootstrap-dashboard.js"></script>
+		<script src="js/ninjalevelform.js"></script>
+		<script src="js/master.js"></script>
+		
+		<!--   CSS Files   -->
+		<link href="css/lib/jquery-ui.css" rel="stylesheet"/>
+	    <link href="css/lib/bootstrap.min.css" rel="stylesheet"/>
+	    <link href="css/lib/light-bootstrap-dashboard.css" rel="stylesheet"/>
+	    <link href="css/lib/timepicker.css" rel="stylesheet"/>
+	    <link href="css/lib/bootstrap-multiselect.css" rel="stylesheet"/>
+	    <link href="css/misc.css" rel="stylesheet"/>
+	    <link href="css/popup.css" rel="stylesheet"/>
+	    
+	    <!--   Fonts and icons     -->
+	    <link href="css/lib/pe-icon-7-stroke.css" rel="stylesheet"/>
+    	    <link href='//fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'/>
+    	    <link href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'/>
+    
+    <style>
+     		.radio-inline{
+     			font-family: arial, Times, serif;
+     			font-size: 14px;
+     			color: yellow;
+     			}
+	</style>
+    
+    </head>
+    
+     <body>
+		<div class="wrapper">
+		    <div th:replace="fragments/nav :: nav"></div>
+		    
+			<div class="main-panel">
+			    <div th:replace="fragments/header :: header"></div>
+
+		        <div class="content">
+		            <div class="container-fluid">
+		                <div class="row">
+		                    <div class="col-md-11">
+		                        <div class="card">
+		                            <div class="header">
+		                                <h2 class="title">Ninja Level Teacher Form</h2>
+		                            </div>
+		                            <div class="content">
+		                                <form id="ninjalevelform" name="ninjalevelform" action="#" th:action="@{/hokeModelTeacherRubricForm}" th:object="${hokeModelTeacherRubricData}" method="post">
+		                                    <div class="row">
+		                                        <div class="col-md-3" style="margin-right:25px;">
+		                                            <div class="form-group">
+		                                                <label>School</label>
+		                                                <select id="schoolId" class="form-control" th:field="*{schoolId}">
+			                                                	<option value="">Please Select</option>
+			                                                	<option th:each="school: ${schoolList}" 
+			                                                			th:value="${school.id}" 
+			                                                			th:text="${school.name}">
+			                                                	</option>
+														</select>
+		                                            </div>
+		                                        </div>                          
+		      
+	                                        	<div class="col-md-2" style="margin-right:20px;">
+													<div class="form-group">
+														<label>Teacher</label>
+														<select id="teacherId" th:field="*{teacherId}">
+															<option value=""> Please Select </option>
+															<option th:each="teacher : ${teachers}"
+																th:value="${teacher.teacherId}"
+																th:utext="${teacher.teacherId" />
+														</select>
+													</div>
+												</div>
+												
+												<div class="col-md-2">
+		                                            <div class="form-group">
+		                                                	<label>Date</label>
+		                                               	<input type="text" id="entryDate" class="form-control" placeholder="Date" th:field="*{date}"/>
+													</div>
+		                                        </div>
+		                                    </div>
+		
+			                                
+                                    <hr></hr>
+                                    
+                                    
+                                    <!-- START of SMALL GROUP STUDIO -->
+								   	<button type="button" class="hokeexpandable heidc">SMALL GROUP STUDIO</button>
+									   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
+									   		<div class="form-inline">
+												<div>
+										   			<div class="row">
+											   			<div class="col-sm-6">
+												    			<label style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+				  											<input style="margin-right:3px;" type="radio" id='smallgroupwhite' name="smallgroup" value="smallgroupwhite" />Teaching the content to a few students while the other students are working on other learning studios</label>
+				  										</div>
+							  							<div class="col-sm-6">
+								  							<label style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+						  									<input style="margin-right:3px;" type="radio" id='smallgroupyellow' name="smallgroup" value="smallgroupyellow" />Using manipulatives and anchor charts to showcase the concepts to the students</label>
+						  								</div>
+						  								<div class="col-sm-6">
+								  							<label style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+						  									<input style="margin-right:3px;" type="radio" id='smallgroupgreen' name="smallgroup" value="smallgroupgreen" />Differentiated Instruction based on the data from formative assessment</label>
+						  								</div>
+							  						</div>
+							  						<div class="row">
+											   			<div class="col-sm-6">
+												    			<label style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+						  									<input style="margin-right:3px;" type="radio" id='smallgrouppurple' name="smallgroup" value="smallgrouppurple" />Using the teacher tracker to help determine the groups based on a quick exit ticket from the small group instruction</label>
+						  									</div>
+							  							<div class="col-sm-6">
+								  							<label style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+						  									<input style="margin-right:3px;" type="radio" id='smallgrouporange' name="smallgroup" value="smallgrouporange" />Tie in data meetings as part of the small groups</label>
+														</div>
+														<div class="col-sm-6">
+								  							<label style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+						  									<input style="margin-right:3px;" type="radio" id='smallgroupblue' name="smallgroup" value="smallgroupblue" />Provide optional small groups for the students to attend based on their individual data and goals</label>
+														</div>
+							  						</div>
+												</div>
+											</div>
+								
+	  										<br />
+	  										
+	  										<div class="row">
+	                                        		<div class="col-md-8">
+	                                            		<div class="form-group">
+	                                                		<label id="idcguidingquestions" style="color:blue; text-decoration: underline;">Guiding Questions</label>
+	                                                			<div class="modal idcmodal fade " data-backdrop="false">
+															      	<div class="modal-dialog">
+															          	<div class="modal-content">
+															              <div class="modal-header">
+															                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+															                  <h4 class="modal-title">GUIDING QUESTIONS</h4>
+															              </div>
+															              <div class="modal-body">
+															                   <h5><b>Students:</b></h5>
+															              </div>
+																	            <p class="modaltext">What are you learning today?</p>
+																	            <p class="modaltext">What are you completing in this station?</p>
+															              <div class="modal-body">
+															                   <h5><b>Teachers:</b></h5>
+															                    <p class="modaltext">What are your students learning about today?</p>
+															              		<p class="modaltext">How will you determine what your students learned today?</p>
+															              		<p class="modaltext">What are your students producing to show you what they learned?</p>
+															              		<p class="modaltext">What resources are you using in the stations?</p>
+															              		<p class="modaltext">How did you decide to use that station?</p>
+															              		<p class="modaltext">What data, if any, does the digital resource provide to the teacher and/or student?</p>
+															              		<p class="modaltext">How does the digital content provide support for the students?</p>
+															              </div>
+															              <div class="modal-footer">
+															                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+															              </div>
+															          </div><!-- /.modal-content -->
+															      </div><!-- /.modal-dialog -->
+															</div><!-- /.modal fade-->
+	                                                	</div>
+	                                        		</div>
+                                    			</div>
+										</div> <!-- END OF SMALL GROUP STUDIO -->
+										
+										<!-- START of INDEPENDENT STUDIO -->
+								   		<button type="button" class="hokeexpandable heidc">INDEPENDENT STUDIO</button>
+										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
+										   		<div class="form-inline">
+													<div>
+													</div>
+												</div>
+											</div> <!-- END OF INDEPENDENT STUDIO -->
+											
+										<!-- START of DIGITAL CONTENT -->
+								   		<button type="button" class="hokeexpandable heidc">DIGITAL CONTENT</button>
+										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
+										   		<div class="form-inline">
+													<div>
+													</div>
+												</div>
+											</div> <!-- END OF DIGITAL CONTENT -->
+											
+										<!-- START of FUTURE READY -->
+								   		<button type="button" class="hokeexpandable heidc">FUTURE READY</button>
+										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
+										   		<div class="form-inline">
+													<div>
+													</div>
+												</div>
+											</div> <!-- END OF FUTURE READY -->
+												
+												
+												
+									
+	  								<br />
+	  								<hr></hr>
+	  								
+	  								<div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label>Rubric Notes</label>
+                                                <textarea rows="5" cols="50" class="form-control" placeholder="Notes" name="rubricNotes" id="rubricNotes" wrap="hard" maxlength="700"></textarea><br />
+											</div>
+                                        </div>
+                                    </div>
+	  								
+		                                    <button type="submit" class="btn btn-info btn-fill pull-right" name="Submit" value="Submit">Submit</button>
+		                                    <div class="clearfix"></div>
+		                                </form>
+		                            </div>
+		                        </div>
+									
+								<div th:replace="fragments/footer :: footer"></div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+			</div>
+		</div>
+	</body>
+</html>
