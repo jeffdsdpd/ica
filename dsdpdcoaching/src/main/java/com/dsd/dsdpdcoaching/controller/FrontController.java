@@ -60,6 +60,13 @@ public class FrontController {
 		return "schoolRubricReport";
 	}
 	
+	@GetMapping("/ninjalevelteaching.html")
+	public String getHokeModelTeacherRubricForm(Model model) {
+		//model.addAttribute("hokeModelTeacherRubricData", new HokeModelTeacherRubric());
+		//model.addAttribute("ninjaLevelTeachingData", new NinjaLevelTeachingData());
+		return "ninjalevelteaching";
+	}
+	
 	@PostMapping("/rubricForm")
 	public String postRubricForm(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute Rubric rubricData, @ModelAttribute RubricLevelUp rubricLevelUp) {
 
@@ -134,6 +141,8 @@ public class FrontController {
 		return "redirect:/rubricReport.html";
 	
 	}
+	
+	
 
 
 }
