@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.dsd.dsdpdcoaching.dao.RubricDao;
 import com.dsd.dsdpdcoaching.dto.ChicagoBlendRubric;
+import com.dsd.dsdpdcoaching.dto.NinjaLevelTeachingData;
 import com.dsd.dsdpdcoaching.dto.Rubric;
 import com.dsd.dsdpdcoaching.dto.RubricLevelUp;
 import com.dsd.dsdpdcoaching.service.EmailService;
@@ -61,9 +62,8 @@ public class FrontController {
 	}
 	
 	@GetMapping("/ninjalevelteaching.html")
-	public String getHokeModelTeacherRubricForm(Model model) {
-		//model.addAttribute("hokeModelTeacherRubricData", new HokeModelTeacherRubric());
-		//model.addAttribute("ninjaLevelTeachingData", new NinjaLevelTeachingData());
+	public String getNinjaLevelTeachingForm(Model model) {
+		model.addAttribute("ninjaLevelTeachingData", new NinjaLevelTeachingData());
 		return "ninjalevelteaching";
 	}
 	
