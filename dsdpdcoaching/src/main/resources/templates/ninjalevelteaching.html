@@ -64,17 +64,29 @@
 	  opacity: 0;
 	  transition: all 0.3s ease;
 	}
-	.custom-radios input[type=radio]#color-1 + label span {
+	.custom-radios input[type=radio].white + label span {
+	  background-color: #ffffff; 
+	}
+	.custom-radios input[type=radio].yellow + label span {
+	  background-color: #f1c40f; 
+	}
+	.custom-radios input[type=radio].orange + label span {
+	  background-color: #e74c3c;
+	}
+	.custom-radios input[type=radio].green + label span {
 	  background-color: #2ecc71;
 	}
-	.custom-radios input[type=radio]#color-2 + label span {
-	  background-color: #3498db;
+	.custom-radios input[type=radio].blue + label span {
+	  background-color: #0000FF;
 	}
-	.custom-radios input[type=radio]#color-3 + label span {
-	  background-color: #f1c40f;
+	.custom-radios input[type=radio].purple + label span {
+	  background-color: #cc8899;
 	}
-	.custom-radios input[type=radio]#color-4 + label span {
-	  background-color: #e74c3c;
+	.custom-radios input[type=radio].brown + label span {
+	  background-color: #964b00;
+	}
+	.custom-radios input[type=radio].red + label span {
+	  background-color: #ff0000;
 	}
 	.custom-radios input[type=radio]:checked + label span img {
 	  opacity: 1;
@@ -140,71 +152,178 @@
                                     
  
                                     <!-- START of SMALL GROUP STUDIO -->
-								   	<button type="button" class="hokeexpandable heidc">SMALL GROUP STUDIO</button>
+								   	<button type="button" class="hokeexpandable purple">SMALL GROUP STUDIO</button>
 									   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
 									   		<div class="form-inline">
 												<div>
 										   			<div class="row">
-											   			<div class="col-sm-6 custom-radios">
+											   			<div class="col-sm-9 custom-radios">
 											   				<div>
-												   				<input type="radio" id="color-1" name="color" value="color-1" />
-																	<label for="color-1" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
-																		<span>
-																        	<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg" alt="Checked Icon" />
-																      	</span>
-																      	Teaching the content to a few students while the other students are working on other learning studios
-																    </label>
+																<label for="color-1" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																	Teaching the content to a few students while the other students are working on other learning studios
+																</label>
 													  		</div>
 				  										</div>
-				  										<div class="col-sm-6 custom-radios">
+				  										<div class="col-sm-3 custom-radios">
 											   				<div>
-												   				<input type="radio" id="color-2" name="color" value="color-2" />
-																	<label for="color-2" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+												   				<input type="radio" class="white" id="smallgroupwhiteyes" name="smallgroupwhite" value="smallgroupwhiteyes" />
+																	<label for="smallgroupwhiteyes" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
 																		<span>
-																        	<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg" alt="Checked Icon" />
+																        	<img src="/images/whitebeltimage.png" width="22px" height="22px" alt="Checked Icon" />
 																      	</span>
-																      	Using manipulatives and anchor charts to showcase the concepts to the students
+																      	Yes
+																    </label>
+																<input type="radio" class="white" id="smallgroupwhiteno" name="smallgroupwhite" value="smallgroupwhiteno" />
+																	<label for="smallgroupwhiteno" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/ninjax.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	No
 																    </label>
 													  		</div>
 				  										</div>
 				  									</div>
-							  							
-						  							
-						  							<div class="row">
-						  								<div class="col-sm-6 custom-radios">
+				  									
+				  									<div class="row" id="smallgroupyellowrow" style="display: none">
+											   			<div class="col-sm-9 custom-radios">
 											   				<div>
-												   				<input type="radio" id="color-3" name="color" value="color-3" />
-																	<label for="color-3" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																<label for="color-2" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																	Using manipulatives and anchor charts to showcase the concepts to the students
+																</label>
+													  		</div>
+				  										</div>
+				  										<div class="col-sm-3 custom-radios">
+											   				<div>
+												   				<input type="radio" class="yellow" id="smallgroupyellowyes" name="smallgroupyellow" value="smallgroupyellowyes" />
+																	<label for="smallgroupyellowyes" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
 																		<span>
-																        	<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg" alt="Checked Icon" />
+																        	<img src="/images/yellowbeltimage.png" width="22px" height="22px" alt="Checked Icon" />
 																      	</span>
-																      	Differentiated Instruction based on the data from formative assessment
+																      	Yes
+																    </label>
+																    <input type="radio" class="yellow" id="smallgroupyellowno" name="smallgroupyellow" value="smallgroupyellowno" />
+																	<label for="smallgroupyellowno" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/ninjax.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	No
 																    </label>
 													  		</div>
 				  										</div>
-				  										<div class="col-sm-6 custom-radios">
+				  									</div>
+				  									
+				  									<div class="row" id="smallgrouporangerow" style="display: none">
+											   			<div class="col-sm-9 custom-radios">
 											   				<div>
-												   				<input type="radio" id="color-4" name="color" value="color-4" />
-																	<label for="color-4" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																<label for="color-2" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																	Differentiated Instruction based on the data from formative assessment
+																</label>
+													  		</div>
+				  										</div>
+				  										<div class="col-sm-3 custom-radios">
+											   				<div>
+												   				<input type="radio" class="orange" id="smallgrouporangeyes" name="smallgrouporange" value="smallgrouporangeyes" />
+																	<label for="smallgrouporangeyes" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
 																		<span>
-																        	<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg" alt="Checked Icon" />
+																        	<img src="/images/orangebeltimage.png" width="22px" height="22px" alt="Checked Icon" />
 																      	</span>
-																      	Using the teacher tracker to help determine the groups based on a quick exit ticket from the small group instruction
+																      	Yes
+																    </label>
+																    <input type="radio" class="orange" id="smallgrouporangeno" name="smallgrouporange" value="smallgrouporangeno" />
+																	<label for="smallgrouporangeno" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/ninjax.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	No
 																    </label>
 													  		</div>
 				  										</div>
-						  							</div>
-						  							
-						  							<div class="row">
-						  								<div class="col-sm-6">
-								  							<label style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
-						  									<input style="margin-right:3px;" type="radio" id='smallgrouporange' name="smallgroup" value="smallgrouporange" />Tie in data meetings as part of the small groups</label>
-														</div>
-														<div class="col-sm-6">
-								  							<label style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
-						  									<input style="margin-right:3px;" type="radio" id='smallgroupblue' name="smallgroup" value="smallgroupblue" />Provide optional small groups for the students to attend based on their individual data and goals</label>
-														</div>
-						  							</div>
+				  									</div>
+				  									
+				  									<div class="row" id="smallgroupgreenrow" style="display: none">
+											   			<div class="col-sm-9 custom-radios">
+											   				<div>
+																<label for="color-2" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																	Using the teacher tracker to help determine the groups based on a quick exit ticket from the small group instruction
+																</label>
+													  		</div>
+				  										</div>
+				  										<div class="col-sm-3 custom-radios">
+											   				<div>
+												   				<input type="radio" class="green" id="smallgroupgreenyes" name="smallgroupgreen" value="smallgroupgreenyes" />
+																	<label for="smallgroupgreenyes" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/greenbeltimage.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	Yes
+																    </label>
+																    <input type="radio" class="green" id="smallgroupgreenno" name="smallgroupgreen" value="smallgroupgreenno" />
+																	<label for="smallgroupgreenno" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/ninjax.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	No
+																    </label>
+													  		</div>
+				  										</div>
+				  									</div>
+				  									
+				  									<div class="row" id="smallgroupbluerow" style="display: none">
+											   			<div class="col-sm-9 custom-radios">
+											   				<div>
+																<label for="color-2" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																	Tie in data meetings as part of the small groups
+																</label>
+													  		</div>
+				  										</div>
+				  										<div class="col-sm-3 custom-radios">
+											   				<div>
+												   				<input type="radio" class="blue" id="smallgroupblueyes" name="smallgroupblue" value="smallgroupblueyes" />
+																	<label for="smallgroupblueyes" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/bluebeltimage.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	Yes
+																    </label>
+																    <input type="radio" class="blue" id="smallgroupblueno" name="smallgroupblue" value="smallgroupblueno" />
+																	<label for="smallgroupblueno" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/ninjax.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	No
+																    </label>
+													  		</div>
+				  										</div>
+				  									</div>
+				  									
+				  									<div class="row" id="smallgrouppurplerow" style="display: none">
+											   			<div class="col-sm-9 custom-radios">
+											   				<div>
+																<label for="color-2" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																	Provide optional small groups for the students to attend based on their individual data and goals
+																</label>
+													  		</div>
+				  										</div>
+				  										<div class="col-sm-3 custom-radios">
+											   				<div>
+												   				<input type="radio" class="purple" id="smallgrouppurpleyes" name="smallgrouppurple" value="smallgrouppurpleyes" />
+																	<label for="smallgrouppurpleyes" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/purplebeltimage.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	Yes
+																    </label>
+																    <input type="radio" class="purple" id="smallgrouppurpleno" name="smallgrouppurple" value="smallgrouppurpleno" />
+																	<label for="smallgrouppurpleno" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/ninjax.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	No
+																    </label>
+													  		</div>
+				  										</div>
+				  									</div>
+				  									
 							  					</div>
 											</div>
 										</div> <!-- END OF SMALL GROUP STUDIO -->
@@ -212,18 +331,185 @@
 										<br />
 	  					
 										<!-- START of INDEPENDENT STUDIO -->
-								   		<button type="button" class="hokeexpandable heti">INDEPENDENT STUDIO</button>
+								   		<button type="button" class="hokeexpandable orange">INDEPENDENT STUDIO</button>
 										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
-										   		<div class="form-inline">
-													<div>
-													</div>
+									   		<div class="form-inline">
+												<div>
+										   			<div class="row">
+											   			<div class="col-sm-9 custom-radios">
+											   				<div>
+																<label for="color-1" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																	Students practice the standard or skill while the teacher is working in the small group studio
+																</label>
+													  		</div>
+				  										</div>
+				  										<div class="col-sm-3 custom-radios">
+											   				<div>
+												   				<input type="radio" class="white" id="independentstudiowhiteyes" name="independentstudiowhite" value="independentstudiowhiteyes" />
+																	<label for="independentstudiowhiteyes" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/whitebeltimage.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	Yes
+																    </label>
+																<input type="radio" class="white" id="independentstudiowhiteno" name="independentstudiowhite" value="independentstudiowhiteno" />
+																	<label for="smallgroupwhiteno" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/ninjax.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	No
+																    </label>
+													  		</div>
+				  										</div>
+				  									</div>
+				  									
+				  									<div class="row" id="independentstudioyellowrow" style="display: none">
+											   			<div class="col-sm-9 custom-radios">
+											   				<div>
+																<label for="color-2" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																	Try the grab bag practice with the activity sheets (Cut the questions apart)
+																</label>
+													  		</div>
+				  										</div>
+				  										<div class="col-sm-3 custom-radios">
+											   				<div>
+												   				<input type="radio" class="yellow" id="independentstudioyellowyes" name="independentstudioyellow" value="independentstudioyellowyes" />
+																	<label for="independentstudioyellowyes" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/yellowbeltimage.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	Yes
+																    </label>
+																    <input type="radio" class="yellow" id="independentstudioyellowno" name="independentstudioyellow" value="independentstudioyellowno" />
+																	<label for="independentstudioyellowno" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/ninjax.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	No
+																    </label>
+													  		</div>
+				  										</div>
+				  									</div>
+				  									
+				  									<div class="row" id="independentstudioorangerow" style="display: none">
+											   			<div class="col-sm-9 custom-radios">
+											   				<div>
+																<label for="color-2" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																	Post the answers for the students to check their work
+																</label>
+													  		</div>
+				  										</div>
+				  										<div class="col-sm-3 custom-radios">
+											   				<div>
+												   				<input type="radio" class="orange" id="independentstudioorangeyes" name="independentstudioorange" value="independentstudioorangeyes" />
+																	<label for="independentstudioorangeyes" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/orangebeltimage.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	Yes
+																    </label>
+																    <input type="radio" class="orange" id="independentstudioorangeno" name="independentstudioorange" value="independentstudioorangeno" />
+																	<label for="independentstudioorangeno" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/ninjax.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	No
+																    </label>
+													  		</div>
+				  										</div>
+				  									</div>
+				  									
+				  									<div class="row" id="independentstudiogreenrow" style="display: none">
+											   			<div class="col-sm-9 custom-radios">
+											   				<div>
+																<label for="color-2" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																	The independent practice can be online or offline activities (Review the 55-35-10 guide)
+																</label>
+													  		</div>
+				  										</div>
+				  										<div class="col-sm-3 custom-radios">
+											   				<div>
+												   				<input type="radio" class="green" id="independentstudiogreenyes" name="independentstudiogreen" value="independentstudiogreenyes" />
+																	<label for="independentstudiogreenyes" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/greenbeltimage.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	Yes
+																    </label>
+																    <input type="radio" class="green" id="independentstudiogreenno" name="independentstudiogreen" value="independentstudiogreenno" />
+																	<label for="independentstudiogreenno" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/ninjax.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	No
+																    </label>
+													  		</div>
+				  										</div>
+				  									</div>
+				  									
+				  									<div class="row" id="independentstudiobluerow" style="display: none">
+											   			<div class="col-sm-9 custom-radios">
+											   				<div>
+																<label for="color-2" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																	Move toward deploying differentiated practice activities for the students
+																</label>
+													  		</div>
+				  										</div>
+				  										<div class="col-sm-3 custom-radios">
+											   				<div>
+												   				<input type="radio" class="blue" id="independentstudioblueyes" name="independentstudioblue" value="independentstudioblueyes" />
+																	<label for="smallgroupblueyes" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/bluebeltimage.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	Yes
+																    </label>
+																    <input type="radio" class="blue" id="independentstudioblueno" name="independentstudioblue" value="independentstudioblueno" />
+																	<label for="independentstudioblueno" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/ninjax.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	No
+																    </label>
+													  		</div>
+				  										</div>
+				  									</div>
+				  									
+				  									<div class="row" id="independentstudiopurplerow" style="display: none">
+											   			<div class="col-sm-9 custom-radios">
+											   				<div>
+																<label for="color-2" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																	Students pick the independent activities that align to their individual goals
+																</label>
+													  		</div>
+				  										</div>
+				  										<div class="col-sm-3 custom-radios">
+											   				<div>
+												   				<input type="radio" class="purple" id="independentstudiopurpleyes" name="independentstudiopurple" value="independentstudiopurpleyes" />
+																	<label for="independentstudiopurpleyes" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/purplebeltimage.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	Yes
+																    </label>
+																    <input type="radio" class="purple" id="independentstudiopurpleno" name="independentstudiopurple" value="independentstudiopurpleno" />
+																	<label for="independentstudiopurpleno" style="margin-right:25px; font-family:arial; font-weight:normal; font-size:11px; color:#585858">
+																		<span>
+																        	<img src="/images/ninjax.png" width="22px" height="22px" alt="Checked Icon" />
+																      	</span>
+																      	No
+																    </label>
+													  			</div>
+				  											</div>
+				  										</div>
+							  						</div>
 												</div>
 											</div> <!-- END OF INDEPENDENT STUDIO -->
 										
 										<br />
 										
 										<!-- START of DIGITAL CONTENT -->
-								   		<button type="button" class="hokeexpandable hee">DIGITAL CONTENT</button>
+								   		<button type="button" class="hokeexpandable yellow">DIGITAL CONTENT</button>
 										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
 										   		<div class="form-inline">
 													<div>
@@ -234,14 +520,104 @@
 										<br />
 										
 										<!-- START of FUTURE READY -->
-								   		<button type="button" class="hokeexpandable heenv">FUTURE READY</button>
+								   		<button type="button" class="hokeexpandable fuschia">FUTURE READY</button>
 										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
 										   		<div class="form-inline">
 													<div>
 													</div>
 												</div>
 											</div> <!-- END OF FUTURE READY -->
+										
+										<br />
 											
+										<!-- START of PLACE -->
+								   		<button type="button" class="hokeexpandable green">PLACE</button>
+										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
+										   		<div class="form-inline">
+													<div>
+													</div>
+												</div>
+											</div> <!-- END OF PLACE -->
+											
+										<br />
+											
+										<!-- START of PATH -->
+								   		<button type="button" class="hokeexpandable gold">PATH</button>
+										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
+										   		<div class="form-inline">
+													<div>
+													</div>
+												</div>
+											</div> <!-- END OF PATH -->
+										
+										<br />
+											
+										<!-- START of PACE -->
+								   		<button type="button" class="hokeexpandable red">PACE</button>
+										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
+										   		<div class="form-inline">
+													<div>
+													</div>
+												</div>
+											</div> <!-- END OF PACE -->
+											
+										<br />
+											
+										<!-- START of DIRECTIONS -->
+								   		<button type="button" class="hokeexpandable coral">DIRECTIONS</button>
+										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
+										   		<div class="form-inline">
+													<div>
+													</div>
+												</div>
+											</div> <!-- END OF DIRECTIONS -->
+											
+										<br />
+											
+										<!-- START of STUDENT CHOICE -->
+								   		<button type="button" class="hokeexpandable navy">STUDENT CHOICE</button>
+										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
+										   		<div class="form-inline">
+													<div>
+													</div>
+												</div>
+											</div> <!-- END OF STUDENT CHOICE -->
+											
+										<br />
+											
+										<!-- START of ORGANIZATION -->
+								   		<button type="button" class="hokeexpandable pink">ORGANIZATION</button>
+										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
+										   		<div class="form-inline">
+													<div>
+													</div>
+												</div>
+											</div> <!-- END OF ORGANIZATION -->
+										
+										<br />
+											
+										<!-- START of CHECKLIST -->
+								   		<button type="button" class="hokeexpandable ice">CHECKLIST</button>
+										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
+										   		<div class="form-inline">
+													<div>
+													</div>
+												</div>
+											</div> <!-- END OF CHECKLIST -->
+											
+										<br />
+											
+										<!-- START of DATA -->
+								   		<button type="button" class="hokeexpandable blue">DATA</button>
+										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
+										   		<div class="form-inline">
+													<div>
+													</div>
+												</div>
+											</div> <!-- END OF DATA -->
+											
+										<br />
+										
 										<br />
 										
 	  								<hr></hr>

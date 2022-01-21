@@ -65,6 +65,65 @@ $(document).ready(
 			  });
 			}
 			
+			//Start checking if the radio buttons are clicked for the belt levels
+			$('input[type=radio]').change(function() {
+				if($('#smallgroupwhiteyes').is(':checked')) {
+					$('#smallgroupyellowrow').fadeIn(1000);
+					}
+				if($('#smallgroupwhiteno').is(':checked')) {
+					$("input[type=radio][name=smallgroupyellow]").prop('checked', false);
+					$('#smallgroupyellowrow').fadeOut(1000);
+					$("input[type=radio][name=smallgrouporange]").prop('checked', false);
+					$('#smallgrouporangerow').fadeOut(1000);
+					$("input[type=radio][name=smallgroupgreen]").prop('checked', false);
+					$('#smallgroupgreenrow').fadeOut(1000);
+					$("input[type=radio][name=smallgroupblue]").prop('checked', false);
+					$('#smallgroupbluerow').fadeOut(1000);
+					$("input[type=radio][name=smallgrouppurple]").prop('checked', false);
+					$('#smallgrouppurplerow').fadeOut(1000);
+					}
+				if($('#smallgroupyellowyes').is(':checked')) {
+					$('#smallgrouporangerow').fadeIn(1000);
+					}
+				if($('#smallgroupyellowno').is(':checked')) {
+					$("input[type=radio][name=smallgrouporange]").prop('checked', false);
+					$('#smallgrouporangerow').fadeOut(1000);
+					$("input[type=radio][name=smallgroupgreen]").prop('checked', false);
+					$('#smallgroupgreenrow').fadeOut(1000);
+					$("input[type=radio][name=smallgroupblue]").prop('checked', false);
+					$('#smallgroupbluerow').fadeOut(1000);
+					$("input[type=radio][name=smallgrouppurple]").prop('checked', false);
+					$('#smallgrouppurplerow').fadeOut(1000);
+					}
+				if($('#smallgrouporangeyes').is(':checked')) {
+					$('#smallgroupgreenrow').fadeIn(1000);
+					}
+				if($('#smallgrouporangeno').is(':checked')) {
+					$("input[type=radio][name=smallgroupgreen]").prop('checked', false);
+					$('#smallgroupgreenrow').fadeOut(1000);
+					$("input[type=radio][name=smallgroupblue]").prop('checked', false);
+					$('#smallgroupbluerow').fadeOut(1000);
+					$("input[type=radio][name=smallgrouppurple]").prop('checked', false);
+					$('#smallgrouppurplerow').fadeOut(1000);
+					}
+				if($('#smallgroupgreenyes').is(':checked')) {
+					$('#smallgroupbluerow').fadeIn(1000);
+					}
+				if($('#smallgroupgreenno').is(':checked')) {
+					$("input[type=radio][name=smallgroupblue]").prop('checked', false);
+					$('#smallgroupbluerow').fadeOut(1000);
+					$("input[type=radio][name=smallgrouppurple]").prop('checked', false);
+					$('#smallgrouppurplerow').fadeOut(1000);
+					}
+				if($('#smallgroupblueyes').is(':checked')) {
+					$('#smallgrouppurplerow').fadeIn(1000);
+					}
+				if($('#smallgroupblueno').is(':checked')) {
+					$("input[type=radio][name=smallgrouppurple]").prop('checked', false);
+					$('#smallgrouppurplerow').fadeOut(1000);
+					} 
+				})
+			
 			
 			
 			$("#hokeform").validate({
@@ -91,5 +150,7 @@ $(document).ready(
 $(function() {
 	$("#entryDate").datepicker({maxDate: new Date});
   });
+
+
 
 		

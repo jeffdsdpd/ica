@@ -53,23 +53,41 @@ hokeform .error {
 	background-color: #555;
 }
 
-.heidc {
-	background-color: coral;
+.purple {
+	background-color: #32064A;
 }
-.heti {
-	background-color: #A9DFBF;
+.orange {
+	background-color: #E56B1F;
 }
-.hee {
-	background-color: #F7DC6F;
+.yellow {
+	background-color: #FCD02C;
 }
-.heenv {
-	background-color: #f5cba7;
+.fuschia {
+	background-color: #E42C6A;
 }
-.hesr {
-	background-color: #85c1e9;
+.green {
+	background-color: #3EB650;
 }
-.heddd {
-	background-color: #d2b4de;
+.gold {
+	background-color: #FCC133;
+}
+.red {
+	background-color: #E12B38;
+}
+.coral {
+	background-color: #EE7879;
+}
+.navy {
+	background-color: #2A3166;
+}
+.pink {
+	background-color: #F4ABAA;
+}
+.ice {
+	background-color: #CAE7DF;
+}
+.blue {
+	background-color: #28559A;
 }
 
 .hokecontainer {
@@ -110,35 +128,6 @@ hokeform .error {
     background-color: white;
     margin-right: 5px;
     margin-bottom: 5px;
-}
-#heidchokecolumn {
-    width: 250px;
-    float: left;
-    height: 30px;
-    opacity: 0.7;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    font-size: 20px;
-    color: blue;
-    text-align: center;
-    vertical-align: middle;
-    padding-top: 1px;
-    text-decoration: underline;
-    cursor: pointer;
-}
-#heidchokecolumn1 {
-    width: 500px;
-    height: 20px;
-    opacity: 0.7;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    font-size: 20px;
-    color: blue;
-    text-align: center;
-    vertical-align: middle;
-    padding-top: 1px;
-    text-decoration: underline;
-    cursor: pointer;
 }
 
 #content {
