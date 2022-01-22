@@ -66,6 +66,7 @@ $(document).ready(
 			}
 			
 			//Start checking if the radio buttons are clicked for the belt levels
+			//SMALL GROUP STUDIO
 			$('input[type=radio]').change(function() {
 				if($('#smallgroupwhiteyes').is(':checked')) {
 					$('#smallgroupyellowrow').fadeIn(1000);
@@ -121,7 +122,66 @@ $(document).ready(
 				if($('#smallgroupblueno').is(':checked')) {
 					$("input[type=radio][name=smallgrouppurple]").prop('checked', false);
 					$('#smallgrouppurplerow').fadeOut(1000);
-					} 
+					}
+					 
+				//INDEPENDENT STUDIO
+				if($('#independentstudiowhiteyes').is(':checked')) {
+					$('#independentstudioyellowrow').fadeIn(1000);
+					}
+				if($('#independentstudiowhiteno').is(':checked')) {
+					$("input[type=radio][name=independentstudioyellow]").prop('checked', false);
+					$('#independentstudioyellowrow').fadeOut(1000);
+					$("input[type=radio][name=independentstudioorange]").prop('checked', false);
+					$('#independentstudioorangerow').fadeOut(1000);
+					$("input[type=radio][name=independentstudiogreen]").prop('checked', false);
+					$('#independentstudiogreenrow').fadeOut(1000);
+					$("input[type=radio][name=independentstudioblue]").prop('checked', false);
+					$('#independentstudiobluerow').fadeOut(1000);
+					$("input[type=radio][name=independentstudiopurple]").prop('checked', false);
+					$('#independentstudiopurplerow').fadeOut(1000);
+					}
+				if($('#independentstudioyellowyes').is(':checked')) {
+					$('#independentstudioorangerow').fadeIn(1000);
+					}
+				if($('#independentstudioyellowno').is(':checked')) {
+					$("input[type=radio][name=independentstudioorange]").prop('checked', false);
+					$('#independentstudioorangerow').fadeOut(1000);
+					$("input[type=radio][name=independentstudiogreen]").prop('checked', false);
+					$('#independentstudiogreenrow').fadeOut(1000);
+					$("input[type=radio][name=independentstudioblue]").prop('checked', false);
+					$('#independentstudiobluerow').fadeOut(1000);
+					$("input[type=radio][name=independentstudiopurple]").prop('checked', false);
+					$('#independentstudiopurplerow').fadeOut(1000);
+					}
+				if($('#independentstudioorangeyes').is(':checked')) {
+					$('#independentstudiogreenrow').fadeIn(1000);
+					}
+				if($('#independentstudioorangeno').is(':checked')) {
+					$("input[type=radio][name=independentstudiogreen]").prop('checked', false);
+					$('#independentstudiogreenrow').fadeOut(1000);
+					$("input[type=radio][name=independentstudioblue]").prop('checked', false);
+					$('#independentstudiobluerow').fadeOut(1000);
+					$("input[type=radio][name=independentstudiopurple]").prop('checked', false);
+					$('#independentstudiopurplerow').fadeOut(1000);
+					}
+				if($('#independentstudiogreenyes').is(':checked')) {
+					$('#independentstudiobluerow').fadeIn(1000);
+					}
+				if($('#independentstudiogreenno').is(':checked')) {
+					$("input[type=radio][name=independentstudioblue]").prop('checked', false);
+					$('#independentstudiobluerow').fadeOut(1000);
+					$("input[type=radio][name=independentstudiopurple]").prop('checked', false);
+					$('#independentstudiopurplerow').fadeOut(1000);
+					}
+				if($('#independentstudioblueyes').is(':checked')) {
+					$('#independentstudiopurplerow').fadeIn(1000);
+					}
+				if($('#independentstudioblueno').is(':checked')) {
+					$("input[type=radio][name=independentstudiopurple]").prop('checked', false);
+					$('#independentstudiopurplerow').fadeOut(1000);
+					}
+					
+					
 				})
 			
 			
