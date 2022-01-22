@@ -124,6 +124,7 @@ $(document).ready(
 					$('#smallgrouppurplerow').fadeOut(1000);
 					}
 					 
+				
 				//INDEPENDENT STUDIO
 				if($('#independentstudiowhiteyes').is(':checked')) {
 					$('#independentstudioyellowrow').fadeIn(1000);
@@ -180,6 +181,7 @@ $(document).ready(
 					$("input[type=radio][name=independentstudiopurple]").prop('checked', false);
 					$('#independentstudiopurplerow').fadeOut(1000);
 					}
+					
 					
 				//DIGITAL CONTENT
 				if($('#digitalcontentwhiteyes').is(':checked')) {
@@ -238,6 +240,120 @@ $(document).ready(
 					$('#digitalcontentpurplerow').fadeOut(1000);
 					}
 					
+					
+				//FUTURE READY
+				if($('#futurereadywhiteyes').is(':checked')) {
+					$('#futurereadyyellowrow').fadeIn(1000);
+					}
+				if($('#futurereadywhiteno').is(':checked')) {
+					$("input[type=radio][name=futurereadyyellow]").prop('checked', false);
+					$('#futurereadyyellowrow').fadeOut(1000);
+					$("input[type=radio][name=futurereadyorange]").prop('checked', false);
+					$('#futurereadyorangerow').fadeOut(1000);
+					$("input[type=radio][name=futurereadygreen]").prop('checked', false);
+					$('#futurereadygreenrow').fadeOut(1000);
+					$("input[type=radio][name=futurereadyblue]").prop('checked', false);
+					$('#futurereadybluerow').fadeOut(1000);
+					$("input[type=radio][name=futurereadypurple]").prop('checked', false);
+					$('#futurereadypurplerow').fadeOut(1000);
+					}
+				if($('#futurereadyyellowyes').is(':checked')) {
+					$('#futurereadyorangerow').fadeIn(1000);
+					}
+				if($('#futurereadyyellowno').is(':checked')) {
+					$("input[type=radio][name=futurereadyorange]").prop('checked', false);
+					$('#futurereadyorangerow').fadeOut(1000);
+					$("input[type=radio][name=futurereadygreen]").prop('checked', false);
+					$('#futurereadygreenrow').fadeOut(1000);
+					$("input[type=radio][name=futurereadyblue]").prop('checked', false);
+					$('#futurereadybluerow').fadeOut(1000);
+					$("input[type=radio][name=futurereadypurple]").prop('checked', false);
+					$('#futurereadypurplerow').fadeOut(1000);
+					}
+				if($('#futurereadyorangeyes').is(':checked')) {
+					$('#futurereadygreenrow').fadeIn(1000);
+					}
+				if($('#futurereadyorangeno').is(':checked')) {
+					$("input[type=radio][name=futurereadygreen]").prop('checked', false);
+					$('#futurereadygreenrow').fadeOut(1000);
+					$("input[type=radio][name=futurereadyblue]").prop('checked', false);
+					$('#futurereadybluerow').fadeOut(1000);
+					$("input[type=radio][name=futurereadypurple]").prop('checked', false);
+					$('#futurereadypurplerow').fadeOut(1000);
+					}
+				if($('#futurereadygreenyes').is(':checked')) {
+					$('#futurereadybluerow').fadeIn(1000);
+					}
+				if($('#futurereadygreenno').is(':checked')) {
+					$("input[type=radio][name=futurereadyblue]").prop('checked', false);
+					$('#futurereadybluerow').fadeOut(1000);
+					$("input[type=radio][name=futurereadypurple]").prop('checked', false);
+					$('#futurereadypurplerow').fadeOut(1000);
+					}
+				if($('#futurereadyblueyes').is(':checked')) {
+					$('#futurereadypurplerow').fadeIn(1000);
+					}
+				if($('#futurereadyblueno').is(':checked')) {
+					$("input[type=radio][name=futurereadypurple]").prop('checked', false);
+					$('#futurereadypurplerow').fadeOut(1000);
+					}
+					
+				//PLACE
+				if($('#placewhiteyes').is(':checked')) {
+					$('#placeyellowrow').fadeIn(1000);
+					}
+				if($('#placewhiteno').is(':checked')) {
+					$("input[type=radio][name=placeyellow]").prop('checked', false);
+					$('#placeyellowrow').fadeOut(1000);
+					$("input[type=radio][name=placeorange]").prop('checked', false);
+					$('#placeorangerow').fadeOut(1000);
+					$("input[type=radio][name=placegreen]").prop('checked', false);
+					$('#placegreenrow').fadeOut(1000);
+					$("input[type=radio][name=placeblue]").prop('checked', false);
+					$('#placebluerow').fadeOut(1000);
+					$("input[type=radio][name=placepurple]").prop('checked', false);
+					$('#placepurplerow').fadeOut(1000);
+					}
+				if($('#placeyellowyes').is(':checked')) {
+					$('#placeorangerow').fadeIn(1000);
+					}
+				if($('#futurereadyyellowno').is(':checked')) {
+					$("input[type=radio][name=placeorange]").prop('checked', false);
+					$('#placeorangerow').fadeOut(1000);
+					$("input[type=radio][name=placegreen]").prop('checked', false);
+					$('#placegreenrow').fadeOut(1000);
+					$("input[type=radio][name=placeblue]").prop('checked', false);
+					$('#placebluerow').fadeOut(1000);
+					$("input[type=radio][name=placepurple]").prop('checked', false);
+					$('#placepurplerow').fadeOut(1000);
+					}
+				if($('#placeorangeyes').is(':checked')) {
+					$('#placegreenrow').fadeIn(1000);
+					}
+				if($('#placeorangeno').is(':checked')) {
+					$("input[type=radio][name=placegreen]").prop('checked', false);
+					$('#placegreenrow').fadeOut(1000);
+					$("input[type=radio][name=placeblue]").prop('checked', false);
+					$('#placebluerow').fadeOut(1000);
+					$("input[type=radio][name=placepurple]").prop('checked', false);
+					$('#placepurplerow').fadeOut(1000);
+					}
+				if($('#placegreenyes').is(':checked')) {
+					$('#placebluerow').fadeIn(1000);
+					}
+				if($('#placegreenno').is(':checked')) {
+					$("input[type=radio][name=placeblue]").prop('checked', false);
+					$('#placebluerow').fadeOut(1000);
+					$("input[type=radio][name=placepurple]").prop('checked', false);
+					$('#placepurplerow').fadeOut(1000);
+					}
+				if($('#placeblueyes').is(':checked')) {
+					$('#placepurplerow').fadeIn(1000);
+					}
+				if($('#placeblueno').is(':checked')) {
+					$("input[type=radio][name=futurereadypurple]").prop('checked', false);
+					$('#placepurplerow').fadeOut(1000);
+					}
 					
 				})
 			
