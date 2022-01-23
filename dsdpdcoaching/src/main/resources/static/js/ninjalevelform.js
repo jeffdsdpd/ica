@@ -317,7 +317,7 @@ $(document).ready(
 				if($('#placeyellowyes').is(':checked')) {
 					$('#placeorangerow').fadeIn(1000);
 					}
-				if($('#futurereadyyellowno').is(':checked')) {
+				if($('#placeyellowno').is(':checked')) {
 					$("input[type=radio][name=placeorange]").prop('checked', false);
 					$('#placeorangerow').fadeOut(1000);
 					$("input[type=radio][name=placegreen]").prop('checked', false);
@@ -351,8 +351,182 @@ $(document).ready(
 					$('#placepurplerow').fadeIn(1000);
 					}
 				if($('#placeblueno').is(':checked')) {
-					$("input[type=radio][name=futurereadypurple]").prop('checked', false);
+					$("input[type=radio][name=placepurple]").prop('checked', false);
 					$('#placepurplerow').fadeOut(1000);
+					}
+					
+				//PATH
+				if($('#pathwhiteyes').is(':checked')) {
+					$('#pathyellowrow').fadeIn(1000);
+					}
+				if($('#pathwhiteno').is(':checked')) {
+					$("input[type=radio][name=pathyellow]").prop('checked', false);
+					$('#pathyellowrow').fadeOut(1000);
+					$("input[type=radio][name=pathorange]").prop('checked', false);
+					$('#pathorangerow').fadeOut(1000);
+					$("input[type=radio][name=pathgreen]").prop('checked', false);
+					$('#pathgreenrow').fadeOut(1000);
+					$("input[type=radio][name=pathblue]").prop('checked', false);
+					$('#pathbluerow').fadeOut(1000);
+					$("input[type=radio][name=pathpurple]").prop('checked', false);
+					$('#pathpurplerow').fadeOut(1000);
+					}
+				if($('#pathyellowyes').is(':checked')) {
+					$('#pathorangerow').fadeIn(1000);
+					}
+				if($('#pathyellowno').is(':checked')) {
+					$('#pathyellowrow').fadeOut(1000);
+					$("input[type=radio][name=pathorange]").prop('checked', false);
+					$('#pathorangerow').fadeOut(1000);
+					$("input[type=radio][name=pathgreen]").prop('checked', false);
+					$('#pathgreenrow').fadeOut(1000);
+					$("input[type=radio][name=pathblue]").prop('checked', false);
+					$('#pathbluerow').fadeOut(1000);
+					$("input[type=radio][name=pathpurple]").prop('checked', false);
+					$('#pathpurplerow').fadeOut(1000);
+					}
+				if($('#pathorangeyes').is(':checked')) {
+					$('#pathgreenrow').fadeIn(1000);
+					}
+				if($('#pathorangeno').is(':checked')) {
+					$("input[type=radio][name=pathgreen]").prop('checked', false);
+					$('#pathgreenrow').fadeOut(1000);
+					$("input[type=radio][name=pathblue]").prop('checked', false);
+					$('#pathbluerow').fadeOut(1000);
+					$("input[type=radio][name=pathpurple]").prop('checked', false);
+					$('#pathpurplerow').fadeOut(1000);
+					}
+				if($('#pathgreenyes').is(':checked')) {
+					$('#pathbluerow').fadeIn(1000);
+					}
+				if($('#pathgreenno').is(':checked')) {
+					$("input[type=radio][name=pathblue]").prop('checked', false);
+					$('#pathbluerow').fadeOut(1000);
+					$("input[type=radio][name=pathpurple]").prop('checked', false);
+					$('#pathpurplerow').fadeOut(1000);
+					}
+				if($('#pathblueyes').is(':checked')) {
+					$('#pathpurplerow').fadeIn(1000);
+					}
+				if($('#pathblueno').is(':checked')) {
+					$("input[type=radio][name=pathpurple]").prop('checked', false);
+					$('#pathpurplerow').fadeOut(1000);
+					}
+					
+				//PACE
+				if($('#pacewhiteyes').is(':checked')) {
+					$('#paceyellowrow').fadeIn(1000);
+					}
+				if($('#pacewhiteno').is(':checked')) {
+					$("input[type=radio][name=paceyellow]").prop('checked', false);
+					$('#paceyellowrow').fadeOut(1000);
+					$("input[type=radio][name=paceorange]").prop('checked', false);
+					$('#paceorangerow').fadeOut(1000);
+					$("input[type=radio][name=pacegreen]").prop('checked', false);
+					$('#pacegreenrow').fadeOut(1000);
+					$("input[type=radio][name=paceblue]").prop('checked', false);
+					$('#pacebluerow').fadeOut(1000);
+					$("input[type=radio][name=pacepurple]").prop('checked', false);
+					$('#pacepurplerow').fadeOut(1000);
+					}
+				if($('#paceyellowyes').is(':checked')) {
+					$('#paceorangerow').fadeIn(1000);
+					}
+				if($('#paceyellowno').is(':checked')) {
+					$('#paceyellowrow').fadeOut(1000);
+					$("input[type=radio][name=paceorange]").prop('checked', false);
+					$('#paceorangerow').fadeOut(1000);
+					$("input[type=radio][name=pacegreen]").prop('checked', false);
+					$('#pacegreenrow').fadeOut(1000);
+					$("input[type=radio][name=paceblue]").prop('checked', false);
+					$('#pacebluerow').fadeOut(1000);
+					$("input[type=radio][name=pacepurple]").prop('checked', false);
+					$('#pacepurplerow').fadeOut(1000);
+					}
+				if($('#paceorangeyes').is(':checked')) {
+					$('#pacegreenrow').fadeIn(1000);
+					}
+				if($('#paceorangeno').is(':checked')) {
+					$("input[type=radio][name=pacegreen]").prop('checked', false);
+					$('#pacegreenrow').fadeOut(1000);
+					$("input[type=radio][name=paceblue]").prop('checked', false);
+					$('#pacebluerow').fadeOut(1000);
+					$("input[type=radio][name=pacepurple]").prop('checked', false);
+					$('#pacepurplerow').fadeOut(1000);
+					}
+				if($('#pacegreenyes').is(':checked')) {
+					$('#pacebluerow').fadeIn(1000);
+					}
+				if($('#pacegreenno').is(':checked')) {
+					$("input[type=radio][name=paceblue]").prop('checked', false);
+					$('#pacebluerow').fadeOut(1000);
+					$("input[type=radio][name=pacepurple]").prop('checked', false);
+					$('#pacepurplerow').fadeOut(1000);
+					}
+				if($('#paceblueyes').is(':checked')) {
+					$('#pacepurplerow').fadeIn(1000);
+					}
+				if($('#paceblueno').is(':checked')) {
+					$("input[type=radio][name=pacepurple]").prop('checked', false);
+					$('#pacepurplerow').fadeOut(1000);
+					}
+					
+				//DATA
+				if($('#datawhiteyes').is(':checked')) {
+					$('#datayellowrow').fadeIn(1000);
+					}
+				if($('#datawhiteno').is(':checked')) {
+					$("input[type=radio][name=datayellow]").prop('checked', false);
+					$('#datayellowrow').fadeOut(1000);
+					$("input[type=radio][name=dataorange]").prop('checked', false);
+					$('#dataorangerow').fadeOut(1000);
+					$("input[type=radio][name=datagreen]").prop('checked', false);
+					$('#datagreenrow').fadeOut(1000);
+					$("input[type=radio][name=datablue]").prop('checked', false);
+					$('#databluerow').fadeOut(1000);
+					$("input[type=radio][name=datapurple]").prop('checked', false);
+					$('#datapurplerow').fadeOut(1000);
+					}
+				if($('#datayellowyes').is(':checked')) {
+					$('#dataorangerow').fadeIn(1000);
+					}
+				if($('#datayellowno').is(':checked')) {
+					$('#datayellowrow').fadeOut(1000);
+					$("input[type=radio][name=dataorange]").prop('checked', false);
+					$('#dataorangerow').fadeOut(1000);
+					$("input[type=radio][name=datagreen]").prop('checked', false);
+					$('#datagreenrow').fadeOut(1000);
+					$("input[type=radio][name=datablue]").prop('checked', false);
+					$('#databluerow').fadeOut(1000);
+					$("input[type=radio][name=datapurple]").prop('checked', false);
+					$('#datapurplerow').fadeOut(1000);
+					}
+				if($('#dataorangeyes').is(':checked')) {
+					$('#datagreenrow').fadeIn(1000);
+					}
+				if($('#dataorangeno').is(':checked')) {
+					$("input[type=radio][name=datagreen]").prop('checked', false);
+					$('#datagreenrow').fadeOut(1000);
+					$("input[type=radio][name=datablue]").prop('checked', false);
+					$('#databluerow').fadeOut(1000);
+					$("input[type=radio][name=datapurple]").prop('checked', false);
+					$('#datapurplerow').fadeOut(1000);
+					}
+				if($('#dataegreenyes').is(':checked')) {
+					$('#databluerow').fadeIn(1000);
+					}
+				if($('#datagreenno').is(':checked')) {
+					$("input[type=radio][name=datablue]").prop('checked', false);
+					$('#databluerow').fadeOut(1000);
+					$("input[type=radio][name=datapurple]").prop('checked', false);
+					$('#datapurplerow').fadeOut(1000);
+					}
+				if($('#datablueyes').is(':checked')) {
+					$('#datapurplerow').fadeIn(1000);
+					}
+				if($('#datablueno').is(':checked')) {
+					$("input[type=radio][name=datapurple]").prop('checked', false);
+					$('#datapurplerow').fadeOut(1000);
 					}
 					
 				})
