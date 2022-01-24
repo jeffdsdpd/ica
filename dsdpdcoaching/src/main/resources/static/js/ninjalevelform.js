@@ -375,7 +375,6 @@ $(document).ready(
 					$('#pathorangerow').fadeIn(1000);
 					}
 				if($('#pathyellowno').is(':checked')) {
-					$('#pathyellowrow').fadeOut(1000);
 					$("input[type=radio][name=pathorange]").prop('checked', false);
 					$('#pathorangerow').fadeOut(1000);
 					$("input[type=radio][name=pathgreen]").prop('checked', false);
@@ -512,7 +511,7 @@ $(document).ready(
 					$("input[type=radio][name=datapurple]").prop('checked', false);
 					$('#datapurplerow').fadeOut(1000);
 					}
-				if($('#dataegreenyes').is(':checked')) {
+				if($('#datagreenyes').is(':checked')) {
 					$('#databluerow').fadeIn(1000);
 					}
 				if($('#datagreenno').is(':checked')) {
@@ -527,6 +526,158 @@ $(document).ready(
 				if($('#datablueno').is(':checked')) {
 					$("input[type=radio][name=datapurple]").prop('checked', false);
 					$('#datapurplerow').fadeOut(1000);
+					}
+					
+				//DIRECTIONS
+				if($('#directionswhiteyes').is(':checked')) {
+					$('#directionsyellowrow').fadeIn(1000);
+					}
+				if($('#directionswhiteno').is(':checked')) {
+					$("input[type=radio][name=directionsyellow]").prop('checked', false);
+					$('#directionsyellowrow').fadeOut(1000);
+					$("input[type=radio][name=directionsorange]").prop('checked', false);
+					$('#directionsorangerow').fadeOut(1000);
+					$("input[type=radio][name=directionsgreen]").prop('checked', false);
+					$('#directionsgreenrow').fadeOut(1000);
+					$("input[type=radio][name=directionsblue]").prop('checked', false);
+					$('#directionsbluerow').fadeOut(1000);
+					$("input[type=radio][name=directionspurple]").prop('checked', false);
+					$('#directionspurplerow').fadeOut(1000);
+					$("input[type=radio][name=directionsbrown]").prop('checked', false);
+					$('#directionsbrownrow').fadeOut(1000);
+					$("input[type=radio][name=directionsred]").prop('checked', false);
+					$('#directionsredrow').fadeOut(1000);
+					}
+				if($('#directionsyellowyes').is(':checked')) {
+					$('#directionsorangerow').fadeIn(1000);
+					}
+				if($('#directionsyellowno').is(':checked')) {
+					$('#directionsyellowrow').fadeOut(1000);
+					$("input[type=radio][name=directionsorange]").prop('checked', false);
+					$('#directionsorangerow').fadeOut(1000);
+					$("input[type=radio][name=directionsgreen]").prop('checked', false);
+					$('#directionsgreenrow').fadeOut(1000);
+					$("input[type=radio][name=directionsblue]").prop('checked', false);
+					$('#directionsbluerow').fadeOut(1000);
+					$("input[type=radio][name=directionspurple]").prop('checked', false);
+					$('#directionspurplerow').fadeOut(1000);
+					$("input[type=radio][name=directionsbrown]").prop('checked', false);
+					$('#directionsbrownrow').fadeOut(1000);
+					$("input[type=radio][name=directionsred]").prop('checked', false);
+					$('#directionsredrow').fadeOut(1000);
+					}
+				if($('#directionsorangeyes').is(':checked')) {
+					$('#directionsgreenrow').fadeIn(1000);
+					}
+				if($('#directionsorangeno').is(':checked')) {
+					$("input[type=radio][name=directionsgreen]").prop('checked', false);
+					$('#directionsgreenrow').fadeOut(1000);
+					$("input[type=radio][name=directionsblue]").prop('checked', false);
+					$('#directionsbluerow').fadeOut(1000);
+					$("input[type=radio][name=directionspurple]").prop('checked', false);
+					$('#directionspurplerow').fadeOut(1000);
+					$("input[type=radio][name=directionsbrown]").prop('checked', false);
+					$('#directionsbrownrow').fadeOut(1000);
+					$("input[type=radio][name=directionsred]").prop('checked', false);
+					$('#directionsredrow').fadeOut(1000);
+					}
+				if($('#directionsegreenyes').is(':checked')) {
+					$('#directionsbluerow').fadeIn(1000);
+					}
+				if($('#directionsgreenno').is(':checked')) {
+					$("input[type=radio][name=directionsblue]").prop('checked', false);
+					$('#directionsbluerow').fadeOut(1000);
+					$("input[type=radio][name=directionspurple]").prop('checked', false);
+					$('#directionspurplerow').fadeOut(1000);
+					$("input[type=radio][name=directionsbrown]").prop('checked', false);
+					$('#directionsbrownrow').fadeOut(1000);
+					$("input[type=radio][name=directionsred]").prop('checked', false);
+					$('#directionsredrow').fadeOut(1000);
+					}
+				if($('#directionsblueyes').is(':checked')) {
+					$('#directionspurplerow').fadeIn(1000);
+					}
+				if($('#directionsblueno').is(':checked')) {
+					$("input[type=radio][name=directionspurple]").prop('checked', false);
+					$('#directionspurplerow').fadeOut(1000);
+					$("input[type=radio][name=directionsbrown]").prop('checked', false);
+					$('#directionsbrownrow').fadeOut(1000);
+					$("input[type=radio][name=directionsred]").prop('checked', false);
+					$('#directionsredrow').fadeOut(1000);
+					}
+				if($('#directionspurpleyes').is(':checked')) {
+					$('#directionsbrownrow').fadeIn(1000);
+					}
+				if($('#directionspurpleno').is(':checked')) {
+					$("input[type=radio][name=directionsbrown]").prop('checked', false);
+					$('#directionsbrownrow').fadeOut(1000);
+					$("input[type=radio][name=directionsred]").prop('checked', false);
+					$('#directionsredrow').fadeOut(1000);
+					}
+				if($('#directionsbrownyes').is(':checked')) {
+					$('#directionsredrow').fadeIn(1000);
+					}
+				if($('#directionsbrownno').is(':checked')) {
+					$("input[type=radio][name=directionsred]").prop('checked', false);
+					$('#directionsredrow').fadeOut(1000);
+					}
+					
+				//STUDENT CHOICE
+				if($('#studentchoicewhiteyes').is(':checked')) {
+					$('#studentchoiceyellowrow').fadeIn(1000);
+					}
+				if($('#studentchoicewhiteno').is(':checked')) {
+					$("input[type=radio][name=studentchoiceyellow]").prop('checked', false);
+					$('#studentchoiceyellowrow').fadeOut(1000);
+					$("input[type=radio][name=studentchoiceorange]").prop('checked', false);
+					$('#studentchoiceorangerow').fadeOut(1000);
+					$("input[type=radio][name=studentchoicegreen]").prop('checked', false);
+					$('#studentchoicegreenrow').fadeOut(1000);
+					$("input[type=radio][name=studentchoiceblue]").prop('checked', false);
+					$('#studentchoicebluerow').fadeOut(1000);
+					$("input[type=radio][name=studentchoicepurple]").prop('checked', false);
+					$('#studentchoicepurplerow').fadeOut(1000);
+					}
+				if($('#studentchoiceyellowyes').is(':checked')) {
+					$('#studentchoiceorangerow').fadeIn(1000);
+					}
+				if($('#studentchoiceyellowno').is(':checked')) {
+					$('#studentchoiceyellowrow').fadeOut(1000);
+					$("input[type=radio][name=studentchoiceorange]").prop('checked', false);
+					$('#studentchoiceorangerow').fadeOut(1000);
+					$("input[type=radio][name=studentchoicegreen]").prop('checked', false);
+					$('#studentchoicegreenrow').fadeOut(1000);
+					$("input[type=radio][name=studentchoiceblue]").prop('checked', false);
+					$('#studentchoicebluerow').fadeOut(1000);
+					$("input[type=radio][name=studentchoicepurple]").prop('checked', false);
+					$('#studentchoicepurplerow').fadeOut(1000);
+					}
+				if($('#studentchoiceorangeyes').is(':checked')) {
+					$('#studentchoicegreenrow').fadeIn(1000);
+					}
+				if($('#studentchoiceorangeno').is(':checked')) {
+					$("input[type=radio][name=studentchoicegreen]").prop('checked', false);
+					$('#studentchoicegreenrow').fadeOut(1000);
+					$("input[type=radio][name=studentchoiceblue]").prop('checked', false);
+					$('#studentchoicebluerow').fadeOut(1000);
+					$("input[type=radio][name=studentchoicepurple]").prop('checked', false);
+					$('#studentchoicepurplerow').fadeOut(1000);
+					}
+				if($('#studentchoicegreenyes').is(':checked')) {
+					$('#studentchoicebluerow').fadeIn(1000);
+					}
+				if($('#studentchoicegreenno').is(':checked')) {
+					$("input[type=radio][name=studentchoiceblue]").prop('checked', false);
+					$('#studentchoicebluerow').fadeOut(1000);
+					$("input[type=radio][name=studentchoicepurple]").prop('checked', false);
+					$('#studentchoicepurplerow').fadeOut(1000);
+					}
+				if($('#studentchoiceblueyes').is(':checked')) {
+					$('#studentchoicepurplerow').fadeIn(1000);
+					}
+				if($('#studentchoiceblueno').is(':checked')) {
+					$("input[type=radio][name=studentchoicepurple]").prop('checked', false);
+					$('#studentchoicepurplerow').fadeOut(1000);
 					}
 					
 				})
