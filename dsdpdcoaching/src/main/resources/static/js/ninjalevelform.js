@@ -680,6 +680,139 @@ $(document).ready(
 					$('#studentchoicepurplerow').fadeOut(1000);
 					}
 					
+				//ORGANIZATION
+				if($('#organizationwhiteyes').is(':checked')) {
+					$('#organizationyellowrow').fadeIn(1000);
+					}
+				if($('#organizationwhiteno').is(':checked')) {
+					$("input[type=radio][name=organizationyellow]").prop('checked', false);
+					$('#organizationyellowrow').fadeOut(1000);
+					$("input[type=radio][name=organizationorange]").prop('checked', false);
+					$('#organizationorangerow').fadeOut(1000);
+					$("input[type=radio][name=organizationgreen]").prop('checked', false);
+					$('#organizationgreenrow').fadeOut(1000);
+					$("input[type=radio][name=organizationblue]").prop('checked', false);
+					$('#organizationbluerow').fadeOut(1000);
+					$("input[type=radio][name=organizationpurple]").prop('checked', false);
+					$('#organizationpurplerow').fadeOut(1000);
+					$("input[type=radio][name=organizationbrown]").prop('checked', false);
+					$('#organizationbrownrow').fadeOut(1000);
+					}
+				if($('#organizationyellowyes').is(':checked')) {
+					$('#organizationorangerow').fadeIn(1000);
+					}
+				if($('#organizationyellowno').is(':checked')) {
+					$('#organizationyellowrow').fadeOut(1000);
+					$("input[type=radio][name=organizationorange]").prop('checked', false);
+					$('#organizationorangerow').fadeOut(1000);
+					$("input[type=radio][name=organizationgreen]").prop('checked', false);
+					$('#organizationgreenrow').fadeOut(1000);
+					$("input[type=radio][name=organizationblue]").prop('checked', false);
+					$('#organizationbluerow').fadeOut(1000);
+					$("input[type=radio][name=organizationpurple]").prop('checked', false);
+					$('#organizationpurplerow').fadeOut(1000);
+					$("input[type=radio][name=organizationbrown]").prop('checked', false);
+					$('#organizationbrownrow').fadeOut(1000);
+					}
+				if($('#organizationorangeyes').is(':checked')) {
+					$('#organizationgreenrow').fadeIn(1000);
+					}
+				if($('#organizationorangeno').is(':checked')) {
+					$("input[type=radio][name=organizationgreen]").prop('checked', false);
+					$('#organizationgreenrow').fadeOut(1000);
+					$("input[type=radio][name=organizationblue]").prop('checked', false);
+					$('#organizationbluerow').fadeOut(1000);
+					$("input[type=radio][name=organizationpurple]").prop('checked', false);
+					$('#organizationpurplerow').fadeOut(1000);
+					$("input[type=radio][name=organizationbrown]").prop('checked', false);
+					$('#organizationbrownrow').fadeOut(1000);
+					}
+				if($('#organizationgreenyes').is(':checked')) {
+					$('#organizationbluerow').fadeIn(1000);
+					}
+				if($('#organizationgreenno').is(':checked')) {
+					$("input[type=radio][name=organizationblue]").prop('checked', false);
+					$('#organizationbluerow').fadeOut(1000);
+					$("input[type=radio][name=organizationpurple]").prop('checked', false);
+					$('#organizationpurplerow').fadeOut(1000);
+					$("input[type=radio][name=organizationbrown]").prop('checked', false);
+					$('#organizationbrownrow').fadeOut(1000);
+					}
+				if($('#organizationblueyes').is(':checked')) {
+					$('#organizationpurplerow').fadeIn(1000);
+					}
+				if($('#organizationblueno').is(':checked')) {
+					$("input[type=radio][name=organizationpurple]").prop('checked', false);
+					$('#organizationpurplerow').fadeOut(1000);
+					$("input[type=radio][name=organizationbrown]").prop('checked', false);
+					$('#organizationbrownrow').fadeOut(1000);
+					}
+				if($('#organizationpurpleyes').is(':checked')) {
+					$('#organizationbrownrow').fadeIn(1000);
+					}
+				if($('#organizationpurpleno').is(':checked')) {
+					$("input[type=radio][name=organizationbrown]").prop('checked', false);
+					$('#organizationbrownrow').fadeOut(1000);
+					}
+					
+				//CHECKLIST
+				if($('#checklistwhiteyes').is(':checked')) {
+					$('#checklistyellowrow').fadeIn(1000);
+					}
+				if($('#checklistwhiteno').is(':checked')) {
+					$("input[type=radio][name=checklistyellow]").prop('checked', false);
+					$('#checklistyellowrow').fadeOut(1000);
+					$("input[type=radio][name=checklistorange]").prop('checked', false);
+					$('#checklistorangerow').fadeOut(1000);
+					$("input[type=radio][name=checklistgreen]").prop('checked', false);
+					$('#checklistgreenrow').fadeOut(1000);
+					$("input[type=radio][name=checklistblue]").prop('checked', false);
+					$('#checklistbluerow').fadeOut(1000);
+					$("input[type=radio][name=checklistpurple]").prop('checked', false);
+					$('#checklistpurplerow').fadeOut(1000);
+					}
+				if($('#checklistyellowyes').is(':checked')) {
+					$('#checklistorangerow').fadeIn(1000);
+					}
+				if($('#checklistyellowno').is(':checked')) {
+					$('#checklistyellowrow').fadeOut(1000);
+					$("input[type=radio][name=checklistorange]").prop('checked', false);
+					$('#checklistorangerow').fadeOut(1000);
+					$("input[type=radio][name=checklistgreen]").prop('checked', false);
+					$('#checklistgreenrow').fadeOut(1000);
+					$("input[type=radio][name=checklistblue]").prop('checked', false);
+					$('#checklistbluerow').fadeOut(1000);
+					$("input[type=radio][name=checklistpurple]").prop('checked', false);
+					$('#checklistpurplerow').fadeOut(1000);
+					}
+				if($('#checklistorangeyes').is(':checked')) {
+					$('#checklistgreenrow').fadeIn(1000);
+					}
+				if($('#checklistorangeno').is(':checked')) {
+					$("input[type=radio][name=checklistgreen]").prop('checked', false);
+					$('#checklistgreenrow').fadeOut(1000);
+					$("input[type=radio][name=checklistblue]").prop('checked', false);
+					$('#checklistbluerow').fadeOut(1000);
+					$("input[type=radio][name=checklistpurple]").prop('checked', false);
+					$('#checklistpurplerow').fadeOut(1000);
+					}
+				if($('#checklistgreenyes').is(':checked')) {
+					$('#checklistbluerow').fadeIn(1000);
+					}
+				if($('#checklistgreenno').is(':checked')) {
+					$("input[type=radio][name=checklistblue]").prop('checked', false);
+					$('#checklistbluerow').fadeOut(1000);
+					$("input[type=radio][name=checklistpurple]").prop('checked', false);
+					$('#checklistpurplerow').fadeOut(1000);
+					}
+				if($('#checklistblueyes').is(':checked')) {
+					$('#checklistpurplerow').fadeIn(1000);
+					}
+				if($('#checklistblueno').is(':checked')) {
+					$("input[type=radio][name=checklistpurple]").prop('checked', false);
+					$('#checklistpurplerow').fadeOut(1000);
+					}
+					
 				})
 			
 			
