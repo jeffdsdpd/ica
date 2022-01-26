@@ -490,7 +490,6 @@ $(document).ready(
 					$('#dataorangerow').fadeIn(1000);
 					}
 				if($('#datayellowno').is(':checked')) {
-					$('#datayellowrow').fadeOut(1000);
 					$("input[type=radio][name=dataorange]").prop('checked', false);
 					$('#dataorangerow').fadeOut(1000);
 					$("input[type=radio][name=datagreen]").prop('checked', false);
@@ -552,7 +551,6 @@ $(document).ready(
 					$('#directionsorangerow').fadeIn(1000);
 					}
 				if($('#directionsyellowno').is(':checked')) {
-					$('#directionsyellowrow').fadeOut(1000);
 					$("input[type=radio][name=directionsorange]").prop('checked', false);
 					$('#directionsorangerow').fadeOut(1000);
 					$("input[type=radio][name=directionsgreen]").prop('checked', false);
@@ -642,7 +640,6 @@ $(document).ready(
 					$('#studentchoiceorangerow').fadeIn(1000);
 					}
 				if($('#studentchoiceyellowno').is(':checked')) {
-					$('#studentchoiceyellowrow').fadeOut(1000);
 					$("input[type=radio][name=studentchoiceorange]").prop('checked', false);
 					$('#studentchoiceorangerow').fadeOut(1000);
 					$("input[type=radio][name=studentchoicegreen]").prop('checked', false);
@@ -702,7 +699,6 @@ $(document).ready(
 					$('#organizationorangerow').fadeIn(1000);
 					}
 				if($('#organizationyellowno').is(':checked')) {
-					$('#organizationyellowrow').fadeOut(1000);
 					$("input[type=radio][name=organizationorange]").prop('checked', false);
 					$('#organizationorangerow').fadeOut(1000);
 					$("input[type=radio][name=organizationgreen]").prop('checked', false);
@@ -775,7 +771,6 @@ $(document).ready(
 					$('#checklistorangerow').fadeIn(1000);
 					}
 				if($('#checklistyellowno').is(':checked')) {
-					$('#checklistyellowrow').fadeOut(1000);
 					$("input[type=radio][name=checklistorange]").prop('checked', false);
 					$('#checklistorangerow').fadeOut(1000);
 					$("input[type=radio][name=checklistgreen]").prop('checked', false);
@@ -814,27 +809,6 @@ $(document).ready(
 					}
 					
 				})
-			
-			
-			
-			$("#hokeform").validate({
-				rules : {
-					schoolId : { required : true },
-					teacherId : { required : true },
-					entryDate : { required : true },
-					timeObserved : { required : true },
-					observed : { required : true },
-					smallgroup : { required : true }
-				},
-				messages : {
-					schoolId : "Required",
-					teacherId : "Required",
-					entryDate : "Required",
-					timeObserved : "Required",
-					observed : "Required",
-					smallgroup : "Required"
-				},
-			});
 			
 		});
 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.dsd.dsdpdcoaching.dao.NinjaLevelTrainingDao;
 import com.dsd.dsdpdcoaching.dao.RubricDao;
 import com.dsd.dsdpdcoaching.dto.ChicagoBlendRubric;
 import com.dsd.dsdpdcoaching.dto.NinjaLevelTeachingData;
@@ -31,6 +32,8 @@ public class FrontController {
 	private RubricTotalCalculator rubricTotalCalculator;
 	@Autowired
 	private EmailService emailService;
+	@Autowired
+	private NinjaLevelTrainingDao ninjaLevelTrainingDao;
 	
 	@GetMapping("/rubricForm.html")
 	public String getRubricForm(Model model) {
@@ -102,6 +105,16 @@ public class FrontController {
 
 		//redirect user back to blank form so they can enter more data
 		return "redirect:/rubricForm.html";
+	}
+	
+	@PostMapping("/ninjaBeltForm")
+	public String postNinjaBeltForm(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute NinjaLevelTeachingData formData) {
+
+		formData.setUserId(request.getUserPrincipal().getName());
+		
+		ninjaLevelTrainingDao.saveNinjaTrainingData(formData);
+		
+		return "ninjalevelteaching";
 	}
 	
 	
