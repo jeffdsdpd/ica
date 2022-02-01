@@ -1,5 +1,7 @@
 package com.dsd.dsdpdcoaching.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -18,6 +20,20 @@ public class NinjaLevelTrainingDao {
 	//Called by the JSONRequestController to save rubric data on rubricForm.html
 		public void saveNinjaTrainingData(NinjaLevelTeachingData data) {
 			entityManager.persist(data);		
+		}
+		
+		@SuppressWarnings("unchecked")
+		public List<NinjaLevelTeachingData> getNinjaFormDatesByTeacherID(Integer schoolId, Integer teacherId) {
+				return entityManager.createQuery(
+						"from NINJA_LEVEL_TRAINING where schoolid = :schoolId and teacherid = :teacherId ORDER BY date DESC")
+						.setParameter("schoolId", schoolId)
+		    			.setParameter("teacherId", teacherId)
+		    			.getResultList();
+			}
+
+		public List<NinjaLevelTeachingData> getNinjaFormDatesByTeacherID(Integer recordId) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 
 }

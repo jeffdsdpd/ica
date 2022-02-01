@@ -70,6 +70,11 @@ public class FrontController {
 		return "ninjalevelteaching";
 	}
 	
+	@GetMapping("/ninjalevelteachingreport.html")
+	public String getNinjaLevelTeachingReport(Model model) {
+		return "ninjalevelteachingreport";
+	}
+	
 	@PostMapping("/rubricForm")
 	public String postRubricForm(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute Rubric rubricData, @ModelAttribute RubricLevelUp rubricLevelUp) {
 

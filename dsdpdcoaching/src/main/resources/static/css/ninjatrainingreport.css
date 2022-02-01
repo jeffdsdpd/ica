@@ -1,0 +1,152 @@
+/* basic positioning */
+.legend { list-style: none; padding-left:0;}
+.legend li { float: left; margin-right: 20px; }
+.legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px; }
+/* your colors */
+.legend .phaseone { float: left; background-color: #FF9900; }
+.legend .phasetwo { float: left; background-color: #6300A5; }
+.legend .phasethree { float: left; background-color: #0FAD00; }
+.legend .empty { float: left; background-color: black; }
+
+
+#frm .error {
+    color: red;
+    font-weight: normal;
+}
+hokeform .error {
+    color: red;
+}
+.checkboxes label {
+    font-size: 12px;
+    color: #666;
+}
+.input-disabled{
+	background-color:#FFF !important;
+}
+.radio-inline1 {
+	font-family: arial, Times, serif;
+	font-size: 14px;
+	color: yellow;
+}
+/*hide role-specific hoke county html*/
+.modaltext {
+	margin-left:20px; 
+	font-size:14px;
+}
+.hokecontent {
+	display: none;
+	padding: 1px;
+}
+.hokeexpandable {
+	color: white;
+	cursor: pointer;
+	padding: 8px;
+	height: 50px;
+	border: none;
+	text-align: center;
+	outline: none;
+	font-size: 20px;
+	max-width: 100%;
+	width: 45.65%;
+	margin: 5px;
+}
+.leftcolumn {
+	margin-right:20px;
+}
+.hokeactive, .hokeexpandable:hover {
+	background-color: #555;
+}
+
+.purple {
+	background-color: #32064A;
+}
+.orange {
+	background-color: #E56B1F;
+}
+.yellow {
+	background-color: #FCD02C;
+}
+.fuschia {
+	background-color: #E42C6A;
+}
+.green {
+	background-color: #3EB650;
+}
+.gold {
+	background-color: #FCC133;
+}
+.red {
+	background-color: #E12B38;
+}
+.coral {
+	background-color: #EE7879;
+}
+.navy {
+	background-color: #2A3166;
+}
+.pink {
+	background-color: #F4ABAA;
+}
+.ice {
+	background-color: #CAE7DF;
+}
+.blue {
+	background-color: #28559A;
+}
+
+.hokecontainer {
+    width: 100%;
+    margin: auto;
+    float: left;
+}
+#hokecolumn {
+    opacity: 0.7;
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: black;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 1px;
+}
+#hokereportcolumn {
+    width: 300px;
+    float: left;
+    opacity: 0.7;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: black;
+    text-align: center;
+}
+.hokeradioselection {
+    width: 250px;
+    font-family: arial, Times, serif;
+    font-size: 12px;
+    font-weight: normal;
+    color:#585858;
+}
+#spacercolumn {
+    width: 250px;
+    float: left;
+    height: 30px;
+    background-color: white;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+#content {
+  	float: left ;
+  	width: 48% ;
+}
+
+#levelupcontent {
+  	float: left ;
+  	width: 2% ;
+}
+
+.hokelabel {
+	padding-top: 10px;
+  	padding-right: 0px;
+  	padding-bottom: 0px;
+  	padding-left: 10px;
+}

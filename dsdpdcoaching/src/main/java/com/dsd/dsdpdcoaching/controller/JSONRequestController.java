@@ -20,11 +20,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dsd.dsdpdcoaching.dao.ActionPlanDao;
 import com.dsd.dsdpdcoaching.dao.CoachingDataDao;
 import com.dsd.dsdpdcoaching.dao.LevelUpDao;
+import com.dsd.dsdpdcoaching.dao.NinjaLevelTrainingDao;
 import com.dsd.dsdpdcoaching.dao.RubricDao;
 import com.dsd.dsdpdcoaching.dao.TeacherDao;
 import com.dsd.dsdpdcoaching.dao.UserDao;
 import com.dsd.dsdpdcoaching.dto.ActionPlanData;
 import com.dsd.dsdpdcoaching.dto.CoachingData;
+import com.dsd.dsdpdcoaching.dto.NinjaLevelTeachingData;
 import com.dsd.dsdpdcoaching.dto.PhaseValues;
 import com.dsd.dsdpdcoaching.dto.Rubric;
 import com.dsd.dsdpdcoaching.dto.RubricLevelUp;
@@ -56,6 +58,8 @@ public class JSONRequestController extends HttpServlet {
 	private EmailService emailService;
 	@Autowired
 	private ActionPlanDao actionPlanDao;
+	@Autowired
+	private NinjaLevelTrainingDao ninjaLevelTrainingDao;
 	@Autowired
 	private ClassroomQuickstart classroomQuickstart;
 
@@ -92,6 +96,20 @@ public class JSONRequestController extends HttpServlet {
 	@ResponseBody
 	public List<Rubric> getRubricDatesIDUserid(@RequestParam Integer schoolId, @RequestParam Integer teacherId) {	
 		return rubricDao.getRubricDatesIDUserid(schoolId, teacherId);
+	}
+	
+	//Called from ninjareport.js
+	@GetMapping(value="/getNinjaFormDatesByTeacherID")
+	@ResponseBody
+	public List<NinjaLevelTeachingData> getNinjaFormDatesByTeacherID(@RequestParam Integer schoolId, @RequestParam Integer teacherId) {	
+		return ninjaLevelTrainingDao.getNinjaFormDatesByTeacherID(schoolId, teacherId);
+	}
+	
+	//Called from ninjareport.js
+	@GetMapping(value="/getNinjaTrainingRecordById")
+	@ResponseBody
+	public List<NinjaLevelTeachingData> getNinjaTrainingRecordById(@RequestParam Integer recordId) {	
+		return ninjaLevelTrainingDao.getNinjaFormDatesByTeacherID(recordId);
 	}
 	
 	//Called from rubricReport.js

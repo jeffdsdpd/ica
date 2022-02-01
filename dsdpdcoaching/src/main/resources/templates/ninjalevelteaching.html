@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-		<title>DSD-PD Coaching Application | Ninja Level Form</title>
+		<title>DSD-PD Coaching Application | Ninja Training Form</title>
 		
 		<meta charset="utf-8" />	
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -13,7 +13,6 @@
 		<!--   JS Files   -->
 		<script src="js/lib/jquery.js"></script>
 		<script src="js/lib/jquery-ui.min.js"></script>
-		<script src="js/lib/timepicker.js"></script>
 		<script src="js/lib/bootstrap.min.js"></script>
 		<script src="js/lib/bootstrap-select.js"></script>
 		<script src="js/lib/bootstrap-multiselect.js"></script>
@@ -26,7 +25,6 @@
 		<link href="css/lib/jquery-ui.css" rel="stylesheet"/>
 	    <link href="css/lib/bootstrap.min.css" rel="stylesheet"/>
 	    <link href="css/lib/light-bootstrap-dashboard.css" rel="stylesheet"/>
-	    <link href="css/lib/timepicker.css" rel="stylesheet"/>
 	    <link href="css/lib/bootstrap-multiselect.css" rel="stylesheet"/>
 	    <link href="css/misc.css" rel="stylesheet"/>
 	    <link href="css/popup.css" rel="stylesheet"/>
@@ -109,14 +107,14 @@
 		                    <div class="col-md-11">
 		                        <div class="card">
 		                            <div class="header">
-		                                <h2 class="title">Ninja Teacher Form</h2>
+		                                <h2 class="title">Ninja Training Form</h2>
 		                            </div>
 		                            <div class="content">
 		                                <form id="ninjalevelform" name="ninjalevelform" action="#" th:action="@{/ninjaBeltForm}" th:object="${ninjaLevelTeachingData}" method="post">
 		                                    <div class="row">
-		                                        <div class="col-md-3" style="margin-right:25px;">
+		                                        <div class="col-md-3" style="margin-right:15px;">
 		                                            <div class="form-group">
-		                                                <label>School</label>
+		                                                <label>School</label><br />
 		                                                <select id="schoolId" class="form-control" th:field="*{schoolId}">
 			                                                	<option value="">Please Select</option>
 			                                                	<option th:each="school: ${schoolList}" 
@@ -127,9 +125,9 @@
 		                                            </div>
 		                                        </div>                          
 		      
-	                                        	<div class="col-md-2" style="margin-right:20px;">
+	                                        	<div class="col-md-3">
 													<div class="form-group">
-														<label>Teacher</label>
+														<label>Teacher</label><br />
 														<select id="teacherId" th:field="*{teacherId}">
 															<option value=""> Please Select </option>
 															<option th:each="teacher : ${teachers}"
@@ -139,9 +137,9 @@
 													</div>
 												</div>
 												
-												<div class="col-md-2">
+												<div class="col-md-3">
 		                                            <div class="form-group">
-		                                                	<label>Date</label>
+		                                                	<label>Date</label><br />
 		                                               	<input type="text" id="entryDate" class="form-control" placeholder="Date" th:field="*{date}"/>
 													</div>
 		                                        </div>
