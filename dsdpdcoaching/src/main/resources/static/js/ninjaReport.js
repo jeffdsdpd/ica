@@ -36,9 +36,6 @@
 					adminEmail = $("#adminlabel").text();
 				} else adminEmail = "not selected";
 				
-				var date = $("#date :selected").text();
-				var smallgroup = $("#smallgroup").text();
-				
 				var rubricnotes = document.getElementById("rubricnotes").innerText;
 			
 		            $.ajax({
@@ -60,6 +57,8 @@
 
 		$('[data-toggle="popover"]').popover();
  
+
+		//SCHOOL HAS BEEN SELECTED SO CLEAR OUT SOME FIELDS IF PREVIOUSLY SELECTED
 		$("#schoolId").change(function(){
 			rubricTotal = 0;
 			
@@ -70,12 +69,11 @@
 			document.getElementById("adminlabel").style.display = "none";
 			document.getElementById("button").style.display = "none";
 			document.getElementById("nodatatodisplay").style.display = "none";
-			
-		
-			//Clear out fields when a new school is selected
+
 			$("#teacherlabel").text("");
         	$("#adminlabel").text("");
 			$("#teacherId").empty();
+			$("#teacherId").append($("<option></option>").attr("value", '').text('Please Select'));
 			$("#entryDate").empty();
 			$(".user").html("");
 			$("#smallgroup").html("");
@@ -92,79 +90,45 @@
                     success: function (response) {
                     	var $dropdownList = $("#teacherId");
                     	$dropdownList.empty();
-                    	$dropdownList.append($("<option></option>").attr("value", '').text('Please Select'));
-                    	 $.each(response, function(value, key) {
-                             $dropdownList.append($("<option></option>").attr("value", key.id).text((key.name)));
+                    	$.each(response, function(value, key) {
+							$("#teacherId").append($("<option></option>").attr("value", '').text('Please Select'));
+                        	$dropdownList.append($("<option></option>").attr("value", key.id).text((key.name)));
                          });			
                         }
                     });
                 });
-		
+
+
+		//TEACHER HAS BEEN SELECTED SO GO GET THE NINJA TRAINING RECORDS
 		$("#teacherId").change(function(){
 			document.getElementById("nodatatodisplay").style.display = "none";
 			var selectedSchoolId = $("#schoolId :selected").val();
 			var selectedTeacherId = $("#teacherId :selected").val();
+			var selectedDate = $("#entryDate :selected").text();
 			
-				$("#date").empty();
-				$(".user").html("");
-				$(".smallgroup").html("");
-				
-				
-	            $.ajax({
-	                type: "GET",
-	                url:"getNinjaFormDatesByTeacherID",
-	                data:{schoolId: selectedSchoolId, teacherId: selectedTeacherId},
-	                dataType: "json",
-	                success: function (response) {
-	                	
-	                	if(response.length==0) {
-	                		document.getElementById("nodatatodisplay").style.display = "inline";
-	                	 } else {
-							ninjaTrainingRecord = response;
-	                		var $dropdownList = $("#entryDate");
-		                    $dropdownList.empty();
-		                    $dropdownList.append($("<option></option>").attr("value", '').text('Please Select'));
-		                    $.each(response, function(value, key) {
-		                    	$dropdownList.append($("<option></option>").attr("value", key.id).text(key.date+" - "+key.userId));	                    
-	                     });
-	                    }}
-	                });
-
-
-			var selectedTeacherId = $("#teacherName :selected").val();
-			$("button").prop("disabled",false);
-			
-	/*
-			$.ajax({
-				type: "GET",
-				url:"getEmailAddress",
-				data:{teacherId: selectedTeacherId},
-				dataType: "json",
-				success: function (response) {
-					    
-	                $.each(response, function(key, value) {
-	                		if (value[0] != null) {
-	                			$("#teacherlabel").text(value[0]);
-	                		} else {
-	                			document.getElementById("teachercheckbox").style.display = "none";
-	                		}
-	                		
-	                		if (value[1] != null) {
-	                			$("#adminlabel").text(value[1]);
-	                			
-	                		} else {
-	                			document.getElementById("admincheckbox").style.display = "none";
-	                		}
-	                		
-	                })
-	            }
-	        }); //end of the ajax call
-	*/
-
-		});
+            $.ajax({
+                type: "GET",
+                url:"getNinjaFormDatesByTeacherID",
+                data:{schoolId: selectedSchoolId, teacherId: selectedTeacherId, date: selectedDate},
+                dataType: "json",
+                success: function (response) {
+                	
+                	if(response.length==0) {
+                		document.getElementById("nodatatodisplay").style.display = "inline";
+                	 } else {
+						ninjaTrainingRecord = response;
+                		var $dropdownList = $("#entryDate");
+	                    $dropdownList.empty();
+	                    $dropdownList.append($("<option></option>").attr("value", '').text('Please Select'));
+	                    $.each(response, function(value, key) {
+	                    	$dropdownList.append($("<option></option>").attr("value", key.id).text(key.date+" - "+key.userId));	                    
+                     });
+                    }}
+                });
+			});
 		
 		
-		
+		//DATE HAS BEEN SELECTED SO GO GET THE SINGLE RECORD DETAILS
 		$("#entryDate").change(function() {
 			console.log("Here is smallgroupyellow" + ninjaTrainingRecord[0].smallgroupyellow);
 			

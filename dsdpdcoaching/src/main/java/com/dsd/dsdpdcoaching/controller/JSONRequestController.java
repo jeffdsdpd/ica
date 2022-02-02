@@ -102,14 +102,24 @@ public class JSONRequestController extends HttpServlet {
 	@GetMapping(value="/getNinjaFormDatesByTeacherID")
 	@ResponseBody
 	public List<NinjaLevelTeachingData> getNinjaFormDatesByTeacherID(@RequestParam Integer schoolId, @RequestParam Integer teacherId) {	
-		return ninjaLevelTrainingDao.getNinjaFormDatesByTeacherID(schoolId, teacherId);
+		List<NinjaLevelTeachingData> ninjaData =  ninjaLevelTrainingDao.getNinjaFormDatesByTeacherID(schoolId, teacherId);
+	//	for (int i = 0; i <= ninjaData.size(); i++) {
+	//		  System.out.println(ninjaData.get(i));
+	//		}
+
+		return ninjaData;
 	}
 	
 	//Called from ninjareport.js
 	@GetMapping(value="/getNinjaTrainingRecordById")
 	@ResponseBody
 	public List<NinjaLevelTeachingData> getNinjaTrainingRecordById(@RequestParam Integer recordId) {	
-		return ninjaLevelTrainingDao.getNinjaFormDatesByTeacherID(recordId);
+		List<NinjaLevelTeachingData> ninjaData = ninjaLevelTrainingDao.getNinjaFormDatesByTeacherID(recordId);
+		for (int i = 0; i <= ninjaData.size(); i++) {
+			  System.out.println(ninjaData.get(i));
+			}
+
+		return ninjaData;
 	}
 	
 	//Called from rubricReport.js
