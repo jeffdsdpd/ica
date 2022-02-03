@@ -30,10 +30,11 @@ public class NinjaLevelTrainingDao {
 		    			.setParameter("teacherId", teacherId)
 		    			.getResultList();
 			}
-
-		public List<NinjaLevelTeachingData> getNinjaFormDatesByTeacherID(Integer recordId) {
-			// TODO Auto-generated method stub
-			return null;
+		
+		public NinjaLevelTeachingData getNinjaTrainingRecordById(Integer recordId) {
+			return entityManager.createQuery("from NINJA_LEVEL_TRAINING where id = :recordId", NinjaLevelTeachingData.class)
+						.setParameter("recordId", recordId)
+						.getSingleResult();
 		}
 
 }

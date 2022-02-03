@@ -34,26 +34,6 @@
 	rel='stylesheet' type='text/css' />
 
 <style>
-	.blue {
-		color: #3A55A5;
-	}
-	
-	.red {
-		color: #CF5300;
-	}
-	
-	.yellow {
-		color: #cccc00;
-	}
-	
-	.green {
-		color: #A2AB58;
-	}
-	
-	.black {
-		color: #000000;
-	}
-  		
   	#wrapper {
   		display: flex;
 	}
@@ -156,8 +136,7 @@
 													<b>Recorded By: </b><span class="user" id="user"></span>
 												</h5>
 												<h5>
-													<b>Ninja Level Score Total: </b><span class="rubricTotal"></span> Out
-													of possible 100
+													<b>Average Training Belt Color: </b><span class="rubricTotal"></span> 
 												</h5>
 											</div>
 											
@@ -174,48 +153,228 @@
 										
 										<hr align="left" width="100%"></hr>
 										
-										
 										<br />
-							
 										
+										<div class="code-buttons">
+									
+									<!-- CURRENT AVERAGE -->
 									<div class="row">
-										<button type="button" class="hokeexpandable purple col-md-5 leftcolumn">SMALL GROUP</button>
+										<div>
+										<button type="button" name="currentaverage" class="hokeexpandable green col-md-11 leftcolumn">CURRENT AVERAGE</button>
 										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
 										   		<div class="form-inline">
+										   			<!-- CURRENT AVERAGE -->
 													<div>
 														<span>
 															<label style="font-weight:normal;">Current Belt Color:</label>
-												        	<img src="/images/whitebeltimage.png" style="margin-left:10px;" width="30px" height="30px" />	
+												        	<img id="smallgroupbeltimage" width="22px" height="22px" alt="No Data"/>	
 												      	</span>
-												      	<hr align="left" width="45%" style="margin-bottom:15px; margin-top:15px;"></hr>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
 												      	<span>
 															<label style="font-weight:bold; font-size:12px;">Level Up Strategy:</label>
-												        	<p style="font-size:12px;">This is where the levelup will go</p>	
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>	
 												      	</span>
-												      	<hr align="left" width="45%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
 												      	<span>
 															<label style="font-weight:bold; font-size:12px;">Video Link:</label>
-												        	<p style="font-size:12px;">Video Links</p>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>
 												      	</span>
-												      	<hr align="left" width="45%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
 												      	<span>
 															<label style="font-weight:bold; font-size:12px;">Resource Ideas:</label>
-												        	<p style="font-size:12px;">Resource Ideas</p>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>
 												      	</span>
 					  								</div>
 					  							</div>
 					  						</div>
-					  					<button type="button" class="hokeexpandable blue">CHECKLIST</button>
+					  					</div>
+					  				</div>
+					  				
+					  				<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+					  					
+									<div class="row">
+										<div class="col-md-5" style="width:45%; padding-right: 5px; padding-left: 5px; margin-right:10px;">
+										<button type="button" name="smallgroup" class="hokeexpandable purple col-md-12 leftcolumn">SMALL GROUP</button>
+										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
+										   		<div class="form-inline">
+										   			<!-- SMALL GROUP -->
+													<div>
+														<span>
+															<label style="font-weight:normal;">Current Belt Color:</label>
+												        	<img id="smallgroupbeltimage" width="22px" height="22px" alt="No Data"/>	
+												      	</span>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<span>
+															<label style="font-weight:bold; font-size:12px;">Level Up Strategy:</label>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>	
+												      	</span>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<span>
+															<label style="font-weight:bold; font-size:12px;">Video Link:</label>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>
+												      	</span>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<span>
+															<label style="font-weight:bold; font-size:12px;">Resource Ideas:</label>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>
+												      	</span>
+					  								</div>
+					  							</div>
+					  						</div>
+					  					</div>
+					  					<div class="col-md-5" style="width:45%; padding:0px;">
+					  					<button type="button" name="checklist" class="hokeexpandable blue col-md-12">CHECKLIST</button>
 										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
 										   		<div class="form-inline">
 													<div>
+													<!-- CHECKLIST -->
 														<span>
-												        	<img src="/images/whitebeltimage.png" width="22px" height="22px" alt="Checked Icon" />
+															<label style="font-weight:normal;">Current Belt Color:</label>
+												        	<img id="checklistbeltimage" width="22px" height="22px" alt="No Data"/>
+												      	</span>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<span>
+															<label style="font-weight:bold; font-size:12px;">Level Up Strategy:</label>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>	
+												      	</span>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<span>
+															<label style="font-weight:bold; font-size:12px;">Video Link:</label>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>
+												      	</span>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<span>
+															<label style="font-weight:bold; font-size:12px;">Resource Ideas:</label>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>
 												      	</span>
 					  								</div>
 					  							</div>
 					  						</div>
+					  					</div>
 				  					</div> 
+				  					
+				  					<div class="row">
+										<div class="col-md-5" style="width:45%; padding-right: 5px; padding-left: 5px; margin-right:10px;">
+										<button type="button" name="data" class="hokeexpandable coral col-md-12 leftcolumn">DATA</button>
+										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
+										   		<div class="form-inline">
+													<div>
+													<!-- DATA -->
+														<span>
+															<label style="font-weight:normal;">Current Belt Color:</label>
+												        	<img id="smallgroupbeltimage" width="22px" height="22px" alt="No Data"/>	
+												      	</span>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<span>
+															<label style="font-weight:bold; font-size:12px;">Level Up Strategy:</label>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>	
+												      	</span>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<span>
+															<label style="font-weight:bold; font-size:12px;">Video Link:</label>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>
+												      	</span>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<span>
+															<label style="font-weight:bold; font-size:12px;">Resource Ideas:</label>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>
+												      	</span>
+					  								</div>
+					  							</div>
+					  						</div>
+					  					</div>
+					  					<div class="col-md-5" style="width:45%; padding:0px;">
+					  					<button type="button" name="studentchoice" class="hokeexpandable pink col-md-12">STUDENT CHOICE</button>
+										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
+										   		<div class="form-inline">
+													<div>
+													<!-- STUDENT CHOICE -->
+														<span>
+															<label style="font-weight:normal;">Current Belt Color:</label>
+												        	<img id="checklistbeltimage" width="22px" height="22px" alt="No Data"/>
+												      	</span>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<span>
+															<label style="font-weight:bold; font-size:12px;">Level Up Strategy:</label>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>	
+												      	</span>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<span>
+															<label style="font-weight:bold; font-size:12px;">Video Link:</label>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>
+												      	</span>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<span>
+															<label style="font-weight:bold; font-size:12px;">Resource Ideas:</label>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>
+												      	</span>
+					  								</div>
+					  							</div>
+					  						</div>
+					  					</div>
+				  					</div>
+				  					
+				  					<!-- INDEPENDENT STUDIO -->
+				  					<div class="row">
+										<div class="col-md-5" style="width:45%; padding-right: 5px; padding-left: 5px; margin-right:10px;">
+										<button type="button" name="independentstudio" class="hokeexpandable orange col-md-12 leftcolumn">INDEPENDENT STUDIO</button>
+										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
+										   		<div class="form-inline">
+										   			<!-- INDEPENDENT STDUIO -->
+													<div>
+														<span>
+															<label style="font-weight:normal;">Current Belt Color:</label>
+												        	<img id="smallgroupbeltimage" width="22px" height="22px" alt="No Data"/>	
+												      	</span>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<span>
+															<label style="font-weight:bold; font-size:12px;">Level Up Strategy:</label>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>	
+												      	</span>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<span>
+															<label style="font-weight:bold; font-size:12px;">Video Link:</label>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>
+												      	</span>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<span>
+															<label style="font-weight:bold; font-size:12px;">Resource Ideas:</label>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>
+												      	</span>
+					  								</div>
+					  							</div>
+					  						</div>
+					  					</div>
+					  					<div class="col-md-5" style="width:45%; padding:0px;">
+					  					<button type="button" name="digitacontent" class="hokeexpandable yellow col-md-12">DIGITAL CONTENT</button>
+										   <div class="container-fluid content hokecontent hokecontainer" style="padding:5px;">
+										   		<div class="form-inline">
+													<div>
+													<!-- DIGITAL CONTENT -->
+														<span>
+															<label style="font-weight:normal;">Current Belt Color:</label>
+												        	<img id="checklistbeltimage" width="22px" height="22px" alt="No Data"/>
+												      	</span>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<span>
+															<label style="font-weight:bold; font-size:12px;">Level Up Strategy:</label>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>	
+												      	</span>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<span>
+															<label style="font-weight:bold; font-size:12px;">Video Link:</label>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>
+												      	</span>
+												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
+												      	<span>
+															<label style="font-weight:bold; font-size:12px;">Resource Ideas:</label>
+												        	<p style="font-size:12px; display:inline-block;">No Data</p>
+												      	</span>
+					  								</div>
+					  							</div>
+					  						</div>
+					  					</div>
+				  					</div>
 				  						
 										
 									<hr align="left" width="100%"></hr>
@@ -242,5 +401,6 @@
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>

@@ -27,6 +27,7 @@ import com.dsd.dsdpdcoaching.dao.UserDao;
 import com.dsd.dsdpdcoaching.dto.ActionPlanData;
 import com.dsd.dsdpdcoaching.dto.CoachingData;
 import com.dsd.dsdpdcoaching.dto.NinjaLevelTeachingData;
+import com.dsd.dsdpdcoaching.dto.NinjaReportData;
 import com.dsd.dsdpdcoaching.dto.PhaseValues;
 import com.dsd.dsdpdcoaching.dto.Rubric;
 import com.dsd.dsdpdcoaching.dto.RubricLevelUp;
@@ -103,23 +104,72 @@ public class JSONRequestController extends HttpServlet {
 	@ResponseBody
 	public List<NinjaLevelTeachingData> getNinjaFormDatesByTeacherID(@RequestParam Integer schoolId, @RequestParam Integer teacherId) {	
 		List<NinjaLevelTeachingData> ninjaData =  ninjaLevelTrainingDao.getNinjaFormDatesByTeacherID(schoolId, teacherId);
-	//	for (int i = 0; i <= ninjaData.size(); i++) {
-	//		  System.out.println(ninjaData.get(i));
-	//		}
-
 		return ninjaData;
 	}
 	
 	//Called from ninjareport.js
 	@GetMapping(value="/getNinjaTrainingRecordById")
 	@ResponseBody
-	public List<NinjaLevelTeachingData> getNinjaTrainingRecordById(@RequestParam Integer recordId) {	
-		List<NinjaLevelTeachingData> ninjaData = ninjaLevelTrainingDao.getNinjaFormDatesByTeacherID(recordId);
-		for (int i = 0; i <= ninjaData.size(); i++) {
-			  System.out.println(ninjaData.get(i));
+	public NinjaReportData getNinjaTrainingRecordById(@RequestParam Integer recordId) {
+		NinjaReportData nlrd = new NinjaReportData();
+		
+		NinjaLevelTeachingData ninjaData =  ninjaLevelTrainingDao.getNinjaTrainingRecordById(recordId);
+			
+		//SMALLGROUP
+		if (ninjaData.getSmallgroupwhite() != null && ninjaData.getSmallgroupwhite().equals("yes")) {
+			if (ninjaData.getSmallgroupyellow() != null && ninjaData.getSmallgroupyellow().equals("yes")) {
+				if (ninjaData.getSmallgrouporange() != null && ninjaData.getSmallgrouporange().equals("yes")) {
+					if (ninjaData.getSmallgroupgreen() != null && ninjaData.getSmallgroupgreen().equals("yes")) {
+						if (ninjaData.getSmallgroupblue() != null && ninjaData.getSmallgroupblue().equals("yes")) {
+							if (ninjaData.getSmallgrouppurple() != null && ninjaData.getSmallgrouppurple().equals("yes")) {
+								nlrd.setSmallGroupColor("purple");
+							} else {
+								nlrd.setSmallGroupColor("blue");
+							}
+						} else {
+							nlrd.setSmallGroupColor("green");
+						}
+					} else {
+						nlrd.setSmallGroupColor("orange");
+					}
+				} else {
+					nlrd.setSmallGroupColor("yellow");
+				}
+			} else {
+				nlrd.setSmallGroupColor("white");
 			}
+		} else {
+			nlrd.setSmallGroupColor("NA");
+		}
+		
+		//CHECKLIST
+		if (ninjaData.getChecklistwhite() != null && ninjaData.getChecklistwhite().equals("yes")) {
+			if (ninjaData.getChecklistyellow() != null && ninjaData.getChecklistyellow().equals("yes")) {
+				if (ninjaData.getChecklistorange() != null && ninjaData.getChecklistorange().equals("yes")) {
+					if (ninjaData.getChecklistgreen() != null && ninjaData.getChecklistgreen().equals("yes")) {
+						if (ninjaData.getChecklistblue() != null && ninjaData.getChecklistblue().equals("yes")) {
+							if (ninjaData.getChecklistpurple() != null && ninjaData.getChecklistpurple().equals("yes")) {
+								nlrd.setChecklistColor("purple");
+							} else {
+								nlrd.setChecklistColor("blue");
+							}
+						} else {
+							nlrd.setChecklistColor("green");
+						}
+					} else {
+						nlrd.setChecklistColor("orange");
+					}
+				} else {
+					nlrd.setChecklistColor("yellow");
+				}
+			} else {
+				nlrd.setChecklistColor("white");
+			}
+		} else {
+			nlrd.setChecklistColor("NA");
+		}
 
-		return ninjaData;
+		return nlrd;
 	}
 	
 	//Called from rubricReport.js

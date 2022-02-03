@@ -1,9 +1,12 @@
 	$(document).ready(function() {
 		
 	 	$('#rubricnotes').addClass('input-disabled');
-	 
 		var selectedSchoolId = null;
-		var ninjaTrainingRecord = null;
+		var selectedTeacherId = null;
+		var selectedDate = null;
+		var recordId = null;
+		var teacherEmail = null;
+		var adminEmail = null;
 		
 		//THE PIECE OF JS WILL OPEN THE HEADERS WHEN CLICKED
 		var coll = document.getElementsByClassName("hokeexpandable");
@@ -22,11 +25,11 @@
 			}
 
 		 $("button").click(function(e) {
-			 e.preventDefault();
-				var selectedSchoolId = $("#schoolId :selected").text();
-				var selectedTeacherId = $("#teacherName :selected").text();
-				var teacherEmail = null;
-				var adminEmail = null;
+			e.preventDefault();
+			selectedSchoolId = $("#schoolId :selected").text();
+			selectedTeacherId = $("#teacherName :selected").text();
+			teacherEmail = null;
+			adminEmail = null;
 				
 				if ( $("#teachercheckbox").is(':checked')) {
 					teacherEmail = $("#teacherlabel").text();
@@ -37,7 +40,8 @@
 				} else adminEmail = "not selected";
 				
 				var rubricnotes = document.getElementById("rubricnotes").innerText;
-			
+		
+	/*	
 		            $.ajax({
 		                type: 'GET',
 		                url: 'sendRubricEmail',
@@ -53,6 +57,8 @@
 		                	alert("Email has been sent!");
 		                }
 		            });
+
+*/
 			 });
 
 		$('[data-toggle="popover"]').popover();
@@ -90,8 +96,8 @@
                     success: function (response) {
                     	var $dropdownList = $("#teacherId");
                     	$dropdownList.empty();
+						$("#teacherId").append($("<option></option>").attr("value", '').text('Please Select'));
                     	$.each(response, function(value, key) {
-							$("#teacherId").append($("<option></option>").attr("value", '').text('Please Select'));
                         	$dropdownList.append($("<option></option>").attr("value", key.id).text((key.name)));
                          });			
                         }
@@ -99,12 +105,11 @@
                 });
 
 
-		//TEACHER HAS BEEN SELECTED SO GO GET THE NINJA TRAINING RECORDS
+		//TEACHER HAS BEEN SELECTED SO GO GET THE NINJA TRAINING RECORDS FOR THAT TEACHER
 		$("#teacherId").change(function(){
 			document.getElementById("nodatatodisplay").style.display = "none";
-			var selectedSchoolId = $("#schoolId :selected").val();
-			var selectedTeacherId = $("#teacherId :selected").val();
-			var selectedDate = $("#entryDate :selected").text();
+			selectedSchoolId = $("#schoolId :selected").val();
+			selectedTeacherId = $("#teacherId :selected").val();
 			
             $.ajax({
                 type: "GET",
@@ -130,45 +135,31 @@
 		
 		//DATE HAS BEEN SELECTED SO GO GET THE SINGLE RECORD DETAILS
 		$("#entryDate").change(function() {
-			console.log("Here is smallgroupyellow" + ninjaTrainingRecord[0].smallgroupyellow);
+			selectedSchoolId = $("#schoolId :selected").val();
+			selectedTeacherId = $("#teacherId :selected").val();
+			selectedDate = $("#entryDate :selected").text();
+			recordId = $("#entryDate :selected").val();
 			
-			if ( $("#teacherlabel").text() != "" ) {
-    				document.getElementById("teacherlabel").style.display = "inline";
-    				document.getElementById("button").style.display = "inline";
-    				document.getElementById("emailreport").style.display = "inline";
-    				document.getElementById("teachercheckbox").style.display = "inline";
-			}
+			$.ajax({
+                type: "GET",
+                url:"getNinjaTrainingRecordById",
+                data:{recordId: recordId},
+                dataType: "json",
+                success: function (response) {
+                	
+                	if(response.length==0) {
+                		document.getElementById("nodatatodisplay").style.display = "inline";
+                	 } else {
+						//SMALLGROUP
+						var img = document.getElementById('smallgroupbeltimage');
+					    img.src = "/images/"+response.smallGroupColor+"beltimage.png";
+						
+						//CHECKLIST COLUMN
+						var img = document.getElementById('checklistbeltimage');
+					    img.src = "/images/"+response.checklistColor+"beltimage.png";
+                    }}
+                });
 			
-			if ( $("#adminlabel").text() != "" ) {
-					document.getElementById("adminlabel").style.display = "inline";
-    				document.getElementById("button").style.display = "inline";
-    				document.getElementById("emailreport").style.display = "inline";
-    				document.getElementById("admincheckbox").style.display = "inline";
-			}
-			
-			
-			$(".user").html("");
-			$(".smallgroup").html("");
-			
-			
-			if (selectedSchoolId == 0){
-				 $(".button").fadeOut("slow");
-				 $(".container").fadeOut("slow");
-				 $(".additionalRubricItems").fadeOut("slow");
-			} else {
-				$(".button").fadeIn("slow");
-				$(".container").fadeIn("slow");
-			
-        		//$(".user").html(response.userId);
-        		//$(".observed").html(response.observed);
-
-				//if (!$.trim(response.smallgroup)) {
-				//	$(".smallgroup").html("Not Recorded");
-				//} else {
-				//	$(".smallgroup").html(response.smallgroup);
-				//	}
-							
-				}
 			});
 
 	});// end of document ready function
