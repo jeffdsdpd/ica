@@ -579,7 +579,7 @@ $(document).ready(
 					$("input[type=radio][name=directionsred]").prop('checked', false);
 					$('#directionsredrow').fadeOut(1000);
 					}
-				if($('#directionsegreenyes').is(':checked')) {
+				if($('#directionsgreenyes').is(':checked')) {
 					$('#directionsbluerow').fadeIn(1000);
 					}
 				if($('#directionsgreenno').is(':checked')) {

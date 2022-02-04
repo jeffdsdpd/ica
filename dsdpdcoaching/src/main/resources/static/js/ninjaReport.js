@@ -67,6 +67,7 @@
 		//SCHOOL HAS BEEN SELECTED SO CLEAR OUT SOME FIELDS IF PREVIOUSLY SELECTED
 		$("#schoolId").change(function(){
 			rubricTotal = 0;
+			$(".container").fadeOut("slow");
 			
 			document.getElementById("emailreport").style.display = "none";
 			document.getElementById("teachercheckbox").style.display = "none";
@@ -74,7 +75,7 @@
 			document.getElementById("teacherlabel").style.display = "none";
 			document.getElementById("adminlabel").style.display = "none";
 			document.getElementById("button").style.display = "none";
-			document.getElementById("nodatatodisplay").style.display = "none";
+			//document.getElementById("nodatatodisplay").style.display = "none";
 
 			$("#teacherlabel").text("");
         	$("#adminlabel").text("");
@@ -107,7 +108,8 @@
 
 		//TEACHER HAS BEEN SELECTED SO GO GET THE NINJA TRAINING RECORDS FOR THAT TEACHER
 		$("#teacherId").change(function(){
-			document.getElementById("nodatatodisplay").style.display = "none";
+			$(".container").fadeOut("slow");
+			//document.getElementById("nodatatodisplay").style.display = "none";
 			selectedSchoolId = $("#schoolId :selected").val();
 			selectedTeacherId = $("#teacherId :selected").val();
 			
@@ -119,7 +121,7 @@
                 success: function (response) {
                 	
                 	if(response.length==0) {
-                		document.getElementById("nodatatodisplay").style.display = "inline";
+                		//document.getElementById("nodatatodisplay").style.display = "inline";
                 	 } else {
 						ninjaTrainingRecord = response;
                 		var $dropdownList = $("#entryDate");
@@ -135,6 +137,7 @@
 		
 		//DATE HAS BEEN SELECTED SO GO GET THE SINGLE RECORD DETAILS
 		$("#entryDate").change(function() {
+			$(".container").fadeOut("slow");
 			selectedSchoolId = $("#schoolId :selected").val();
 			selectedTeacherId = $("#teacherId :selected").val();
 			selectedDate = $("#entryDate :selected").text();
@@ -148,15 +151,38 @@
                 success: function (response) {
                 	
                 	if(response.length==0) {
-                		document.getElementById("nodatatodisplay").style.display = "inline";
+                		//document.getElementById("nodatatodisplay").style.display = "inline";
                 	 } else {
+						$(".container").fadeIn("slow");
+						//Set the UserId
+						$("#user").text(response.userId);
+						
 						//SMALLGROUP
 						var img = document.getElementById('smallgroupbeltimage');
 					    img.src = "/images/"+response.smallGroupColor+"beltimage.png";
+						$("#smallgrouplevelupvalue").text(response.smallGroupLevelUp);
 						
-						//CHECKLIST COLUMN
+						//CHECKLIST
 						var img = document.getElementById('checklistbeltimage');
 					    img.src = "/images/"+response.checklistColor+"beltimage.png";
+						$("#checklistlevelupvalue").text(response.checklistLevelUp);
+	
+						//DATA
+						var img = document.getElementById('databeltimage');
+					    img.src = "/images/"+response.dataColor+"beltimage.png";
+						
+						//STUDENT CHOICE
+						var img = document.getElementById('studentchoicebeltimage');
+					    img.src = "/images/"+response.studentChoiceColor+"beltimage.png";
+	
+						//INDEPENEDENT STUDIO
+						var img = document.getElementById('independentstudiobeltimage');
+					    img.src = "/images/"+response.independentStudioColor+"beltimage.png";
+						
+						//DIGITAL CONTENT
+						var img = document.getElementById('digitalcontentbeltimage');
+					    img.src = "/images/"+response.digitalContentColor+"beltimage.png";
+	
                     }}
                 });
 			

@@ -17,17 +17,29 @@ public class NinjaReportData implements Serializable {
 	private String userId;
 	private String observed;
 	private String smallGroupColor;
+	private String smallGroupLevelUp;
 	private String independentStudioColor;
+	private String independentStudioLevelUp;
 	private String digitalContentColor;
+	private String digitalContentLevelUp;
 	private String futureReadyColor;
+	private String futureReadyLevelUp;
 	private String placeColor;
+	private String placeLevelUp;;
 	private String pathColor;
+	private String pathLevelUp;
 	private String paceColor;
+	private String paceLevelUp;
 	private String dataColor;
+	private String dataLevelUp;
 	private String directionsColor;
+	private String directionsLevelUp;
 	private String studentChoiceColor;
+	private String studentChoiceLevelUp;
 	private String organizationColor;
+	private String organizationLevelUp;
 	private String checklistColor;
+	private String checklistLevelUp;
 	private String notes;
 	public Date getDate() {
 		return date;
@@ -130,6 +142,79 @@ public class NinjaReportData implements Serializable {
 	}
 	public void setChecklistColor(String checklistColor) {
 		this.checklistColor = checklistColor;
+	}
+	
+	public String getSmallGroupLevelUp() {
+		return smallGroupLevelUp;
+	}
+	public void setSmallGroupLevelUp(String smallGroupLevelUp) {
+		this.smallGroupLevelUp = smallGroupLevelUp;
+	}
+	public String getIndependentStudioLevelUp() {
+		return independentStudioLevelUp;
+	}
+	public void setIndependentStudioLevelUp(String independentStudioLevelUp) {
+		this.independentStudioLevelUp = independentStudioLevelUp;
+	}
+	public String getDigitalContentLevelUp() {
+		return digitalContentLevelUp;
+	}
+	public void setDigitalContentLevelUp(String digitalContentLevelUp) {
+		this.digitalContentLevelUp = digitalContentLevelUp;
+	}
+	public String getFutureReadyLevelUp() {
+		return futureReadyLevelUp;
+	}
+	public void setFutureReadyLevelUp(String futureReadyLevelUp) {
+		this.futureReadyLevelUp = futureReadyLevelUp;
+	}
+	public String getPlaceLevelUp() {
+		return placeLevelUp;
+	}
+	public void setPlaceLevelUp(String placeLevelUp) {
+		this.placeLevelUp = placeLevelUp;
+	}
+	public String getPathLevelUp() {
+		return pathLevelUp;
+	}
+	public void setPathLevelUp(String pathLevelUp) {
+		this.pathLevelUp = pathLevelUp;
+	}
+	public String getPaceLevelUp() {
+		return paceLevelUp;
+	}
+	public void setPaceLevelUp(String paceLevelUp) {
+		this.paceLevelUp = paceLevelUp;
+	}
+	public String getDataLevelUp() {
+		return dataLevelUp;
+	}
+	public void setDataLevelUp(String dataLevelUp) {
+		this.dataLevelUp = dataLevelUp;
+	}
+	public String getDirectionsLevelUp() {
+		return directionsLevelUp;
+	}
+	public void setDirectionsLevelUp(String directionsLevelUp) {
+		this.directionsLevelUp = directionsLevelUp;
+	}
+	public String getStudentChoiceLevelUp() {
+		return studentChoiceLevelUp;
+	}
+	public void setStudentChoiceLevelUp(String studentChoiceLevelUp) {
+		this.studentChoiceLevelUp = studentChoiceLevelUp;
+	}
+	public String getOrganizationLevelUp() {
+		return organizationLevelUp;
+	}
+	public void setOrganizationLevelUp(String organizationLevelUp) {
+		this.organizationLevelUp = organizationLevelUp;
+	}
+	public String getChecklistLevelUp() {
+		return checklistLevelUp;
+	}
+	public void setChecklistLevelUp(String checklistLevelUp) {
+		this.checklistLevelUp = checklistLevelUp;
 	}
 	public String getNotes() {
 		return notes;

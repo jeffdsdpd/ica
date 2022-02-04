@@ -125,37 +125,24 @@
 													<button type="button" name="emailButton" class="btn btn-info" id="button">Email Selected Person(s)</button>
 												</div>
 											</div>
-
 										</div>
-
-										<div class="container" style="display: none"></div>
 
 										<div>
 											<div id="left" class="floating-box">
 												<h5>
 													<b>Recorded By: </b><span class="user" id="user"></span>
 												</h5>
-												<h5>
-													<b>Average Training Belt Color: </b><span class="rubricTotal"></span> 
-												</h5>
-											</div>
-											
-											<div class="row">
-												<div class="col-md-9">
-													<div class="form-group">
-														<div class="nodatatodisplay" id="nodatatodisplay" style="display: none;">
-															<h3 style="text-align:center;">NO RUBRIC Data To Display!</h3>
-														</div>
-													</div>
-												</div>
 											</div>
 										</div>
 										
-										<hr align="left" width="100%"></hr>
+										<hr align="left" width="100%" style="margin-top: 0px; margin-bottom:0px;"></hr>
 										
 										<br />
 										
 										<div class="code-buttons">
+										
+									
+									<div class="container col-md-12" style="display: none">
 									
 									<!-- CURRENT AVERAGE -->
 									<div class="row">
@@ -167,21 +154,16 @@
 													<div>
 														<span>
 															<label style="font-weight:normal;">Current Belt Color:</label>
-												        	<img id="smallgroupbeltimage" width="22px" height="22px" alt="No Data"/>	
+												        	<img id="currentaveragebeltimage" width="22px" height="22px" alt="No Data"/>	
 												      	</span>
 												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
 												      	<span>
-															<label style="font-weight:bold; font-size:12px;">Level Up Strategy:</label>
+															<label style="font-weight:bold; font-size:12px;">Overview:</label>
 												        	<p style="font-size:12px; display:inline-block;">No Data</p>	
 												      	</span>
 												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
 												      	<span>
-															<label style="font-weight:bold; font-size:12px;">Video Link:</label>
-												        	<p style="font-size:12px; display:inline-block;">No Data</p>
-												      	</span>
-												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
-												      	<span>
-															<label style="font-weight:bold; font-size:12px;">Resource Ideas:</label>
+															<label style="font-weight:bold; font-size:12px;">Focus Area:</label>
 												        	<p style="font-size:12px; display:inline-block;">No Data</p>
 												      	</span>
 					  								</div>
@@ -206,7 +188,7 @@
 												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
 												      	<span>
 															<label style="font-weight:bold; font-size:12px;">Level Up Strategy:</label>
-												        	<p style="font-size:12px; display:inline-block;">No Data</p>	
+												        	<p id="smallgrouplevelupvalue" style="font-size:12px; display:inline-block;">No Data</p>	
 												      	</span>
 												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
 												      	<span>
@@ -235,7 +217,7 @@
 												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
 												      	<span>
 															<label style="font-weight:bold; font-size:12px;">Level Up Strategy:</label>
-												        	<p style="font-size:12px; display:inline-block;">No Data</p>	
+												        	<p id="checklistlevelupvalue" style="font-size:12px; display:inline-block;">No Data</p>	
 												      	</span>
 												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
 												      	<span>
@@ -262,7 +244,7 @@
 													<!-- DATA -->
 														<span>
 															<label style="font-weight:normal;">Current Belt Color:</label>
-												        	<img id="smallgroupbeltimage" width="22px" height="22px" alt="No Data"/>	
+												        	<img id="databeltimage" width="22px" height="22px" alt="No Data"/>	
 												      	</span>
 												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
 												      	<span>
@@ -291,7 +273,7 @@
 													<!-- STUDENT CHOICE -->
 														<span>
 															<label style="font-weight:normal;">Current Belt Color:</label>
-												        	<img id="checklistbeltimage" width="22px" height="22px" alt="No Data"/>
+												        	<img id="studentchoicebeltimage" width="22px" height="22px" alt="No Data"/>
 												      	</span>
 												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
 												      	<span>
@@ -324,7 +306,7 @@
 													<div>
 														<span>
 															<label style="font-weight:normal;">Current Belt Color:</label>
-												        	<img id="smallgroupbeltimage" width="22px" height="22px" alt="No Data"/>	
+												        	<img id="independentstudiobeltimage" width="22px" height="22px" alt="No Data"/>	
 												      	</span>
 												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
 												      	<span>
@@ -353,7 +335,7 @@
 													<!-- DIGITAL CONTENT -->
 														<span>
 															<label style="font-weight:normal;">Current Belt Color:</label>
-												        	<img id="checklistbeltimage" width="22px" height="22px" alt="No Data"/>
+												        	<img id="digitalcontentbeltimage" width="22px" height="22px" alt="No Data"/>
 												      	</span>
 												      	<hr align="left" width="95%" style="margin-bottom:5px; margin-top:5px;"></hr>
 												      	<span>
@@ -375,11 +357,9 @@
 					  						</div>
 					  					</div>
 				  					</div>
+				  				</div><!-- End of the container  -->
 				  						
-										
 									<hr align="left" width="100%"></hr>
-										
-										
 										
 										<div class="row">
 											<div class="col-md-9">
