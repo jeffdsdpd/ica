@@ -182,6 +182,30 @@
 						//DIGITAL CONTENT
 						var img = document.getElementById('digitalcontentbeltimage');
 					    img.src = "/images/"+response.digitalContentColor+"beltimage.png";
+				
+						//FUTURE READY
+						var img = document.getElementById('futurereadybeltimage');
+					    img.src = "/images/"+response.futureReadyColor+"beltimage.png";
+	
+						//PACE
+						var img = document.getElementById('pacebeltimage');
+					    img.src = "/images/"+response.paceColor+"beltimage.png";
+			
+						//PLACE
+						var img = document.getElementById('placebeltimage');
+					    img.src = "/images/"+response.placeColor+"beltimage.png";
+	
+						//PATH
+						var img = document.getElementById('pathbeltimage');
+					    img.src = "/images/"+response.pathColor+"beltimage.png";
+	
+						//ORGANIZATION
+						var img = document.getElementById('organizationbeltimage');
+					    img.src = "/images/"+response.pathColor+"beltimage.png";
+	
+						//DIRECTIONS
+						var img = document.getElementById('directionsbeltimage');
+					    img.src = "/images/"+response.pathColor+"beltimage.png";
 	
                     }}
                 });

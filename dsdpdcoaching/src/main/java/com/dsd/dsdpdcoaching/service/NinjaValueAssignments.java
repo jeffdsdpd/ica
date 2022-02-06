@@ -219,6 +219,226 @@ public class NinjaValueAssignments {
 			nlrd.setDigitalContentLevelUp(nlus.digitalContentWhite);
 			nlrd.setDigitalContentColor("NA");
 		}
+		
+		//FUTURE READY
+		if (ninjaData.getFuturereadywhite() != null && ninjaData.getFuturereadywhite().equals("yes")) {
+			if (ninjaData.getFuturereadyyellow() != null && ninjaData.getFuturereadyyellow().equals("yes")) {
+				if (ninjaData.getFuturereadyorange() != null && ninjaData.getFuturereadyorange().equals("yes")) {
+					if (ninjaData.getFuturereadygreen() != null && ninjaData.getFuturereadygreen().equals("yes")) {
+						if (ninjaData.getFuturereadyblue() != null && ninjaData.getFuturereadyblue().equals("yes")) {
+							if (ninjaData.getFuturereadypurple() != null && ninjaData.getFuturereadypurple().equals("yes")) {
+								nlrd.setFutureReadyLevelUp("Complete");
+								nlrd.setFutureReadyColor("purple");
+							} else {
+								nlrd.setFutureReadyLevelUp(nlus.digitalContentPurple);
+								nlrd.setFutureReadyColor("blue");
+							}
+						} else {
+							nlrd.setFutureReadyLevelUp(nlus.digitalContentBlue);
+							nlrd.setFutureReadyColor("green");
+						}
+					} else {
+						nlrd.setFutureReadyLevelUp(nlus.digitalContentGreen);
+						nlrd.setFutureReadyColor("orange");
+					}
+				} else {
+					nlrd.setFutureReadyLevelUp(nlus.digitalContentOrange);
+					nlrd.setFutureReadyColor("yellow");
+				}
+			} else {
+				nlrd.setFutureReadyLevelUp(nlus.digitalContentYellow);
+				nlrd.setFutureReadyColor("white");
+			}
+		} else {
+			nlrd.setFutureReadyLevelUp(nlus.digitalContentWhite);
+			nlrd.setFutureReadyColor("NA");
+		}
+		
+		//PACE
+		if (ninjaData.getPacewhite() != null && ninjaData.getPacewhite().equals("yes")) {
+			if (ninjaData.getPaceyellow() != null && ninjaData.getPaceyellow().equals("yes")) {
+				if (ninjaData.getPaceorange() != null && ninjaData.getPaceorange().equals("yes")) {
+					if (ninjaData.getPacegreen() != null && ninjaData.getPacegreen().equals("yes")) {
+						if (ninjaData.getPaceblue() != null && ninjaData.getPaceblue().equals("yes")) {
+							if (ninjaData.getPacepurple() != null && ninjaData.getPacepurple().equals("yes")) {
+								nlrd.setPaceLevelUp("Complete");
+								nlrd.setPaceColor("purple");
+							} else {
+								nlrd.setPaceLevelUp(nlus.digitalContentPurple);
+								nlrd.setPaceColor("blue");
+							}
+						} else {
+							nlrd.setPaceLevelUp(nlus.digitalContentBlue);
+							nlrd.setPaceColor("green");
+						}
+					} else {
+						nlrd.setPaceLevelUp(nlus.digitalContentGreen);
+						nlrd.setPaceColor("orange");
+					}
+				} else {
+					nlrd.setPaceLevelUp(nlus.digitalContentOrange);
+					nlrd.setPaceColor("yellow");
+				}
+			} else {
+				nlrd.setPaceLevelUp(nlus.digitalContentYellow);
+				nlrd.setPaceColor("white");
+			}
+		} else {
+			nlrd.setPaceLevelUp(nlus.digitalContentWhite);
+			nlrd.setPaceColor("NA");
+		}
+		
+		//PLACE
+		if (ninjaData.getPlacewhite() != null && ninjaData.getPlacewhite().equals("yes")) {
+			if (ninjaData.getPlaceyellow() != null && ninjaData.getPlaceyellow().equals("yes")) {
+				if (ninjaData.getPlaceorange() != null && ninjaData.getPlaceorange().equals("yes")) {
+					if (ninjaData.getPlacegreen() != null && ninjaData.getPlacegreen().equals("yes")) {
+						if (ninjaData.getPlaceblue() != null && ninjaData.getPlaceblue().equals("yes")) {
+							if (ninjaData.getPlacepurple() != null && ninjaData.getPlacepurple().equals("yes")) {
+								nlrd.setPlaceLevelUp("Complete");
+								nlrd.setPlaceColor("purple");
+							} else {
+								nlrd.setPlaceLevelUp(nlus.digitalContentPurple);
+								nlrd.setPlaceColor("blue");
+							}
+						} else {
+							nlrd.setPlaceLevelUp(nlus.digitalContentBlue);
+							nlrd.setPlaceColor("green");
+						}
+					} else {
+						nlrd.setPlaceLevelUp(nlus.digitalContentGreen);
+						nlrd.setPlaceColor("orange");
+					}
+				} else {
+					nlrd.setPlaceLevelUp(nlus.digitalContentOrange);
+					nlrd.setPlaceColor("yellow");
+				}
+			} else {
+				nlrd.setPlaceLevelUp(nlus.digitalContentYellow);
+				nlrd.setPlaceColor("white");
+			}
+		} else {
+			nlrd.setPlaceLevelUp(nlus.digitalContentWhite);
+			nlrd.setPaceColor("NA");
+		}
+		
+		//PATH
+		if (ninjaData.getPathwhite() != null && ninjaData.getPathwhite().equals("yes")) {
+			if (ninjaData.getPathyellow() != null && ninjaData.getPathyellow().equals("yes")) {
+				if (ninjaData.getPathorange() != null && ninjaData.getPathorange().equals("yes")) {
+					if (ninjaData.getPathgreen() != null && ninjaData.getPathgreen().equals("yes")) {
+						if (ninjaData.getPathblue() != null && ninjaData.getPathblue().equals("yes")) {
+							if (ninjaData.getPathpurple() != null && ninjaData.getPathpurple().equals("yes")) {
+								nlrd.setPathLevelUp("Complete");
+								nlrd.setPathColor("purple");
+							} else {
+								nlrd.setPathLevelUp(nlus.digitalContentPurple);
+								nlrd.setPathColor("blue");
+							}
+						} else {
+							nlrd.setPathLevelUp(nlus.digitalContentBlue);
+							nlrd.setPathColor("green");
+						}
+					} else {
+						nlrd.setPathLevelUp(nlus.digitalContentGreen);
+						nlrd.setPathColor("orange");
+					}
+				} else {
+					nlrd.setPathLevelUp(nlus.digitalContentOrange);
+					nlrd.setPathColor("yellow");
+				}
+			} else {
+				nlrd.setPathLevelUp(nlus.digitalContentYellow);
+				nlrd.setPathColor("white");
+			}
+		} else {
+			nlrd.setPathLevelUp(nlus.digitalContentWhite);
+			nlrd.setPathColor("NA");
+		}
+		
+		//ORGANIZATION
+		if (ninjaData.getOrganizationwhite() != null && ninjaData.getOrganizationwhite().equals("yes")) {
+			if (ninjaData.getOrganizationyellow() != null && ninjaData.getOrganizationyellow().equals("yes")) {
+				if (ninjaData.getOrganizationorange() != null && ninjaData.getOrganizationorange().equals("yes")) {
+					if (ninjaData.getOrganizationgreen() != null && ninjaData.getOrganizationgreen().equals("yes")) {
+						if (ninjaData.getOrganizationblue() != null && ninjaData.getOrganizationblue().equals("yes")) {
+							if (ninjaData.getOrganizationpurple() != null && ninjaData.getOrganizationpurple().equals("yes")) {
+								if (ninjaData.getOrganizationbrown() != null && ninjaData.getOrganizationbrown().equals("yes")) {
+									nlrd.setOrganizationLevelUp("Complete");
+									nlrd.setOrganizationColor("brown");
+								} else {
+									nlrd.setOrganizationLevelUp(nlus.digitalContentPurple);
+									nlrd.setOrganizationColor("purple");
+								}
+							} else {
+								nlrd.setOrganizationLevelUp(nlus.digitalContentPurple);
+								nlrd.setOrganizationColor("blue");
+							}
+						} else {
+							nlrd.setOrganizationLevelUp(nlus.digitalContentBlue);
+							nlrd.setOrganizationColor("green");
+						}
+					} else {
+						nlrd.setOrganizationLevelUp(nlus.digitalContentGreen);
+						nlrd.setOrganizationColor("orange");
+					}
+				} else {
+					nlrd.setOrganizationLevelUp(nlus.digitalContentOrange);
+					nlrd.setOrganizationColor("yellow");
+				}
+			} else {
+				nlrd.setOrganizationLevelUp(nlus.digitalContentYellow);
+				nlrd.setOrganizationColor("white");
+			}
+		} else {
+			nlrd.setOrganizationLevelUp(nlus.digitalContentWhite);
+			nlrd.setOrganizationColor("NA");
+		}
+				
+		//DIRECTIONS
+		if (ninjaData.getDirectionswhite() != null && ninjaData.getDirectionswhite().equals("yes")) {
+			if (ninjaData.getDirectionsyellow() != null && ninjaData.getDirectionsyellow().equals("yes")) {
+				if (ninjaData.getDirectionsorange() != null && ninjaData.getDirectionsorange().equals("yes")) {
+					if (ninjaData.getDirectionsgreen() != null && ninjaData.getDirectionsgreen().equals("yes")) {
+						if (ninjaData.getDirectionsblue() != null && ninjaData.getDirectionsblue().equals("yes")) {
+							if (ninjaData.getDirectionspurple() != null && ninjaData.getDirectionspurple().equals("yes")) {
+								if (ninjaData.getDirectionsbrown() != null && ninjaData.getDirectionspurple().equals("yes")) {
+									if (ninjaData.getDirectionsred() != null && ninjaData.getDirectionsred().equals("yes")) {
+										nlrd.setOrganizationLevelUp("Complete");
+										nlrd.setOrganizationColor("red");
+									} else {
+										nlrd.setOrganizationLevelUp(nlus.digitalContentPurple);
+										nlrd.setOrganizationColor("brown");
+									}
+									
+								} else {
+									nlrd.setOrganizationLevelUp(nlus.digitalContentPurple);
+									nlrd.setOrganizationColor("purple");
+								}
+							} else {
+								nlrd.setOrganizationLevelUp(nlus.digitalContentPurple);
+								nlrd.setOrganizationColor("blue");
+							}
+						} else {
+							nlrd.setOrganizationLevelUp(nlus.digitalContentBlue);
+							nlrd.setOrganizationColor("green");
+						}
+					} else {
+						nlrd.setOrganizationLevelUp(nlus.digitalContentGreen);
+						nlrd.setOrganizationColor("orange");
+					}
+				} else {
+					nlrd.setOrganizationLevelUp(nlus.digitalContentOrange);
+					nlrd.setOrganizationColor("yellow");
+				}
+			} else {
+				nlrd.setOrganizationLevelUp(nlus.digitalContentYellow);
+				nlrd.setOrganizationColor("white");
+			}
+		} else {
+			nlrd.setOrganizationLevelUp(nlus.digitalContentWhite);
+			nlrd.setOrganizationColor("NA");
+		}
 
 		return nlrd;
 	}
