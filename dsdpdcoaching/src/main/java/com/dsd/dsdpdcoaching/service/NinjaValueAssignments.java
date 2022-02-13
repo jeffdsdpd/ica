@@ -15,6 +15,8 @@ public class NinjaValueAssignments {
 
 	public NinjaReportData createNinjaValueAssignments(NinjaLevelTeachingData ninjaData, NinjaReportData nlrd) {
 		
+		int totalScore = 0;
+		
 
 		//SMALLGROUP
 		if (ninjaData.getSmallgroupwhite() != null && ninjaData.getSmallgroupwhite().equals("yes")) {
@@ -25,25 +27,31 @@ public class NinjaValueAssignments {
 							if (ninjaData.getSmallgrouppurple() != null && ninjaData.getSmallgrouppurple().equals("yes")) {
 								nlrd.setSmallGroupLevelUp("Complete");
 								nlrd.setSmallGroupColor("purple");
+								totalScore = totalScore + 6;
 							} else {
 								nlrd.setSmallGroupLevelUp(nlus.smallGroupPurple);
 								nlrd.setSmallGroupColor("blue");
+								totalScore = totalScore + 5;
 							}
 						} else {
 							nlrd.setSmallGroupLevelUp(nlus.smallGroupBlue);
 							nlrd.setSmallGroupColor("green");
+							totalScore = totalScore + 4;
 						}
 					} else {
 						nlrd.setSmallGroupLevelUp(nlus.smallGroupGreen);
 						nlrd.setSmallGroupColor("orange");
+						totalScore = totalScore + 3;
 					}
 				} else {
 					nlrd.setSmallGroupLevelUp(nlus.smallGroupOrange);
 					nlrd.setSmallGroupColor("yellow");
+					totalScore = totalScore + 2;
 				}
 			} else {
 				nlrd.setSmallGroupLevelUp(nlus.smallGroupYellow);
 				nlrd.setSmallGroupColor("white");
+				totalScore = totalScore + 1;
 			}
 		} else {
 			nlrd.setSmallGroupLevelUp(nlus.smallGroupWhite);
@@ -59,25 +67,31 @@ public class NinjaValueAssignments {
 							if (ninjaData.getChecklistpurple() != null && ninjaData.getChecklistpurple().equals("yes")) {
 								nlrd.setChecklistLevelUp("Complete");
 								nlrd.setChecklistColor("purple");
+								totalScore = totalScore + 6;
 							} else {
 								nlrd.setChecklistLevelUp(nlus.checklistPurple);
 								nlrd.setChecklistColor("blue");
+								totalScore = totalScore + 5;
 							}
 						} else {
 							nlrd.setChecklistLevelUp(nlus.checklistBlue);
 							nlrd.setChecklistColor("green");
+							totalScore = totalScore + 4;
 						}
 					} else {
 						nlrd.setChecklistLevelUp(nlus.checklistGreen);
 						nlrd.setChecklistColor("orange");
+						totalScore = totalScore + 3;
 					}
 				} else {
 					nlrd.setChecklistLevelUp(nlus.checklistOrange);
 					nlrd.setChecklistColor("yellow");
+					totalScore = totalScore + 2;
 				}
 			} else {
 				nlrd.setChecklistLevelUp(nlus.checklistYellow);
 				nlrd.setChecklistColor("white");
+				totalScore = totalScore + 1;
 			}
 		} else {
 			nlrd.setChecklistLevelUp(nlus.checklistWhite);
@@ -93,25 +107,31 @@ public class NinjaValueAssignments {
 							if (ninjaData.getDatapurple() != null && ninjaData.getDatapurple().equals("yes")) {
 								nlrd.setDataLevelUp("Complete");
 								nlrd.setDataColor("purple");
+								totalScore = totalScore + 6;
 							} else {
 								nlrd.setDataLevelUp(nlus.dataPurple);
 								nlrd.setDataColor("blue");
+								totalScore = totalScore + 5;
 							}
 						} else {
 							nlrd.setDataLevelUp(nlus.dataBlue);
 							nlrd.setDataColor("green");
+							totalScore = totalScore + 4;
 						}
 					} else {
 						nlrd.setDataLevelUp(nlus.dataGreen);
 						nlrd.setDataColor("orange");
+						totalScore = totalScore + 3;
 					}
 				} else {
 					nlrd.setDataLevelUp(nlus.dataOrange);
 					nlrd.setDataColor("yellow");
+					totalScore = totalScore + 2;
 				}
 			} else {
 				nlrd.setDataLevelUp(nlus.dataYellow);
 				nlrd.setDataColor("white");
+				totalScore = totalScore + 1;
 			}
 		} else {
 			nlrd.setDataLevelUp(nlus.dataWhite);
@@ -127,25 +147,31 @@ public class NinjaValueAssignments {
 							if (ninjaData.getStudentchoicepurple() != null && ninjaData.getStudentchoicepurple().equals("yes")) {
 								nlrd.setDataLevelUp("Complete");
 								nlrd.setStudentChoiceColor("purple");
+								totalScore = totalScore + 6;
 							} else {
 								nlrd.setStudentChoiceLevelUp(nlus.studentChoicePurple);
 								nlrd.setStudentChoiceColor("blue");
+								totalScore = totalScore + 5;
 							}
 						} else {
 							nlrd.setStudentChoiceLevelUp(nlus.studentChoiceBlue);
 							nlrd.setStudentChoiceColor("green");
+							totalScore = totalScore + 4;
 						}
 					} else {
 						nlrd.setStudentChoiceLevelUp(nlus.studentChoiceGreen);
 						nlrd.setStudentChoiceColor("orange");
+						totalScore = totalScore + 3;
 					}
 				} else {
 					nlrd.setStudentChoiceLevelUp(nlus.studentChoiceOrange);
 					nlrd.setStudentChoiceColor("yellow");
+					totalScore = totalScore + 2;
 				}
 			} else {
 				nlrd.setStudentChoiceLevelUp(nlus.studentChoiceYellow);
 				nlrd.setStudentChoiceColor("white");
+				totalScore = totalScore + 1;
 			}
 		} else {
 			nlrd.setStudentChoiceLevelUp(nlus.studentChoiceWhite);
@@ -161,25 +187,31 @@ public class NinjaValueAssignments {
 							if (ninjaData.getIndependentstudiopurple() != null && ninjaData.getIndependentstudiopurple().equals("yes")) {
 								nlrd.setIndependentStudioLevelUp("Complete");
 								nlrd.setIndependentStudioColor("purple");
+								totalScore = totalScore + 6;
 							} else {
 								nlrd.setIndependentStudioLevelUp(nlus.independentStudioPurple);
 								nlrd.setIndependentStudioColor("blue");
+								totalScore = totalScore + 5;
 							}
 						} else {
 							nlrd.setIndependentStudioLevelUp(nlus.independentStudioBlue);
 							nlrd.setIndependentStudioColor("green");
+							totalScore = totalScore + 4;
 						}
 					} else {
 						nlrd.setIndependentStudioLevelUp(nlus.independentStudioGreen);
 						nlrd.setIndependentStudioColor("orange");
+						totalScore = totalScore + 3;
 					}
 				} else {
 					nlrd.setIndependentStudioLevelUp(nlus.independentStudioOrange);
 					nlrd.setIndependentStudioColor("yellow");
+					totalScore = totalScore + 2;
 				}
 			} else {
 				nlrd.setIndependentStudioLevelUp(nlus.independentStudioYellow);
 				nlrd.setIndependentStudioColor("white");
+				totalScore = totalScore + 1;
 			}
 		} else {
 			nlrd.setIndependentStudioLevelUp(nlus.independentStudioWhite);
@@ -195,25 +227,31 @@ public class NinjaValueAssignments {
 							if (ninjaData.getDigitalcontentpurple() != null && ninjaData.getDigitalcontentpurple().equals("yes")) {
 								nlrd.setDigitalContentLevelUp("Complete");
 								nlrd.setDigitalContentColor("purple");
+								totalScore = totalScore + 6;
 							} else {
 								nlrd.setDigitalContentLevelUp(nlus.digitalContentPurple);
 								nlrd.setDigitalContentColor("blue");
+								totalScore = totalScore + 5;
 							}
 						} else {
 							nlrd.setDigitalContentLevelUp(nlus.digitalContentBlue);
 							nlrd.setDigitalContentColor("green");
+							totalScore = totalScore + 4;
 						}
 					} else {
 						nlrd.setDigitalContentLevelUp(nlus.digitalContentGreen);
 						nlrd.setDigitalContentColor("orange");
+						totalScore = totalScore + 3;
 					}
 				} else {
 					nlrd.setDigitalContentLevelUp(nlus.digitalContentOrange);
 					nlrd.setDigitalContentColor("yellow");
+					totalScore = totalScore + 2;
 				}
 			} else {
 				nlrd.setDigitalContentLevelUp(nlus.digitalContentYellow);
 				nlrd.setDigitalContentColor("white");
+				totalScore = totalScore + 1;
 			}
 		} else {
 			nlrd.setDigitalContentLevelUp(nlus.digitalContentWhite);
@@ -229,25 +267,31 @@ public class NinjaValueAssignments {
 							if (ninjaData.getFuturereadypurple() != null && ninjaData.getFuturereadypurple().equals("yes")) {
 								nlrd.setFutureReadyLevelUp("Complete");
 								nlrd.setFutureReadyColor("purple");
+								totalScore = totalScore + 6;
 							} else {
 								nlrd.setFutureReadyLevelUp(nlus.digitalContentPurple);
 								nlrd.setFutureReadyColor("blue");
+								totalScore = totalScore + 5;
 							}
 						} else {
 							nlrd.setFutureReadyLevelUp(nlus.digitalContentBlue);
 							nlrd.setFutureReadyColor("green");
+							totalScore = totalScore + 4;
 						}
 					} else {
 						nlrd.setFutureReadyLevelUp(nlus.digitalContentGreen);
 						nlrd.setFutureReadyColor("orange");
+						totalScore = totalScore + 3;
 					}
 				} else {
 					nlrd.setFutureReadyLevelUp(nlus.digitalContentOrange);
 					nlrd.setFutureReadyColor("yellow");
+					totalScore = totalScore + 2;
 				}
 			} else {
 				nlrd.setFutureReadyLevelUp(nlus.digitalContentYellow);
 				nlrd.setFutureReadyColor("white");
+				totalScore = totalScore + 1;
 			}
 		} else {
 			nlrd.setFutureReadyLevelUp(nlus.digitalContentWhite);
@@ -263,25 +307,31 @@ public class NinjaValueAssignments {
 							if (ninjaData.getPacepurple() != null && ninjaData.getPacepurple().equals("yes")) {
 								nlrd.setPaceLevelUp("Complete");
 								nlrd.setPaceColor("purple");
+								totalScore = totalScore + 6;
 							} else {
 								nlrd.setPaceLevelUp(nlus.digitalContentPurple);
 								nlrd.setPaceColor("blue");
+								totalScore = totalScore + 5;
 							}
 						} else {
 							nlrd.setPaceLevelUp(nlus.digitalContentBlue);
 							nlrd.setPaceColor("green");
+							totalScore = totalScore + 4;
 						}
 					} else {
 						nlrd.setPaceLevelUp(nlus.digitalContentGreen);
 						nlrd.setPaceColor("orange");
+						totalScore = totalScore + 3;
 					}
 				} else {
 					nlrd.setPaceLevelUp(nlus.digitalContentOrange);
 					nlrd.setPaceColor("yellow");
+					totalScore = totalScore + 2;
 				}
 			} else {
 				nlrd.setPaceLevelUp(nlus.digitalContentYellow);
 				nlrd.setPaceColor("white");
+				totalScore = totalScore + 1;
 			}
 		} else {
 			nlrd.setPaceLevelUp(nlus.digitalContentWhite);
@@ -297,25 +347,31 @@ public class NinjaValueAssignments {
 							if (ninjaData.getPlacepurple() != null && ninjaData.getPlacepurple().equals("yes")) {
 								nlrd.setPlaceLevelUp("Complete");
 								nlrd.setPlaceColor("purple");
+								totalScore = totalScore + 6;
 							} else {
 								nlrd.setPlaceLevelUp(nlus.digitalContentPurple);
 								nlrd.setPlaceColor("blue");
+								totalScore = totalScore + 5;
 							}
 						} else {
 							nlrd.setPlaceLevelUp(nlus.digitalContentBlue);
 							nlrd.setPlaceColor("green");
+							totalScore = totalScore + 4;
 						}
 					} else {
 						nlrd.setPlaceLevelUp(nlus.digitalContentGreen);
 						nlrd.setPlaceColor("orange");
+						totalScore = totalScore + 3;
 					}
 				} else {
 					nlrd.setPlaceLevelUp(nlus.digitalContentOrange);
 					nlrd.setPlaceColor("yellow");
+					totalScore = totalScore + 2;
 				}
 			} else {
 				nlrd.setPlaceLevelUp(nlus.digitalContentYellow);
 				nlrd.setPlaceColor("white");
+				totalScore = totalScore + 1;
 			}
 		} else {
 			nlrd.setPlaceLevelUp(nlus.digitalContentWhite);
@@ -331,25 +387,31 @@ public class NinjaValueAssignments {
 							if (ninjaData.getPathpurple() != null && ninjaData.getPathpurple().equals("yes")) {
 								nlrd.setPathLevelUp("Complete");
 								nlrd.setPathColor("purple");
+								totalScore = totalScore + 6;
 							} else {
 								nlrd.setPathLevelUp(nlus.digitalContentPurple);
 								nlrd.setPathColor("blue");
+								totalScore = totalScore + 5;
 							}
 						} else {
 							nlrd.setPathLevelUp(nlus.digitalContentBlue);
 							nlrd.setPathColor("green");
+							totalScore = totalScore + 4;
 						}
 					} else {
 						nlrd.setPathLevelUp(nlus.digitalContentGreen);
 						nlrd.setPathColor("orange");
+						totalScore = totalScore + 3;
 					}
 				} else {
 					nlrd.setPathLevelUp(nlus.digitalContentOrange);
 					nlrd.setPathColor("yellow");
+					totalScore = totalScore + 2;
 				}
 			} else {
 				nlrd.setPathLevelUp(nlus.digitalContentYellow);
 				nlrd.setPathColor("white");
+				totalScore = totalScore + 1;
 			}
 		} else {
 			nlrd.setPathLevelUp(nlus.digitalContentWhite);
@@ -369,26 +431,32 @@ public class NinjaValueAssignments {
 								} else {
 									nlrd.setOrganizationLevelUp(nlus.digitalContentPurple);
 									nlrd.setOrganizationColor("purple");
+									totalScore = totalScore + 6;
 								}
 							} else {
 								nlrd.setOrganizationLevelUp(nlus.digitalContentPurple);
 								nlrd.setOrganizationColor("blue");
+								totalScore = totalScore + 5;
 							}
 						} else {
 							nlrd.setOrganizationLevelUp(nlus.digitalContentBlue);
 							nlrd.setOrganizationColor("green");
+							totalScore = totalScore + 4;
 						}
 					} else {
 						nlrd.setOrganizationLevelUp(nlus.digitalContentGreen);
 						nlrd.setOrganizationColor("orange");
+						totalScore = totalScore + 3;
 					}
 				} else {
 					nlrd.setOrganizationLevelUp(nlus.digitalContentOrange);
 					nlrd.setOrganizationColor("yellow");
+					totalScore = totalScore + 2;
 				}
 			} else {
 				nlrd.setOrganizationLevelUp(nlus.digitalContentYellow);
 				nlrd.setOrganizationColor("white");
+				totalScore = totalScore + 1;
 			}
 		} else {
 			nlrd.setOrganizationLevelUp(nlus.digitalContentWhite);
@@ -404,42 +472,75 @@ public class NinjaValueAssignments {
 							if (ninjaData.getDirectionspurple() != null && ninjaData.getDirectionspurple().equals("yes")) {
 								if (ninjaData.getDirectionsbrown() != null && ninjaData.getDirectionspurple().equals("yes")) {
 									if (ninjaData.getDirectionsred() != null && ninjaData.getDirectionsred().equals("yes")) {
-										nlrd.setOrganizationLevelUp("Complete");
-										nlrd.setOrganizationColor("red");
+										nlrd.setDirectionsLevelUp("Complete");
+										nlrd.setDirectionsColor("red");
 									} else {
-										nlrd.setOrganizationLevelUp(nlus.digitalContentPurple);
-										nlrd.setOrganizationColor("brown");
+										nlrd.setDirectionsLevelUp(nlus.digitalContentPurple);
+										nlrd.setDirectionsColor("brown");
 									}
 									
 								} else {
-									nlrd.setOrganizationLevelUp(nlus.digitalContentPurple);
-									nlrd.setOrganizationColor("purple");
+									nlrd.setDirectionsLevelUp(nlus.digitalContentPurple);
+									nlrd.setDirectionsColor("purple");
+									totalScore = totalScore + 6;
 								}
 							} else {
-								nlrd.setOrganizationLevelUp(nlus.digitalContentPurple);
-								nlrd.setOrganizationColor("blue");
+								nlrd.setDirectionsLevelUp(nlus.digitalContentPurple);
+								nlrd.setDirectionsColor("blue");
+								totalScore = totalScore + 5;
 							}
 						} else {
-							nlrd.setOrganizationLevelUp(nlus.digitalContentBlue);
-							nlrd.setOrganizationColor("green");
+							nlrd.setDirectionsLevelUp(nlus.digitalContentBlue);
+							nlrd.setDirectionsColor("green");
+							totalScore = totalScore + 4;
 						}
 					} else {
-						nlrd.setOrganizationLevelUp(nlus.digitalContentGreen);
-						nlrd.setOrganizationColor("orange");
+						nlrd.setDirectionsLevelUp(nlus.digitalContentGreen);
+						nlrd.setDirectionsColor("orange");
+						totalScore = totalScore + 3;
 					}
 				} else {
-					nlrd.setOrganizationLevelUp(nlus.digitalContentOrange);
-					nlrd.setOrganizationColor("yellow");
+					nlrd.setDirectionsLevelUp(nlus.digitalContentOrange);
+					nlrd.setDirectionsColor("yellow");
+					totalScore = totalScore + 2;
 				}
 			} else {
-				nlrd.setOrganizationLevelUp(nlus.digitalContentYellow);
-				nlrd.setOrganizationColor("white");
+				nlrd.setDirectionsLevelUp(nlus.digitalContentYellow);
+				nlrd.setDirectionsColor("white");
+				totalScore = totalScore + 1;
 			}
 		} else {
-			nlrd.setOrganizationLevelUp(nlus.digitalContentWhite);
-			nlrd.setOrganizationColor("NA");
+			nlrd.setDirectionsLevelUp(nlus.digitalContentWhite);
+			nlrd.setDirectionsColor("NA");
 		}
-
+		
+		totalScore = (totalScore/12);
+		
+		
+		if (totalScore == 1) {
+			nlrd.setAverageColor("white");
+		} else { 
+			if (totalScore == 2) {
+				nlrd.setAverageColor("yellow");
+			} else {
+				if (totalScore == 3) {
+						nlrd.setAverageColor("orange");
+					} else {
+						if (totalScore == 4) {
+							nlrd.setAverageColor("green");
+							} else {
+								if (totalScore == 5) {
+									nlrd.setAverageColor("blue");
+									} else {
+										if (totalScore == 6) {
+											nlrd.setAverageColor("purple");
+										}
+									}
+							}
+					}
+			}
+		}
+	
 		return nlrd;
 	}
 		

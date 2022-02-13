@@ -157,6 +157,10 @@
 						//Set the UserId
 						$("#user").text(response.userId);
 						
+						//AVERAGE
+						var img = document.getElementById('currentaveragebeltimage');
+					    img.src = "/images/"+response.averageColor+"beltimage.png";
+						
 						//SMALLGROUP
 						var img = document.getElementById('smallgroupbeltimage');
 					    img.src = "/images/"+response.smallGroupColor+"beltimage.png";
@@ -170,42 +174,52 @@
 						//DATA
 						var img = document.getElementById('databeltimage');
 					    img.src = "/images/"+response.dataColor+"beltimage.png";
+						$("#datalevelupvalue").text(response.dataLevelUp);
 						
 						//STUDENT CHOICE
 						var img = document.getElementById('studentchoicebeltimage');
 					    img.src = "/images/"+response.studentChoiceColor+"beltimage.png";
+						$("#studentchoicelevelupvalue").text(response.studentChoiceLevelUp);
 	
 						//INDEPENEDENT STUDIO
 						var img = document.getElementById('independentstudiobeltimage');
 					    img.src = "/images/"+response.independentStudioColor+"beltimage.png";
+						$("#independentstudiolevelupvalue").text(response.independentStudioLevelUp);
 						
 						//DIGITAL CONTENT
 						var img = document.getElementById('digitalcontentbeltimage');
 					    img.src = "/images/"+response.digitalContentColor+"beltimage.png";
+						$("#digitalcontentlevelupvalue").text(response.digitalContentLevelUp);
 				
 						//FUTURE READY
 						var img = document.getElementById('futurereadybeltimage');
 					    img.src = "/images/"+response.futureReadyColor+"beltimage.png";
-	
+						$("#futurereadylevelupvalue").text(response.futureReadyLevelUp);
+		
 						//PACE
 						var img = document.getElementById('pacebeltimage');
 					    img.src = "/images/"+response.paceColor+"beltimage.png";
+						$("#pacelevelupvalue").text(response.paceLevelUp);
 			
 						//PLACE
 						var img = document.getElementById('placebeltimage');
 					    img.src = "/images/"+response.placeColor+"beltimage.png";
+						$("#placelevelupvalue").text(response.placeLevelUp);
 	
 						//PATH
 						var img = document.getElementById('pathbeltimage');
 					    img.src = "/images/"+response.pathColor+"beltimage.png";
+						$("#pathlevelupvalue").text(response.pathLevelUp);
 	
 						//ORGANIZATION
 						var img = document.getElementById('organizationbeltimage');
 					    img.src = "/images/"+response.pathColor+"beltimage.png";
+						$("#organizationlevelupvalue").text(response.organizationLevelUp);
 	
 						//DIRECTIONS
 						var img = document.getElementById('directionsbeltimage');
 					    img.src = "/images/"+response.pathColor+"beltimage.png";
+						$("#directionslevelupvalue").text(response.directionsLevelUp);
 	
                     }}
                 });

@@ -40,7 +40,10 @@ public class NinjaReportData implements Serializable {
 	private String organizationLevelUp;
 	private String checklistColor;
 	private String checklistLevelUp;
+	private String averageColor;
 	private String notes;
+	
+	
 	public Date getDate() {
 		return date;
 	}
@@ -143,7 +146,6 @@ public class NinjaReportData implements Serializable {
 	public void setChecklistColor(String checklistColor) {
 		this.checklistColor = checklistColor;
 	}
-	
 	public String getSmallGroupLevelUp() {
 		return smallGroupLevelUp;
 	}
@@ -218,6 +220,12 @@ public class NinjaReportData implements Serializable {
 	}
 	public String getNotes() {
 		return notes;
+	}
+	public String getAverageColor() {
+		return averageColor;
+	}
+	public void setAverageColor(String averageColor) {
+		this.averageColor = averageColor;
 	}
 	public void setNotes(String notes) {
 		this.notes = notes;
