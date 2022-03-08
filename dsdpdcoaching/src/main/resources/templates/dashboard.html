@@ -69,7 +69,7 @@
 												<br />
 
 												<div class="col-md-12">
-													<div class="form-group col-md-3" id="schoolIdGroup" style="padding-top: 10px;">
+													<div class="form-group col-md-4" id="schoolIdGroup" style="padding-top: 10px;">
 														<label><b>School</b></label>
 		                                                	<select id="schoolId" class="form-control" th:field="*{schoolList}">
 			                                                	<option value="">Please Select</option>
@@ -79,11 +79,6 @@
 			                                                	</option>
 															</select>
 													</div>
-													
-													
-													<!-- add the spacer div -->
-											    	<div class="col-md-1"></div>
-													
 													
 													<!-- phase one value percentages -->
 													<div>
@@ -130,39 +125,31 @@
 												     
 												        <div class="row">
 													        <div class="form-group col-md-6">
-														        <label class="control-label" style="margin:5px; font-size:20px; padding-top:0px; float:left;">Total RUBRIC Items:</label>
-														        <input class="col-md-3" type="text" readonly="readonly" style="border:0px; font-size:20px; margin-top:2px;" id="nbrTeachers"/>									  
+														        <label class="control-label" style="margin:5px; font-size:20px; padding-top:0px; float:left;">Total RUBRICS:</label>
+														        <input class="col-md-3" type="text" readonly="readonly" style="width: 75px; border:0px; font-size:20px; margin-top:2px;" id="nbrTeachers"/>									  
 														    </div>
 														</div>
 														
 														<div class="row">
 														   	<div class="form-group col-md-6">
-														        <label class="control-label" style="margin:5px; padding-top:0px; float:left;">Phase 1 RUBRIC Items:</label>
-														        <input type="text" readonly="readonly" style="border: 0px; font-size:medium; margin-top:2px;" id="phase1Teachers"/>
+														        <label class="control-label" style="margin:5px; padding-top:0px; float:left;">Working At Phase 1:</label>
+														        <input type="text" readonly="readonly" style="width: 50px; border: 0px; font-size:medium; margin-top:2px;" id="phase1Teachers"/>
 														    </div>
 														</div>
 														
 														<div class="row">
 														    <div class="form-group col-md-6">
-														        <label class="control-label" style="margin:5px; padding-top:0px; float:left;">Phase 2 RUBRIC Items:</label>
-														        <input type="text" readonly="readonly" style="border: 0px; font-size:medium; margin-top:2px;" id="phase2Teachers"/>
+														        <label class="control-label" style="margin:5px; padding-top:0px; float:left;">Working at Phase 2:</label>
+														        <input type="text" readonly="readonly" style="width: 50px; border: 0px; font-size:medium; margin-top:2px;" id="phase2Teachers"/>
 														    </div>
 														</div>
 														    
 														<div class="row">
 														    <div class="form-group col-md-6">
-														        <label class="control-label" style="margin:5px; padding-top:0px; float:left;">Phase 3 RUBRIC Items:</label>
-																<input type="text" readonly="readonly" style="border: 0px; font-size:medium; margin-top:2px;" id="phase3Teachers"/>
+														        <label class="control-label" style="margin:5px; padding-top:0px; float:left;">Working at Phase 3:</label>
+																<input type="text" readonly="readonly" style="width: 50px; border: 0px; font-size:medium; margin-top:2px;" id="phase3Teachers"/>
 														    </div>
 														</div>
-														
-													    <div class="row">
-														    <div class="form-group col-md-7">
-														        <label class="control-label" style="margin:5px; padding-top:0px; float:left;">RUBRIC Items Not Observed:</label>
-													            <input type="text" readonly="readonly" style="border: 0px; font-size:medium; margin-top:2px;" id="notObserved"/>
-														    </div>
-											    		</div>
-												    	
 											</div>
 										</div>
 									</div>
@@ -171,21 +158,72 @@
 
 									<div class="row">
 										<div class="col-md-11">
-											<div class="panel panel-default" id="rubricGraph" style="display: none;">
+											<div class="panel panel-default">
 												<div class="panel-heading">
-													<div id="icons"></div>
 													<h3 class="panel-title">
-														<i class="fa fa-bar-chart-o fa-fw"></i><b>School Rubric Values</b>
+														<i class="fa fa-chart-pie"></i><b> School Rubric Statistics - Select Date Range to View Graph</b>
 													</h3>
 												</div>
-												<div class="panel-body">
-													<div id="container" style="width: 100%; height: 500px;"></div>
+												<div class="form-group col-md-3" id="schoolIdGraph" style="margin-top: 25px;">
+													<label><b>School</b></label>
+	                                                	<select id="schoolIdGraph" class="form-control" th:field="*{schoolList}">
+		                                                	<option value="">Please Select</option>
+		                                                	<option th:each="school: ${schoolList}" 
+		                                                			th:value="${school.id}" 
+		                                                			th:text="${school.name}">
+		                                                	</option>
+														</select>
+												</div>
+											
+												<div class="col-md-3">
+													<div class="form-group" style="margin-top: 25px;">
+														<label>Start Date</label>
+														<input th:required="true" type="text" id="startDate" name="startDate" class="form-control" placeholder="Start Date" />
+													</div>
+												</div>
+											
+												<div class="col-md-3">
+													<div class="form-group" style="margin-top: 25px;">
+														<label>End Date</label>
+														<input th:required="true" type="text" id="endDate" name="endDtate" class="form-control" placeholder="End Date" />
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 									
+									<div class="row">
+										<div class="col-md-11">
+											<div class="col-md-3"></div>
+											<div class="col-md-3">
+												<button name="button" type="button" class="btn btn-primary btn-md btn-block">Display Report</button>
+											</div>
+											<div class="col-md-3"></div>
+										</div>
+									</div>
 									
+									<hr />
+									
+									<div class="row">
+										<div class="col-md-11">
+											<div class="col-md-3"></div>
+											<div class="col-md-3" id='loadingmessage' align="center" style="display:none">
+												<i class="dot-spinner-48x48"></i>
+											</div>
+											<div class="col-md-3"></div>
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-11">
+											<div class="panel panel-default">
+												<div class="panel-body col-md-11" id="rubricGraph" style="display: none;">
+													<div id="container" style="width: 100%; height: 500px;"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+										
 								</div>
 							</div>
 							<div th:replace="fragments/footer :: footer"></div>

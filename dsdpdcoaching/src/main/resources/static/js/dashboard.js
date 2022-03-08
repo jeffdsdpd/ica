@@ -2,327 +2,140 @@ $(document)
 		.ready(
 				function() {
 					
-					var school = 0;
+					clearRubricFields();
+					clearRubricCounts();
 					var selectedSchoolId = 0;
-					var rubricDate = "";
 					
-					//Since this is external js file, have to go get user and school data for the dashboard page
-					$.ajax({
-						type : "GET",
-						url : "getDashboardPhaseValuesForRequiredSchools",
-						dataType : "json",
-						success : function(response) {
-
-							var rubricSum = response.phase1
-									+ response.phase2
-									+ response.phase3
-									+ response.notObserved;
-
-							
-								// RE-Build the google pie chart based on new selected school
-								google.charts
-										.load(
-												"current",
-												{
-													packages : [ "corechart" ]
-												});
-								google.charts
-										.setOnLoadCallback(drawChart);
-								function drawChart() {
-									var data = google.visualization
-											.arrayToDataTable([
-													[
-															'Task',
-															'Hours per Day' ],
-													[
-															'Phase 1',
-															parseInt(response.phase1) ],
-													[
-															'Phase 2',
-															parseInt(response.phase2) ],
-													[
-															'Phase 3',
-															parseInt(response.phase3) ],
-															
-													[		'Not Observed',
-															parseInt(response.notObserved) ],
-															]);
-
-									var options = {
-										title : 'Percentage of Teachers in each Phase',
-										sliceVisibilityThreshold:0,
-										titleTextStyle : {
-											color : "black",
-											fontSize : 16,
-											bold : true
-										},
-
-										slices : {
-											0 : {
-												color : '#5DE3FA', // gray
-												textStyle : {
-													color : 'black',
-													bold : true,
-													fontSize : 16
-												},
-											},
-
-											1 : {
-												color : '#e57106', // turquoise
-												textStyle : {
-													color : 'black',
-													bold : true,
-													fontSize : 16
-												},
-											},
-
-											2 : {
-												color : '#778899', // -
-												// orange
-												textStyle : {
-													color : 'black',
-													bold : true,
-													fontSize : 16
-												},
-											},
-											3 : {
-												color : '#696969', 
-												textStyle : {
-													color : 'black',
-													bold : true,
-													fontSize : 16
-												},
-											}
-										},
-
-										is3D : true,
-
-										chartArea : {
-											left : 100,
-											top : 50
-										},
-
-										legend : {
-											position : 'labeled',
-											textStyle : {
-												color : 'black',
-												fontSize : 16
-											}
-										}
-
-									};
-
-								/*
-									var chart = new google.visualization.PieChart(
-											document
-													.getElementById('pieContainer'));
-									chart
-											.draw(
-													data,
-													options);
-													*/
-								// end of building the google pie chart
-								
-								}
-								
-								// Place values in the teacher count fields
-								$("#nbrTeachers").val(rubricSum)
-								$("#phase1Teachers").val(response.phase1)
-								$("#phase2Teachers").val(response.phase2)
-								$("#phase3Teachers").val(response.phase3)
-								$("#notObserved").val(response.notObserved)
-								
-								
-								// create the percentages for each phase to display
-								$("#phaseonepercent").html(Math.floor((response.phase1/rubricSum) * 100)+"%")
-								$("#phaseonepercent").css({ 'font-size': '50px' });
-								
-								$("#phasetwopercent").html(Math.floor((response.phase2/rubricSum) * 100)+"%")
-								$("#phasetwopercent").css({ 'font-size': '50px' });
-								
-								$("#phasethreepercent").html(Math.floor((response.phase3/rubricSum) * 100)+"%")
-								$("#phasethreepercent").css({ 'font-size': '50px' });
-								
-							
-						}
-					});
+					//date functions for displaying a calendar with start date < end date
+					$(function () {
+				            $("#startDate").datepicker({
+				                onSelect: function (selected) {
+									clearRubricFields();
+									document.getElementById("rubricGraph").style.display = "none";
+									$("#container").fadeOut("slow");
+					                var dt = new Date(selected);
+					                $("#endDate").datepicker("option", "minDate", dt);
+				               	}
+				            });
+				            $("#endDate").datepicker({
+				                onSelect: function (selected) {
+									clearRubricFields();
+									document.getElementById("rubricGraph").style.display = "none";
+									$("#container").fadeOut("slow");
+				                    var dt = new Date(selected);
+				                    $("#startDate").datepicker("option", "maxDate", dt);
+				                }
+				            });
+				        });
 					
 					
-					/*Don't think we need this... can use it for future if needed
-					// get the getTotalNbrTeachersByUser()
-					$.ajax({
-						type : "GET",
-						url : "getTotalNbrTeachersByUser",
-						dataType : "json",
-						success : function(response) {
-							console.log(response)
-						}
-					}) // end of the getTotalNbrTeachersByUser()
-					
-					*/
-					
-
+					//User has selected a single school from the Dropdown List
 					$("#schoolId").change(function() {
 						clearRubricFields();
+						clearRubricCounts();
+						
 						selectedSchoolId = $("#schoolId :selected").val();
 						$.ajax({
-									type : "GET",
-									url : "getDashboardPhaseValuesBySchool",
-									data : {
-										schoolId : selectedSchoolId
-									},
-									dataType : "json",
-									success : function(response) {
+							type : "GET",
+							// url : "getDashboardPhaseValuesBySchool",
+							url : "getDashboardRubricValuesBySchool",
+							data : { schoolId : selectedSchoolId },
+							dataType : "json",
+							success : function(response) {
 
-										var rubricSum = response.phase1
-												+ response.phase2
-												+ response.phase3
-												+ response.notObserved;
-
-											// RE-Build the google pie chart based on new selected school
-											google.charts
-													.load(
-															"current",
-															{
-																packages : [ "corechart" ]
-															});
-											google.charts
-													.setOnLoadCallback(drawChart);
-											function drawChart() {
-												var data = google.visualization
-														.arrayToDataTable([
-																[
-																		'Task',
-																		'Hours per Day' ],
-																[
-																		'Phase 1',
-																		parseInt(response.phase1) ],
-																[
-																		'Phase 2',
-																		parseInt(response.phase2) ],
-																[
-																		'Phase 3',
-																		parseInt(response.phase3) ],
-																		
-																[		'Not Observed',
-																		parseInt(response.notObserved) ],
-																		]);
-
-												var options = {
-													title : 'Percentage of Teachers in each Phase',
-													sliceVisibilityThreshold:0,
-													titleTextStyle : {
-														color : "black",
-														fontSize : 16,
-														bold : true
-													},
-
-													slices : {
-														0 : {
-															color : '#5DE3FA', // gray
-															textStyle : {
-																color : 'black',
-																bold : true,
-																fontSize : 16
-															},
-														},
-
-														1 : {
-															color : '#e57106', // turquoise
-															textStyle : {
-																color : 'black',
-																bold : true,
-																fontSize : 16
-															},
-														},
-
-														2 : {
-															color : '#778899', // -
-															// orange
-															textStyle : {
-																color : 'black',
-																bold : true,
-																fontSize : 16
-															},
-														},
-														
-														
-														3 : {
-															color : '#696969', 
-															textStyle : {
-																color : 'black',
-																bold : true,
-																fontSize : 16
-															},
-														}
-													},
-
-													is3D : true,
-
-													chartArea : {
-														left : 100,
-														top : 50
-													},
-
-													legend : {
-														position : 'labeled',
-														textStyle : {
-															color : 'black',
-															fontSize : 16
-														}
-													}
-
-												};
-
-												/*
-									var chart = new google.visualization.PieChart(
-											document
-													.getElementById('pieContainer'));
-									chart
-											.draw(
-													data,
-													options);
-													*/
-								// end of building the google pie chart
+										rubricSum = response.length;
+										
+										 $.each(response, function(i, interactionObject) {
+											if (interactionObject.rubricScore < 11) {
+												phaseOne = phaseOne + 1;
+											} else {
+												if (interactionObject.rubricScore < 21) {
+													phaseTwo = phaseTwo + 1;
+											} else {
+												phaseThree = phaseThree + 1;
+											}}});
+										
 								
-								}
-								
-											
-											// Place values in the teacher count fields
-											$("#nbrTeachers").val(rubricSum)
-											$("#phase1Teachers").val(response.phase1)
-											$("#phase2Teachers").val(response.phase2)
-											$("#phase3Teachers").val(response.phase3)
-											$("#notObserved").val(response.notObserved)
-											
-											
-											// create the percentages for each phase to display
-											$("#phaseonepercent").html(Math.floor((response.phase1/rubricSum) * 100)+"%")
-											$("#phaseonepercent").css({ 'font-size': '50px' });
-											
-											$("#phasetwopercent").html(Math.floor((response.phase2/rubricSum) * 100)+"%")
-											$("#phasetwopercent").css({ 'font-size': '50px' });
-											
-											$("#phasethreepercent").html(Math.floor((response.phase3/rubricSum) * 100)+"%")
-											$("#phasethreepercent").css({ 'font-size': '50px' });
-								
-								
+									// Place values in the teacher count fields
+									$("#nbrTeachers").val(rubricSum)
+									$("#phase1Teachers").val(phaseOne)
+									$("#phase2Teachers").val(phaseTwo)
+									$("#phase3Teachers").val(phaseThree)
+									
+									
+									// create the percentages for each phase to display
+									if (phaseOne > 0) {
+										$("#phaseonepercent").html(Math.floor((phaseOne/rubricSum) * 100)+"%")
+										$("#phaseonepercent").css({ 'font-size': '50px' })}
+										else {
+											$("#phaseonepercent").html("No Data");
+											$("#phaseonepercent").css({ 'font-size': '25px' })
+										};
+									
+									if (phaseTwo > 0) {
+										$("#phasetwopercent").html(Math.floor((phaseTwo/rubricSum) * 100)+"%")
+										$("#phasetwopercent").css({ 'font-size': '50px' })}
+										else {
+											$("#phasetwopercent").html("No Data");
+											$("#phasetwopercent").css({ 'font-size': '25px' })
+										}
+									if (phaseThree > 0) {
+										$("#phasethreepercent").html(Math.floor((phaseThree/rubricSum) * 100)+"%")
+										$("#phasethreepercent").css({ 'font-size': '50px' })}
+										else {
+											$("#phasethreepercent").html("No Data");
+											$("#phasethreepercent").css({ 'font-size': '25px' })
+										}
+									
 									}
 								}); // end of ajax getDashboardPhaseValuesBySchool
 
-									
+					}); // end of $("#schoolId").change(function()
+		
 					
+		//Display Report Button clicked			
+		$("button[name='button']").click(validateForm);
+		
+		
+		//School changed for Bar Graph - clear the graph
+		$("#schoolIdGraph").change(function() {
+			document.getElementById("rubricGraph").style.display = "none";
+			$("#container").fadeOut("slow");
+		});
+				
+			
+		function validateForm() {
+				schoolIdForGraph = $("#schoolIdGraph :selected").val();
+				var sd =  $("#startDate").datepicker({ dateFormat: 'dd,MM,yyyy' }).val();
+				var ed =  $("#endDate").datepicker({ dateFormat: 'dd,MM,yyyy' }).val();
+				clearRubricFields();
+				clearRubricCounts();
+				
+				document.getElementById("rubricGraph").style.display = "none";
+				$("#container").fadeOut("slow");
+				displayChart();
+		};
+
+
+					function displayChart() {
 					// This is the beginning of building the 3d Bar Graph
+					
+					//Start and show the spinner since the ajax call has started to display the bar graph
+					document.getElementById("loadingmessage").style.display = "inline";
+					
 					$.ajax({
 		                type: "GET",
-		                url:"getRubricValuesBySchoolForDashboard",
-		                data:{schoolId:selectedSchoolId},
+		                url:"getRubricValuesForAssignedSchoolsForDashboard",
+		                data:{schoolId:schoolIdForGraph},
 		                dataType: "json",
 		                success: function (response) {
+					
+							//Stop and hide the spinner since the ajax call is done
+							document.getElementById("loadingmessage").style.display = "none";
+							document.getElementById("rubricGraph").style.display = "inline";
+							$("#container").fadeIn("slow");
+							
 		                	 $.each(response, function(i, interactionObject) {
-		                		 
-
-		                		 document.getElementById("rubricGraph").style.display = "inline";
 
 		                		 if ((interactionObject.planning) != null) {
 		                		 if ((interactionObject.planning) == ("Whole group timer")) {
@@ -563,113 +376,11 @@ $(document)
 		                 		        color: '#778899'
 		                		    }]
 		                		});
-		                }}); // This is the end of building the 3d Bar Graph
-					
-					}); // end of $("#schoolId").change(function()
-					
-					
-					//Check if this is a Hoke User and display the hoke nav
-					$("#schoolId option").each(function() {
-						if ($(this).text().indexOf("Hoke") != -1) {
-							$('.hokemenu').css('display', 'inline');
-						}});
+		                }})}; // This is the end of building the 3d Bar Graph
 
+
+				
 				}); // end of the Ready Function
-
-
-// start of building the google pie chart
-google.charts.load("current", {
-	packages : [ "corechart" ]
-});
-google.charts.setOnLoadCallback(drawChart);
-
-function drawChart() {
-	var data = google.visualization.arrayToDataTable([
-			[ 'Task', 'Hours per Day' ],
-			[ 'Phase 1', parseInt('${phaseValues.phase1}') ],
-			[ 'Phase 2', parseInt('${phaseValues.phase2}') ],
-			[ 'Phase 3', parseInt('${phaseValues.phase3}') ],
-			[ 'Not Observed', parseInt('${phaseValues.notObserved}') ]
-			]);
-
-	var options = {
-		title : 'Percentage of Teachers in each Phase',
-		sliceVisibilityThreshold:0,
-		titleTextStyle : {
-			color : "black",
-			fontSize : 15,
-			bold : true
-		},
-
-		slices : {
-			0 : {
-				color : '#5DE3FA', // gray
-				textStyle : {
-					color : 'black',
-					bold : true,
-					fontSize : 15
-				},
-			},
-
-			1 : {
-				color : '#e57106', // copper
-				textStyle : {
-					color : 'black',
-					bold : true,
-					fontSize : 15
-				},
-			},
-
-			2 : {
-				color : '#778899', // - orange
-				textStyle : {
-					color : 'black',
-					bold : true,
-					fontSize : 15
-				},
-			},
-			
-			
-			3 : {
-				color : '#696969', 
-				textStyle : {
-					color : 'black',
-					bold : true,
-					fontSize : 10
-				},
-			}
-		},
-
-		is3D : true,
-
-		chartArea : {
-			left : 100,
-			top : 50
-		},
-
-		legend : {
-			position : 'labeled',
-			textStyle : {
-				color : 'black',
-				fontSize : 16
-			}
-		}
-
-	};
-
-	/*
-									var chart = new google.visualization.PieChart(
-											document
-													.getElementById('pieContainer'));
-									chart
-											.draw(
-													data,
-													options);
-													*/
-								// end of building the google pie chart
-								}
-								
-
 
 
 $(function() {
@@ -717,5 +428,10 @@ function clearRubricFields() {
 	technologyPhaseTwo = 0;
 	technologyPhaseThree = 0;
 	technologyNE = 0;
-	
+};
+
+function clearRubricCounts() {
+	phaseOne = 0;
+	phaseTwo = 0;
+	phaseThree = 0;
 };
