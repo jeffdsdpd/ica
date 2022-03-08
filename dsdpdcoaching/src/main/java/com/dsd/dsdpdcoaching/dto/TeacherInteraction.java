@@ -21,7 +21,7 @@ public class TeacherInteraction implements Serializable {
 	private String date;
 	private String interactionMethod;
 	private String userid;
-	private int rubricscore;
+	private int phase;
 	
 	public Long getId() {
         return id;
@@ -55,10 +55,10 @@ public class TeacherInteraction implements Serializable {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public int getRubricscore() {
-		return rubricscore;
+	public int getPhase() {
+		return phase;
 	}
-	public void setRubricscore(int rubricscore) {
-		this.rubricscore = rubricscore;
+	public void setPhase(int phase) {
+		this.phase = phase;
 	}
 }

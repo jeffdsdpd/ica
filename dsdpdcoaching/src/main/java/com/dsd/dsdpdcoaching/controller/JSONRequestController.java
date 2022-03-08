@@ -172,6 +172,13 @@ public class JSONRequestController extends HttpServlet {
 		return rubricDao.getRubricValuesBySchoolForDashboard(schoolId);
 	}
 	
+	//Called from dashboard.js to get the data for the 3d bar graph for the schools assigned to the user
+	@GetMapping(value="/getRubricValuesForAssignedSchoolsForDashboard")
+	//@ResponseBody
+	public List<Rubric> getRubricValuesForAssignedSchoolsForDashboard(@RequestParam Integer schoolId) {	
+		return rubricDao.getRubricValuesForAssignedSchoolsForDashboard(schoolId);
+	}
+	
 	//Called from teacherProgressionReport.js to get the data for the graph
 	@GetMapping(value="/getTeacherProgressionReportData")
 	@ResponseBody
@@ -243,6 +250,30 @@ public class JSONRequestController extends HttpServlet {
 			 pv.setPhase3(0);
 		 }
 		 return pv;
+	}
+	
+	//Called from dashboard.js
+	@GetMapping(value="/getDashboardRubricValuesForAllSchools")
+	@ResponseBody
+	public List<Rubric> getDashboardRubricValuesForAllSchools(HttpServletRequest request) {	
+		User user = new User();
+		user = userDao.getUserByUsername(request.getUserPrincipal().getName());
+		List<Rubric> lr;
+		
+		if(request.isUserInRole("admin")) {
+			lr =  rubricDao.getDashboardRubricValuesForAllSchools();
+		} else {
+			lr =  rubricDao.getDashboardRubricValuesForRequiredSchools(user.getId().toString());
+		}
+		return lr;
+	}
+	
+	//Called from dashboard.js
+	@GetMapping(value="/getDashboardRubricValuesBySchool")
+	@ResponseBody
+	public List<Rubric> getDashboardRubricValuesBySchool(@RequestParam Integer schoolId) {	
+		List<Rubric> lr =  rubricDao.getDashboardRubricValuesBySchool(schoolId);
+		return lr;
 	}
 	
 	//Called from rubricReport.js to get the appropriate levelup data to display

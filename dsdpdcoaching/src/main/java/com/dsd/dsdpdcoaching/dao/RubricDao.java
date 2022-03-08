@@ -566,6 +566,57 @@ public void updateHokeRubricLevelupItems(String[] checked, String[] unchecked) {
 	    			.getResultList();
 		return rubricList;
 	}
+	
+	public List<Rubric> getRubricValuesForAssignedSchoolsForDashboard(Integer school) {
+		//Called by the JSONRequestController to get the rubic data to create the 3d bar graph on the dashboard
+		//List<String> schoolNames = new ArrayList<String>();
+		//schoolNames.addAll(school);
+		
+		@SuppressWarnings("unchecked")
+		/*
+		List<Rubric> rubricList =  entityManager.createQuery("from RUBRIC r WHERE timeObserved = (SELECT MAX(timeObserved) FROM RUBRIC "
+				+ "where schoolid in (select id FROM SCHOOLS where name in (:school)) and observed = 'Observed Classroom' and teacherId = r.teacherId group by teacherId) "
+				+ "and schoolid in (select id FROM SCHOOLS where name in (:school)) and observed = 'Observed Classroom' group by teacherId")
+	    			//.setParameter("schoolList", Arrays.asList("Cypress Andre", "Cypress Kirk"))
+	    			//.setParameter("schoolList", Arrays.asList(schools))
+	    			.setParameter("school", school)
+	    			.getResultList();
+		*/
+		
+		List<Rubric> rubricList =  entityManager.createQuery("from RUBRIC r WHERE timeObserved = (SELECT MAX(timeObserved) FROM RUBRIC "
+				+ "where schoolid = :school) and observed = 'Observed Classroom' and teacherId = r.teacherId group by teacherId) "
+				+ "and schoolid = :school) and observed = 'Observed Classroom' group by teacherId")
+	    			//.setParameter("schoolList", Arrays.asList("Cypress Andre", "Cypress Kirk"))
+	    			//.setParameter("schoolList", Arrays.asList(schools))
+	    			.setParameter("school", school)
+	    			.getResultList();
+		
+		return rubricList;
+				
+	}
+	
+	//Called by the JSONRequestController to select the rubrics to display on the rubricReport.html by school selected
+	public List<Rubric> getDashboardRubricValuesForAllSchools() {
+		Query query = entityManager.createQuery("from RUBRIC", Rubric.class);
+		List<Rubric> rubrics = query.getResultList();
+	    return rubrics;
+	}
+	
+	//Called by the JSONRequestController to select the rubrics to display on the rubricReport.html by school selected
+	public List<Rubric> getDashboardRubricValuesForRequiredSchools(String userid) {
+		Query query = entityManager.createQuery("from RUBRIC where userid = :userid", Rubric.class);
+		query.setParameter("userid", userid);
+		List<Rubric> rubrics = query.getResultList();
+	    return rubrics;
+	}
+	
+	//Called by the JSONRequestController to select the rubrics to display on the rubricReport.html by school selected
+	public List<Rubric> getDashboardRubricValuesBySchool(Integer schoolId) {
+		Query query = entityManager.createQuery("from RUBRIC where schoolid = :schoolId", Rubric.class);
+		query.setParameter("schoolId", schoolId);
+		List<Rubric> rubrics = query.getResultList();
+	    return rubrics;
+	}
 
 
 }

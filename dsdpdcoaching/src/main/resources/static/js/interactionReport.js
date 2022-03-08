@@ -19,11 +19,10 @@ $(document).ready(function(){
                 	headerTr$ = $('<thead style="background-color:#328CC8;">' +
                    					'<tr>' +
                     					'<th class="col-lg-2" style="color:white; font-size:16px;">Teacher</th>' +
-                    					'<th class="col-lg-1" style="color:white; font-size:16px;">Points</th>' +
                     					'<th class="col-lg-1" style="color:white; font-size:16px;">Phase</th>' +
-                    					'<th class="col-lg-1" style="color:white; font-size:16px;">Date</th>' +
-                    					'<th class="col-lg-1" style="color:white; font-size:16px;">Data</th>' +
-                    					'<th class="col-lg-1" style="color:white; font-size:16px;">Coach</th>' +
+                    					'<th class="col-lg-2" style="color:white; font-size:16px;">Date</th>' +
+                    					'<th class="col-lg-2" style="color:white; font-size:16px;">Data</th>' +
+                    					'<th class="col-lg-2" style="color:white; font-size:16px;">Coach</th>' +
                     					'<th class="col-lg-1" style="display:none; color:white; font-size:16px;">DBID</th>' +
                    					'</tr>' +
                   				'</thead><tbody>');
@@ -34,18 +33,10 @@ $(document).ready(function(){
                 
 	                	//Start building the table
 	                	$.each(response, function(value, key) {
-	                		var phase = null;
-	                		if (key.rubricscore <= 10) {
-	                			phase = 1;
-	                		} else if (key.rubricscore > 10 && key.rubricscore <= 20) {
-	                			phase = 2;
-	                		} else if (key.rubricscore > 20 && key.rubricscore <= 40) {
-	                			phase = 3;
-	                		}
+	                		
 	                		trHTML += "<tr><td style='vertical-align:top; font-size:12px'>" +
 	                		key.name + '</td><td style="vertical-align:top; font-size:12px">' +
-	                		key.rubricscore + '</td><td style="vertical-align:top; font-size:12px">' +
-	                		phase + '</td><td style="vertical-align:top; font-size:12px">' +
+	                		key.phase + '</td><td style="vertical-align:top; font-size:12px">' +
 	                		key.date + '</td><td style="vertical-align:top; font-size:12px">' +
 	                		key.interactionMethod + '</td><td style="vertical-align:top; font-size:12px">' +
 	                		key.userid + '</td><td style="display:none; vertical-align:top; font-size:12px">' +

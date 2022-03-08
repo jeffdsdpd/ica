@@ -145,7 +145,7 @@ $(document).ready(function() {
 
 					if ((interactionObject.studentLearning) != null) {
                		 if ((interactionObject.studentLearning) == (1)) {
-               			 studentLearningContentPhaseOne += 1; }
+               			 studentLearningPhaseOne += 1; }
                		 	else if ((interactionObject.studentLearning) == (2)) {
                		 		studentLearningPhaseTwo += 1; }
                		 	else if ((interactionObject.studentLearning) == (3)) {
