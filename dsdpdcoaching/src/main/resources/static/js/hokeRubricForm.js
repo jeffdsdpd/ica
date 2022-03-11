@@ -60,7 +60,6 @@ $(document).ready(
 					schoolId : { required : true },
 					teacherId : { required : true },
 					entryDate : { required : true },
-					timeObserved : { required : true },
 					observed : { required : true },
 					checklists : { required : true },
 					digitalcontent : { required : true },
@@ -76,7 +75,6 @@ $(document).ready(
 					schoolId : "Required",
 					teacherId : "Required",
 					entryDate : "Required",
-					timeObserved : "Required",
 					observed : "Required",
 					checklists : "Required",
 					digitalcontent : "Required",
@@ -97,10 +95,3 @@ $(function() {
     $("#entryDate").datepicker({maxDate: new Date});
   });
 
-$(function() {
-	$("#timeObserved").timepicker({
-		'minTime' : '7:00am',
-		'maxTime' : '5:00pm',
-		'step' : 15
-	});
-});

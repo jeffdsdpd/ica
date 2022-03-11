@@ -9,3 +9,6 @@
 # Maven
 log/
 target/
+/jeffkish_tokens/
+/marciakish_tokens/
+/.metadata/

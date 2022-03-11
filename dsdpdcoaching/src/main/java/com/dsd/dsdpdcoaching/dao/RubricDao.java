@@ -423,29 +423,27 @@ public class RubricDao {
 	//Called by the JSONRequestController to get the MIN and MAX data to for the teacherProgressionReport.html
 	public TeacherProgressionReportData getTeacherProgressionReportData(Integer sid, Integer tid) {
 
-		String sqlMin = "SELECT R.ID, R.LEVELUP, R.DATE, R.OBSERVED, R.QUESTIONS, R.RUBRICNOTES, R.SCHOOLID, R.TEACHERID, R.TIMEOBSERVED, " +
-				" R.USERID, R.PLANNING, R.ASSESSMENTANDDATA, R.PATH, R.PLACE, R.PACE, R.CLASSROOMMANAGEMENT, R.TEACHERROLE, " +
-				" R.STUDENTENGAGEMENT, R.STUDENTCOLLABORATION, R.TECHNOLOGY, R.SMALLGROUP, R.CHECKLISTS, R.RUBRICSCORE " +
-				" FROM RUBRIC R " +
+		String sqlMin = "SELECT R.ID, R.SCHOOLID, R.TEACHERID, R.USERID, R.DATE, R.OBSERVED, R.CHECKLISTS, R.DIGITALCONTENT, R.SEATING, R.TIMING, " +
+				" R.DIFFERENTIATION, R.STUDENTGROUPS, R.DATA, R.REFLECTION, R.STUDENTLEARNING, R.PHASE, R.RUBRICNOTES" +
+				" FROM HOKE_RUBRIC R " +
 				" WHERE R.SCHOOLID = ?" + 
 				" AND R.TEACHERID = ?" + 
 				" AND R.OBSERVED = 'Observed Classroom'" + 
-				" AND R.DATE = (SELECT MIN(DATE) FROM RUBRIC R2 WHERE R2.SCHOOLID = ? AND R2.TEACHERID = ? AND R2.OBSERVED = 'Observed Classroom')" +
-				" GROUP BY ID, DATE, PLANNING, ASSESSMENTANDDATA, PATH, PLACE, PACE, CLASSROOMMANAGEMENT, TEACHERROLE, STUDENTENGAGEMENT, STUDENTCOLLABORATION, TECHNOLOGY, RUBRICSCORE" +
+				" AND R.DATE = (SELECT MIN(DATE) FROM HOKE_RUBRIC R2 WHERE R2.SCHOOLID = ? AND R2.TEACHERID = ? AND R2.OBSERVED = 'Observed Classroom')" +
+				" GROUP BY ID, SCHOOLID, TEACHERID, USERID, DATE, OBSERVED, CHECKLISTS, DIGITALCONTENT, SEATING, TIMING, DIFFERENTIATION, STUDENTGROUPS, DATA, REFLECTION, STUDENTLEARNING, PHASE, RUBRICNOTES" +
 				" LIMIT 0,1";
 
-		String sqlMax = "SELECT R.ID, R.LEVELUP, R.DATE, R.OBSERVED, R.QUESTIONS, R.RUBRICNOTES, R.SCHOOLID, R.TEACHERID, R.TIMEOBSERVED, " +
-				" R.USERID, R.PLANNING, R.ASSESSMENTANDDATA, R.PATH, R.PLACE, R.PACE, R.CLASSROOMMANAGEMENT, R.TEACHERROLE, " +
-				" R.STUDENTENGAGEMENT, R.STUDENTCOLLABORATION, R.TECHNOLOGY, R.SMALLGROUP, R.CHECKLISTS, R.RUBRICSCORE " +
-				" FROM RUBRIC R " +
+		String sqlMax = "SELECT R.ID, R.SCHOOLID, R.TEACHERID, R.USERID, R.DATE, R.OBSERVED, R.CHECKLISTS, R.DIGITALCONTENT, R.SEATING, R.TIMING, " +
+				" R.DIFFERENTIATION, R.STUDENTGROUPS, R.DATA, R.REFLECTION, R.STUDENTLEARNING, R.PHASE, R.RUBRICNOTES" +
+				" FROM HOKE_RUBRIC R " +
 				" WHERE R.SCHOOLID = ?" + 
 				" AND R.TEACHERID = ?" + 
 				" AND R.OBSERVED = 'Observed Classroom'" + 
-				" AND R.DATE = (SELECT MAX(DATE) FROM RUBRIC R2 WHERE R2.SCHOOLID = ? AND R2.TEACHERID = ? AND R2.OBSERVED = 'Observed Classroom')" +
-				" GROUP BY ID, DATE, PLANNING, ASSESSMENTANDDATA, PATH, PLACE, PACE, CLASSROOMMANAGEMENT, TEACHERROLE, STUDENTENGAGEMENT, STUDENTCOLLABORATION, TECHNOLOGY, RUBRICSCORE" +
+				" AND R.DATE = (SELECT MAX(DATE) FROM HOKE_RUBRIC R2 WHERE R2.SCHOOLID = ? AND R2.TEACHERID = ? AND R2.OBSERVED = 'Observed Classroom')" +
+				" GROUP BY ID, SCHOOLID, TEACHERID, USERID, DATE, OBSERVED, CHECKLISTS, DIGITALCONTENT, SEATING, TIMING, DIFFERENTIATION, STUDENTGROUPS, DATA, REFLECTION, STUDENTLEARNING, PHASE, RUBRICNOTES" +
 				" LIMIT 0,1";
 				
-		Query queryMin = entityManager.createNativeQuery(sqlMin, Rubric.class);
+		Query queryMin = entityManager.createNativeQuery(sqlMin, HokeRubric.class);
 		queryMin.setParameter(1, sid);
 		queryMin.setParameter(2, tid);
 		queryMin.setParameter(3, sid);
@@ -454,22 +452,20 @@ public class RubricDao {
 		List results = queryMin.getResultList();
 		if (results.isEmpty()) return null;
 		else if (results.size() == 1) {
-			Rubric rubricMin = (Rubric) queryMin.getSingleResult();
-		
+			HokeRubric rubricMin = (HokeRubric) queryMin.getSingleResult();
 			teacherProgressionReportData.setDate(rubricMin.getDate());
-			teacherProgressionReportData.setPlanning(rubricMin.getPlanning());
-			teacherProgressionReportData.setAssessmentAndData(rubricMin.getAssessmentAndData());
-			teacherProgressionReportData.setPath(rubricMin.getPath());
-			teacherProgressionReportData.setPlace(rubricMin.getPlace());
-			teacherProgressionReportData.setPace(rubricMin.getPace());
-			teacherProgressionReportData.setClassroomManagement(rubricMin.getClassroommgmt());
-			teacherProgressionReportData.setTeacherRole(rubricMin.getTeacherrole());
-			teacherProgressionReportData.setStudentEngagement(rubricMin.getStudentegmt());
-			teacherProgressionReportData.setStudentCollaboration(rubricMin.getStudentcolab());
-			teacherProgressionReportData.setTechnology(rubricMin.getTechnology());
+			teacherProgressionReportData.setChecklists(rubricMin.getChecklists());
+			teacherProgressionReportData.setDigitalcontent(rubricMin.getDigitalContent());
+			teacherProgressionReportData.setSeating(rubricMin.getSeating());
+			teacherProgressionReportData.setTiming(rubricMin.getTiming());
+			teacherProgressionReportData.setDifferentiation(rubricMin.getDifferentiation());
+			teacherProgressionReportData.setStudentgroups(rubricMin.getStudentGroups());
+			teacherProgressionReportData.setData(rubricMin.getData());
+			teacherProgressionReportData.setReflection(rubricMin.getReflection());
+			teacherProgressionReportData.setStudentlearning(rubricMin.getStudentLearning());
 		}
 		
-		Query queryMax = entityManager.createNativeQuery(sqlMax, Rubric.class);
+		Query queryMax = entityManager.createNativeQuery(sqlMax, HokeRubric.class);
 		queryMax.setParameter(1, sid);
 		queryMax.setParameter(2, tid);
 		queryMax.setParameter(3, sid);
@@ -479,18 +475,17 @@ public class RubricDao {
 		if (resultsMax.isEmpty()) return null;
 		else if (results.size() == 1) {
 		
-		Rubric rubricMax = (Rubric) queryMax.getSingleResult();
+		HokeRubric rubricMax = (HokeRubric) queryMax.getSingleResult();
 		teacherProgressionReportData.setDateLatest(rubricMax.getDate());
-		teacherProgressionReportData.setPlanningLatest(rubricMax.getPlanning());
-		teacherProgressionReportData.setAssessmentAndDataLatest(rubricMax.getAssessmentAndData());
-		teacherProgressionReportData.setPathLatest(rubricMax.getPath());
-		teacherProgressionReportData.setPlaceLatest(rubricMax.getPlace());
-		teacherProgressionReportData.setPaceLatest(rubricMax.getPace());
-		teacherProgressionReportData.setClassroomManagementLatest(rubricMax.getClassroommgmt());
-		teacherProgressionReportData.setTeacherRoleLatest(rubricMax.getTeacherrole());
-		teacherProgressionReportData.setStudentEngagementLatest(rubricMax.getStudentegmt());
-		teacherProgressionReportData.setStudentCollaborationLatest(rubricMax.getStudentcolab());
-		teacherProgressionReportData.setTechnologyLatest(rubricMax.getTechnology());
+		teacherProgressionReportData.setChecklistsLatest(rubricMax.getChecklists());
+		teacherProgressionReportData.setDigitalcontentLatest(rubricMax.getDigitalContent());
+		teacherProgressionReportData.setSeatingLatest(rubricMax.getSeating());
+		teacherProgressionReportData.setTimingLatest(rubricMax.getTiming());
+		teacherProgressionReportData.setDifferentiationLatest(rubricMax.getDifferentiation());
+		teacherProgressionReportData.setStudentgroupsLatest(rubricMax.getStudentGroups());
+		teacherProgressionReportData.setDataLatest(rubricMax.getData());
+		teacherProgressionReportData.setReflectionLatest(rubricMax.getReflection());
+		teacherProgressionReportData.setStudentlearningLatest(rubricMax.getStudentLearning());
 		}
 		
 		return teacherProgressionReportData;

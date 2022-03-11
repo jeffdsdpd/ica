@@ -29,11 +29,6 @@ public class HokeRubric implements Serializable {
 	@Column(name="schoolid")
 	private Integer schoolId;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern = "hh:mma")
-	@Column(name="timeobserved")
-	private Date timeObserved;
-	
 	@Column(name="teacherid")
 	private Integer teacherId;
 	
@@ -99,14 +94,6 @@ public class HokeRubric implements Serializable {
 
 	public void setSchoolId(Integer schoolId) {
 		this.schoolId = schoolId;
-	}
-
-	public Date getTimeObserved() {
-		return timeObserved;
-	}
-
-	public void setTimeObserved(Date timeObserved) {
-		this.timeObserved = timeObserved;
 	}
 
 	public Integer getTeacherId() {
