@@ -606,10 +606,10 @@ public void updateHokeRubricLevelupItems(String[] checked, String[] unchecked) {
 	}
 	
 	//Called by the JSONRequestController to select the rubrics to display on the rubricReport.html by school selected
-	public List<Rubric> getDashboardRubricValuesBySchool(Integer schoolId) {
-		Query query = entityManager.createQuery("from RUBRIC where schoolid = :schoolId", Rubric.class);
+	public List<HokeRubric> getDashboardRubricValuesBySchool(Integer schoolId) {
+		Query query = entityManager.createQuery("from HOKE_RUBRIC where schoolid = :schoolId", HokeRubric.class);
 		query.setParameter("schoolId", schoolId);
-		List<Rubric> rubrics = query.getResultList();
+		List<HokeRubric> rubrics = query.getResultList();
 	    return rubrics;
 	}
 

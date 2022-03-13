@@ -271,8 +271,8 @@ public class JSONRequestController extends HttpServlet {
 	//Called from dashboard.js
 	@GetMapping(value="/getDashboardRubricValuesBySchool")
 	@ResponseBody
-	public List<Rubric> getDashboardRubricValuesBySchool(@RequestParam Integer schoolId) {	
-		List<Rubric> lr =  rubricDao.getDashboardRubricValuesBySchool(schoolId);
+	public List<HokeRubric> getDashboardRubricValuesBySchool(@RequestParam Integer schoolId) {	
+		List<HokeRubric> lr =  rubricDao.getDashboardRubricValuesBySchool(schoolId);
 		return lr;
 	}
 	

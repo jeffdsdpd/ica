@@ -31,6 +31,10 @@ $(document)
 					
 					//User has selected a single school from the Dropdown List
 					$("#schoolId").change(function() {
+						
+						$("#phaseonerowcontainer").fadeOut(3000);
+						$("#phasetworowcontainer").fadeOut(3000);
+				
 						clearRubricFields();
 						clearRubricCounts();
 						
@@ -46,10 +50,10 @@ $(document)
 										rubricSum = response.length;
 										
 										 $.each(response, function(i, interactionObject) {
-											if (interactionObject.rubricScore < 11) {
+											if (interactionObject.phase = 1) {
 												phaseOne = phaseOne + 1;
 											} else {
-												if (interactionObject.rubricScore < 21) {
+												if (interactionObject.phase  = 2) {
 													phaseTwo = phaseTwo + 1;
 											} else {
 												phaseThree = phaseThree + 1;
@@ -66,29 +70,34 @@ $(document)
 									// create the percentages for each phase to display
 									if (phaseOne > 0) {
 										$("#phaseonepercent").html(Math.floor((phaseOne/rubricSum) * 100)+"%")
-										$("#phaseonepercent").css({ 'font-size': '50px' })}
+										$("#phaseonepercent").css({ 'font-size': '30px' })}
 										else {
 											$("#phaseonepercent").html("No Data");
-											$("#phaseonepercent").css({ 'font-size': '25px' })
+											$("#phaseonepercent").css({ 'font-size': '15px' })
 										};
 									
 									if (phaseTwo > 0) {
 										$("#phasetwopercent").html(Math.floor((phaseTwo/rubricSum) * 100)+"%")
-										$("#phasetwopercent").css({ 'font-size': '50px' })}
+										$("#phasetwopercent").css({ 'font-size': '30px' })}
 										else {
 											$("#phasetwopercent").html("No Data");
-											$("#phasetwopercent").css({ 'font-size': '25px' })
+											$("#phasetwopercent").css({ 'font-size': '15px' })
 										}
 									if (phaseThree > 0) {
 										$("#phasethreepercent").html(Math.floor((phaseThree/rubricSum) * 100)+"%")
-										$("#phasethreepercent").css({ 'font-size': '50px' })}
+										$("#phasethreepercent").css({ 'font-size': '30px' })}
 										else {
 											$("#phasethreepercent").html("No Data");
-											$("#phasethreepercent").css({ 'font-size': '25px' })
+											$("#phasethreepercent").css({ 'font-size': '15px' })
 										}
 									
 									}
 								}); // end of ajax getDashboardPhaseValuesBySchool
+								
+								$("#phaseonerowcontainer").fadeIn();
+								$("#phasetworowcontainer").fadeIn();
+								
+					
 
 					}); // end of $("#schoolId").change(function()
 		

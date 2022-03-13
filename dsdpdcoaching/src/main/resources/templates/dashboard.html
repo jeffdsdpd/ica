@@ -12,7 +12,6 @@
 <!--   JS Files   -->
 <script src="js/lib/jquery.js"></script>
 <script src="js/lib/jquery-ui.min.js"></script>
-<script src="js/lib/timepicker.js"></script>
 <script src="js/lib/bootstrap.min.js"></script>
 <script src="js/lib/bootstrap-select.js"></script>
 <script src="js/lib/bootstrap-multiselect.js"></script>
@@ -69,9 +68,9 @@
 												<br />
 
 												<div class="col-md-12">
-													<div class="form-group col-md-4" id="schoolIdGroup" style="padding-top: 10px;">
+													<div class="form-group col-md-5" id="schoolIdGroup" style="padding-top: 10px;">
 														<label><b>School</b></label>
-		                                                	<select id="schoolId" class="form-control" th:field="*{schoolList}">
+		                                                	<select id="schoolId" class="form-control" style="font-size: 12px;" th:field="*{schoolList}">
 			                                                	<option value="">Please Select</option>
 			                                                	<option th:each="school: ${schoolList}" 
 			                                                			th:value="${school.id}" 
@@ -81,43 +80,48 @@
 													</div>
 													
 													<!-- phase one value percentages -->
-													<div>
-												    	<div class="col-md-3">
-												          <img src="images/phaseone.png" width="125" height="125" style="float:right;" />
-												        </div>
-												        <div class="col-md-2" style="margin-left:-10px">
-												            <h4 id="phaseonepercent" class="card-title">Phase1%</h4>
-												            <p class="card-text">Working at a Phase 1</p>
-												    	</div>
+													<div id="phaseonerowcontainer" style="display: none">
+														<div>
+													    	<div class="col-md-3">
+													          <img src="images/phaseone.png" width="125" height="125" style="float:right;" />
+													        </div>
+													        <div class="col-md-2" style="margin-left:-10px">
+													            <h4 id="phaseonepercent" class="card-title"></h4>
+													            <p class="card-text">In Phase 1</p>
+													    	</div>
+														</div>
 													</div>
-												</div>
+													
+												</div> <!-- end of first row -->
 												
 												
 												 	<!-- phase two value percentages -->
 											     	<div class="row">
-											        	<div class="col-md-2">
-											          		<div style="margin-left:10px">
-											            		<h4 id="phasetwopercent" class="card-title">Phase2%</h4>
-											            		<p class="card-text">Working at a Phase 2</p>
-											          		</div>
-											        	</div>
-												         <div class="col-md-3" style="margin-left:-25px">
-												          <img src="images/phasetwo.png" width="125" height="125" />
-												        </div>
-												        
-												        
-												        <!-- spacer -->
-												        <div class="col-md-1"></div>
-												        
-												        
-												        <!-- phase three value percentages -->
-												        <div class="col-md-3">
-												          <img src="images/phasethree.png" width="125" height="125" style="float:right;" />
-												        </div>
-												        <div class="col-md-2" style="margin-left:-25px">
-												            <h4 id="phasethreepercent" class="card-title">Phase3%</h4>
-												            <p class="card-text">Working at a Phase 3</p>
-												    	</div>
+												     	<div id="phasetworowcontainer" style="display: none">
+												        	<div class="col-md-2">
+												          		<div style="margin-left:10px">
+												            		<h4 id="phasetwopercent" class="card-title">Phase2%</h4>
+												            		<p class="card-text">In Phase 2</p>
+												          		</div>
+												        	</div>
+													         <div class="col-md-3" style="margin-left:-25px">
+													          <img src="images/phasetwo.png" width="125" height="125" />
+													        </div>
+													        
+													        
+													        <!-- spacer -->
+													        <div class="col-md-1"></div>
+													        
+													        
+													        <!-- phase three value percentages -->
+													        <div class="col-md-3">
+													          <img src="images/phasethree.png" width="125" height="125" style="float:right;" />
+													        </div>
+													        <div class="col-md-2" style="margin-left:-25px">
+													            <h4 id="phasethreepercent" class="card-title">Phase3%</h4>
+													            <p class="card-text">In Phase 3</p>
+													    	</div>
+													    </div>
 												    </div>
 												        
 												        
