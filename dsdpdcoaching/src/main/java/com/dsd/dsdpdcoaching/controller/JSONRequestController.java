@@ -175,7 +175,7 @@ public class JSONRequestController extends HttpServlet {
 	//Called from dashboard.js to get the data for the 3d bar graph for the schools assigned to the user
 	@GetMapping(value="/getRubricValuesForAssignedSchoolsForDashboard")
 	//@ResponseBody
-	public List<Rubric> getRubricValuesForAssignedSchoolsForDashboard(@RequestParam Integer schoolId) {	
+	public List<HokeRubric> getRubricValuesForAssignedSchoolsForDashboard(@RequestParam Integer schoolId) {	
 		return rubricDao.getRubricValuesForAssignedSchoolsForDashboard(schoolId);
 	}
 	
