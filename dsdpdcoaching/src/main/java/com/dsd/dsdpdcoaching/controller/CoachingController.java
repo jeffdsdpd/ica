@@ -31,26 +31,15 @@ public class CoachingController {
 	}
 
 	@PostMapping("/coachingForm")
-	public String postCoachingForm(HttpSession session, HttpServletRequest request, Model model,
-			@ModelAttribute CoachingData coachingData /*@RequestParam("file") final MultipartFile file*/ ) {
+	public String postCoachingForm(HttpSession session, HttpServletRequest request, Model model, @ModelAttribute CoachingData coachingData) {
 
 		coachingData.setUserId(request.getUserPrincipal().getName());
-
-		/* This is when we add photo capability
-		try {
-			coachingData.setPhoto(file.getBytes());
-		} catch (IOException e) {
-			LOGGER.error("Error converting file to byte array", e);
-		}
-		*/
 		
 		for (Integer teacherId : coachingData.getTeacherIds()) {
 			CoachingData data = (CoachingData) SerializationUtils.clone(coachingData);
 			data.setTeacherId(teacherId);
 			coachingDataDao.saveCoachingData(data);
 		}
-
-		// Redirect user back to blank form so they can enter more data
 		return "coachingForm";
 	}
 

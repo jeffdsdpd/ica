@@ -146,9 +146,15 @@ public class FrontController {
 		int rubricPhase = hokeRubricPhaseCalculator.getHokeRubricPhase(hokeRubicData);
 				
 		hokeRubicData.setPhase(rubricPhase);
-
-		rubricDao.saveHokeRubricData(hokeRubicData);
 		
+		//check the freeform NOTES field for any non ascii chars
+		 if (hokeRubicData.getRubricNotes() == null) {
+			 rubricDao.saveHokeRubricData(hokeRubicData);
+		 } else {
+			 hokeRubicData.setRubricNotes(hokeRubicData.getRubricNotes().replaceAll("[^A-Za-z0-9!@#$%&*()-+={}\\[\\];'<>?/.,]", ""));
+	         rubricDao.saveHokeRubricData(hokeRubicData);
+	        }
+
 		//check if the email checkbox was checked to email the report to the teacher
 		//if(request.getParameter("teachercheckbox")!=null) {
 		//	emailService.sendRubricEmail(hokeRubricData, request.getParameter("teachercheckbox"));

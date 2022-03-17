@@ -32,8 +32,12 @@ $(document)
 					//User has selected a single school from the Dropdown List
 					$("#schoolId").change(function() {
 						
-						$("#phaseonerowcontainer").fadeOut(1000);
-						$("#phasetworowcontainer").fadeOut(1000);
+						$("#phaseonecontainer").fadeOut();
+						$("#phasetwocontainer").fadeOut();
+						$("#phasethreecontainer").fadeOut();
+						$("#phaseone").fadeOut();
+						$("#phasetwo").fadeOut();
+						$("#phasethree").fadeOut();
 				
 						clearRubricFields();
 						clearRubricCounts();
@@ -90,15 +94,16 @@ $(document)
 											$("#phasethreepercent").html(0+"%");
 											$("#phasethreepercent").css({ 'font-size': '30px' })
 										}
-									
 									}
 								}); // end of ajax getDashboardPhaseValuesBySchool
 								
-								$("#phaseonerowcontainer").fadeIn();
-								$("#phasetworowcontainer").fadeIn();
+								$("#phaseonecontainer").fadeIn(1500);
+								$("#phasetwocontainer").fadeIn(1500);
+								$("#phasethreecontainer").fadeIn(1500);
+								$("#phaseone").fadeIn(1500);
+								$("#phasetwo").fadeIn(1500);
+								$("#phasethree").fadeIn(1500);
 								
-					
-
 					}); // end of $("#schoolId").change(function()
 		
 					
