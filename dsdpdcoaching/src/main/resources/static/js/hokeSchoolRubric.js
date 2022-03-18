@@ -135,7 +135,7 @@ $(document).ready(function() {
 
 					if ((interactionObject.studentGroups) != null) {
                		 if ((interactionObject.studentGroups) == (1)) {
-               			 studentGroupsContentPhaseOne += 1; }
+               			 studentGroupsPhaseOne += 1; }
                		 	else if ((interactionObject.studentGroups) == (2)) {
                		 		studentGroupsPhaseTwo += 1; }
                		 	else if ((interactionObject.studentGroups) == (3)) {
