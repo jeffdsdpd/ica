@@ -120,8 +120,8 @@ $(document)
 			
 		function validateForm() {
 				schoolIdForGraph = $("#schoolIdGraph :selected").val();
-				var sd =  $("#startDate").datepicker({ dateFormat: 'dd,MM,yyyy' }).val();
-				var ed =  $("#endDate").datepicker({ dateFormat: 'dd,MM,yyyy' }).val();
+				sd =  $("#startDate").datepicker({ dateFormat: 'dd,MM,yyyy' }).val();
+				ed =  $("#endDate").datepicker({ dateFormat: 'dd,MM,yyyy' }).val();
 				clearRubricFields();
 				clearRubricCounts();
 				
@@ -140,7 +140,7 @@ $(document)
 					$.ajax({
 		                type: "GET",
 		                url:"getRubricValuesForAssignedSchoolsForDashboard",
-		                data:{schoolId:schoolIdForGraph},
+		                data:{schoolId:schoolIdForGraph, startDate:sd, endDate:ed},
 		                dataType: "json",
 		                success: function (response) {
 					
@@ -238,8 +238,8 @@ $(document)
 		                		 		studentlearningPhaseTwo += 1; }
 		                		 	else if ((interactionObject.studentLearning) == (3)) {
 		                		 		studentlearningPhaseThree += 1; }
-		                		 	else studentcollabNE += 1;
-		                		 } else studentcollabNE += 1;
+		                		 	else studentlearningNE += 1;
+		                		 } else studentlearningNE += 1;
 		                     });
 		                	 
 /*

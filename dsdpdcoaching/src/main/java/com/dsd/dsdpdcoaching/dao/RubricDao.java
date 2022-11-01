@@ -562,7 +562,7 @@ public void updateHokeRubricLevelupItems(String[] checked, String[] unchecked) {
 		return rubricList;
 	}
 	
-	public List<HokeRubric> getRubricValuesForAssignedSchoolsForDashboard(Integer school) {
+	public List<HokeRubric> getRubricValuesForAssignedSchoolsForDashboard(Integer school, String startDate, String endDate) {
 		//Called by the JSONRequestController to get the rubic data to create the 3d bar graph on the dashboard
 		//List<String> schoolNames = new ArrayList<String>();
 		//schoolNames.addAll(school);
@@ -579,7 +579,7 @@ public void updateHokeRubricLevelupItems(String[] checked, String[] unchecked) {
 		*/
 		
 		List<HokeRubric> rubricList =  entityManager.createQuery("from HOKE_RUBRIC r "
-				+ "where schoolid = :school) and observed = 'Observed Classroom' and teacherId = r.teacherId "
+				+ "where schoolid = :school) and observed = 'Observed Classroom' and date between " + startDate + " AND " + endDate + " and teacherId = r.teacherId "
 				+ "group by teacherId")
 	    			.setParameter("school", school)
 	    			.getResultList();
