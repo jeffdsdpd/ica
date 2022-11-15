@@ -138,8 +138,6 @@ $(document)
 					//Start and show the spinner since the ajax call has started to display the bar graph
 					document.getElementById("loadingmessage").style.display = "inline";
 					
-				
-					
 					//Create the array to hold the number of teachers for each category to display when clicking on the graph
 					ChecklistsPhase1 = [];
 					ChecklistsPhase2 = [];
