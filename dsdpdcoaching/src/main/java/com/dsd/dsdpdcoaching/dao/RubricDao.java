@@ -578,13 +578,23 @@ public void updateHokeRubricLevelupItems(String[] checked, String[] unchecked) {
 	    			.getResultList();
 		*/
 		
-		List<HokeRubric> rubricList =  entityManager.createQuery("from HOKE_RUBRIC r "
-				+ "where schoolid = :school) and observed = 'Observed Classroom' and date between " + startDate + " AND " + endDate + " and teacherId = r.teacherId "
-				+ "group by teacherId")
+		/*
+		List<HokeRubric> rubricList =  entityManager.createQuery("from HOKE_RUBRIC R1 "
+				+ "where schoolId = :school and observed = 'Observed Classroom' and date between " + startDate + " AND " + endDate + ""
+				+ "and date = (select max(date) FROM HOKE_RUBRIC R2 where R1.schoolId = R2.schoolId AND R1.teacherId = R2.teacherId)")
 	    			.setParameter("school", school)
 	    			.getResultList();
 		
-		return rubricList;
+		*/
+		
+		List<HokeRubric> rubricList =  entityManager.createQuery("from HOKE_RUBRIC m "
+				+ "where schoolId = :school and m.date = (select max(m1.date) "
+					+ "from HOKE_RUBRIC m1 where m1.teacherId = m.teacherId ) "
+					+ "and not exists (from HOKE_RUBRIC m2 where m2.teacherId = m.teacherId and m2.date > m.date)")
+					.setParameter("school", school)
+	    			.getResultList();
+		
+		return rubricList; 
 				
 	}
 	

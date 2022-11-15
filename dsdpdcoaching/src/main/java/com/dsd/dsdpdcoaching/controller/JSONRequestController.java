@@ -179,10 +179,21 @@ public class JSONRequestController extends HttpServlet {
 		return rubricDao.getRubricValuesForAssignedSchoolsForDashboard(schoolId, startDate, endDate);
 	}
 	
+	//Called from dashboard.js to get the teacher names by id for the 3d bar graph
+	@GetMapping(value="/getTeacherNameById")
+	//@ResponseBody
+	public List<String> getTeacherNameById(String[] teacherIds) {
+		String teacherNames[];
+		
+		List<String> names = teacherDao.getTeacherNameById(teacherIds);
+		
+		return names;
+	}
+	
 	//Called from teacherProgressionReport.js to get the data for the graph
 	@GetMapping(value="/getTeacherProgressionReportData")
 	@ResponseBody
-	public TeacherProgressionReportData getTeacherProgressionReportData(@RequestParam Integer schoolId, @RequestParam Integer teacherId) {	
+	public TeacherProgressionReportData getTeacherdProgressionReportData(@RequestParam Integer schoolId, @RequestParam Integer teacherId) {	
 		return rubricDao.getTeacherProgressionReportData(schoolId, teacherId);
 	}
 	

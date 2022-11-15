@@ -1,11 +1,14 @@
 package com.dsd.dsdpdcoaching.dao;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -144,6 +147,19 @@ public class TeacherDao {
 		query.setParameter(1, teacherId);
 		
 		return query.getSingleResult().toString();
+	}
+
+	public List<String> getTeacherNameById(String[] teacherIds) {
+		List<String> ids = Arrays.asList(teacherIds);
+		
+		String sql = "SELECT T.name FROM TEACHERS T WHERE ID IN   :array   " ;
+		Query query = entityManager.createQuery(sql);
+		query.setParameter("array", ids);
+		
+		List<String> results = query.getResultList();
+		
+		return results;
+		
 	}
 
 }
