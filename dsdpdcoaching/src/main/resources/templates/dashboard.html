@@ -57,6 +57,8 @@
 		color: #333;
 		visibility: hidden;
 		transition: transform 0.4s, top 0.4s;
+		overflow-y: scroll;
+		height: 400px;
 	}
 	
 	.open-popup {
@@ -77,6 +79,8 @@
 		font-weight: 400;
 		margin-top: 0px;
 		margin-bottom: 10px;
+		background-color: steelblue;
+		color: white;
 	}
 	
 	.popup button {
@@ -294,7 +298,6 @@
 									</div>
 				
 									<div id="popup" class="popup">
-										<img src="/images/instructor.png" />
 										<div style="position: absolute; top: 0; right: 0;"><input type="button" onclick="closePopup()" value="x" /></div>
 										
 										<h3>Instructors</h3>
